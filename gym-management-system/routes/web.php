@@ -21,8 +21,7 @@ Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedbac
 Route::get('/user/edit/{id}', [UserController::class, 'index'])->name('user.edit');
 Route::get('/purchased', [UserController::class, 'index'])->name('user.purchased');
 
-Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin#index');
 Route::get('/admin/workout', [AdminController::class, 'workout'])->name('admin.workout');
 Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
