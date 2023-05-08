@@ -9,6 +9,14 @@ body {
   height: 100%;
 }
 
+.purple-bg {
+  background-color: #2e0c6f;
+}
+
+.adj-size {
+  padding: 100px 0;
+}
+
 .layout_padding {
   padding: 90px 0;
 }
