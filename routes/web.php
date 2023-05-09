@@ -20,6 +20,8 @@ Route::get('/workout', [UserController::class, 'workout'])->name('user.workout')
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::get('/user/edit/{id}', [UserController::class, 'index'])->name('user.edit');
 Route::get('/purchased', [UserController::class, 'index'])->name('user.purchased');
+Route::get('/user/profile', [UserController::class, 'Userprofile'])->name('user.profile');
+
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/workout', [AdminController::class, 'workout'])->name('admin.workout');
