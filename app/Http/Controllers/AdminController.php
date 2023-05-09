@@ -19,4 +19,8 @@ class AdminController extends Controller
    public function member() {
       return view('admin.member');
    }
+
+   public function workout() {
+      return view('admin.workout');
+   }
 }

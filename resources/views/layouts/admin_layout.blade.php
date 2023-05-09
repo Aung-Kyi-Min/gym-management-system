@@ -92,7 +92,7 @@
                                     Instructor List
                                 </p>
                             </a>
-                            <a href="{{route('admin.user')}}" class="nav-link">
+                            <a href="{{route('admin.workout')}}" class="nav-link">
                                 <i class="nav-icon fas fa-dumbbell"></i>
                                 <p>
                                     Workout List
