@@ -18,7 +18,7 @@
                         <input type="password" placeholder="Password" />
                     </div>
                     <div>
-                        <a href="#" class="small ">Forget Password</a>
+                        <a href="{{route('auth.forgetpassword')}}" class="small ">Forget Password</a>
                         
                     </div>
                     <div class="mt-5">
@@ -27,7 +27,7 @@
                         </button>
                     </div>  
                     <div class="text-center">
-                            Not a member? <a href="#" >Register</a>
+                            Not a member? <a href="{{route('auth.register')}}" >Register</a>
                     </div> 
                 </form>
           </div>

@@ -87,8 +87,9 @@
                                 <a class="nav-link" href="#">Feedback</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="{{route('auth.login')}}">Login</a>
                             </li>
+
                         </ul>
                     </div>
                     </div>
