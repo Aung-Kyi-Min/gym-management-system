@@ -32,6 +32,7 @@
                     <div>
                         <input type="text" placeholder="Age" name="age" />
                     </div>
+                    
                     <div>
                         <input type="file"  name="image" />
                     </div>
@@ -40,6 +41,9 @@
                         Female
                         <input type="radio" style="width:30px;"  value="male" name="gender2" />
                         Male
+                    </div>
+                    <div>
+                        <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control"></textarea>
                     </div>
                     <div class="mt-5">
                         <button type="submit" class=" btn btn-dark">

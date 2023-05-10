@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card pad">
                         <div class="card-header">
-                            <h3 class="card-title">Instructor Create</h3>
+                            <h3 class="card-title">Instructor Edit</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="mt-4">
                                     <button type="submit" class=" btn btn-dark">
-                                        Create
+                                        Update
                                     </button>
                                 </div>  
                             </form>
