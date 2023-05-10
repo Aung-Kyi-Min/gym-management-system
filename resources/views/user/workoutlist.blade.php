@@ -3,7 +3,6 @@
 @section('content')
     <div class="container p-3 mt-5">
       <h2 class="text-center">Workout List</h2>
-      <p></p>
       <div class="row justify-content-center">
 
       <div class="col-sm-5 card img-fluid border m-2 p-2 text-center" style="width:500px">
@@ -14,7 +13,6 @@
         <div class="card-body">
              <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
              <h4>200000 MMK</h4>
-
         </div>
         <div class="card-footer">
             <a href="#" class="btn btn-primary">Start Membership</a>

@@ -4,7 +4,7 @@
 
   <!-- contact section -->
   <section class="contact_section layout_padding">
-    <div class="container">
+    <div class="container w-50">
         <div class="heading_container">
             <h2>Register Page</h2>
         </div>
