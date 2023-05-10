@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     //
-    public function Userprofile(){
+    public function userprofile(){
         return view('user.profile');
     }
 
@@ -17,5 +17,17 @@ class UserController extends Controller
 
     public function feedback() {
         return view('user.feedback');
+    }
+
+    public function workout() {
+        return view('user.workoutlist');
+    }
+
+    public function purchase(){
+        return view('user.purchase');
+    }
+
+    public function successPurchase(){
+        return view('user.success-purchase');
     }
 }
