@@ -103,11 +103,12 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Gender</label>
-                                        <div class="custom-control custom-radio col-lg-6">
+                                        <div class="custom-control custom-radio col-lg-3">
                                             <input type="radio" class="custom-control-input" id="customRadio"
                                                 name="example1" value="Male">
                                             <label class="custom-control-label" for="customRadio">Male</label>
-
+                                        </div>
+                                        <div class="custom-control custom-radio col-lg-3">
                                             <input type="radio" class="custom-control-input" id="customRadio"
                                                 name="example1" value="Female">
                                             <label class="custom-control-label" for="customRadio">Female</label>
@@ -154,16 +155,4 @@
 
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-
 @endsection
