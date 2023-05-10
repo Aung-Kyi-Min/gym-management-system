@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="container py-4">
+    <div class="container py-4 mt-5">
         <div class="row">
             <div class="col-lg-4">
                 <div class="profile-card-4">
