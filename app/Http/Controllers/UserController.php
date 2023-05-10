@@ -22,4 +22,8 @@ class UserController extends Controller
     public function workout() {
         return view('user.workoutlist');
     }
+
+    public function purchase(){
+        return view('user.purchase');
+    }
 }
