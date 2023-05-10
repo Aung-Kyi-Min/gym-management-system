@@ -16,6 +16,81 @@
                                     <input style="display:none" type="file" name="image" id="my-file">
                                     <button type="button" class="btn btn-outline-dark rounded-pill" onclick="document.getElementById('my-file').click()">Upload</button>
                                 </div>
+                                <!--/row-->
+                            </div>
+
+                            <div class="tab-pane" id="edit">
+                                <form>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">ID</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" placeholder="Enter ID">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Name</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" placeholder="John">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="email" placeholder="aa@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="password" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Gender</label>
+                                        <div class="custom-control custom-radio col-lg-3">
+                                            <input type="radio" class="custom-control-input" id="customRadio"
+                                                name="example1" value="Male">
+                                            <label class="custom-control-label" for="customRadio">Male</label>
+                                        </div>
+                                        <div class="custom-control custom-radio col-lg-3">
+                                            <input type="radio" class="custom-control-input" id="customRadio"
+                                                name="example1" value="Female">
+                                            <label class="custom-control-label" for="customRadio">Female</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Age</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" placeholder="20">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Phone</label>
+                                        <div class="col-lg-9">
+                                            <input class="form-control" type="text" value=""
+                                                placeholder="+95">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                        <div class="col-lg-9">
+                                            <textarea class="form-control" placeholder="Yangon"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                                        <div class="col-lg-9">
+
+                                            <input type="button" class="btn btn-primary" value="Update">
+                                            <input type="reset" class="btn btn-secondary" value="Cancel">
+
+                                        </div>
+                                    </div>
+
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -145,5 +220,9 @@
         </div>
 
     </div>
+<<<<<<< HEAD
+@endsection
+=======
 </div>
 @endsection
+>>>>>>> 2b6481a387177004fc3ec710f8b65732829134b8
