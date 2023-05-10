@@ -12,7 +12,7 @@
             <div class="card-body">
                 <form action="">
                     <div>
-                        <input type="email" placeholder="Email" name="email" class='form-control' />
+                        <input type="text" placeholder="Name" name="name" class='form-control' />
                     </div>
                     <div>
                         <input type="password" placeholder="Password" />
