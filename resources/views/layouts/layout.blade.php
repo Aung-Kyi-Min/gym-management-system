@@ -19,7 +19,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="css/font.css" rel="stylesheet" />
@@ -28,7 +28,7 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
-<body>   
+<body>
     <!-- header section strats -->
     <header class="header_section">
             <div class="container">
@@ -89,7 +89,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Login</a>
                             </li>
-                        </ul>                  
+                        </ul>
                     </div>
                     </div>
                 </nav>

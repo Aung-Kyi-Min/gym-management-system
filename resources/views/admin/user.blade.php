@@ -48,7 +48,6 @@
                                         <td>Male</td>
                                         <td>23</td>
                                         <td>
-                                            <button type="button" class="btn bg-gradient-primary">Edit</button>
                                             <button type="button" class="btn bg-gradient-danger">Delete</button>
                                         </td>
                                     </tr>

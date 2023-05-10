@@ -8,13 +8,13 @@
       <div class="heading_container">
         <h2>
           <span>
-            Get In Touch
+            FeedBack 
           </span>
         </h2>
       </div>
-      <div class="layout_padding2-top">
+      <div class="layout_padding2-top ">
         <div class="row">
-          <div class="col-md-6 ">
+          <div class="col-md-6 mx-auto">
             <form action="">
               <div class="contact_form-container">
                 <div>
@@ -31,7 +31,7 @@
                     <input type="text" placeholder="Message" />
                   </div>
                   <div class="mt-5">
-                    <button type="submit">
+                    <button type="submit" class="btn btn-light btn-md">
                       Send
                     </button>
                   </div>
@@ -45,5 +45,4 @@
   </section>
   <!-- end contact section -->
 @endsection
-  
- 
+

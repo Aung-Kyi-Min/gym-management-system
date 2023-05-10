@@ -21,6 +21,8 @@ Route::get('/workout', [UserController::class, 'workout'])->name('user.workout')
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::get('/user/edit/{id}', [UserController::class, 'index'])->name('user.edit');
 Route::get('/purchased', [UserController::class, 'index'])->name('user.purchased');
+Route::get('/user/profile', [UserController::class, 'Userprofile'])->name('user.profile');
+
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');

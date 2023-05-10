@@ -24,6 +24,9 @@ class AdminController extends Controller
       return view('admin.instructorCreate');
    }
    public function workoutCreate(){
-      return view('admin.workoutCreate');
+    return view('admin.workoutCreate');
+   }
+   public function workout() {
+      return view('admin.workout');
    }
 }
