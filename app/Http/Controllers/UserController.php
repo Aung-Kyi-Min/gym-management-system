@@ -18,4 +18,8 @@ class UserController extends Controller
     public function feedback() {
         return view('user.feedback');
     }
+
+    public function workout() {
+        return view('user.workoutlist');
+    }
 }
