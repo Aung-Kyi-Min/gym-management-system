@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,16 @@ Route::get('/purchased', [UserController::class, 'index'])->name('user.purchased
 Route::get('/user/profile', [UserController::class, 'Userprofile'])->name('user.profile');
 
 
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::get('/forgetpassword', [AuthController::class, 'forgetpassword'])->name('auth.forgetpassword');
+Route::get('/reset', [AuthController::class, 'reset'])->name('auth.reset');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/instructor/create', [AdminController::class, 'instructorCreate'])->name('admin.instructor.create');
+Route::get('/admin/workout/create', [AdminController::class, 'workoutCreate'])->name('admin.workout.create');
 Route::get('/admin/workout', [AdminController::class, 'workout'])->name('admin.workout');
-Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
+Route::get('/admin/instructor', [AdminController::class, 'instructorCreate'])->name('admin.instructor');
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
 Route::get('/admin/create/workout', [AdminController::class, 'createWorkout'])->name('admin.create_workout');
