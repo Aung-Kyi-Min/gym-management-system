@@ -98,7 +98,6 @@
             </div>
         </div>
 
-
         <div class="col-lg-8 shadow-sm">
             <div class="card">
                 <div class="card-body">
@@ -220,9 +219,5 @@
         </div>
 
     </div>
-<<<<<<< HEAD
-@endsection
-=======
 </div>
 @endsection
->>>>>>> 2b6481a387177004fc3ec710f8b65732829134b8
