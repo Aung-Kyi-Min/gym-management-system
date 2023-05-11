@@ -10,18 +10,18 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form action="">
+                <form action="{{ route('auth.forget') }}" method="POST">
+                    @csrf
                     <div>
                         <input type="email" placeholder="Email" name="email" class='form-control' />
                     </div>
-                    
-                </form>
-                <form action="{{route('auth.reset')}}">
+                {{--</form>--}}
+                {{--<form action="{{route('auth.reset')}}">--}}
                     <div class="mt-5">
                         <button type="submit" class="btn btn-dark">
                              Send
                         </button>
-                    </div>  
+                    </div>
                 </form>
           </div>
         </div>
@@ -29,5 +29,4 @@
   </section>
   <!-- end contact section -->
 @endsection
-  
- 
+

@@ -10,25 +10,26 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form action="">
+                <form action="{{ route('auth.loginUser') }}" method="POST">
+                    @csrf
                     <div>
-                        <input type="text" placeholder="Name" name="name" class='form-control' />
+                        <input type="email" placeholder="Email" name="email" class='form-control' />
                     </div>
                     <div>
-                        <input type="password" placeholder="Password" />
+                        <input type="password" placeholder="Password" name="password"/>
                     </div>
                     <div>
                         <a href="{{route('auth.forgetpassword')}}" class="small ">Forget Password</a>
-                        
+
                     </div>
                     <div class="mt-5">
                         <button type="submit" class=" btn btn-dark">
                              Login
                         </button>
-                    </div>  
+                    </div>
                     <div class="text-center">
                             Not a member? <a href="{{route('auth.register')}}" >Register</a>
-                    </div> 
+                    </div>
                 </form>
           </div>
         </div>
@@ -36,5 +37,4 @@
   </section>
   <!-- end contact section -->
 @endsection
-  
- 
+

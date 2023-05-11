@@ -10,7 +10,8 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form action="">
+                <form action="{{ route('auth.registerUser') }}" enctype="multipart/form-data" method="POST">
+                    @csrf
                     <div>
                         <input type="text" placeholder=" Name" name="name" class='form-control' />
                     </div>
@@ -18,12 +19,12 @@
                         <input type="email" placeholder="Email" name="email" class='form-control' />
                     </div>
                     <div>
-                        <input type="password" placeholder="Password" />
+                        <input type="password" placeholder="Password" name="password" />
                     </div>
                     <div>
                         <input type="password" placeholder="Comfirm Password" name="comfirmPassword" />
                     </div>
-                    
+
                     <div>
                         <input type="number" placeholder="Phone Number" name="phone" />
                     </div>
@@ -34,9 +35,9 @@
                         <input type="text" placeholder="Age" name="age" />
                     </div>
                     <div class="mt-3">
-                        <select name="select" id="gender" class="selectbox">
-                            <option value="0">Male</option>
-                            <option value="1">Female</option>
+                        <select name="gender" id="gender" class="selectbox">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                         </select>
                     </div>
                     <div class="mt-3">
@@ -49,10 +50,13 @@
                         <input type="file"  name="image" />
                     </div>
                     <div class="mt-5">
-                        <button type="submit" class=" btn btn-dark">
+                        <button type="submit" class="mb-5 btn btn-dark">
                             Register
                         </button>
-                    </div>  
+                        <div class="text-center">
+                            Already have an account ? <a href="{{route('auth.login')}}" class="text-success">Login</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -60,5 +64,4 @@
   </section>
   <!-- end contact section -->
 @endsection
-  
- 
+
