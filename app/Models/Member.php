@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function workout() {
+        return $this->belongsTo(Workout::class);
+    }
+
+    public function instructor() {
+        return $this->belongsTo(Instructor::class);
+    }
 }

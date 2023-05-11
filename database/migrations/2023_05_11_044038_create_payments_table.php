@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiscountsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDiscountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('discounts', function (Blueprint $table) {
-            $table->id();
-            $table->integer('dis_min_month');
-            $table->integer('dis_max_month');
-            $table->integer('percent');
+        Schema::create('payments', function (Blueprint $table) {
+            $table->id('id');
+            $table->foreignId('member_id')->constrained('members')->onDelete('cascade');
+            $table->integer('amount')->nullable();
+            $table->string('payment')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateDiscountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discounts');
+        Schema::dropIfExists('payments');
     }
 }
