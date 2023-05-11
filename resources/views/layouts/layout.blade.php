@@ -14,6 +14,8 @@
 
   <title>GLP</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -23,6 +25,7 @@
 
   <!-- fonts style -->
   <link href="css/font.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css">
   <!-- Custom styles for this template -->
   <link href="css/common.css" rel="stylesheet" />
   <!-- responsive style -->
@@ -75,20 +78,21 @@
                     <div class="d-flex  flex-column flex-lg-row align-items-center">
                         <ul class="navbar-nav  ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ route('user.index') }}">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Workout List</a>
+                                <a class="nav-link" href="{{ route('user.workout') }}">Workout List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Purchase</a>
+                                <a class="nav-link" href="{{ route('user.purchased') }}">Purchase</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Feedback</a>
+                                <a class="nav-link" href="{{ route('user.feedback') }}">Feedback</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="{{route('auth.login')}}">Login</a>
                             </li>
+
                         </ul>
                     </div>
                     </div>
@@ -108,9 +112,10 @@
     </section>
     <!-- footer section -->
 
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/anchor.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/anchor.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
 
     <script>
         function openNav() {
@@ -120,6 +125,7 @@
             .classList.toggle("menu_btn-style");
         }
     </script>
+
 </body>
 
 </html>
