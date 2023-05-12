@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card pad">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Workout Create</h3>
                         </div>
@@ -15,22 +15,27 @@
                         <div class="card-body">
                             <form action="">
                                 <div class="mt-2">
-                                    <label for="name">Name</label>
-                                    <input type="text" placeholder="Workout Name" id="name" name="name" class='form-control' />
+                                    <input type="text" placeholder="Workout Name" name="name" class='form-control' />
                                 </div>
                                 <div class="mt-2">
-                                    <label for="price">Price</label>
-                                    <input type="text" placeholder="Price" id="price" name="price" class='form-control' />
+                                    <input type="text" placeholder="Instructor Name" name="name" class='form-control' />
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <select name="price" id="price" class="form-control">
+                                    <option value="default" selected> Choose package </option>
+                                        <option value="price"> basic package </option>
+                                        <option value="price">standard package</option>
+                                        <option value="price">premium package </option>
+                                    </select>
                                 </div>
                                 
                                 <div class="mt-2">
-                                    <label for="image">Image</label>
-                                    <input type="file" id="image"  name="image" class='form-control' />
+                                    <input type="file"  name="image" class='form-control' />
                                 </div>
 
                                 <div class="mt-2">
-                                    <label for="textarea">Description</label>
-                                    <textarea id="textarea" placeholder="Workout Description" name="description" rows="4" cols="40" class="form-control"></textarea>
+                                    <textarea id="my-textarea" placeholder=" Enter your message" name="description" rows="4" cols="40" class="form-control"></textarea>
                                 </div>
                             
                                 <div class="mt-5">
