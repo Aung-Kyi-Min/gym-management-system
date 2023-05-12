@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 class AdminController extends Controller
 {
+   
    public function index() {
       return view('admin.index');
    }
 
+   
    public function user() {
       return view('admin.user');
    }
@@ -27,6 +29,11 @@ class AdminController extends Controller
    public function instructorCreate(){
       return view('admin.instructorCreate');
    }
+
+   public function store(){
+      return view('admin.instructorCreate');
+   }
+
    public function workoutCreate(){
       return view('admin.workoutCreate');
    }

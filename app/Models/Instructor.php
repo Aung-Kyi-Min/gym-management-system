@@ -8,9 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Instructor extends Model
 {
     use HasFactory;
-
-    public function member()
-    {
-        return $this->hasMany(Member::class);
-    }
+    
+    protected $fillable = [
+        'name',
+        'speciality',
+        'image',
+        'email',
+        'price',
+        'access_time',
+    ];
+    
+    //public function member()
+    //{
+    //    return $this->hasMany(Member::class);
+    //}
 }

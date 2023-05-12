@@ -7,5 +7,6 @@ namespace App\Contracts\Dao;
  */
 interface AdminDaoInterface
 {
-    
+  public function createInstructors(array $data):void;
+  public function getInstructors(): object;
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\InstructorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,13 @@ Route::get('/reset', [AuthController::class, 'reset'])->name('auth.reset');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/workout', [AdminController::class, 'workout'])->name('admin.workout');
-Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
+Route::get('/admin/instructor', [InstructorController::class, 'index'])->name('admin.instructor');
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
 Route::get('/admin/workout/create', [AdminController::class, 'workoutCreate'])->name('admin.create_workout');
-Route::get('/admin/instructor/create', [AdminController::class, 'instructorCreate'])->name('admin.create_instructor');
+Route::get('/admin/instructor/create',[InstructorController::class, 'create'])->name('admin.create_instructor');
+Route::post('/admin/instructor/store', [InstructorController::class, 'store'])->name('admin.store_instructor');
 Route::get('/admin/workout/edit', [AdminController::class, 'workoutEdit'])->name('admin.edit_workout');
 Route::get('/admin/instructor/edit', [AdminController::class, 'instructorEdit'])->name('admin.edit_insturctor');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
+

@@ -34,17 +34,21 @@
                                         <th>Speciality</th>
                                         <th>Price</th>
                                         <th>Access Time</th>
+                                        <th>Photos</th>
                                         <th>Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($instructors as $instructor)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Kyar Gyi</td>
-                                        <td>test@gmail.com</td>
-                                        <td>Boxing</td>
-                                        <td>100000</td>
-                                        <td>Morning</td>
+                                        <td>{{ $instructor->id }}</td>
+                                        <td>{{ $instructor->name }}</td>
+                                        <td>{{ $instructor->email }}</td>
+                                        <td>{{ $instructor->speciality }}</td>
+                                        <td>{{ $instructor->price }}</td>
+                                        <td>{{ $instructor->access_time}}</td>
+                                        <td> <img src="{{ asset('images/' . $instructor->image) }}" width="50px" alt="Instructor Image"></td>
                                         <td>
                                             <form>
                                                 <a href="{{route('admin.edit_insturctor')}}" type="button" class="btn bg-gradient-primary">Edit</a>
@@ -52,10 +56,19 @@
                                             </form>
                                         </td>
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
+                    </div>
+                    <div class="container"> 
+                     {{ $instructors->links() }}
+                        @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
                     </div>
                     <!-- /.card -->
                 </div>
@@ -66,4 +79,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
 @endsection

@@ -7,5 +7,5 @@ namespace App\Contracts\Services;
 */
 interface AdminServiceInterface
 {
-    
+  public function createInstructors(array $data):void;
 }
