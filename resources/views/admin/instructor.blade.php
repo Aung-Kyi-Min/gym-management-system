@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card pad">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Instructor List</h3>
 
@@ -46,10 +46,8 @@
                                         <td>100000</td>
                                         <td>Morning</td>
                                         <td>
-                                            <form>
-                                                <a href="{{route('admin.edit_insturctor')}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                                <button type="button" class="btn bg-gradient-danger">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn bg-gradient-primary">Edit</button>
+                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>
