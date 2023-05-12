@@ -19,4 +19,9 @@ class InstructorService implements InstructorServiceInterface
     {
         return $this->instructorDao->getInstructors();
     }
+    
+    public function searchInstructor():object
+    {
+        return $this->instructorDao->searchInstructor();
+    }
 }

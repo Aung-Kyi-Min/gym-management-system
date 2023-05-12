@@ -16,12 +16,12 @@ class InstructorController extends Controller
 
     public function create()
     {
-        return view('admin.instructorCreate');
+        return view('admin.instructor.instructorCreate');
     }
 
     public function index() {
         $instructors = $this->instructorService->getInstructors();
-        return view('admin.instructor', compact('instructors'));
+        return view('admin.instructor.instructor', compact('instructors'));
     }
     
     
@@ -30,5 +30,10 @@ class InstructorController extends Controller
         $this->instructorService->createInstructors($request->all());
         session()->flash('success', 'Instructor created successfully! .');
         return redirect()->route('admin.instructor')->with('success', 'Instructor created successfully!');
+    }
+
+    public function search() {
+        $instructors = $this->instructorService->searchInstructor();
+        return view('admin.instructor.instructor', compact('instructors'));
     }
 }

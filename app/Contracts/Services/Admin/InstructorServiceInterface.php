@@ -9,4 +9,5 @@ interface InstructorServiceInterface
 {
   public function createInstructors(array $data): void;
   public function getInstructors(): object;
+  public function searchInstructor():object;
 }
