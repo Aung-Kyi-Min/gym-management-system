@@ -12,13 +12,13 @@
             <div class="card-body">
                 <form action="">
                     <div>
-                        <input type="text" placeholder="Name" name="name" class='form-control' />
+                        <input type="email" placeholder="Email" name="email" class='form-control' />
                     </div>
                     <div>
                         <input type="password" placeholder="Password" />
                     </div>
                     <div>
-                        <a href="{{route('auth.forgetpassword')}}" class="small ">Forget Password</a>
+                        <a href="#" class="small ">Forget Password</a>
                         
                     </div>
                     <div class="mt-5">
@@ -27,7 +27,7 @@
                         </button>
                     </div>  
                     <div class="text-center">
-                            Not a member? <a href="{{route('auth.register')}}" >Register</a>
+                            Not a member? <a href="#" >Register</a>
                     </div> 
                 </form>
           </div>
