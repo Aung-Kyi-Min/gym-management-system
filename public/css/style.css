@@ -37,3 +37,10 @@
   line-height: 25px;
   cursor: pointer;
 }
+
+.selectbox{
+  width:90%;
+   border:none;
+   border-bottom: 0.8px solid #ac9784;
+   color:#ac9784;
+}
