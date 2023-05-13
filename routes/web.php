@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\WorkoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +30,21 @@ Route::get('/register', [AuthController::class, 'register'])->name('auth.registe
 Route::get('/forgetpassword', [AuthController::class, 'forgetpassword'])->name('auth.forgetpassword');
 Route::get('/reset', [AuthController::class, 'reset'])->name('auth.reset');
 
+// admin 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/workout', [AdminController::class, 'workout'])->name('admin.workout');
-Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
+Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
-Route::get('/admin/workout/create', [AdminController::class, 'workoutCreate'])->name('admin.create_workout');
+// admin workout
+Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');
+Route::get('/admin/workout/create', [WorkoutController::class, 'create'])->name('admin.create_workout');
+Route::post('/admin/workout/store' ,  [WorkoutController::class, 'store'])->name('admin.store_workout');
+Route::get('/admin/workout/edit/{id}', [WorkoutController::class, 'edit'])->name('admin.edit_workout');
+Route::post('/admin/workout/update/{id}' , [WorkoutController::class, 'update'])->name('admin.update_workout');
+Route::post('/admin/workout/destroy/{id}', [WorkoutController::class, 'destroy'])->name('admin.destroy_workout');
+
+//admin instructor
+Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
 Route::get('/admin/instructor/create', [AdminController::class, 'instructorCreate'])->name('admin.create_instructor');
-Route::get('/admin/workout/edit', [AdminController::class, 'workoutEdit'])->name('admin.edit_workout');
 Route::get('/admin/instructor/edit', [AdminController::class, 'instructorEdit'])->name('admin.edit_insturctor');
-Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
+

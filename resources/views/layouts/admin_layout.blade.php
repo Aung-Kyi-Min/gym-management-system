@@ -129,7 +129,7 @@
                         <li class="nav-item">
                             <form>
                                 <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                <button type="button" class="btn bg-gradient-danger">Logout</button>
                             </form>
                         </li>
                     </ul>

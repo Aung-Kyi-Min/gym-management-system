@@ -15,12 +15,12 @@ class CreateInstructorsTable extends Migration
     {
         Schema::create('instructors', function (Blueprint $table) {
             $table->id('id');
-            $table->string('name')->nullable();
-            $table->string('speciality')->nullable();
-            $table->string('image')->nullable();
-            $table->string('email')->unique()->nullable();
-            $table->integer('price')->nullable();
-            $table->string('access_time')->nullable();
+            $table->string('name');
+            $table->string('speciality');
+            $table->string('image');
+            $table->string('email')->unique();
+            $table->integer('price');
+            $table->string('access_time');
             $table->timestamps();
         });
     }
