@@ -1,11 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Contracts\Services\Admin\WorkoutServiceInterface;
 
 class UserController extends Controller
 {
+    private $workoutService;
+ 
+    /**
+      * Create a new controller instance.
+      * @param WorkoutInterface $taskServiceInterface
+      * @return void
+      */
+ 
+    public function __construct(WorkoutServiceInterface $workoutServiceInterface) 
+    {
+       $this->workoutService = $workoutServiceInterface;
+    }
+
     //
     public function userprofile(){
         return view('user.profile');
@@ -20,7 +32,9 @@ class UserController extends Controller
     }
 
     public function workout() {
-        return view('user.workoutlist');
+        $workouts = $this->workoutService->get();
+        $workoutCounts = $workouts->count();
+        return view('user.workoutlist' , ['workouts' => $workouts , 'workoutCounts' => $workoutCounts]);
     }
 
     public function purchase(){
