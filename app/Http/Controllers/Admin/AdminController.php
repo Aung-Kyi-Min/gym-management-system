@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Excel;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -42,4 +45,5 @@ class AdminController extends Controller
    public function edit() {
       return view('admin.edit');
    }
+
 }

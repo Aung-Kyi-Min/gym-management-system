@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card pad">
                         <div class="card-header">
-                            <h3 class="card-title">Instructor List</h3>
+                            <h3 class="card-title">Member List</h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -21,6 +21,8 @@
                                         </button>
                                     </div>
                                 </div>
+                                <a href="{{ route('export.members') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('import-member') }}" class="btn btn-primary btn-sm">Import</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -29,27 +31,28 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Speciality</th>
-                                        <th>Price</th>
-                                        <th>Access Time</th>
+                                        <th>User Name</th>
+                                        <th>Instructor Name</th>
+                                        <th>Workout Name</th>
+                                        <th>Join Duration</th>
+                                        <th>Amount</th>
+                                        <th>Join Date</th>
+                                        <th>End Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
+                                        <td>Hla Tun</td>
                                         <td>Kyar Gyi</td>
-                                        <td>test@gmail.com</td>
                                         <td>Boxing</td>
-                                        <td>100000</td>
-                                        <td>Morning</td>
+                                        <td>3 months</td>
+                                        <td>450000</td>
+                                        <td>9.5.2023</td>
+                                        <td>9.7.2023</td>
                                         <td>
-                                            <form>
-                                                <a href="{{route('admin.edit_insturctor')}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                                <button type="button" class="btn bg-gradient-danger">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>

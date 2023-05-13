@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card pad">
                         <div class="card-header">
-                            <h3 class="card-title">Member List</h3>
+                            <h3 class="card-title">User List</h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -20,7 +20,10 @@
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
+
                                 </div>
+                                <a href="{{ route('export.users') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm">Import</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -29,26 +32,24 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>User Name</th>
-                                        <th>Instructor Name</th>
-                                        <th>Workout Name</th>
-                                        <th>Join Duration</th>
-                                        <th>Amount</th>
-                                        <th>Join Date</th>
-                                        <th>End Date</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Gender</th>
+                                        <th>Age</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Hla Tun</td>
-                                        <td>Kyar Gyi</td>
-                                        <td>Boxing</td>
-                                        <td>3 months</td>
-                                        <td>450000</td>
-                                        <td>9.5.2023</td>
-                                        <td>9.7.2023</td>
+                                        <td>Testing</td>
+                                        <td>test@gmail.com</td>
+                                        <td>09-23445579</td>
+                                        <td>Other side of the universe</td>
+                                        <td>Male</td>
+                                        <td>23</td>
                                         <td>
                                             <button type="button" class="btn bg-gradient-danger">Delete</button>
                                         </td>

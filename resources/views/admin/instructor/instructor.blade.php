@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card pad">
                         <div class="card-header">
-                            <h3 class="card-title">User List</h3>
+                            <h3 class="card-title">Instructor List</h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -21,6 +21,8 @@
                                         </button>
                                     </div>
                                 </div>
+                                <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm">Import</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -31,24 +33,25 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Gender</th>
-                                        <th>Age</th>
+                                        <th>Speciality</th>
+                                        <th>Price</th>
+                                        <th>Access Time</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Testing</td>
+                                        <td>Kyar Gyi</td>
                                         <td>test@gmail.com</td>
-                                        <td>09-23445579</td>
-                                        <td>Other side of the universe</td>
-                                        <td>Male</td>
-                                        <td>23</td>
+                                        <td>Boxing</td>
+                                        <td>100000</td>
+                                        <td>Morning</td>
                                         <td>
-                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            <form>
+                                                <a href="{{route('admin.edit_insturctor')}}" type="button" class="btn bg-gradient-primary">Edit</a>
+                                                <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </tbody>
