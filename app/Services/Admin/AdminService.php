@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Admin;
 
-use App\Contracts\Dao\AdminDaoInterface;
-use App\Contracts\Services\AdminServiceInterface;
+use App\Contracts\Dao\Admin\AdminDaoInterface;
+use App\Contracts\Services\Admin\AdminServiceInterface;
 
 class AdminService implements AdminServiceInterface
 {

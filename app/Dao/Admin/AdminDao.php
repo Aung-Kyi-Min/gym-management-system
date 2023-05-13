@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Dao;
+namespace App\Dao\Admin;
 
-use App\Contracts\Dao\AdminDaoInterface;
-use App\Models\Admin;
+use App\Contracts\Dao\Admin\AdminDaoInterface;
 
 class AdminDao implements AdminDaoInterface
 {
-    
+
 }
