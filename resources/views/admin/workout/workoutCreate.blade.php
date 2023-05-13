@@ -13,29 +13,29 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{route('admin.store_workout')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="mt-2">
-                                    <input type="text" placeholder="Workout Name" name="name" class='form-control' />
+                                    <label for="name">Name</label>
+                                    <input type="text" placeholder="Workout Name" id="name" name="name" class='form-control' />
+                                    <span class="error">@error('name'){{$message}}@enderror</span>
                                 </div>
                                 <div class="mt-2">
-                                    <input type="text" placeholder="Instructor Name" name="name" class='form-control' />
-                                </div>
-                                
-                                <div class="mt-3">
-                                    <select name="price" id="price" class="form-control">
-                                    <option value="default" selected> Choose package </option>
-                                        <option value="price"> basic package </option>
-                                        <option value="price">standard package</option>
-                                        <option value="price">premium package </option>
-                                    </select>
+                                    <label for="price">Price</label>
+                                    <input type="text" placeholder="Price" id="price" name="price" class='form-control' />
+                                    <span class="error">@error('price'){{$message}}@enderror</span>
                                 </div>
                                 
                                 <div class="mt-2">
-                                    <input type="file"  name="image" class='form-control' />
+                                    <label for="image">Image</label>
+                                    <input type="file" id="image"  name="image" class='form-control' />
+                                    <span class="error">@error('image'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
-                                    <textarea id="my-textarea" placeholder=" Enter your message" name="description" rows="4" cols="40" class="form-control"></textarea>
+                                    <label for="textarea">Description</label>
+                                    <textarea id="textarea" placeholder="Workout Description" name="description" rows="4" cols="40" class="form-control"></textarea>
+                                    <span class="error">@error('description'){{$message}}@enderror</span>
                                 </div>
                             
                                 <div class="mt-5">

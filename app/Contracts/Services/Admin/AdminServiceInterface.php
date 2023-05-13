@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Contracts\Services;
+namespace App\Contracts\Services\Admin;
 
 /**
  * Interface for user service
 */
 interface AdminServiceInterface
 {
-  public function createInstructors(array $data):void;
+
 }
