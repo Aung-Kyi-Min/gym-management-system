@@ -99,6 +99,30 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-header">Create Section</li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.create_workout')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Workout Create
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.create_instructor')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Instructor Create
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">Admin Section</li>
+                        <li class="nav-item">
+                            <form>
+                                <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>
+                                <button type="button" class="btn bg-gradient-danger">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

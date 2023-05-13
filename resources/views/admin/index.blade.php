@@ -40,7 +40,7 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Trainers</span>
+                            <span class="info-box-text">Instructors</span>
                             <span class="info-box-number">4</span>
                         </div>
                         <!-- /.info-box-content -->
