@@ -80,18 +80,24 @@
                                     User List
                                 </p>
                             </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('admin.member')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Member List
                                 </p>
                             </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('admin.instructor')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Instructor List
                                 </p>
                             </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('admin.workout')}}" class="nav-link">
                                 <i class="nav-icon fas fa-dumbbell"></i>
                                 <p>

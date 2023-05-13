@@ -30,28 +30,6 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
-<<<<<<< HEAD
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Gender</th>
-                                        <th>Age</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Testing</td>
-                                        <td>test@gmail.com</td>
-                                        <td>09-23445579</td>
-                                        <td>Other side of the universe</td>
-                                        <td>Male</td>
-                                        <td>23</td>
-                                        <td>
-                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
-                                        </td>
-                                    </tr>
-=======
                                         <th>Speciality</th>
                                         <th>Price</th>
                                         <th>Access Time</th>
@@ -76,14 +54,11 @@
                                         </td>
                                     </tr>
                                 @endforeach
->>>>>>> 56bff9f1a273151acbc1cbef6e8eee044307ed9b
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                     </div>
-<<<<<<< HEAD
-=======
                     <div class="container"> 
                      {{ $instructors->links() }}
                         @if (session()->has('success'))
@@ -92,7 +67,6 @@
                         </div>
                         @endif
                     </div>
->>>>>>> 56bff9f1a273151acbc1cbef6e8eee044307ed9b
                     <!-- /.card -->
                 </div>
             </div>
