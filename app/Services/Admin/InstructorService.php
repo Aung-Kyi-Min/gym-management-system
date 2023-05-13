@@ -24,4 +24,17 @@ class InstructorService implements InstructorServiceInterface
     {
         return $this->instructorDao->searchInstructor();
     }
+    public function getInstructorById($id): object
+    {
+        return $this->instructorDao->getInstructorById($id);
+    }
+    public function updateInstructor(array $data, $id): void
+    {
+        $this->instructorDao->updateInstructor($data, $id);
+    }
+    
+    public function deleteInstructorById($id): void
+    {
+        $this->instructorDao->deleteInstructorById($id);
+    }
 }

@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Instructor List</h3>
-
+                            
                             <form action="{{ route('admin.search_instructor') }}" method="GET" class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
@@ -41,16 +41,23 @@
                                 <tbody>
                                 @foreach ($instructors as $instructor)
                                     <tr>
+                                        
                                         <td>{{ $instructor->id }}</td>
                                         <td>{{ $instructor->name }}</td>
                                         <td>{{ $instructor->email }}</td>
                                         <td>{{ $instructor->speciality }}</td>
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
-                                        <td> <img src="{{ asset('images/' . $instructor->image) }}" width="50px" alt="Instructor Image"></td>
+                                        <td> 
+                                            <img src="{{ asset('images/' . $instructor->image) }}" width="50px" alt="Instructor Image" > 
+                                        </td>
                                         <td>
-                                            <button type="button" class="btn bg-gradient-primary">Edit</button>
-                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            <form action="{{ url('/admin/instructorlist/'.$instructor->id) }}" method="POST">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <a href="{{ url('/admin/instructor/'.$instructor->id.'/edit') }}"class="btn bg-gradient-primary">Edit</a>
+                                                <button type="submit" class="btn btn-danger"> Delete </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -76,9 +83,4 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 56bff9f1a273151acbc1cbef6e8eee044307ed9b
 @endsection
