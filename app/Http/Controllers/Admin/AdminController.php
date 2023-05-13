@@ -19,30 +19,30 @@ class AdminController extends Controller
      * @return void
      */
 
-   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface) 
+   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface)
    {
       $this->adminService = $adminServiceInterface;
       $this->workoutService = $workoutServiceInterface;
    }
 
-   public function index() 
+   public function index()
    {
       $workouts = $this->workoutService->get();
       $workoutCounts = $workouts->count();
       return view('admin.index' , ['workoutCounts' => $workoutCounts]);
    }
 
-   public function edit() 
+   public function edit()
    {
       return view('admin.edit');
    }
 
-   public function user() 
+   public function user()
    {
       return view('admin.user.user');
    }
 
-   public function member() 
+   public function member()
    {
       return view('admin.member.member');
    }

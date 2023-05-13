@@ -7,5 +7,6 @@ use App\Contracts\Services\Admin\AdminServiceInterface;
 
 class AdminService implements AdminServiceInterface
 {
-    
+
+
 }

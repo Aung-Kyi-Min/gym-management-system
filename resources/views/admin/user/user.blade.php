@@ -20,7 +20,10 @@
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
+
                                 </div>
+                                <a href="{{ route('export.users') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm">Import</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
