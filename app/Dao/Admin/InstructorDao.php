@@ -4,6 +4,7 @@ namespace App\Dao\Admin;
 use App\Models\Instructor;
 use App\Contracts\Dao\Admin\InstructorDaoInterface;
 
+
 class InstructorDao implements InstructorDaoInterface
 {
     public function createInstructors(array $data): void
@@ -25,9 +26,8 @@ class InstructorDao implements InstructorDaoInterface
     
     public function getInstructors(): object
     {
-        return Instructor::paginate(3);
+        return Instructor::orderBy('instructors.created_at', 'desc')->paginate(3);
     }
-
     public function searchInstructor(): object
     {
         $searchQuery = request()->query('search');
@@ -44,6 +44,40 @@ class InstructorDao implements InstructorDaoInterface
         
         $instructors->appends(['search' => $searchQuery]);
         return $instructors;
+    }
+
+    public function getInstructorById($id): object
+    {
+        return Instructor::findOrFail($id);
+    }
+
+    public function updateInstructor(array $data, $id): void
+    {
+        $instructor = Instructor::findOrFail($id);
+    
+        if (isset($data['image'])) {
+            $image = $data['image'];
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('images'), $imageName);
+    
+            if ($instructor->image) {
+                $previousImagePath = public_path('images').'/'.$instructor->image;
+    
+                if (file_exists($previousImagePath)) 
+                {
+                    unlink($previousImagePath);
+                }
+            }
+            $data['image'] = $imageName;
+        }
+    
+        $instructor->update($data);
+    }
+    
+    public function deleteInstructorById($id): void
+    {
+        $instructor =Instructor::findOrFail($id);
+        $instructor->delete();
     }
 
 }

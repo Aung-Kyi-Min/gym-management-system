@@ -41,16 +41,23 @@
                                 <tbody>
                                 @foreach ($instructors as $instructor)
                                     <tr>
+                                        
                                         <td>{{ $instructor->id }}</td>
                                         <td>{{ $instructor->name }}</td>
                                         <td>{{ $instructor->email }}</td>
                                         <td>{{ $instructor->speciality }}</td>
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
-                                        <td> <img src="{{ asset('images/' . $instructor->image) }}" width="50px" alt="Instructor Image"></td>
+                                        <td> 
+                                            <img src="{{ asset('images/' . $instructor->image) }}" width="50px" alt="Instructor Image" > 
+                                        </td>
                                         <td>
-                                            <button type="button" class="btn bg-gradient-primary">Edit</button>
-                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            <form action="{{ url('/admin/instructorlist/'.$instructor->id) }}" method="POST">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <a href="{{ url('/admin/instructor/'.$instructor->id.'/edit') }}"class="btn bg-gradient-primary">Edit</a>
+                                                <button type="submit" class="btn btn-danger"> Delete </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -76,6 +83,5 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 
 @endsection

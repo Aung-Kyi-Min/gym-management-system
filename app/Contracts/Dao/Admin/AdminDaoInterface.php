@@ -9,4 +9,5 @@ interface AdminDaoInterface
 {
   public function createInstructors(array $data):void;
   public function getInstructors(): object;
+  
 }

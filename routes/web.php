@@ -36,10 +36,15 @@ Route::get('/admin/workout', [AdminController::class, 'workout'])->name('admin.w
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
 Route::get('/admin/workout/create', [AdminController::class, 'workoutCreate'])->name('admin.create_workout');
+
+//instructor
 Route::get('/admin/instructor', [InstructorController::class, 'index'])->name('admin.instructor');
 Route::get('/admin/instructor/create',[InstructorController::class, 'create'])->name('admin.create_instructor');
 Route::post('/admin/instructor/store', [InstructorController::class, 'store'])->name('admin.store_instructor');
 Route::get('/admin/instructor/search', [InstructorController::class, 'search'])->name('admin.search_instructor');
+Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
+Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
+Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
 Route::get('/admin/workout/edit', [AdminController::class, 'workoutEdit'])->name('admin.edit_workout');
 Route::get('/admin/instructor/edit', [AdminController::class, 'instructorEdit'])->name('admin.edit_insturctor');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
