@@ -16,19 +16,10 @@
                             <form action="{{ route('admin.store_instructor') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mt-3">
-                                    <input type="text" placeholder="Instructor Name" name="name" class='form-control' />
+                                    <label for="Name">Name</label>
+                                    <input type="text" placeholder="Instructor Name" id="name" name="name" class='form-control' />
                                 </div>
                                 <small class="text-warning">{{$errors->first('name')}}</small>
-                                
-                                <div class="mt-3">
-                                    <input type="text" placeholder="Specialist" name="specialist" class='form-control' />
-                                </div>
-                                <small class="text-warning">{{$errors->first('email')}}</small>
-
-                                <div class="mt-3">
-                                    <input type="file"  name="image" class='form-control' />
-                                </div>
-                                <small class="text-warning">{{$errors->first('price')}}</small>
 
                                 <div class="mt-3">
                                     <label for="image">Image</label>
