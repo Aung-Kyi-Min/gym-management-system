@@ -16,7 +16,7 @@
                             <form action="">
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="Workout Name" id="name" name="name" class='form-control' />
+                                    <input type="text" placeholder="Admin Name" id="name" name="name" class='form-control' />
                                 </div>
                                 <div class="mt-2">
                                     <label for="email">Email</label>

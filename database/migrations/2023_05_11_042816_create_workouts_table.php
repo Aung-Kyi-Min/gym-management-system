@@ -15,10 +15,10 @@ class CreateWorkoutsTable extends Migration
     {
         Schema::create('workouts', function (Blueprint $table) {
             $table->id('id');
-            $table->string('name')->nullable();
-            $table->string('image')->nullable();
-            $table->string('price')->nullable();
-            $table->string('description')->nullable();
+            $table->string('name');
+            $table->string('image');
+            $table->string('price');
+            $table->string('description');
             $table->timestamps();
         });
     }

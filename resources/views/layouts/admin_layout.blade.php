@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GLP Admin</title>
+    <title>AdminLTE 3 | Dashboard 2</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-    <link href="/css/admin_common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/admin_common.css">
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -98,7 +98,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">   
+                        <li class="nav-item">
                             <a href="{{route('admin.workout')}}" class="nav-link">
                                 <i class="nav-icon fas fa-dumbbell"></i>
                                 <p>
@@ -129,7 +129,7 @@
                         <li class="nav-item">
                             <form>
                                 <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                <button type="button" class="btn bg-gradient-danger">Logout</button>
                             </form>
                         </li>
                     </ul>

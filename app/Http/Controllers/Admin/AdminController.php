@@ -1,49 +1,50 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Exports\UsersExport;
-use Maatwebsite\Excel\Excel;
+
 use App\Http\Controllers\Controller;
+use App\Contracts\Services\Admin\AdminServiceInterface;
+use App\Contracts\Services\Admin\WorkoutServiceInterface;
+
 
 class AdminController extends Controller
 {
-   public function index() {
-      return view('admin.index');
+   private $adminService;
+   private $workoutService;
+
+   /**
+     * Create a new controller instance.
+     * @param AdminServiceInterface $taskServiceInterface
+     * @param WorkoutInterface $taskServiceInterface
+     * @return void
+     */
+
+   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface)
+   {
+      $this->adminService = $adminServiceInterface;
+      $this->workoutService = $workoutServiceInterface;
    }
 
-   public function user() {
-      return view('admin.user');
+   public function index()
+   {
+      $workouts = $this->workoutService->get();
+      $workoutCounts = $workouts->count();
+      return view('admin.index' , ['workoutCounts' => $workoutCounts]);
    }
 
-   public function member() {
-      return view('admin.member');
-   }
-
-   public function instructor() {
-      return view('admin.instructor');
-   }
-
-   public function workout() {
-      return view('admin.workout');
-   }
-
-   public function instructorCreate(){
-      return view('admin.instructorCreate');
-   }
-   public function workoutCreate(){
-      return view('admin.workoutCreate');
-   }
-
-   public function instructorEdit(){
-      return view('admin.instructorEdit');
-   }
-
-   public function workoutEdit(){
-      return view('admin.workoutEdit');
-   }
-
-   public function edit() {
+   public function edit()
+   {
       return view('admin.edit');
+   }
+
+   public function user()
+   {
+      return view('admin.user.user');
+   }
+
+   public function member()
+   {
+      return view('admin.member.member');
    }
 
 }

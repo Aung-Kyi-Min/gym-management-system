@@ -78,21 +78,20 @@
                     <div class="d-flex  flex-column flex-lg-row align-items-center">
                         <ul class="navbar-nav  ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('user.index') }}">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.workout') }}">Workout List</a>
+                                <a class="nav-link" href="#">Workout List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.purchased') }}">Purchase</a>
+                                <a class="nav-link" href="#">Purchase</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.feedback') }}">Feedback</a>
+                                <a class="nav-link" href="#">Feedback</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('auth.login')}}">Login</a>
+                                <a class="nav-link" href="#">Login</a>
                             </li>
-
                         </ul>
                     </div>
                     </div>
@@ -115,7 +114,6 @@
     <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
     <script type="text/javascript" src="/js/anchor.js"></script>
-    <script src="/js/sweetalert.min.js"></script>
 
     <script>
         function openNav() {
@@ -125,7 +123,7 @@
             .classList.toggle("menu_btn-style");
         }
     </script>
-
+  
 </body>
 
 </html>

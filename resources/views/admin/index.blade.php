@@ -40,7 +40,7 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Trainers</span>
+                            <span class="info-box-text">Instructors</span>
                             <span class="info-box-number">4</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -58,7 +58,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Workout List</span>
-                            <span class="info-box-number">4</span>
+                            <span class="info-box-number">{{$workoutCounts}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -85,13 +85,4 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<script src="../js/sweetalert.min.js"></script>
-@if (Session::has('loginMessage'))
-    <script>
-        swal("Message", "{{ Session::get('loginMessage') }}", 'success', {
-            button: true,
-            button: "Ok",
-        });
-    </script>
-@endif
 @endsection
