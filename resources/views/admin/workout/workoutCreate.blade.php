@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card pad">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Workout Create</h3>
                         </div>

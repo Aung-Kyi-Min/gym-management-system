@@ -23,30 +23,23 @@
                     <div>
                         <input type="password" placeholder="Comfirm Password" name="comfirmPassword" />
                     </div>
-                    
                     <div>
-                        <input type="number" placeholder="Phone Number" name="phone" />
+                        <input type="text" placeholder="Role" name="role" />
                     </div>
                     <div>
-                        <input type="text" placeholder="Address" name="address" />
+                        <input type="text" placeholder="Phone Number" name="phone" />
                     </div>
                     <div>
                         <input type="text" placeholder="Age" name="age" />
                     </div>
-                    <div class="mt-3">
-                        <select name="select" id="gender" class="selectbox">
-                            <option value="0">Male</option>
-                            <option value="1">Female</option>
-                        </select>
-                    </div>
-                    <div class="mt-3">
-                        <select name="role" id="role" class="selectbox">
-                            <option value="0">Admin</option>
-                            <option value="1">User</option>
-                        </select>
-                    </div>
                     <div>
                         <input type="file"  name="image" />
+                    </div>
+                    <div class="d-flex justify-content-lg-start">
+                        <input type="radio" style="width:30px;" value="Female" name="gender1" />
+                        Female
+                        <input type="radio" style="width:30px;"  value="male" name="gender2" />
+                        Male
                     </div>
                     <div class="mt-5">
                         <button type="submit" class=" btn btn-dark">

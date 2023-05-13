@@ -33,26 +33,12 @@ class AdminController extends Controller
 
    public function user() 
    {
-      return view('admin.user');
+      return view('admin.user.user');
    }
 
    public function member() 
    {
-      return view('admin.member');
+      return view('admin.member.member');
    }
 
-   public function instructor() 
-   {
-      return view('admin.instructor.instructor');
-   }
-
-   public function instructorCreate()
-   {
-      return view('admin.instructor.instructorCreate');
-   }
-
-   public function instructorEdit()
-   {
-      return view('admin.instructor.instructorEdit');
-   }  
 }

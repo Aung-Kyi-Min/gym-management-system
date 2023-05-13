@@ -14,11 +14,8 @@
                     <div>
                         <input type="email" placeholder="Email" name="email" class='form-control' />
                     </div>
-                    
-                </form>
-                <form action="{{route('auth.reset')}}">
                     <div class="mt-5">
-                        <button type="submit" class="btn btn-dark">
+                        <button type="submit" class=" btn btn-dark">
                              Send
                         </button>
                     </div>  

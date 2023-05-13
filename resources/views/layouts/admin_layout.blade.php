@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GLP Admin</title>
+    <title>AdminLTE 3 | Dashboard 2</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-    <link href="/css/admin_common.css" rel="stylesheet" />
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -81,24 +80,18 @@
                                     User List
                                 </p>
                             </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{route('admin.member')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Member List
                                 </p>
                             </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{route('admin.instructor')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Instructor List
                                 </p>
                             </a>
-                        </li>
-                        <li class="nav-item">   
                             <a href="{{route('admin.workout')}}" class="nav-link">
                                 <i class="nav-icon fas fa-dumbbell"></i>
                                 <p>

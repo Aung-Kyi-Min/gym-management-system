@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\WorkoutController;
+use App\Http\Controllers\Admin\InstructorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,7 @@ Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
-Route::get('/profile', [UserController::class, 'Userprofile'])->name('user.profile');
-Route::get('/successPurchase', [UserController::class, 'successPurchase'])->name('user.successPurchase');
+Route::get('/profile', [UserController::class, 'userprofile'])->name('user.profile');
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
@@ -44,7 +44,9 @@ Route::post('/admin/workout/update/{id}' , [WorkoutController::class, 'update'])
 Route::post('/admin/workout/destroy/{id}', [WorkoutController::class, 'destroy'])->name('admin.destroy_workout');
 
 //admin instructor
-Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
-Route::get('/admin/instructor/create', [AdminController::class, 'instructorCreate'])->name('admin.create_instructor');
-Route::get('/admin/instructor/edit', [AdminController::class, 'instructorEdit'])->name('admin.edit_insturctor');
+
+Route::get('/admin/instructor', [InstructorController::class, 'index'])->name('admin.instructor');
+Route::get('/admin/instructor/create',[InstructorController::class, 'create'])->name('admin.create_instructor');
+Route::post('/admin/instructor/store', [InstructorController::class, 'store'])->name('admin.store_instructor');
+Route::get('/admin/instructor/search', [InstructorController::class, 'search'])->name('admin.search_instructor');
 

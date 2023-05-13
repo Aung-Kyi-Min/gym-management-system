@@ -26,8 +26,4 @@ class UserController extends Controller
     public function purchase(){
         return view('user.purchase');
     }
-
-    public function successPurchase(){
-        return view('user.success-purchase');
-    }
 }
