@@ -19,10 +19,11 @@
                                         <i class="fas fa-search"></i>
                                     </button>
                                     </div>
-                                    <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm mt-3">Export</a>
-                                    <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm">Import</a>
                                 </div>
+                                <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm mt-3">Import</a>
                             </form>
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -85,5 +86,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 @endsection
 

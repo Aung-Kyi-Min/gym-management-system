@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Models\User;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Excel;
 
 
 class AdminController extends Controller
 {
-   private $adminService;
    private $workoutService;
 
    /**
@@ -19,9 +21,8 @@ class AdminController extends Controller
      * @return void
      */
 
-   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface)
+   public function __construct( WorkoutServiceInterface $workoutServiceInterface)
    {
-      $this->adminService = $adminServiceInterface;
       $this->workoutService = $workoutServiceInterface;
    }
 

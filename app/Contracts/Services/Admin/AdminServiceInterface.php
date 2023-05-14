@@ -7,5 +7,8 @@ namespace App\Contracts\Services\Admin;
 */
 interface AdminServiceInterface
 {
-
+  /**
+   * return export users
+   */
+  public function exportuser(): object;
 }
