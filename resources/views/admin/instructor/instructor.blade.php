@@ -49,7 +49,8 @@
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
                                         <td> 
-                                            <img src="{{ asset('images/' . $instructor->image) }}" width="50px" alt="Instructor Image" > 
+                                        <img src="{{ asset('images/admin/instructor/' . $instructor->image) }}" width="50px" alt="Instructor Image">
+
                                         </td>
                                         <td>
                                             <form action="{{ url('/admin/instructorlist/'.$instructor->id) }}" method="POST">
