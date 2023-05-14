@@ -22,8 +22,8 @@
                                     </div>
 
                                 </div>
-                                <a href="{{ route('export.users') }}" class="btn btn-info btn-sm mt-3">Export</a>
-                                <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm">Import</a>
+                                <a href="{{ route('export.users') }}" class="btn btn-info btn-sm mt-3" id="export-excel">Export</a>
+                                <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm mt-3">Import</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -68,4 +68,15 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script src="/js/sweetalert.min.js"></script>
+{{--<script src="js/jquery-3.4.1.min.js"></script>--}}
+@if (Session::has('message'))
+    <script>
+        swal("Message", "{{ Session::get('message') }}", 'success', {
+            button: true,
+            button: "Ok",
+        });
+    </script>
+@endif
 @endsection

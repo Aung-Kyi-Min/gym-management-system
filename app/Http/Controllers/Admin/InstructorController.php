@@ -6,10 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorUpdateRequest;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
+use App\Models\Instructor;
+use App\Exports\InstructorsExport;
+use Maatwebsite\Excel\Excel;
 
 class InstructorController extends Controller
 {
     private $instructorService;
+
     public function __construct(InstructorServiceInterface $instructorServiceInterface) {
         $this->instructorService = $instructorServiceInterface;
     }
@@ -23,8 +27,8 @@ class InstructorController extends Controller
         $instructors = $this->instructorService->getInstructors();
         return view('admin.instructor.instructor', compact('instructors'));
     }
-    
-    
+
+
     public function store(InstructorCreateRequest $request)
     {
         $this->instructorService->createInstructors($request->all());
@@ -32,17 +36,17 @@ class InstructorController extends Controller
         return redirect()->route('admin.instructor')->with('success', 'Instructor created successfully!');
     }
 
-    public function search() 
+    public function search()
     {
         $instructors = $this->instructorService->searchInstructor();
         return view('admin.instructor.instructor', compact('instructors'));
     }
 
-    public function edit($id) 
-    { 
+    public function edit($id)
+    {
         $instructor= $this->instructorService->getInstructorById($id);
         return view('admin.instructor.instructorEdit',compact('instructor'));
-        
+
     }
     public function update(InstructorUpdateRequest $request, $id)
     {
@@ -55,10 +59,10 @@ class InstructorController extends Controller
             'image',
         ]);
         $this->instructorService->updateInstructor($data, $id);
-        
+
         return redirect()->route('admin.instructor')->with('message', 'Student updated successfully.');
     }
-    
+
     public function destory($id)
     {
         $this->instructorService->deleteInstructorById($id);
@@ -66,5 +70,10 @@ class InstructorController extends Controller
         return redirect()->route('admin.instructor');
     }
 
-    
+    public function exportInstructors()
+    {
+        return $this->instructorService->export();
+    }
+
+
 }
