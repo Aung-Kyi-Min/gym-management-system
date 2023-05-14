@@ -52,7 +52,7 @@ class InstructorController extends Controller
             'email',
             'price',
             'access_time',
-            'image', // Include the 'image' field in the data array
+            'image',
         ]);
         $this->instructorService->updateInstructor($data, $id);
         

@@ -12,7 +12,7 @@ class InstructorDao implements InstructorDaoInterface
         
         $image = $data['image'];
         $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images'), $imageName);
+        $image->move(public_path('images/admin/instructor'), $imageName);
         
         Instructor::create([
             'name' => $data['name'],
@@ -58,10 +58,10 @@ class InstructorDao implements InstructorDaoInterface
         if (isset($data['image'])) {
             $image = $data['image'];
             $imageName = time().'.'.$image->extension();
-            $image->move(public_path('images'), $imageName);
+            $image->move(public_path('images/admin/instructor'), $imageName);
     
             if ($instructor->image) {
-                $previousImagePath = public_path('images').'/'.$instructor->image;
+                $previousImagePath = public_path('images/admin/instructor').'/'.$instructor->image;
     
                 if (file_exists($previousImagePath)) 
                 {
