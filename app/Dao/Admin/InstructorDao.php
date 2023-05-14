@@ -29,6 +29,7 @@ class InstructorDao implements InstructorDaoInterface
     {
         return Instructor::orderBy('instructors.created_at', 'desc')->paginate(3);
     }
+    
     public function searchInstructor(): object
     {
         $searchQuery = request()->query('search');

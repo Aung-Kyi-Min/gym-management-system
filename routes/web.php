@@ -56,6 +56,7 @@ Route::post('/admin/workout/store' ,  [WorkoutController::class, 'store'])->name
 Route::get('/admin/workout/edit/{id}', [WorkoutController::class, 'edit'])->name('admin.edit_workout');
 Route::post('/admin/workout/update/{id}' , [WorkoutController::class, 'update'])->name('admin.update_workout');
 Route::post('/admin/workout/destroy/{id}', [WorkoutController::class, 'destroy'])->name('admin.destroy_workout');
+Route::get('/admin/workout/search', [WorkoutController::class, 'search'])->name('admin.search_workout');
 
 //admin instructor
 

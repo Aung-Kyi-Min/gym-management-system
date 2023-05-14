@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Instructor List</h3>
-
+                            
                             <form action="{{ route('admin.search_instructor') }}" method="GET" class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
@@ -20,10 +20,7 @@
                                     </button>
                                     </div>
                                 </div>
-                                <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm mt-3">Export</a>
-                                <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm mt-3">Import</a>
                             </form>
-
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -44,7 +41,7 @@
                                 <tbody>
                                 @foreach ($instructors as $instructor)
                                     <tr>
-
+                                        
                                         <td>{{ $instructor->id }}</td>
                                         <td>{{ $instructor->name }}</td>
                                         <td>{{ $instructor->email }}</td>
@@ -52,7 +49,7 @@
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
                                         <td> 
-                                        <img src="{{ asset('images/admin/instructor/' . $instructor->image) }}" width="50px" alt="Instructor Image">
+                                            <img src="{{ asset('images/admin/instructor/' . $instructor->image) }}" width="50px" alt="Instructor Image" > 
                                         </td>
                                         <td>
                                             <form action="{{ url('/admin/instructorlist/'.$instructor->id) }}" method="POST">
@@ -69,14 +66,14 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
-                    <div class="container">
-                        {{ $instructors->links() }}
-                           @if (session()->has('success'))
-                           <div class="alert alert-success">
-                               {{ session('success') }}
-                           </div>
-                           @endif
-                       </div>
+                    <div class="container"> 
+                     {{ $instructors->links() }}
+                        @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+                    </div>
                     <!-- /.card -->
                 </div>
             </div>
@@ -86,6 +83,4 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 @endsection
-

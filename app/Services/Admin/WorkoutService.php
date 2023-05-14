@@ -64,11 +64,20 @@ class WorkoutService implements WorkoutServiceInterface
     }
 
      /**
-     * Destroy Major
+     * Destroy Workout
      * @return void 
     */
     public function destroy($id) : void
     {
         $this->workoutDao->destroy($id);
+    }
+
+    /**
+     * Search Workout
+     * @return object
+    */
+    public function search() : object
+    {
+       return $this->workoutDao->search();
     }
 }

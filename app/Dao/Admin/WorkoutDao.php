@@ -13,7 +13,7 @@ class WorkoutDao implements WorkoutDaoInterface
     */
     public function get(): object
     {
-        return Workout::all();
+        return Workout::orderBy('workouts.created_at', 'desc')->paginate(3);
     }
 
     /**
@@ -56,12 +56,31 @@ class WorkoutDao implements WorkoutDaoInterface
     }
 
     /**
-     * Destroy Major
+     * Destroy Workout
      * @return void 
     */
     public function destroy($id) : void
     {
         $workout = Workout::findOrFail($id);
         $workout->delete();
+    }
+
+     /**
+     * Search Workout
+     * @return object
+    */
+    public function search(): object
+    {
+        $searchQuery = request()->query('search');
+        $workout = Workout::where(function ($query) use ($searchQuery) {
+            $query->where('name', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('price', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('description', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('image', 'LIKE', '%' . $searchQuery . '%');
+        })
+        ->latest()
+        ->paginate(3);
+        $workout->appends(['search' => $searchQuery]);
+        return $workout;
     }
 }
