@@ -59,21 +59,12 @@ class InstructorDao implements InstructorDaoInterface
         if (isset($data['image'])) {
             $image = $data['image'];
             $imageName = time().'.'.$image->extension();
-<<<<<<< HEAD
-            $image->move(public_path('images'), $imageName);
-
-            if ($instructor->image) {
-                $previousImagePath = public_path('images').'/'.$instructor->image;
-
-                if (file_exists($previousImagePath))
-=======
             $image->move(public_path('images/admin/instructor'), $imageName);
 
             if ($instructor->image) {
                 $previousImagePath = public_path('images/admin/instructor').'/'.$instructor->image;
 
                 if (file_exists($previousImagePath))
->>>>>>> dbbbf7853f887f67993e3c84b99a5899eced9f5f
                 {
                     unlink($previousImagePath);
                 }
