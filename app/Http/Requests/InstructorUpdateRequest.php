@@ -26,8 +26,7 @@ class InstructorUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'max:255'],
             'speciality' => ['required', 'max:255'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => ['required', 'email', 'max:255','unique:instructors,email'],
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'price' => ['required', 'integer', 'min:0'],
             'access_time' => ['required', 'max:255'],
         ];
