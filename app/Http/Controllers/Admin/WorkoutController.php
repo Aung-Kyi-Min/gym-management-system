@@ -8,7 +8,7 @@ use App\Contracts\Services\Admin\WorkoutServiceInterface;
 
 class WorkoutController extends Controller
 {
-    private $workoutService;
+   private $workoutService;
  
     /**
       * Create a new controller instance.

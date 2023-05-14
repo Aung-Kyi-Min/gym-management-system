@@ -21,6 +21,8 @@
                                         </button>
                                     </div>
                                 </div>
+                                <a href="{{ route('export.members') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('import-member') }}" class="btn btn-primary btn-sm">Import</a>
                             </div>
                         </div>
                         <!-- /.card-header -->

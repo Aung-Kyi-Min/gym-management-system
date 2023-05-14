@@ -30,11 +30,24 @@ Route::get('/register', [AuthController::class, 'register'])->name('auth.registe
 Route::get('/forgetpassword', [AuthController::class, 'forgetpassword'])->name('auth.forgetpassword');
 Route::get('/reset', [AuthController::class, 'reset'])->name('auth.reset');
 
-// admin 
+// admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
+
+
+
+//Excel export and import
+Route::get('/export-users',[UserController::class,'exportUsers'])->name('export.users');
+Route::get('/export-instructors',[UserController::class,'exportInstructors'])->name('export.instructors');
+Route::get('/export-members',[UserController::class,'exportMembers'])->name('export.members');
+Route::get('/file-import/user',[UserController::class,'importView'])->name('importusers');
+Route::post('/import/user',[UserController::class,'import'])->name('import');
+Route::get('/file-imports/instructor',[UserController::class,'importViews'])->name('import-views');
+Route::post('/imports/instructor',[UserController::class,'imports'])->name('imports');
+Route::get('/file-import/member',[UserController::class,'importV'])->name('import-member');
+Route::post('/import/member',[UserController::class,'imports_Views'])->name('import-members');
 
 // admin workout
 Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');

@@ -58,7 +58,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Workout List</span>
-                            <span class="info-box-number">4</span>
+                            <span class="info-box-number">{{$workoutCounts}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

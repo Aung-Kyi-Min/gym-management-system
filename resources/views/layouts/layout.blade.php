@@ -81,16 +81,16 @@
                                 <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Workout List</a>
+                                <a class="nav-link" href="{{ route('user.workout') }}">Workout List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Purchase</a>
+                                <a class="nav-link" href="{{ route('user.purchased') }}">Purchase</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Feedback</a>
+                                <a class="nav-link" href="{{ route('user.feedback') }}">Feedback</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="{{ route('auth.login') }}">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -123,7 +123,7 @@
             .classList.toggle("menu_btn-style");
         }
     </script>
-  
+
 </body>
 
 </html>
