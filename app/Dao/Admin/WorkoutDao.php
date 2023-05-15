@@ -56,7 +56,7 @@ class WorkoutDao implements WorkoutDaoInterface
     }
 
     /**
-     * Destroy Major
+     * Destroy Workout
      * @return void 
     */
     public function destroy($id) : void
