@@ -7,11 +7,13 @@ use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
+use App\Models\User;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Excel;
 
 
 class AdminController extends Controller
 {
-   private $adminService;
    private $workoutService;
    private $instructorService;
    private $userService;
@@ -27,7 +29,6 @@ class AdminController extends Controller
 
    public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface , InstructorServiceInterface $instructorServiceInterface , UserServiceInterface $userServiceInterface)
    {
-      $this->adminService = $adminServiceInterface;
       $this->workoutService = $workoutServiceInterface;
       $this->instructorService = $instructorServiceInterface;
       $this->userService = $userServiceInterface;

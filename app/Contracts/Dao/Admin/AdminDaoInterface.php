@@ -7,6 +7,9 @@ namespace App\Contracts\Dao\Admin;
  */
 interface AdminDaoInterface
 {
-
+  /**
+   * return export users
+   */
+  public function exportuser(): object;
 }
 

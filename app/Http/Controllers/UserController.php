@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Contracts\Services\Admin\AdminServiceInterface;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use App\Models\User;
@@ -12,10 +14,10 @@ use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 
-
 class UserController extends Controller
 {
     private $workoutService;
+    private $adminService;
 
     /**
       * Create a new controller instance.
@@ -23,9 +25,10 @@ class UserController extends Controller
       * @return void
       */
 
-    public function __construct(WorkoutServiceInterface $workoutServiceInterface)
+    public function __construct(WorkoutServiceInterface $workoutServiceInterface,AdminServiceInterface $adminServiceInterface)
     {
        $this->workoutService = $workoutServiceInterface;
+       $this->adminService = $adminServiceInterface;
     }
 
     //
@@ -55,25 +58,23 @@ class UserController extends Controller
         return view('user.success-purchase');
     }
 
-    public function exportUsers()
-    {
-        $users = User::where('role', 1)->get();
-        return Excel::download(new UsersExport($users), 'users.xlsx');
-    }
 
-    public function exportInstructors()
-    {
-        return Excel::download(new InstructorsExport(), 'instructors.xlsx');
-    }
+   public function exportUsers()
+   {
+        $user = $this->adminService->exportuser();
+        return Excel::download(new UsersExport($user), 'users.xlsx');
+
+   }
 
     public function exportMembers()
     {
         return Excel::download(new MembersExport(), 'members.xlsx');
+
     }
 
     public function importView()
     {
-        return view('admin.Userupload');
+        return view('admin.user.Userupload');
     }
 
     public function import(Request $request)
@@ -84,7 +85,7 @@ class UserController extends Controller
 
     public function importViews()
     {
-        return view('admin.Instructorupload');
+        return view('admin.instructor.Instructorupload');
     }
 
     public function imports(Request $request)
@@ -95,7 +96,7 @@ class UserController extends Controller
 
     public function importV()
     {
-        return view('admin.Memberupload');
+        return view('admin.member.Memberupload');
     }
 
     public function import_Views(Request $request)

@@ -38,7 +38,7 @@ Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.mem
 
 //Excel export and import
 Route::get('/export-users',[UserController::class,'exportUsers'])->name('export.users');
-Route::get('/export-instructors',[UserController::class,'exportInstructors'])->name('export.instructors');
+Route::get('/export-instructors',[InstructorController::class,'exportInstructors'])->name('export.instructors');
 Route::get('/export-members',[UserController::class,'exportMembers'])->name('export.members');
 Route::get('/file-import/user',[UserController::class,'importView'])->name('importusers');
 Route::post('/import/user',[UserController::class,'import'])->name('import');

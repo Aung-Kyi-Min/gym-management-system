@@ -14,5 +14,10 @@ interface InstructorDaoInterface
   public function updateInstructor(array $data, $id): void;
   public function deleteInstructorById($id): void;
   
+  /**
+   * return export instructors
+   */
+  public function export(): object;
+
 
 }

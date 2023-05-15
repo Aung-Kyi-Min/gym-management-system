@@ -19,10 +19,11 @@
                                         <i class="fas fa-search"></i>
                                     </button>
                                     </div>
-                                    <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm mt-3">Export</a>
-                                    <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm">Import</a>
                                 </div>
+                                <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm mt-3">Import</a>
                             </form>
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -50,8 +51,8 @@
                                         <td>{{ $instructor->speciality }}</td>
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
-                                        <td>
-                                            <img src="{{ asset('images/' . $instructor->image) }}" width="50px" alt="Instructor Image" >
+                                        <td> 
+                                        <img src="{{ asset('images/admin/instructor/' . $instructor->image) }}" width="50px" alt="Instructor Image">
                                         </td>
                                         <td>
                                             <form action="{{ url('/admin/instructorlist/'.$instructor->id) }}" method="POST">
@@ -85,5 +86,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 @endsection
 
