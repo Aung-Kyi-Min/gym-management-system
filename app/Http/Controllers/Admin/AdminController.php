@@ -1,46 +1,58 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
+use App\Contracts\Services\Admin\AdminServiceInterface;
+use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Contracts\Services\Admin\InstructorServiceInterface;
+use App\Contracts\Services\Admin\UserServiceInterface;
+use App\Models\User;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Excel;
+
 
 class AdminController extends Controller
 {
-   public function index() {
-      return view('admin.index');
+   private $workoutService;
+   private $instructorService;
+   private $userService;
+
+   /**
+     * Create a new controller instance.
+     * @param AdminServiceInterface $taskServiceInterface
+     * @param WorkoutServiceInterface $taskServiceInterface
+     * @param InstructorServiceInterface $taskServiceInterface
+     * @param UserServiceInterface $taskServiceInterface
+     * @return void
+     */
+
+   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface , InstructorServiceInterface $instructorServiceInterface , UserServiceInterface $userServiceInterface)
+   {
+      $this->workoutService = $workoutServiceInterface;
+      $this->instructorService = $instructorServiceInterface;
+      $this->userService = $userServiceInterface;
    }
 
-   public function user() {
-      return view('admin.user');
+   public function index()
+   {
+      $workouts = $this->workoutService->get();
+      $workoutCounts = $workouts->count();
+      $instructors = $this->instructorService->getInstructors();
+      $instructorCounts = $instructors->count();
+      $users = $this->userService->get();
+      $userCounts = $users->count();
+      return view('admin.index' , ['workoutCounts' => $workoutCounts , 'instructorCounts' => $instructorCounts , 'userCounts' => $userCounts]);
    }
 
-   public function member() {
-      return view('admin.member');
-   }
-
-   public function instructor() {
-      return view('admin.instructor');
-   }
-
-   public function workout() {
-      return view('admin.workout');
-   }
-
-   public function instructorCreate(){
-      return view('admin.instructorCreate');
-   }
-   public function workoutCreate(){
-      return view('admin.workoutCreate');
-   }
-
-   public function instructorEdit(){
-      return view('admin.instructorEdit');
-   }
-
-   public function workoutEdit(){
-      return view('admin.workoutEdit');
-   }
-
-   public function edit() {
+   public function edit()
+   {
       return view('admin.edit');
    }
+
+   public function member()
+   {
+      return view('admin.member.member');
+   }
+
 }

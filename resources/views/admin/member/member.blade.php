@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card pad">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Member List</h3>
 
@@ -21,6 +21,8 @@
                                         </button>
                                     </div>
                                 </div>
+                                <a href="{{ route('export.members') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('import-member') }}" class="btn btn-primary btn-sm mt-3">Import</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -67,4 +69,5 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 @endsection

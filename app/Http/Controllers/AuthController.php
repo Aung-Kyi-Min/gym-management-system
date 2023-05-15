@@ -16,19 +16,8 @@ use Illuminate\Support\Str;
 class AuthController extends Controller
 {
     private $authService;
-
-    /**
-     * @param AuthServiceInterface $authServiceInterface
-     * @return void
-     */
-
-    public function __construct(AuthServiceInterface $AuthServiceInterface)
-    {
-        $this->authService = $AuthServiceInterface;
-    }
-
-    public function login()
-    {
+    
+    public function login(){
         return view('Auth.login');
     }
 
@@ -145,14 +134,12 @@ class AuthController extends Controller
         return view('Auth.register');
     }
 
-    public function forgetpassword()
-    {
+    public function forgetpassword(){
         return view('Auth.forgetpassword');
     }
 
-    public function reset($token)
-    {
-        return view('Auth.reset', ['token' => $token]);
+    public function reset(){
+        return view('Auth.reset');
     }
     public function logout() {
         Auth::logout();

@@ -26,7 +26,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">User Accounts</span>
                             <span class="info-box-number">
-                                10
+                                {{$userCounts}}
                                 <small>accounts</small>
                             </span>
                         </div>
@@ -40,8 +40,11 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Trainers</span>
-                            <span class="info-box-number">4</span>
+                            <span class="info-box-text">Instructors</span>
+                            <span class="info-box-number">
+                                {{$instructorCounts}}
+                                <small>instructors</small>
+                            </span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -58,7 +61,10 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Workout List</span>
-                            <span class="info-box-number">4</span>
+                            <span class="info-box-number">
+                                {{$workoutCounts}}
+                                <small>workouts</small>
+                            </span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

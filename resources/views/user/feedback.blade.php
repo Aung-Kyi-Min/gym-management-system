@@ -8,11 +8,11 @@
       <div class="heading_container">
         <h2>
           <span>
-            FeedBack
+            FeedBack 
           </span>
         </h2>
       </div>
-      <div class="layout_padding1-top ">
+      <div class="layout_padding2-top ">
         <div class="row">
           <div class="col-md-6 mx-auto">
             <form action="">
@@ -23,6 +23,9 @@
                   </div>
                   <div>
                     <input type="email" placeholder="Email" />
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Phone Number" />
                   </div>
                   <div class="mt-5">
                     <input type="text" placeholder="Message" />

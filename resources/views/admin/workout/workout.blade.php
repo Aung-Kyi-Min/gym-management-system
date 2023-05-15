@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card pad">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Workout List</h3>
 
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                        <div class="card-body table-responsive p-0" style="height: 500px;">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
@@ -32,22 +32,31 @@
                                         <th>Name</th>
                                         <th>Price</th>
                                         <th>Description</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($workouts as $workout)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Boxing</td>
-                                        <td>100000</td>
-                                        <td>Something</td>
+                                        <td>{{$workout->id}}</td>
+                                        <td>{{$workout->name}}</td>
+                                        <td>{{$workout->price}}</td>
                                         <td>
-                                            <form>
-                                                <a href="{{route('admin.edit_workout')}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                                <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            <p class="width-text text-wrap">{{$workout->description}}</p>
+                                        </td>
+                                        <td>
+                                            <img class="img-width" src="{{asset('images/admin/workout/'.$workout->image)}}">
+                                        </td>
+                                        <td>
+                                            <form action="{{route('admin.destroy_workout' , $workout->id)}}" method="post">
+                                                @csrf
+                                                <a href="{{route('admin.edit_workout' , $workout->id)}}" type="button" class="btn bg-gradient-primary">Edit</a>
+                                                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Workout?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

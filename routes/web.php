@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\WorkoutController;
+use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,7 @@ Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedbac
 Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
 Route::get('/profile', [UserController::class, 'Userprofile'])->name('user.profile');
 Route::get('/successPurchase', [UserController::class, 'successPurchase'])->name('user.successPurchase');
+//Route::get('/profile', [UserController::class, 'userprofile'])->name('user.profile');
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
@@ -34,14 +38,44 @@ Route::post('/forget-password', [AuthController::class, 'submitForgetPasswordFor
 Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('auth.resetpsw');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
+// admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/workout', [AdminController::class, 'workout'])->name('admin.workout');
-Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
-Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
-Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
-Route::get('/admin/workout/create', [AdminController::class, 'workoutCreate'])->name('admin.create_workout');
-Route::get('/admin/instructor/create', [AdminController::class, 'instructorCreate'])->name('admin.create_instructor');
-Route::get('/admin/workout/edit', [AdminController::class, 'workoutEdit'])->name('admin.edit_workout');
-Route::get('/admin/instructor/edit', [AdminController::class, 'instructorEdit'])->name('admin.edit_insturctor');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
+Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
+
+//Excel export and import
+Route::get('/export-users',[UserController::class,'exportUsers'])->name('export.users');
+Route::get('/export-instructors',[InstructorController::class,'exportInstructors'])->name('export.instructors');
+Route::get('/export-members',[UserController::class,'exportMembers'])->name('export.members');
+Route::get('/file-import/user',[UserController::class,'importView'])->name('importusers');
+Route::post('/import/user',[UserController::class,'import'])->name('import');
+Route::get('/file-imports/instructor',[UserController::class,'importViews'])->name('import-views');
+Route::post('/imports/instructor',[UserController::class,'imports'])->name('imports');
+Route::get('/file-import/member',[UserController::class,'importV'])->name('import-member');
+Route::post('/import/member',[UserController::class,'import_Views'])->name('import-members');
+
+// admin user
+Route::get('/admin/user', [UsersController::class, 'user'])->name('admin.user');
+Route::get('/admin/user/create', [UsersController::class, 'create'])->name('admin.create_user');
+Route::post('/admin/user/store' , [UsersController::class, 'store'])->name('admin.store_user');
+Route::get('/admin/user/edit/{id}' , [UsersController::class, 'edit'])->name('admin.edit_user');
+Route::post('/admin/user/update/{id}' , [UsersController::class, 'update'])->name('admin.update_user');
+Route::post('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
+
+// admin workout
+Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');
+Route::get('/admin/workout/create', [WorkoutController::class, 'create'])->name('admin.create_workout');
+Route::post('/admin/workout/store' ,  [WorkoutController::class, 'store'])->name('admin.store_workout');
+Route::get('/admin/workout/edit/{id}', [WorkoutController::class, 'edit'])->name('admin.edit_workout');
+Route::post('/admin/workout/update/{id}' , [WorkoutController::class, 'update'])->name('admin.update_workout');
+Route::post('/admin/workout/destroy/{id}', [WorkoutController::class, 'destroy'])->name('admin.destroy_workout');
+
+//admin instructor
+
+Route::get('/admin/instructor', [InstructorController::class, 'index'])->name('admin.instructor');
+Route::get('/admin/instructor/create',[InstructorController::class, 'create'])->name('admin.create_instructor');
+Route::post('/admin/instructor/store', [InstructorController::class, 'store'])->name('admin.store_instructor');
+Route::get('/admin/instructor/search', [InstructorController::class, 'search'])->name('admin.search_instructor');
+Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
+Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
+Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
