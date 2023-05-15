@@ -16,7 +16,7 @@ class CreateFeedbacksTable extends Migration
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id('id');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->longText('message')->nullable();
+            $table->longText('message');
             $table->timestamps();
         });
     }

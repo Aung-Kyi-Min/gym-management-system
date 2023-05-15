@@ -211,18 +211,12 @@
 
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-<<<<<<< HEAD
-@endsection
-=======
 </div>
 @endsection
->>>>>>> 2b6481a387177004fc3ec710f8b65732829134b8

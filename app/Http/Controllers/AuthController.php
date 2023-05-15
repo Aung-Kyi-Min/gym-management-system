@@ -66,11 +66,11 @@ class AuthController extends Controller
             $token = $user->createToken('token')->plainTextToken;
             if ($user->role == 0) {
                 return redirect()->route('admin.index')
-                    ->with('loginMessage','You Have Successfully logined...')
+                    ->with('message','You Have Successfully logined...')
                     ->with('token', $token);
             } else {
                 return redirect()->route('user.index')
-                    ->with('loginMessage','You Have Successfully logined...')
+                    ->with('message','You Have Successfully logined...')
                     ->with('token', $token);
             }
 
@@ -153,5 +153,9 @@ class AuthController extends Controller
     public function reset($token)
     {
         return view('Auth.reset', ['token' => $token]);
+    }
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('auth.login')->with('message','U have logged out Successfully...');
     }
 }

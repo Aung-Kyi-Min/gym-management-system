@@ -86,9 +86,9 @@
 </div>
 <!-- /.content-wrapper -->
 <script src="../js/sweetalert.min.js"></script>
-@if (Session::has('loginMessage'))
+@if (Session::has('message'))
     <script>
-        swal("Message", "{{ Session::get('loginMessage') }}", 'success', {
+        swal("Message", "{{ Session::get('message') }}", 'success', {
             button: true,
             button: "Ok",
         });
