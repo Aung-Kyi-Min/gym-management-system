@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <button class="btn btn-info">Import Members</button>
-                <a class="btn btn-success" href="{{ route('export.instructors') }}">Export Members</a>
+                <a class="btn btn-success" href="{{ route('export.members') }}">Export Members</a>
             </form>
         </div>
     </div>
