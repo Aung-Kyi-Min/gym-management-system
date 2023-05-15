@@ -77,4 +77,10 @@ class UsersController extends Controller
       return redirect('/admin/user');
    }
 
+    public function search()
+    {
+        $users = $this->userService->search();
+        return view('admin.user.user', compact('users'));
+    }
+
 }

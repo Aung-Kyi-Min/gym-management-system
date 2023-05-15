@@ -73,4 +73,13 @@ class UserService implements UserServiceInterface
         $this->userDao->destroy($id);
     }
 
+     /**
+     * Search User
+     * @return object
+    */
+    public function search() : object
+    {
+        return $this->userDao->search();
+    }
+
 }

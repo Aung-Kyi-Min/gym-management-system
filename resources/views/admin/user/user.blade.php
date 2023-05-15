@@ -9,23 +9,25 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
+                            
                             <h3 class="card-title">User List</h3>
-
-                            <div class="card-tools">
+                            <form action="{{ route('admin.search_user') }}" method="GET" class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
+                                    <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                     </div>
-
                                 </div>
+                                <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm mt-3">Export</a>
+                                <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm mt-3">Import</a>
+                            </form>
+
                                 <a href="{{ route('export.users') }}" class="btn btn-info btn-sm mt-3" id="export-excel">Export</a>
                                 <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm mt-3">Import</a>
-                            </div>
                         </div>
+                        
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 300px;">
                             <table class="table table-head-fixed text-nowrap">

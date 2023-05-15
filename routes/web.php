@@ -61,6 +61,7 @@ Route::post('/admin/user/store' , [UsersController::class, 'store'])->name('admi
 Route::get('/admin/user/edit/{id}' , [UsersController::class, 'edit'])->name('admin.edit_user');
 Route::post('/admin/user/update/{id}' , [UsersController::class, 'update'])->name('admin.update_user');
 Route::post('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
+Route::get('/admin/user/search', [UsersController::class, 'search'])->name('admin.search_user');
 
 // admin workout
 Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');

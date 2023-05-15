@@ -74,4 +74,27 @@ class UserDao implements UserDaoInterface
         $user = User::findOrFail($id);
         $user->delete();
     }
+
+    /**
+     * Search User
+     * @return object
+    */
+    public function search(): object
+    {
+        $searchQuery = request()->query('search');
+        $users = User::where(function ($query) use ($searchQuery) {
+            $query->where('name', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('email', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('role', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('address', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('gender', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('phone', 'LIKE', '%' . $searchQuery . '%')
+                ->orWhere('age', 'LIKE', '%' . $searchQuery . '%');
+        })
+        ->latest()
+        ->paginate(3);
+
+        $users->appends(['search' => $searchQuery]);
+        return $users;
+    }
 }

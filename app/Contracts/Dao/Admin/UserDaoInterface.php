@@ -26,7 +26,7 @@ interface UserDaoInterface
     public function edit($id) : object;
 
     /**
-     * Update Workout
+     * Update User
      * @return void
     */
     public function update($id) : void;
@@ -36,4 +36,10 @@ interface UserDaoInterface
      * @return void 
     */
     public function destroy($id) : void;
+
+     /**
+     * Search User
+     * @return object
+    */
+    public function search() : object;
 }
