@@ -19,8 +19,8 @@ class CreateMembersTable extends Migration
             $table->foreignId('workout_id')->constrained('workouts')->onDelete('cascade');
             $table->foreignId('instructor_id')->constrained('instructors')->onDelete('cascade');
             $table->integer('sub_month');
-            $table->dateTime('joining_date');
-            $table->dateTime('end_date');
+            $table->dateTime('joining_date')->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
         });
     }
