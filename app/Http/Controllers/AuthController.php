@@ -16,14 +16,24 @@ use Illuminate\Support\Str;
 class AuthController extends Controller
 {
     private $authService;
-    
+
+    /**
+     * @param AuthServiceInterface $authServiceInterface
+     * @return void
+     */
+
+    public function __construct(AuthServiceInterface $AuthServiceInterface)
+    {
+        $this->authService = $AuthServiceInterface;
+    }
+
     public function login(){
         return view('Auth.login');
     }
 
     public function registerUser(RegisterCreateRequest $request)
     {
-        $user = $this->authService->register($request->only([
+        $this->authService->register($request->only([
             'name',
             'email',
             'password',
