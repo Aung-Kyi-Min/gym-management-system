@@ -109,6 +109,14 @@
 
                         <li class="nav-header">Create Section</li>
                         <li class="nav-item">
+                            <a href="{{route('admin.create_user')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    User Create
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('admin.create_workout')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>

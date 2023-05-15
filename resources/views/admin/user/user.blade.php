@@ -42,18 +42,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($users as $user)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Testing</td>
-                                        <td>test@gmail.com</td>
-                                        <td>09-23445579</td>
-                                        <td>Other side of the universe</td>
-                                        <td>Male</td>
-                                        <td>23</td>
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>0{{$user->phone}}</td>
+                                        <td>{{$user->address}}</td>
+                                        <td>{{$user->gender}}</td>
+                                        <td>{{$user->age}}</td>
                                         <td>
-                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            <form action="{{route('admin.destroy_user' , $user->id)}}" method="post">
+                                                @csrf
+                                                <a href="{{route('admin.edit_user' , $user->id)}}" type="button" class="btn bg-gradient-primary">Edit</a>
+                                                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

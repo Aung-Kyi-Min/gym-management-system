@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\WorkoutController;
 use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +34,7 @@ Route::get('/reset', [AuthController::class, 'reset'])->name('auth.reset');
 // admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
-Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
-
-
 
 //Excel export and import
 Route::get('/export-users',[UserController::class,'exportUsers'])->name('export.users');
@@ -48,6 +46,14 @@ Route::get('/file-imports/instructor',[UserController::class,'importViews'])->na
 Route::post('/imports/instructor',[UserController::class,'imports'])->name('imports');
 Route::get('/file-import/member',[UserController::class,'importV'])->name('import-member');
 Route::post('/import/member',[UserController::class,'import_Views'])->name('import-members');
+
+// admin user
+Route::get('/admin/user', [UsersController::class, 'user'])->name('admin.user');
+Route::get('/admin/user/create', [UsersController::class, 'create'])->name('admin.create_user');
+Route::post('/admin/user/store' , [UsersController::class, 'store'])->name('admin.store_user');
+Route::get('/admin/user/edit/{id}' , [UsersController::class, 'edit'])->name('admin.edit_user');
+Route::post('/admin/user/update/{id}' , [UsersController::class, 'update'])->name('admin.update_user');
+Route::post('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
 
 // admin workout
 Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');
