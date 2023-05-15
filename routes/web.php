@@ -47,7 +47,7 @@ Route::post('/import/user',[UserController::class,'import'])->name('import');
 Route::get('/file-imports/instructor',[UserController::class,'importViews'])->name('import-views');
 Route::post('/imports/instructor',[UserController::class,'imports'])->name('imports');
 Route::get('/file-import/member',[UserController::class,'importV'])->name('import-member');
-Route::post('/import/member',[UserController::class,'imports_Views'])->name('import-members');
+Route::post('/import/member',[UserController::class,'import_Views'])->name('import-members');
 
 // admin workout
 Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');
