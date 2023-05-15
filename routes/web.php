@@ -23,13 +23,20 @@ Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
-Route::get('/profile', [UserController::class, 'userprofile'])->name('user.profile');
+Route::get('/profile', [UserController::class, 'Userprofile'])->name('user.profile');
+Route::get('/successPurchase', [UserController::class, 'successPurchase'])->name('user.successPurchase');
+//Route::get('/profile', [UserController::class, 'userprofile'])->name('user.profile');
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('/forgetpassword', [AuthController::class, 'forgetpassword'])->name('auth.forgetpassword');
-Route::get('/reset', [AuthController::class, 'reset'])->name('auth.reset');
+Route::get('/reset/{token}', [AuthController::class, 'reset'])->name('auth.reset');
+Route::post('/registerUser', [AuthController::class, 'registerUser'])->name('auth.registerUser');
+Route::post('/LoginUser', [AuthController::class, 'LoginUser'])->name('auth.loginUser');
+Route::post('/forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('auth.forget');
+Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('auth.resetpsw');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

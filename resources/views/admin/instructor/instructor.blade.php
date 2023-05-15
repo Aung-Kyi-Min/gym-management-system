@@ -51,7 +51,7 @@
                                         <td>{{ $instructor->speciality }}</td>
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
-                                        <td> 
+                                        <td>
                                         <img src="{{ asset('images/admin/instructor/' . $instructor->image) }}" width="50px" alt="Instructor Image">
                                         </td>
                                         <td>
@@ -86,6 +86,10 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<<<<<<< HEAD
+@endsection
+=======
 
 @endsection
 
+>>>>>>> d33e4069d0a11c6eb24b9b40b7ffb1fe89a308d6

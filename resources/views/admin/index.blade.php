@@ -91,4 +91,13 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script src="../js/sweetalert.min.js"></script>
+@if (Session::has('message'))
+    <script>
+        swal("Message", "{{ Session::get('message') }}", 'success', {
+            button: true,
+            button: "Ok",
+        });
+    </script>
+@endif
 @endsection
