@@ -35,10 +35,11 @@ Route::post('/registerUser', [AuthController::class, 'registerUser'])->name('aut
 Route::post('/LoginUser', [AuthController::class, 'LoginUser'])->name('auth.loginUser');
 Route::post('/forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('auth.forget');
 Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('auth.resetpsw');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 // admin
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('guest');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
 
