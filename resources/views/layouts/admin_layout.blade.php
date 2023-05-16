@@ -137,7 +137,13 @@
                         <li class="nav-item">
                             <form>
                                 <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                <button type="button" class="btn bg-gradient-danger">Logout</button>
+                                @if (Auth::check())
+                                <a href="{{ route('logout') }}" class="btn bg-gradient-danger">Logout</a>
+                                @else
+                                    <a href="{{ route('auth.login') }}" class="nav-link text-dark">
+                                        Login
+                                    </a>
+                                @endif
                             </form>
                         </li>
                     </ul>
@@ -183,6 +189,10 @@
     <script src="/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="/dist/js/pages/dashboard2.js"></script>
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/anchor.js"></script>
 </body>
 
 </html>
