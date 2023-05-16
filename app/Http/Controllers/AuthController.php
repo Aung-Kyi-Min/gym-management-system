@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Services\AuthServiceInterface;
+use App\Http\Requests\ForgetPswRequest;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterCreateRequest;
 use App\Models\User;
 use Carbon\Carbon;
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Http\Requests\ResetPswRequest;
 
 class AuthController extends Controller
 {
@@ -28,9 +31,6 @@ class AuthController extends Controller
     }
 
     public function login(){
-        //if (Auth::guest()) {
-        //    return redirect()->route('auth.login');
-        //}
         return view('auth.login');
     }
 
@@ -55,14 +55,14 @@ class AuthController extends Controller
             ->with('message', 'Your have Registered Successfully...');
     }
 
-    public function LoginUser(Request $request)
+    public function LoginUser(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email', 'exists:users,email'],
-            'password' => ['required'],
-        ]);
+        $credentials = [
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ];
 
-        $user = User::where('email', $credentials['email'])->first();
+        $user = User::where('email', $request['email'])->first();
 
         if (Auth::attempt($credentials)) {
             $token = $user->createToken('token')->plainTextToken;
@@ -86,12 +86,8 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function submitForgetPasswordForm(Request $request)
+    public function submitForgetPasswordForm(ForgetPswRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-        ]);
-
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
@@ -113,14 +109,8 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function submitResetPasswordForm(Request $request)
+    public function submitResetPasswordForm(ResetPswRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required',
-        ]);
-
         $updatePassword = DB::table('password_resets')
             ->where([
                 'email' => $request->email,
