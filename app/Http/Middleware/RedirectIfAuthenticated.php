@@ -33,13 +33,10 @@ class RedirectIfAuthenticated
         {
             $guards = empty($guards) ? [null] : $guards;
 
-            //foreach ($guards as $guard) {
-            //    if (Auth::guard($guard)->check() ) {
-            //        return redirect('/');
-            //    }
-            //}
-            if (Auth::check() && $request->routeIs('login|admin')) {
-                return redirect('/'); //redirect to Dashboard page if logged-in user tries to access login or admin page
+            foreach ($guards as $guard) {
+                if (Auth::guard($guard)->check() ) {
+                    return redirect('/');
+                }
             }
             return $next($request);
         }
