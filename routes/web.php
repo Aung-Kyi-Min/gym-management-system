@@ -25,10 +25,9 @@ Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedbac
 Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
 Route::get('/profile', [UserController::class, 'Userprofile'])->name('user.profile');
 Route::get('/successPurchase', [UserController::class, 'successPurchase'])->name('user.successPurchase');
-//Route::get('/profile', [UserController::class, 'userprofile'])->name('user.profile');
 
-
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+// auth
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login')->middleware('guest');
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('/forgetpassword', [AuthController::class, 'forgetpassword'])->name('auth.forgetpassword');
 Route::get('/reset/{token}', [AuthController::class, 'reset'])->name('auth.reset');
@@ -39,7 +38,7 @@ Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // admin
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('guest');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
 
