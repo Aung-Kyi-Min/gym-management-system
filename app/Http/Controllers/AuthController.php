@@ -28,7 +28,10 @@ class AuthController extends Controller
     }
 
     public function login(){
-        return view('Auth.login');
+        //if (Auth::guest()) {
+        //    return redirect()->route('auth.login');
+        //}
+        return view('auth.login');
     }
 
     public function registerUser(RegisterCreateRequest $request)
