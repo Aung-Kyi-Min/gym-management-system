@@ -6,15 +6,14 @@ use App\Contracts\Services\AuthServiceInterface;
 use App\Http\Requests\ForgetPswRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterCreateRequest;
+use App\Http\Requests\ResetPswRequest;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use App\Http\Requests\ResetPswRequest;
 
 class AuthController extends Controller
 {
@@ -30,7 +29,8 @@ class AuthController extends Controller
         $this->authService = $AuthServiceInterface;
     }
 
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
 
@@ -68,11 +68,11 @@ class AuthController extends Controller
             $token = $user->createToken('token')->plainTextToken;
             if ($user->role == 0) {
                 return redirect()->route('admin.index')
-                    ->with('message','You Have Successfully logined...')
+                    ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
             } else {
                 return redirect()->route('user.index')
-                    ->with('message','You Have Successfully logined...')
+                    ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
             }
 
@@ -137,15 +137,18 @@ class AuthController extends Controller
         return view('Auth.register');
     }
 
-    public function forgetpassword(){
+    public function forgetpassword()
+    {
         return view('Auth.forgetpassword');
     }
 
-    public function reset(){
+    public function reset()
+    {
         return view('Auth.reset');
     }
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
-        return redirect('/')->with('message','U have logged out Successfully...');
+        return redirect('/')->with('message', 'U have logged out Successfully...');
     }
 }
