@@ -44,9 +44,10 @@
                                         <td>{{$workout->price}}</td>
                                         <td>
                                             <p class="width-text text-wrap">{{$workout->description}}</p>
+                                            <p class="width-text text-wrap">{{$workout->image}}</p>
                                         </td>
                                         <td>
-                                            <img class="img-width" src="{{asset('images/admin/workout/'.$workout->image)}}">
+                                            <img class="img-width" src="{{ asset('storage/images/admin/workout/'.$workout->image) }}">
                                         </td>
                                         <td>
                                             <form action="{{route('admin.destroy_workout' , $workout->id)}}" method="post">
