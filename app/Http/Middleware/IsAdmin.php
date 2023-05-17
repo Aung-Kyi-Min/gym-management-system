@@ -16,29 +16,6 @@ class IsAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-//    public function handle($request, Closure $next)
-//    {
-//        if (auth()->user()->role != 0 ) {
-//            abort(403, 'Unauthorized action.');
-//        }
-//
-//        return $next($request);
-//    }
-//    public function handle(Request $request, Closure $next)
-//    {
-//        if (Auth::check() && Auth::user()->role == 0) {
-//            return redirect('/');
-//        }
-//
-//        return $next($request);
-//}
-//public function handle(Request $request, Closure $next)
-//{
-//    if (Auth::check() && Auth::user()->role == 0) {
-//        return $next($request);
-//    }
-//    return redirect('/');
-//}
 
 public function handle(Request $request, Closure $next)
 {
