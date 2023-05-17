@@ -86,10 +86,4 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<<<<<<< HEAD
 @endsection
-=======
-
-@endsection
-
->>>>>>> d33e4069d0a11c6eb24b9b40b7ffb1fe89a308d6

@@ -13,10 +13,10 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{ url('/admin/'.$admin->id) }}" enctype="multipart/form-data" method="post">
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="Admin Name" id="name" name="name" class='form-control' />
+                                    <input type="text" placeholder="Admin Name" id="name" name="name" class='form-control' value="{$admin->name}}"/>
                                 </div>
                                 <div class="mt-2">
                                     <label for="email">Email</label>
