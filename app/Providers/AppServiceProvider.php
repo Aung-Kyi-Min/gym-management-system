@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Dao\Admin\InstructorDaoInterface', 'App\Dao\Admin\InstructorDao');
         $this->app->bind('App\Contracts\Dao\Admin\UserDaoInterface', 'App\Dao\Admin\UserDao');
         $this->app->bind('App\Contracts\Dao\AuthDaoInterface', 'App\Dao\AuthDao');
+        $this->app->bind('App\Contracts\Dao\PaymentDaoInterface', 'App\Dao\PaymentDao');
 
 
 
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Services\Admin\InstructorServiceInterface', 'App\Services\Admin\InstructorService');
         $this->app->bind('App\Contracts\Services\Admin\UserServiceInterface', 'App\Services\Admin\UserService');
         $this->app->bind('App\Contracts\Services\AuthServiceInterface', 'App\Services\AuthService');
+        $this->app->bind('App\Contracts\Dao\PaymentServiceInterface', 'App\Dao\PaymentService');
 
     }
 

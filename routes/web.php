@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\WorkoutController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -82,3 +83,8 @@ Route::get('/admin/instructor/search', [InstructorController::class, 'search'])-
 Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
 Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
 Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
+
+//purchase
+Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
+Route::post('/purchasedMember', [PurchaseController::class, 'calculate'])->name('user.purchaseMember');
+Route::post('/get-price', [App\Http\Controllers\PurchaseController::class, 'getPrice'])->name('get.price');

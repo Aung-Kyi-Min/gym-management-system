@@ -25,16 +25,6 @@ class RedirectIfAuthenticated
 
             return $next($request);
             }
-//
-//        }
-//        public function handle(Request $request, Closure $next)
-//        {
-//            if (Auth::check() && Auth::user()->role == 0) {
-//                return redirect('/');
-//            }
-//
-//            return $next($request);
-//        }
 
         }
 }

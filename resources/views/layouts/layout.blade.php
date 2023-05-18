@@ -89,7 +89,7 @@
                                     <a class="nav-link" href="{{ route('user.workout') }}">Workout List</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.purchased') }}">Purchase</a>
+                                    <a class="nav-link" href="{{ route('member.purchase') }}">Purchase</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('user.feedback') }}">Feedback</a>
