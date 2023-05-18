@@ -13,15 +13,16 @@
                             <a href="{{route('admin.create_workout')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
+                                    <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                     </div>
                                 </div>
-                            </div>
+                                
+                            </form>
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 500px;">
@@ -60,8 +61,12 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="container">
+                        {{ $workouts->links() }}
+                       </div>
                         <!-- /.card-body -->
                     </div>
+                    
                     <!-- /.card -->
                 </div>
             </div>

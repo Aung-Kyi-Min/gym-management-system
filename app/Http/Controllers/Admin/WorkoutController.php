@@ -70,5 +70,11 @@ class WorkoutController extends Controller
        $this->workoutService->destroy($id);
        return redirect('/admin/workout');
     }
+
+    public function search()
+    {
+        $workouts = $this->workoutService->search();
+        return view('admin.workout.workout', compact('workouts'));
+    }
  
  }

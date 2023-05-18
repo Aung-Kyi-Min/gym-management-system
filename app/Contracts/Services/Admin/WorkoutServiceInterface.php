@@ -31,8 +31,8 @@ interface WorkoutServiceInterface
     */
     public function update($id) : void;
 
-     /**
-     * Destroy Major
+    /**
+     * Destroy Workout
      * @return void 
     */
     public function destroy($id) : void;

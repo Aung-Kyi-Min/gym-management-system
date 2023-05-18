@@ -13,7 +13,7 @@ class WorkoutDao implements WorkoutDaoInterface
     */
     public function get(): object
     {
-        return Workout::all();
+        return Workout::orderBy('workouts.created_at', 'desc')->paginate(3);
     }
 
     /**
