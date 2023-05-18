@@ -51,7 +51,6 @@
                                         <td>{{ $instructor->access_time}}</td>
                                         <td> 
                                             <img src="{{ asset('storage/images/admin/instructor/' . $instructor->image) }}" alt="Instructor Image" class="img-width"> 
-                                        </td>
                                         <td>
                                             <form action="{{ url('/admin/instructor/destory/'.$instructor->id) }}" method="POST">
                                                 @csrf
@@ -84,4 +83,5 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 @endsection

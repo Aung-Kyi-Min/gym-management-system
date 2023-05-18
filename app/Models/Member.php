@@ -17,7 +17,7 @@ class Member extends Model
         'workout_id',
         'instructor_id',
         'sub_month',
-        'joingin_date',
+        'joining_date',
         'end_date',
     ];
 

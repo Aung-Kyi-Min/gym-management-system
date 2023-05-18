@@ -51,8 +51,8 @@
                     </h1>
                     <p>
                         Boxing is not just a sport, it's a way of life.
-                        Our gym offers top-notch boxing training that will help you improve your strength, 
-                        coordination, and mental toughness. Our experienced trainers will teach you the fundamentals of boxing 
+                        Our gym offers top-notch boxing training that will help you improve your strength,
+                        coordination, and mental toughness. Our experienced trainers will teach you the fundamentals of boxing
                         and guide you towards achieving your goals.
                         Join our gym and become the best version of yourself through boxing!
                     </p>
@@ -519,7 +519,7 @@
             </li>
           </ul>
         </div>
-       
+
         <div class="col-md-3">
           <h6>
             Contact Us
@@ -565,6 +565,14 @@
     </div>
   </section>
   <!-- end info section -->
+  <script src="../js/sweetalert.min.js"></script>
+  @if (Session::has('message'))
+      <script>
+          swal("Message", "{{ Session::get('message') }}", 'success', {
+              button: true,
+              button: "Ok",
+          });
+      </script>
+  @endif
 @endsection
-  
- 
+
