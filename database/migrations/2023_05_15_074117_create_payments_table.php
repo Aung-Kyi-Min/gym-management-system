@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFeedbacksTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateFeedbacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
-            $table->id('id');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->longText('message');
+        Schema::create('payments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('member_id')->constrained('members')->onDelete('cascade');
+            $table->integer('amount');
+            $table->string('payment');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateFeedbacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedbacks');
+        Schema::dropIfExists('payments');
     }
 }

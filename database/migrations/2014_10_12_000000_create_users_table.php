@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->longText('address');
             $table->string('gender');
             $table->integer('age');
-            $table->integer('phone');
+            $table->string('phone', 20);
             $table->rememberToken();
             $table->timestamps();
         });

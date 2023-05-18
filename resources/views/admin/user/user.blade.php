@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">User List</h3>
-
+                            <a href="{{route('admin.create_user')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -37,23 +37,35 @@
                                         <th>Phone</th>
                                         <th>Address</th>
                                         <th>Gender</th>
+                                        <th>Role</th>
                                         <th>Age</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($users as $user)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Testing</td>
-                                        <td>test@gmail.com</td>
-                                        <td>09-23445579</td>
-                                        <td>Other side of the universe</td>
-                                        <td>Male</td>
-                                        <td>23</td>
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->phone}}</td>
+                                        <td>{{$user->address}}</td>
+                                        <td>{{$user->gender}}</td>
+                                        <td>{{$user->role}}</td>
+                                        <td>{{$user->age}}</td>
                                         <td>
-                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            <img class="img-width" src="{{ asset('storage/images/admin/user/'.$user->image) }}">
+                                        </td>
+                                        <td>
+                                            <form action="{{route('admin.destroy_user' , $user->id)}}" method="post">
+                                                @csrf
+                                                <a href="{{route('admin.edit_user' , $user->id)}}" type="button" class="btn-sm bg-gradient-primary">Edit</a>
+                                                <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

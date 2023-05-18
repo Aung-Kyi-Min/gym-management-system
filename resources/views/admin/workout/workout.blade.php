@@ -10,8 +10,8 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Workout List</h3>
-
-                            <form action="{{ route('admin.search_workout') }}" method="GET" class="card-tools">
+                            <a href="{{route('admin.create_workout')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
+                            <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
                                     <div class="input-group-append">
@@ -47,13 +47,13 @@
                                             <p class="width-text text-wrap">{{$workout->description}}</p>
                                         </td>
                                         <td>
-                                            <img class="img-width" src="{{asset('images/admin/workout/'.$workout->image)}}">
+                                            <img class="img-width" src="{{ asset('storage/images/admin/workout/'.$workout->image) }}">
                                         </td>
                                         <td>
                                             <form action="{{route('admin.destroy_workout' , $workout->id)}}" method="post">
                                                 @csrf
-                                                <a href="{{route('admin.edit_workout' , $workout->id)}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Workout?')">Delete</button>
+                                                <a href="{{route('admin.edit_workout' , $workout->id)}}" type="button" class="btn-sm bg-gradient-primary">Edit</a>
+                                                <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Workout?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
