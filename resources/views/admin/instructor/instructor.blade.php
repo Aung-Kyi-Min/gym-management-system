@@ -11,9 +11,10 @@
                         <div class="card-header">
                             <h3 class="card-title">Instructor List</h3>
                             
-                            <form action="{{ route('admin.search_instructor') }}" method="GET" class="card-tools">
+                            <form action="" method="GET" class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
+                                <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ $search }}">
+
                                     <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
@@ -49,14 +50,14 @@
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
                                         <td> 
-                                            <img src="{{ asset('images/admin/instructor/' . $instructor->image) }}" width="50px" alt="Instructor Image" > 
+                                            <img src="{{ asset('storage/images/admin/instructor/' . $instructor->image) }}" alt="Instructor Image" class="img-width"> 
                                         </td>
                                         <td>
-                                            <form action="{{ url('/admin/instructorlist/'.$instructor->id) }}" method="POST">
+                                            <form action="{{ url('/admin/instructor/destory/'.$instructor->id) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
-                                                <a href="{{ url('/admin/instructor/'.$instructor->id.'/edit') }}"class="btn bg-gradient-primary">Edit</a>
-                                                <button type="submit" class="btn btn-danger"> Delete </button>
+                                                <a href="{{ url('/admin/instructor/'.$instructor->id.'/edit') }}"class="btn bg-gradient-primary btn-sm">Edit</a>
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this instructor?')"> Delete </button>
                                             </form>
                                         </td>
                                     </tr>
@@ -67,7 +68,7 @@
                         <!-- /.card-body -->
                     </div>
                     <div class="container"> 
-                     {{ $instructors->links() }}
+                     {{ $instructors->links()}}
                         @if (session()->has('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}

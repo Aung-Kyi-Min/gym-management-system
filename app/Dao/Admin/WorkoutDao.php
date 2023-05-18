@@ -64,23 +64,4 @@ class WorkoutDao implements WorkoutDaoInterface
         $workout = Workout::findOrFail($id);
         $workout->delete();
     }
-
-     /**
-     * Search Workout
-     * @return object
-    */
-    public function search(): object
-    {
-        $searchQuery = request()->query('search');
-        $workout = Workout::where(function ($query) use ($searchQuery) {
-            $query->where('name', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('price', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('description', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('image', 'LIKE', '%' . $searchQuery . '%');
-        })
-        ->latest()
-        ->paginate(3);
-        $workout->appends(['search' => $searchQuery]);
-        return $workout;
-    }
 }

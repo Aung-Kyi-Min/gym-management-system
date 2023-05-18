@@ -36,10 +36,4 @@ interface WorkoutDaoInterface
      * @return void 
     */
     public function destroy($id) : void;
-
-     /**
-     * Search Workout
-     * @return object
-    */
-    public function search() :object;
 }

@@ -8,77 +8,64 @@ use App\Exports\InstructorsExport;
 
 class InstructorDao implements InstructorDaoInterface
 {
-    public function createInstructors(array $data): void
+    /**
+     * Show Instructor
+     * @return object
+    */
+    public function get(): object
     {
-
-        $image = $data['image'];
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images/admin/instructor'), $imageName);
-
-        Instructor::create([
-            'name' => $data['name'],
-            'speciality' => $data['speciality'],
-            'image' => $imageName,
-            'email' => $data['email'],
-            'price' => $data['price'],
-            'access_time' => $data['access_time'],
-        ]);
+        return Instructor::orderBy('instructors.created_at', 'asc')->paginate(3);
     }
 
-    public function getInstructors(): object
+    /**
+     * Store Instructor
+     * @return void
+    */
+    public function store() : void
     {
-        return Instructor::orderBy('instructors.created_at', 'desc')->paginate(3);
-    }
-    
-    public function searchInstructor(): object
-    {
-        $searchQuery = request()->query('search');
-        $instructors = Instructor::where(function ($query) use ($searchQuery) {
-            $query->where('name', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('email', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('speciality', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('price', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('access_time', 'LIKE', '%' . $searchQuery . '%')
-                ->orWhere('image', 'LIKE', '%' . $searchQuery . '%');
-        })
-        ->latest()
-        ->paginate(3);
-
-        $instructors->appends(['search' => $searchQuery]);
-        return $instructors;
+        $instructor = new Instructor();
+        $instructor->name = request('name');
+        $instructor->email = request('email');
+        $instructor->image = request()->file('image')->getClientOriginalName();
+        $instructor->speciality = request('speciality');
+        $instructor->price = request('price');
+        $instructor->access_time = request('access_time');
+        $instructor->save();
+        
     }
 
-    public function getInstructorById($id): object
+    /**
+     * Return Instructor
+     * @return object
+    */
+    public function edit($id) : object
     {
         return Instructor::findOrFail($id);
     }
 
-    public function updateInstructor(array $data, $id): void
+    /**
+     * Update Instructor
+     * @return void
+    */
+    public function update($id) : void
     {
         $instructor = Instructor::findOrFail($id);
-
-        if (isset($data['image'])) {
-            $image = $data['image'];
-            $imageName = time().'.'.$image->extension();
-            $image->move(public_path('images/admin/instructor'), $imageName);
-
-            if ($instructor->image) {
-                $previousImagePath = public_path('images/admin/instructor').'/'.$instructor->image;
-
-                if (file_exists($previousImagePath))
-                {
-                    unlink($previousImagePath);
-                }
-            }
-            $data['image'] = $imageName;
-        }
-
-        $instructor->update($data);
+        $instructor->name = request('name');
+        $instructor->email= request('email');
+        $instructor->image = request()->file('image')->getClientOriginalName();
+        $instructor->speciality= request('speciality');
+        $instructor->price = request('price');
+        $instructor->access_time = request('access_time');
+        $instructor->save();
     }
 
-    public function deleteInstructorById($id): void
+    /**
+     * Destroy Instructor
+     * @return void 
+    */
+    public function destroy($id) : void
     {
-        $instructor =Instructor::findOrFail($id);
+        $instructor = Instructor::findOrFail($id);
         $instructor->delete();
     }
 

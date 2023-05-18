@@ -2,78 +2,96 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Instructor;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
+use App\Exports\InstructorsExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorUpdateRequest;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
-use App\Models\Instructor;
-use App\Exports\InstructorsExport;
-use Maatwebsite\Excel\Excel;
 
 class InstructorController extends Controller
 {
     private $instructorService;
+ 
+    /**
+      * Create a new controller instance.
+      * @param InstructorInterface $taskServiceInterface
+      * @return void
+      */
+ 
+    public function __construct(InstructorServiceInterface $instructorServiceInterface) 
+    {
+       $this->instructorService =  $instructorServiceInterface;
+    }
+ 
+ 
+    public function instructor(Request $request)
+    {
+        $search = $request->input('search', '');
 
-    public function __construct(InstructorServiceInterface $instructorServiceInterface) {
-        $this->instructorService = $instructorServiceInterface;
+        $query = Instructor::query();
+        
+        if ($search !== "") {
+            $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('email', 'LIKE', "%$search%")
+                ->orWhere('speciality', 'LIKE', "%$search%")
+                ->orWhere('price', 'LIKE', "%$search%")
+                ->orWhere('access_time', 'LIKE', "%$search%");
+        }
+        $instructors = $query->paginate(3);
+
+        return view('admin.instructor.instructor', compact('instructors', 'search'));
     }
 
     public function create()
     {
-        return view('admin.instructor.instructorCreate');
+       	return view('admin.instructor.instructorCreate');
     }
-
-    public function index() {
-        $instructors = $this->instructorService->getInstructors();
-        return view('admin.instructor.instructor', compact('instructors'));
-    }
-
-
+ 
+    /**
+      * Store Instructor
+      * @return void
+     */
     public function store(InstructorCreateRequest $request)
     {
-        $this->instructorService->createInstructors($request->all());
-        session()->flash('success', 'Instructor created successfully! .');
-        return redirect()->route('admin.instructor')->with('success', 'Instructor created successfully!');
+       $this->instructorService->store($request->only([
+        'name',
+        'speciality',
+        'image',
+        'email',
+        'price',
+        'access_time',
+        
+       ]));
+       return redirect('/admin/instructor');
     }
-
-    public function search()
-    {
-        $instructors = $this->instructorService->searchInstructor();
-        return view('admin.instructor.instructor', compact('instructors'));
-    }
-
+ 
     public function edit($id)
     {
-        $instructor= $this->instructorService->getInstructorById($id);
-        return view('admin.instructor.instructorEdit',compact('instructor'));
-
+       $instructor = $this->instructorService->edit($id);
+       return view('admin.instructor.instructorEdit' , ['instructor' => $instructor]);
     }
-    public function update(InstructorUpdateRequest $request, $id)
+ 
+    public function update(InstructorUpdateRequest $request ,$id)
     {
-        $data = $request->only([
-            'name',
-            'speciality',
-            'email',
-            'price',
-            'access_time',
-            'image',
-        ]);
-        $this->instructorService->updateInstructor($data, $id);
-
-        return redirect()->route('admin.instructor')->with('message', 'Student updated successfully.');
+       $this->instructorService->update($id , $request->only([
+         'name',
+         'speciality',
+         'image',
+         'email',
+         'price',
+         'access_time',
+       ]));
+       
+       return redirect('/admin/instructor');
     }
-
-    public function destory($id)
+ 
+    public function destroy($id) 
     {
-        $this->instructorService->deleteInstructorById($id);
-        session()->flash('success', 'The instructor has been successfully deleted.');
-        return redirect()->route('admin.instructor');
+       $this->instructorService->destroy($id);
+       return redirect('/admin/instructor');
     }
-
-    public function exportInstructors()
-    {
-        return $this->instructorService->export();
-    }
-
 
 }
