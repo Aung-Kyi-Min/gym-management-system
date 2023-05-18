@@ -119,17 +119,6 @@
                                 </p>
                             </a>
                         </li>
-
-                        <li class="nav-header">Create Section</li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.create_instructor')}}" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Instructor Create
-                                </p>
-                            </a>
-                        </li>
-
                             
                     </ul>
                 </nav>
