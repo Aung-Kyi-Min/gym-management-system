@@ -16,6 +16,15 @@
                             <form action="{{ url('/admin/instructor/'.$instructor->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             {{method_field('put')}} 
+
+                                <div class="mt-3 clearfix">
+                                        <img class="user_img" src="{{ asset('storage/images/admin/instructor/'.$instructor->image) }}">
+                                        <label for="image" class="form-label upload">Upload</label>
+                                        
+                                        <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
+                                        <span class="error">@error('image'){{$message}}@enderror</span>
+                                </div>
+
                                 <div class="mt-3">
                                     <label for="name">Name</label>
                                     <input type="text" placeholder="Instructor Name" name="name" id="name" class='form-control' value="{{$instructor->name}}" />
@@ -32,13 +41,6 @@
                                     <input type="text" placeholder="Price" name="price" id="price" class='form-control'  value="{{$instructor->price}}" />
                                 </div>
                                 <span class="text-danger">{{$errors->first('price')}}</span>
-
-                                <div class="mt-3">
-                                    <label for="image">Image</label>
-                                    <input type="file"  name="image" id="image" class='form-control' value="{{$instructor->image}}" />
-                                </div>
-                                
-                                <span class="text-danger">{{$errors->first('image')}}</span>
 
                                 <div class="mt-3">
                                     <label for="specialist">Specialist</label>

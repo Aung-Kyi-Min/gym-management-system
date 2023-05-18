@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Instructor List</h3>
-                            
+                            <a href="{{route('admin.create_instructor')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
                             <form action="" method="GET" class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                 <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ $search }}">
@@ -24,7 +24,7 @@
                             </form>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                        <div class="card-body table-responsive p-0" style="height: 500px;">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
