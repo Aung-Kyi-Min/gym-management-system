@@ -39,8 +39,7 @@ class UserService implements UserServiceInterface
     {
         $this->userDao->store();
         $name = request()->file('image')->getClientOriginalName();
-        request()->file('image')->storeAs('/images/admin/user' , $name);
-        //request()->file('image')->move(public_path('/images/admin/workout'), $name);
+        request()->file('image')->storeAs('public/images/admin/user' , $name);
     }
 
     /**
@@ -60,8 +59,7 @@ class UserService implements UserServiceInterface
     {
         $this->userDao->update($id);
         $name = request()->file('image')->getClientOriginalName();
-        //request()->file('image')->storeAs('public/images/admin/workout' , $name);
-        request()->file('image')->move(public_path('/images/admin/workout'), $name);
+        request()->file('image')->storeAs('public/images/admin/user' , $name);
     }
 
      /**

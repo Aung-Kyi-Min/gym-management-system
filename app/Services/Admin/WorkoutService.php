@@ -40,7 +40,6 @@ class WorkoutService implements WorkoutServiceInterface
         $this->workoutDao->store();
         $name = request()->file('image')->getClientOriginalName();
         request()->file('image')->storeAs('public/images/admin/workout' , $name);
-        //request()->file('image')->move(public_path('/images/admin/workout'), $name);
     }
 
      /**
@@ -59,7 +58,7 @@ class WorkoutService implements WorkoutServiceInterface
     public function update($id) : void
     {
         $name = request()->file('image')->getClientOriginalName();
-        request()->file('image')->move(public_path('/images/admin/workout'), $name);
+        request()->file('image')->storeAs('public/images/admin/workout' , $name);
         $this->workoutDao->update($id);
     }
 

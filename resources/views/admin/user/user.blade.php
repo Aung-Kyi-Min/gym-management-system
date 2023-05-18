@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">User List</h3>
-
+                            <a href="{{route('admin.create_user')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -37,7 +37,9 @@
                                         <th>Phone</th>
                                         <th>Address</th>
                                         <th>Gender</th>
+                                        <th>Role</th>
                                         <th>Age</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -50,12 +52,16 @@
                                         <td>{{$user->phone}}</td>
                                         <td>{{$user->address}}</td>
                                         <td>{{$user->gender}}</td>
+                                        <td>{{$user->role}}</td>
                                         <td>{{$user->age}}</td>
+                                        <td>
+                                            <img class="img-width" src="{{ asset('storage/images/admin/user/'.$user->image) }}">
+                                        </td>
                                         <td>
                                             <form action="{{route('admin.destroy_user' , $user->id)}}" method="post">
                                                 @csrf
-                                                <a href="{{route('admin.edit_user' , $user->id)}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
+                                                <a href="{{route('admin.edit_user' , $user->id)}}" type="button" class="btn-sm bg-gradient-primary">Edit</a>
+                                                <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

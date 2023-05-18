@@ -49,11 +49,16 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="/dist/img/user2-160x160.jpg" id="call1" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <p>Alexander Pierce</p>
+                        <p id="call2">Alexander Pierce</p>
+                        <form id="toggle"> 
+                            <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>  
+                            <button type="button" class="btn bg-gradient-danger">Logout</button>
+                        </form>
                     </div>
+                    
                 </div>
 
                 <!-- SidebarSearch Form -->
@@ -73,6 +78,14 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="{{route('admin.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Admin Index
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-header">Output Section</li>
                         <li class="nav-item">
                             <a href="{{route('admin.user')}}" class="nav-link">
@@ -109,22 +122,6 @@
 
                         <li class="nav-header">Create Section</li>
                         <li class="nav-item">
-                            <a href="{{route('admin.create_user')}}" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    User Create
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.create_workout')}}" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Workout Create
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{route('admin.create_instructor')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
@@ -133,13 +130,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-header">Admin Section</li>
-                        <li class="nav-item">
-                            <form>
-                                <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>
-                                <button type="button" class="btn bg-gradient-danger">Logout</button>
-                            </form>
-                        </li>
+                            
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -183,6 +174,13 @@
     <script src="/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="/dist/js/pages/dashboard2.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#call1 , #call2").click(function(){
+                $("#toggle").toggle(1000);
+            });
+        });
+    </script>
     
 </body>
 
