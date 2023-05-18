@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkoutRequest;
+use Illuminate\Support\Str;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 
 class WorkoutController extends Controller
@@ -25,6 +26,9 @@ class WorkoutController extends Controller
     public function workout() 
     {
        $workouts = $this->workoutService->get();
+       foreach ($workouts as $workout) {
+         $workout->limitedDescription = Str::of($workout->description)->limit(40);
+      }
        return view('admin.workout.workout' , ['workouts' => $workouts]);
     }
  

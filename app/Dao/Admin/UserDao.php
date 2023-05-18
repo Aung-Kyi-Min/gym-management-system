@@ -14,7 +14,7 @@ class UserDao implements UserDaoInterface
     */
     public function get(): object
     {
-        return User::all();
+        return User::paginate(3);
     }
 
     /**
@@ -31,7 +31,10 @@ class UserDao implements UserDaoInterface
         $user->gender = request('gender');
         $user->age = request('age');
         $user->role = request('role');
-        $user->image = request()->file('image')->getClientOriginalName();
+        $image = request()->file('image');
+        $imageName = $image->getClientOriginalName();
+        $user->image = $imageName;
+        
         $user->address = request('address');
         
         $user->save();
@@ -50,19 +53,22 @@ class UserDao implements UserDaoInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void
+    public function update($id , array $data) : void
     {
         $user = User::findOrFail($id);
-        $user->name = request('name');
-        $user->password = Hash::make(request('password'));
-        $user->phone = request('phone');
-        $user->gender = request('gender');
-        $user->age = request('age');
-        $user->role = request('role');
-        $user->image = request()->file('image')->getClientOriginalName();
-        $user->address = request('address');
+
+        if ($user) {
+            $user->name = $data['name'];
+            $user->password = Hash::make($data['password']);
+            $user->role = $data['role'];
+            $user->image = $data['image']->getClientOriginalName();
+            $user->address = $data['address'];
+            $user->gender = $data['gender'];
+            $user->age = $data['age'];
+            $user->phone = $data['phone'];
         
-        $user->save();
+            $user->save();
+        }
     }
 
     /**

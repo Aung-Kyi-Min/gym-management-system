@@ -29,7 +29,7 @@ interface UserDaoInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void;
+    public function update($id , array $data) : void;
 
      /**
      * Destroy User

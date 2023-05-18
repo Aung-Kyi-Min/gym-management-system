@@ -1,5 +1,5 @@
 .pad {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .error {
@@ -56,6 +56,11 @@
     display: none;
 }
 
+.center {
+    margin: 0 auto;
+    width: 20%;
+}
+
 .dark-mode input:-webkit-autofill,
 .dark-mode input:-webkit-autofill:focus,
 .dark-mode input:-webkit-autofill:hover,
@@ -67,3 +72,5 @@
 .dark-mode textarea:-webkit-autofill:hover {
     -webkit-text-fill-color: #000 !important;
 }
+
+

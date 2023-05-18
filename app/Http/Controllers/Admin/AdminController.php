@@ -43,7 +43,7 @@ class AdminController extends Controller
    {
       $workouts = $this->workoutService->get();
       $workoutCounts = $workouts->count();
-      $instructors = $this->instructorService->getInstructors();
+      $instructors = $this->instructorService->get();
       $instructorCounts = $instructors->count();
       $users = $this->userService->get();
       $userCounts = $users->count();

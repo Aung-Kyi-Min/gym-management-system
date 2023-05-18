@@ -44,15 +44,17 @@ class WorkoutDao implements WorkoutDaoInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void
+    public function update($id , array $data) : void
     {
         $workout = Workout::findOrFail($id);
-        $workout->name = request('name');
-        $workout->image = request()->file('image')->getClientOriginalName();
-        $workout->price = request('price');
-        $workout->description = request('description');
         
-        $workout->save();
+        if ($workout) {
+            $workout->name = $data['name'];
+            $workout->image = $data['image']->getClientOriginalName();
+            $workout->price = $data['price'];
+            $workout->description = $data['description'];
+            $workout->save();
+        }
     }
 
     /**

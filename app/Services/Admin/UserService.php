@@ -55,9 +55,9 @@ class UserService implements UserServiceInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void
+    public function update($id , array $data) : void
     {
-        $this->userDao->update($id);
+        $this->userDao->update($id , $data);
         $name = request()->file('image')->getClientOriginalName();
         request()->file('image')->storeAs('public/images/admin/user' , $name);
     }
