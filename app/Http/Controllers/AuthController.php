@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Services\AuthServiceInterface;
+use App\Http\Requests\ForgetPswRequest;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterCreateRequest;
+use App\Http\Requests\ResetPswRequest;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -27,8 +29,9 @@ class AuthController extends Controller
         $this->authService = $AuthServiceInterface;
     }
 
-    public function login(){
-        return view('Auth.login');
+    public function login()
+    {
+        return view('auth.login');
     }
 
     public function registerUser(RegisterCreateRequest $request)
@@ -52,24 +55,24 @@ class AuthController extends Controller
             ->with('message', 'Your have Registered Successfully...');
     }
 
-    public function LoginUser(Request $request)
+    public function LoginUser(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email', 'exists:users,email'],
-            'password' => ['required'],
-        ]);
+        $credentials = [
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ];
 
-        $user = User::where('email', $credentials['email'])->first();
+        $user = User::where('email', $request['email'])->first();
 
         if (Auth::attempt($credentials)) {
             $token = $user->createToken('token')->plainTextToken;
             if ($user->role == 0) {
                 return redirect()->route('admin.index')
-                    ->with('message','You Have Successfully logined...')
+                    ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
             } else {
                 return redirect()->route('user.index')
-                    ->with('message','You Have Successfully logined...')
+                    ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
             }
 
@@ -83,12 +86,8 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function submitForgetPasswordForm(Request $request)
+    public function submitForgetPasswordForm(ForgetPswRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-        ]);
-
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
@@ -110,14 +109,8 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function submitResetPasswordForm(Request $request)
+    public function submitResetPasswordForm(ResetPswRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required',
-        ]);
-
         $updatePassword = DB::table('password_resets')
             ->where([
                 'email' => $request->email,
@@ -144,15 +137,18 @@ class AuthController extends Controller
         return view('Auth.register');
     }
 
-    public function forgetpassword(){
+    public function forgetpassword()
+    {
         return view('Auth.forgetpassword');
     }
 
-    public function reset(){
+    public function reset()
+    {
         return view('Auth.reset');
     }
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
-        return redirect()->route('auth.login')->with('message','U have logged out Successfully...');
+        return redirect('/')->with('message', 'U have logged out Successfully...');
     }
 }
