@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card pad">
                         <div class="card-header">
                             <h3 class="card-title">User List</h3>
                             <a href="{{route('admin.create_user')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                        <div class="card-body table-responsive p-0" style="height: 430px;">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
@@ -72,6 +72,7 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+                    <div class="center">{{$users->links()}}</div> 
                 </div>
             </div>
             <!-- /.row -->

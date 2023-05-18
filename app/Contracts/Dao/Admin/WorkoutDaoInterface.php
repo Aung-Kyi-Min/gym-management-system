@@ -29,7 +29,7 @@ interface WorkoutDaoInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void;
+    public function update($id , array $data) : void;
 
      /**
      * Destroy Workout
