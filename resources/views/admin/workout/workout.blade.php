@@ -8,24 +8,26 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card pad">
-                        <div class="card-header">
-                            <h3 class="card-title">Workout List</h3>
-                            <a href="{{route('admin.create_workout')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
-                                    <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    </div>
-                                </div>
-                                
-                            </form>
+                        <div class="card-header clearfix">
+                            <div class="left clearfix">
+                                <h3 class="card-title list-header left">Workout List</h3>
+                                <a href="{{route('admin.create_workout')}}" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
+                            </div>
+                            <div class="card-tools search-header right clearfix">
+                                <div class="input-group input-group-sm left" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control  float-right" placeholder="Search">
 
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 400px;">
+                        <div class="card-body table-responsive p-0" style="height: 430px;">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
@@ -63,7 +65,7 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
-                    
+
                     <!-- /.card -->
                 </div>
                 <div class="center">{{ $workouts->links() }}</div>

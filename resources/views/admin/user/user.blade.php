@@ -8,12 +8,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card pad">
-                        <div class="card-header">
-                            <h3 class="card-title">User List</h3>
-                            <a href="{{route('admin.create_user')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="card-header clearfix">
+                            <div class="left clearfix">
+                                <h3 class="card-title list-header left">User List</h3>
+                                <a href="{{route('admin.create_user')}}"  class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
+                            </div>
+                            <div class="card-tools search-header right clearfix">
+                                <div class="input-group input-group-sm left" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control  float-right" placeholder="Search">
 
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
@@ -22,8 +24,10 @@
                                     </div>
 
                                 </div>
-                                <a href="{{ route('export.users') }}" class="btn btn-info btn-sm mt-3" id="export-excel">Export</a>
-                                <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm mt-3">Import</a>
+                                <div class="right exim">
+                                    <a href="{{ route('export.users') }}" class="btn btn-info btn-sm margin-reset mt-3" id="export-excel">Export</a>
+                                    <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm margin-reset mt-3">Import</a>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -72,7 +76,10 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
-                    <div class="center">{{$users->links()}}</div> 
+                    @if ($users instanceof \Illuminate\Contracts\Pagination\Paginator)
+                        <div class="center">{{$users->links()}}</div> 
+                    @endif
+                    
                 </div>
             </div>
             <!-- /.row -->
