@@ -41,5 +41,11 @@ interface InstructorServiceInterface
      * return export instructors
      */
     public function export(): object;
+
+     /**
+     * search Instructor
+     * @return object
+    */  
+    public function search($search): object;
   
 }

@@ -43,7 +43,7 @@
                                 <div class="mt-3">
                                     <label for="time">Time</label>
                                     <select name="access_time" id="time" class="form-control @error('access_time') is-invalid @enderror">
-                                        <option value="morning"  @if(old('access_time') == 'morning') selected @endif>Morning Time</option>
+                                        <option value="morning"  @if(old('access_time') =='morning') selected @endif>Morning Time</option>
                                         <option value="noon"  @if(old('access_time') == 'noon') selected @endif>Noon Time</option>
                                         <option value="evening"  @if(old('access_time') == 'evening') selected @endif>Evening Time</option>
                                     </select>

@@ -69,10 +69,32 @@ class InstructorDao implements InstructorDaoInterface
         $instructor->delete();
     }
 
+    /**
+     * export Instructor
+     * @return void 
+    */    
     public function export(): object
     {
         //$data = new Excel();
         $data = Excel::download(new InstructorsExport(), 'instructors.xlsx');
         return $data;
+    }
+
+    /**
+     * search Instructor
+     * @return object
+    */  
+    public function search($search): object
+    {
+        $query = Instructor::query();
+        if ($search !== "") 
+        {
+            $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('email', 'LIKE', "%$search%")
+                ->orWhere('speciality', 'LIKE', "%$search%")
+                ->orWhere('price', 'LIKE', "%$search%")
+                ->orWhere('access_time', 'LIKE', "%$search%");
+        }
+        return $query->paginate(3);
     }
 }

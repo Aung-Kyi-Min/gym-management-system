@@ -54,8 +54,8 @@
                     <div class="info">
                         <p id="call2">Alexander Pierce</p>
                         <form id="toggle"> 
-                            <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>  
-                            <button type="button" class="btn bg-gradient-danger">Logout</button>
+                            <a href="{{route('admin.edit')}}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>  
+                            <a href="{{ route('logout') }}" class="btn btn-sm bg-gradient-danger">Logout</a>
                         </form>
                     </div>
                     

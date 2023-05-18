@@ -51,11 +51,13 @@
                                 <div class="mt-3">
                                     <label for="time">Time</label>
                                     <select name="access_time" id="time" class="form-control">
-                                        <option value="morning">Morning Time</option>
-                                        <option value="noon">Noon Time</option>
-                                        <option value="evening">Evening Time</option>
+                                        <option value="morning" @if($instructor->access_time === 'morning') selected @endif>Morning Time</option>
+                                        <option value="noon" @if($instructor->access_time === 'noon') selected @endif>Noon Time</option>
+                                        <option value="evening" @if($instructor->access_time === 'evening') selected @endif>Evening Time</option>
                                     </select>
                                 </div>
+                                <span class="text-danger">{{$errors->first('access_time')}}</span>
+
                                 <div class="mt-4">
                                     <button type="submit" class=" btn btn-dark">
                                         Update
