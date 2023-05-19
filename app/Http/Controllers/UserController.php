@@ -32,15 +32,19 @@ class UserController extends Controller
        $this->adminService = $adminServiceInterface;
     }
 
-    //
     public function Userprofile()
+
     {
-        if (Auth::guest())
+        if (Auth::guest()) 
         {
             return redirect()->route('auth.login');
         }
-        return view('user.profile');
+
+        $user = Auth::user(); // Retrieve the currently logged-in user
+
+        return view('user.profile', ['user' => $user]);
     }
+
 
     public function index()
     {
