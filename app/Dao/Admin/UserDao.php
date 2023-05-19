@@ -13,7 +13,7 @@ class UserDao implements UserDaoInterface
      * @return object
     */
     public function get(): object
-    {
+    {    
         return User::paginate(5);
     }
 

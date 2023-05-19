@@ -82,11 +82,11 @@
                             <a href="{{route('admin.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Admin Index
+                                    Admin Dashboard
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">Output Section</li>
+                        
                         <li class="nav-item">
                             <a href="{{route('admin.user')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
