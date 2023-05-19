@@ -14,8 +14,8 @@
                                 <a href="{{route('admin.create_user')}}"  class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
                             </div>
                             <div class="card-tools search-header right clearfix">
-                                <form method="GET">
-                                <div class="input-group input-group-sm left" style="width: 150px;">
+                                <form method="GET" class="left">
+                                    <div class="input-group input-group-sm " style="width: 150px;">
                                     <input type="text" name="search" class="form-control  float-right" placeholder="Search" value="{{ $search }}">
 
                                     <div class="input-group-append">

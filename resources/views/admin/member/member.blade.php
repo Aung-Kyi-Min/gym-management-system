@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card pad">
                         <div class="card-header clearfix">
                             <div class="left clearfix">
                                 <h3 class="card-title list-header left">Member List</h3>

@@ -7,13 +7,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header clearfix">
+                    <div class="card pad">
+                        <div class="card-header clearfix ">
                             <div class="left clearfix">
                                 <h3 class="card-title list-header left">Instructor List</h3>
                                 <a href="{{route('admin.create_instructor')}}" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
                             </div>
-                            <div class="card-tools search-header right clearfix">
+                            <div class="card-tools search-header right clearfix" style="height: 50px;">
                                 <form mdthod="get">
                                 <div class="input-group input-group-sm left" style="width: 150px;">
                                     <input type="text" name="search" class="form-control  float-right" placeholder="Search" value="{{ $search }}">
