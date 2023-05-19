@@ -44,15 +44,17 @@ class WorkoutDao implements WorkoutDaoInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void
+    public function update($id , array $data) : void
     {
         $workout = Workout::findOrFail($id);
-        $workout->name = request('name');
-        $workout->image = request()->file('image')->getClientOriginalName();
-        $workout->price = request('price');
-        $workout->description = request('description');
         
-        $workout->save();
+        if ($workout) {
+            $workout->name = $data['name'];
+            $workout->image = $data['image']->getClientOriginalName();
+            $workout->price = $data['price'];
+            $workout->description = $data['description'];
+            $workout->save();
+        }
     }
 
     /**
@@ -64,4 +66,21 @@ class WorkoutDao implements WorkoutDaoInterface
         $workout = Workout::findOrFail($id);
         $workout->delete();
     }
+
+    /**
+     * search Instructor
+     * @return object
+    */  
+    public function search($search): object
+    {
+        $query = Workout::query();
+        if ($search !== "") 
+        {
+            $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('price', 'LIKE', "%$search%")
+                ->orWhere('description', 'LIKE', "%$search%");
+        }
+        return $query->paginate(3);
+    }
+    
 }

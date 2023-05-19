@@ -29,11 +29,17 @@ interface UserServiceInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void;
+    public function update($id , array $data) : void;
 
      /**
      * Destroy User
      * @return void 
     */
     public function destroy($id) : void;
+
+    /**
+    * search user
+    * @return object
+    */  
+    public function search($search): object;
 }

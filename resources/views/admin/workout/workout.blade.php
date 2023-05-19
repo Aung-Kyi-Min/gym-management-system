@@ -7,25 +7,25 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card pad">
                         <div class="card-header">
                             <h3 class="card-title">Workout List</h3>
                             <a href="{{route('admin.create_workout')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
-                            <div class="card-tools">
+                            <form action="" method="GET" class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
+                                <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ $search }}">
+
                                     <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
                                     </button>
                                     </div>
                                 </div>
-                                
                             </form>
-
+                            
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 500px;">
+                        <div class="card-body table-responsive p-0" style="height: 400px;">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
@@ -44,7 +44,7 @@
                                         <td>{{$workout->name}}</td>
                                         <td>{{$workout->price}}</td>
                                         <td>
-                                            <p class="width-text text-wrap">{{$workout->description}}</p>
+                                            <p class="width-text text-wrap">{{$workout->limitedDescription}}</p>
                                         </td>
                                         <td>
                                             <img class="img-width" src="{{ asset('storage/images/admin/workout/'.$workout->image) }}">
@@ -61,14 +61,12 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="container">
-                        {{ $workouts->links() }}
-                       </div>
                         <!-- /.card-body -->
                     </div>
                     
                     <!-- /.card -->
                 </div>
+                <div>{{ $workouts->links() }}</div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

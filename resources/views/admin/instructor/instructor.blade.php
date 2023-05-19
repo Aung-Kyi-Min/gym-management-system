@@ -24,7 +24,7 @@
                             </form>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                        <div class="card-body table-responsive p-0" style="height: 400px;">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
@@ -45,7 +45,9 @@
                                         
                                         <td>{{ $instructor->id }}</td>
                                         <td>{{ $instructor->name }}</td>
-                                        <td>{{ $instructor->email }}</td>
+                                        <td>
+                                            <p class="width-text text-wrap">{{$instructor->limitedEmail}}</p>
+                                        </td>
                                         <td>{{ $instructor->speciality }}</td>
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>

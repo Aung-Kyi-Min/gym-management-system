@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Instructor;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
 use App\Exports\InstructorsExport;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorUpdateRequest;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 
@@ -78,9 +77,13 @@ class InstructorController extends Controller
     public function instructor(Request $request)
     {
         $search = $request->input('search', '');
-
         $instructors = $this->instructorService->search($search);
-
+        
+        foreach ($instructors as $instructor) 
+        {
+            $instructor->limitedEmail = Str::limit($instructor->email,20);
+        }
+        
         return view('admin.instructor.instructor', compact('instructors', 'search'));
     }
 

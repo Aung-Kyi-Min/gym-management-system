@@ -35,6 +35,10 @@ class UserController extends Controller
     //
     public function Userprofile()
     {
+        if (Auth::guest())
+        {
+            return redirect()->route('auth.login');
+        }
         return view('user.profile');
     }
 
@@ -45,7 +49,8 @@ class UserController extends Controller
 
     public function feedback()
     {
-        if (Auth::guest()) {
+        if (Auth::guest())
+        {
             return redirect()->route('auth.login');
         }
         return view('user.feedback');
@@ -54,7 +59,8 @@ class UserController extends Controller
     public function workout()
     {
 
-        if (Auth::guest()) {
+        if (Auth::guest()) 
+        {
             return redirect()->route('auth.login');
         }
 
@@ -65,7 +71,8 @@ class UserController extends Controller
 
     public function purchase()
     {
-        if (Auth::guest()) {
+        if (Auth::guest())
+        {
             return redirect()->route('auth.login');
         }
         return view('user.purchase');

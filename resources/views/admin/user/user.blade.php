@@ -7,27 +7,26 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card pad">
                         <div class="card-header">
                             <h3 class="card-title">User List</h3>
                             <a href="{{route('admin.create_user')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
-                            <div class="card-tools">
+                            <form action="" method="GET" class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ $search }}">
 
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                     </div>
-
                                 </div>
+                            </form>
                                 <a href="{{ route('export.users') }}" class="btn btn-info btn-sm mt-3" id="export-excel">Export</a>
                                 <a href="{{ route('importusers') }}" class="btn btn-primary btn-sm mt-3">Import</a>
-                            </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                        <div class="card-body table-responsive p-0" style="height: 430px;">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
@@ -50,7 +49,9 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->phone}}</td>
-                                        <td>{{$user->address}}</td>
+                                        <td>
+                                            <p class="width-text text-wrap">{{$user->limitedAddress}}</p>
+                                        </td>
                                         <td>{{$user->gender}}</td>
                                         <td>{{$user->role}}</td>
                                         <td>{{$user->age}}</td>
@@ -72,6 +73,7 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+                    <div class="center">{{$users->links()}}</div> 
                 </div>
             </div>
             <!-- /.row -->
