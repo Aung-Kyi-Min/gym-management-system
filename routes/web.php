@@ -23,9 +23,8 @@ Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
-Route::get('/profile', [UserController::class, 'Userprofile'])->name('user.profile');
+Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
 Route::get('/successPurchase', [UserController::class, 'successPurchase'])->name('user.successPurchase');
-//Route::get('/profile', [UserController::class, 'userprofile'])->name('user.profile');
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
