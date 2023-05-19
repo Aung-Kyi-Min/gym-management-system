@@ -25,7 +25,7 @@ class UsersController extends Controller
 
    public function user()
    {
-      $users = $this->userService->get()->where('role', 1);
+      $users = $this->userService->get();
       
       return view('admin.user.user' , ['users' => $users]);
    }
