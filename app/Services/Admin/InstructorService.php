@@ -9,43 +9,87 @@ use App\Exports\InstructorsExport;
 class InstructorService implements InstructorServiceInterface
 {
 
+   /**
+     * Instructor Dao
+     */
     private $instructorDao;
 
+    /**
+     * Class Instructor
+     * @param InstructorDaoInterface
+     * @return void
+     */
     public function __construct(InstructorDaoInterface $instructorDao)
     {
         $this->instructorDao = $instructorDao;
     }
 
-    public function createInstructors(array $data): void
+    /**
+     * Show Instructor
+     * @return object
+    */
+    public function get() : object
     {
-        $this->instructorDao->createInstructors($data);
-    }
-    public function getInstructors(): object
-    {
-        return $this->instructorDao->getInstructors();
-    }
-
-    public function searchInstructor():object
-    {
-        return $this->instructorDao->searchInstructor();
-    }
-    public function getInstructorById($id): object
-    {
-        return $this->instructorDao->getInstructorById($id);
-    }
-    public function updateInstructor(array $data, $id): void
-    {
-        $this->instructorDao->updateInstructor($data, $id);
+        return $this->instructorDao->get();
     }
 
-    public function deleteInstructorById($id): void
+    /**
+     * Store Instructor
+     * @return void
+    */
+    public function store() : void
     {
-        $this->instructorDao->deleteInstructorById($id);
+        $this->instructorDao->store();
+        $name = request()->file('image')->getClientOriginalName();
+        request()->file('image')->storeAs('public/images/admin/instructor' , $name);  
     }
 
+     /**
+     * Return Instructor
+     * @return object
+    */
+    public function edit($id) : object
+    {
+        return $this->instructorDao->edit($id);
+    }
+
+    /**
+     * Update Instructor
+     * @return void
+    */
+    public function update($id) : void
+    {
+        $name = request()->file('image')->getClientOriginalName();
+        request()->file('image')->storeAs('public/images/admin/instructor' , $name);
+        $this->instructorDao->update($id);
+    }
+
+     /**
+     * Destroy Instructor
+     * @return void 
+    */
+    public function destroy($id) : void
+    {
+        $this->instructorDao->destroy($id);
+    }
+
+     /**
+    * export Instructor
+    * @return object
+    */
     public function export(): object
     {
         $data = $this->instructorDao->export();
         return $data;
     }
+
+    /**
+    * search Instructor
+    * @return object
+    */  
+    public function search($search): object
+    {
+       return  $this->instructorDao->search($search);
+    }
+
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkoutRequest;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
@@ -20,19 +22,25 @@ class WorkoutController extends Controller
     {
        $this->workoutService = $workoutServiceInterface;
     }
- 
- 
-    public function workout() 
-    {
-       $workouts = $this->workoutService->get();
-       return view('admin.workout.workout' , ['workouts' => $workouts]);
-    }
- 
+
     public function create()
     {
        return view('admin.workout.workoutCreate');
     }
  
+    public function workout(Request $request)
+    {
+        $search = $request->input('search', '');
+        $workouts = $this->workoutService->search($search);
+        
+        foreach ($workouts as $workout) 
+        {
+            $workout->limitedDescription =Str::limit($workout->description, 40);
+        }
+        
+        return view('admin.workout.workout', compact('workouts', 'search'));
+    }
+
     /**
       * Store Workout
       * @return void
@@ -70,5 +78,5 @@ class WorkoutController extends Controller
        $this->workoutService->destroy($id);
        return redirect('/admin/workout');
     }
- 
+
  }

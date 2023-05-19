@@ -14,13 +14,19 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form action="">
+                                <div class="mt-2 clearfix">
+                                    <img class="user_img" src="">
+                                    <label for="image" class="form-label upload">Upload</label>
+                                    <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
+                                    <span class="error">@error('image'){{$message}}@enderror</span>
+                                </div>
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="Admin Name" id="name" name="name" class='form-control' />
+                                    <input type="text" placeholder="Admin Name" id="name" name="name" class='form-control' value="{{ old('name') }}"/>
                                 </div>
                                 <div class="mt-2">
                                     <label for="email">Email</label>
-                                    <input type="text" placeholder="Email" id="email" name="email" class='form-control' />
+                                    <input type="text" placeholder="Email" id="email" name="email" class='form-control'  value=""/>
                                 </div>
 
                                 <div class="mt-2">
@@ -28,11 +34,6 @@
                                     <input type="password" placeholder="Password" id="password" name="password" class='form-control' />
                                 </div>
                                 
-                                <div class="mt-2">
-                                    <label for="image">Image</label>
-                                    <input type="file" id="image"  name="image" class='form-control' />
-                                </div>
-
                                 <div class="mt-2">
                                     <label for="textarea">Address</label>
                                     <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control"></textarea>

@@ -2,78 +2,89 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
+use App\Exports\InstructorsExport;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorUpdateRequest;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
-use App\Models\Instructor;
-use App\Exports\InstructorsExport;
-use Maatwebsite\Excel\Excel;
 
 class InstructorController extends Controller
 {
     private $instructorService;
-
-    public function __construct(InstructorServiceInterface $instructorServiceInterface) {
-        $this->instructorService = $instructorServiceInterface;
+ 
+    /**
+      * Create a new controller instance.
+      * @param InstructorInterface $taskServiceInterface
+      * @return void
+      */
+ 
+    public function __construct(InstructorServiceInterface $instructorServiceInterface) 
+    {
+       $this->instructorService =  $instructorServiceInterface;
     }
-
+ 
     public function create()
     {
-        return view('admin.instructor.instructorCreate');
+       	return view('admin.instructor.instructorCreate');
     }
-
-    public function index() {
-        $instructors = $this->instructorService->getInstructors();
-        return view('admin.instructor.instructor', compact('instructors'));
-    }
-
-
+ 
+    /**
+      * Store Instructor
+      * @return void
+     */
     public function store(InstructorCreateRequest $request)
     {
-        $this->instructorService->createInstructors($request->all());
-        session()->flash('success', 'Instructor created successfully! .');
-        return redirect()->route('admin.instructor')->with('success', 'Instructor created successfully!');
+       $this->instructorService->store($request->only([
+        'name',
+        'speciality',
+        'image',
+        'email',
+        'price',
+        'access_time',
+        
+       ]));
+       return redirect('/admin/instructor');
     }
-
-    public function search()
-    {
-        $instructors = $this->instructorService->searchInstructor();
-        return view('admin.instructor.instructor', compact('instructors'));
-    }
-
+ 
     public function edit($id)
     {
-        $instructor= $this->instructorService->getInstructorById($id);
-        return view('admin.instructor.instructorEdit',compact('instructor'));
-
+       $instructor = $this->instructorService->edit($id);
+       return view('admin.instructor.instructorEdit' , ['instructor' => $instructor]);
     }
-    public function update(InstructorUpdateRequest $request, $id)
+ 
+    public function update(InstructorUpdateRequest $request ,$id)
     {
-        $data = $request->only([
-            'name',
-            'speciality',
-            'email',
-            'price',
-            'access_time',
-            'image',
-        ]);
-        $this->instructorService->updateInstructor($data, $id);
-
-        return redirect()->route('admin.instructor')->with('message', 'Student updated successfully.');
+       $this->instructorService->update($id , $request->only([
+         'name',
+         'speciality',
+         'image',
+         'email',
+         'price',
+         'access_time',
+       ]));
+       
+       return redirect('/admin/instructor');
     }
-
-    public function destory($id)
+ 
+    public function destroy($id) 
     {
-        $this->instructorService->deleteInstructorById($id);
-        session()->flash('success', 'The instructor has been successfully deleted.');
-        return redirect()->route('admin.instructor');
+       $this->instructorService->destroy($id);
+       return redirect('/admin/instructor');
     }
 
-    public function exportInstructors()
+    public function instructor(Request $request)
     {
-        return $this->instructorService->export();
+        $search = $request->input('search', '');
+        $instructors = $this->instructorService->search($search);
+        
+        foreach ($instructors as $instructor) 
+        {
+            $instructor->limitedEmail = Str::limit($instructor->email,20);
+        }
+        
+        return view('admin.instructor.instructor', compact('instructors', 'search'));
     }
-
 
 }

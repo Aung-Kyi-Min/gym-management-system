@@ -1,5 +1,23 @@
+.clearfix {
+    overflow: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 .pad {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .error {
@@ -15,7 +33,73 @@
     word-wrap: break-word;
 }
 
+.margin-reset {
+   margin: 0 !important;
+}
+
+.list-header {
+    padding: 10px 10px 0 0;
+}
+
+.search-header {
+    padding: 10px 0 0 0;
+}
+
+.exim {
+    padding: 0 0 0 20px;
+}
+
 .img-width {
+    width: 100px;
+    height: 100px;
+}
+
+.user_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    float: left;
+}
+
+.user_img2 {
     width: 50px;
     height: 50px;
+    border-radius: 50%;
+    float: right;
 }
+
+.img_upload {
+    display: none;
+}
+
+.upload {
+    margin: 40px 40px 20px 40px;
+    background-color: lightgray;
+    color: #343a40;
+    border: #343a40;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+#toggle {
+    display: none;
+}
+
+.center {
+    margin: 0 auto;
+    width: 20%;
+}
+
+.dark-mode input:-webkit-autofill,
+.dark-mode input:-webkit-autofill:focus,
+.dark-mode input:-webkit-autofill:hover,
+.dark-mode select:-webkit-autofill,
+.dark-mode select:-webkit-autofill:focus,
+.dark-mode select:-webkit-autofill:hover,
+.dark-mode textarea:-webkit-autofill,
+.dark-mode textarea:-webkit-autofill:focus,
+.dark-mode textarea:-webkit-autofill:hover {
+    -webkit-text-fill-color: #000 !important;
+}
+
+

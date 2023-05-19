@@ -15,6 +15,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
@@ -28,6 +29,7 @@
                             <span class="info-box-number">
                                 {{$userCounts}}
                                 <small>accounts</small>
+
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -89,15 +91,112 @@
         </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BAR CHART -->
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Data For 2023</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col (RIGHT) -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+
 </div>
 <!-- /.content-wrapper -->
 <script src="../js/sweetalert.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/chart.js/Chart.min.js"></script>
+<script>
+    $(function() {
+
+        var areaChartData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Auguest', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                    label: 'Users',
+                    backgroundColor: 'rgba(60,141,188,0.9)',
+                    borderColor: 'rgba(60,141,188,0.8)',
+                    pointRadius: false,
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: [
+                        <?php for ($i = 1; $i < 12; $i++) : ?>
+                            <?php echo $userCount[$i]; ?>
+                            <?php if ($i < 12) : ?>
+                                <?php echo ","; ?>
+                            <?php endif ?>
+                        <?php endfor ?>
+                    ]
+                },
+                {
+                    label: 'Members',
+                    backgroundColor: 'rgba(210, 214, 222, 1)',
+                    borderColor: 'rgba(210, 214, 222, 1)',
+                    pointRadius: false,
+                    pointColor: 'rgba(210, 214, 222, 1)',
+                    pointStrokeColor: '#c1c7d1',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(220,220,220,1)',
+                    data: [
+                        <?php for ($i = 1; $i < 12; $i++) : ?>
+                            <?php echo $memberCount[$i]; ?>
+                            <?php if ($i < 12) : ?>
+                                <?php echo ","; ?>
+                            <?php endif ?>
+                        <?php endfor ?>
+                    ]
+                },
+            ]
+        }
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+        var barChartData = $.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        var temp1 = areaChartData.datasets[1]
+        barChartData.datasets[0] = temp1
+        barChartData.datasets[1] = temp0
+
+        var barChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            datasetFill: false
+        }
+
+        new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: barChartOptions
+        })
+    })
+</script>
 @if (Session::has('message'))
-    <script>
-        swal("Message", "{{ Session::get('message') }}", 'success', {
-            button: true,
-            button: "Ok",
-        });
-    </script>
+<script>
+    swal("Message", "{{ Session::get('message') }}", 'success', {
+        button: true,
+        button: "Ok",
+    });
+</script>
 @endif
 @endsection

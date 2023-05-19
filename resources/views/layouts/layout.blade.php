@@ -99,17 +99,13 @@
                                 @if (Auth::check())
                                     <a href="{{ route('user.profile') }}"
                                         class="nav-link btn btn-primary btn-sm">Profile</a>&nbsp;
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        style="display:none;">
-                                        @csrf
-                                    </form>
-                                    <a class="nav-link btn btn-light btn-sm"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
+                                    <a href="{{ route('logout') }}" class="nav-link btn btn-light btn-sm">Logout</a>
                                 @else
                                     <a href="{{ route('auth.login') }}" class="nav-link text-dark">
                                         Login
+                                    </a>
+                                    <a href="{{ route('auth.register') }}" class="nav-link text-dark">
+                                        Register
                                     </a>
                                 @endif
                             </div>

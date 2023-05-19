@@ -39,8 +39,7 @@ class UserService implements UserServiceInterface
     {
         $this->userDao->store();
         $name = request()->file('image')->getClientOriginalName();
-        //request()->file('image')->storeAs('public/images/admin/workout' , $name);
-        request()->file('image')->move(public_path('/images/admin/workout'), $name);
+        request()->file('image')->storeAs('public/images/admin/user' , $name);
     }
 
     /**
@@ -56,12 +55,11 @@ class UserService implements UserServiceInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void
+    public function update($id , array $data) : void
     {
-        $this->userDao->update($id);
+        $this->userDao->update($id , $data);
         $name = request()->file('image')->getClientOriginalName();
-        //request()->file('image')->storeAs('public/images/admin/workout' , $name);
-        request()->file('image')->move(public_path('/images/admin/workout'), $name);
+        request()->file('image')->storeAs('public/images/admin/user' , $name);
     }
 
      /**
@@ -73,4 +71,12 @@ class UserService implements UserServiceInterface
         $this->userDao->destroy($id);
     }
 
+    /**
+    * search user
+    * @return object
+    */  
+    public function search($search): object
+    {
+       return  $this->userDao->search($search);
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WorkoutRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class WorkoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'price' => 'required|integer',
-            'image' => 'required|file|mimes:png,jpg,jpeg',
-            'description' => 'required',
+            'email' => ['required', 'email', 'exists:users,email'],
+            'password' => ['required'],
         ];
     }
 }

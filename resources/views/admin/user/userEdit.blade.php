@@ -15,6 +15,13 @@
                         <div class="card-body">
                             <form action="{{route('admin.update_user' , $user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                <div class="mb-2 clearfix">
+                                    <img class="user_img" src="{{ asset('storage/images/admin/user/'.$user->image) }}">
+                                    <label for="image" class="form-label upload">Upload</label>
+                                    <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
+                                    <span class="error">@error('image'){{$message}}@enderror</span>
+                                </div>
+
                                 <div class="mt-2">
                                     <label for="name">Name</label>
                                     <input type="text" placeholder="User Name" value="{{$user->name}}" id="name" name="name" class='form-control' />
@@ -55,12 +62,6 @@
                                         <option value="1" @if($user->role === '1') selected @endif>User</option>
                                     </select>
                                     <span class="error">@error('role'){{$message}}@enderror</span>
-                                </div>
-
-                                <div class="mt-2">
-                                    <label for="image">Image</label>
-                                    <input type="file" id="image"  name="image" class='form-control' />
-                                    <span class="error">@error('image'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
