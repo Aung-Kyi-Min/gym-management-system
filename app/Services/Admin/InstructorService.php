@@ -74,12 +74,22 @@ class InstructorService implements InstructorServiceInterface
     }
 
      /**
-     * export Instructor
-     * @return object
+    * export Instructor
+    * @return object
     */
     public function export(): object
     {
         $data = $this->instructorDao->export();
         return $data;
     }
+
+    /**
+    * search Instructor
+    * @return object
+    */  
+    public function search($search): object
+    {
+       return  $this->instructorDao->search($search);
+    }
+
 }
