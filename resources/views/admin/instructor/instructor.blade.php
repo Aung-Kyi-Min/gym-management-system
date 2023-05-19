@@ -14,20 +14,20 @@
                                 <a href="{{route('admin.create_instructor')}}" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
                             </div>
                             <div class="card-tools search-header right clearfix">
+                                <form mdthod="get">
                                 <div class="input-group input-group-sm left" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control  float-right" placeholder="Search">
-
+                                    <input type="text" name="search" class="form-control  float-right" placeholder="Search" value="{{ $search }}">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
-
                                 </div>
+                                <form>
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0" style="height: 500px;">
+                        <div class="card-body table-responsive p-0">
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
@@ -48,7 +48,9 @@
 
                                         <td>{{ $instructor->id }}</td>
                                         <td>{{ $instructor->name }}</td>
-                                        <td>{{ $instructor->email }}</td>
+                                        <td>
+                                            <p class="width-text text-wrap">{{$instructor->limitedEmail}}</p>
+                                        </td>
                                         <td>{{ $instructor->speciality }}</td>
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>

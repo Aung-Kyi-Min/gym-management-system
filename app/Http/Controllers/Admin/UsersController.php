@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\UserCreateRequest;
 use App\Contracts\Services\Admin\UserServiceInterface;
 
 class UsersController extends Controller
@@ -23,59 +25,66 @@ class UsersController extends Controller
        $this->userService = $userServiceInterface;
     }
 
-   public function user()
-   {
-      $users = $this->userService->get()->where('role', 1);
-      
-      return view('admin.user.user' , ['users' => $users]);
-   }
+    public function create()
+    {
+        return view('admin.user.userCreate');
+    }
 
-   public function create()
-   {
-      return view('admin.user.userCreate');
-   }
+    public function user(Request $request)
+    {
+        $search = $request->input('search', '');
+       
+        $users = $this->userService->get()->where('role', 1);
+        $users_search = $this->userService->search($search);
+    
+        foreach ($users as $user) {
+            $user->limitedAddress = Str::limit($user->address, 50);
+        }
+    
+        return view('admin.user.user', compact('users', 'users_search', 'search'));
+    }
+    
+    public function store(UserCreateRequest $request) 
+    {
+        $this->userService->store($request->only([
+            'name',
+            'email',
+            'password',
+            'phone',
+            'gender',
+            'age',
+            'role',
+            'image',
+            'address'
+        ]));
+        return redirect('/admin/user');
+    }
 
-   public function store(UserCreateRequest $request) 
-   {
-      $this->userService->store($request->only([
-         'name',
-         'email',
-         'password',
-         'phone',
-         'gender',
-         'age',
-         'role',
-         'image',
-         'address'
-      ]));
-      return redirect('/admin/user');
-   }
+    public function edit($id) 
+    {
+        $user = $this->userService->edit($id);
+        return view('admin.user.userEdit' ,['user' => $user]);
+    }
 
-   public function edit($id) 
-   {
-      $user = $this->userService->edit($id);
-      return view('admin.user.userEdit' ,['user' => $user]);
-   }
+    public function update(UserEditRequest $request ,$id)
+    {
+        $this->userService->update($id , $request->only([
+            'name',
+            'password',
+            'phone',
+            'gender',
+            'age',
+            'role',
+            'image',
+            'address'
+        ]));
+        return redirect('/admin/user');
+    }
 
-   public function update(UserEditRequest $request ,$id)
-   {
-      $this->userService->update($id , $request->only([
-         'name',
-         'password',
-         'phone',
-         'gender',
-         'age',
-         'role',
-         'image',
-         'address'
-      ]));
-      return redirect('/admin/user');
-   }
-
-   public function destroy($id) 
-   {
-      $this->userService->destroy($id);
-      return redirect('/admin/user');
-   }
+    public function destroy($id) 
+    {
+        $this->userService->destroy($id);
+        return redirect('/admin/user');
+    }
 
 }

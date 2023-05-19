@@ -32,11 +32,19 @@ class UserController extends Controller
        $this->adminService = $adminServiceInterface;
     }
 
-    //
     public function Userprofile()
+
     {
-        return view('user.profile');
+        if (Auth::guest()) 
+        {
+            return redirect()->route('auth.login');
+        }
+
+        $user = Auth::user(); // Retrieve the currently logged-in user
+
+        return view('user.profile', ['user' => $user]);
     }
+
 
     public function index()
     {
@@ -45,7 +53,8 @@ class UserController extends Controller
 
     public function feedback()
     {
-        if (Auth::guest()) {
+        if (Auth::guest())
+        {
             return redirect()->route('auth.login');
         }
         return view('user.feedback');
@@ -54,7 +63,8 @@ class UserController extends Controller
     public function workout()
     {
 
-        if (Auth::guest()) {
+        if (Auth::guest()) 
+        {
             return redirect()->route('auth.login');
         }
 
@@ -65,7 +75,8 @@ class UserController extends Controller
 
     public function purchase()
     {
-        if (Auth::guest()) {
+        if (Auth::guest())
+        {
             return redirect()->route('auth.login');
         }
         return view('user.purchase');

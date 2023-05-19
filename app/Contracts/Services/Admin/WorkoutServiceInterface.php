@@ -36,4 +36,10 @@ interface WorkoutServiceInterface
      * @return void 
     */
     public function destroy($id) : void;
+
+      /**
+    * search Workout
+    * @return object
+    */  
+    public function search($search): object;
 }

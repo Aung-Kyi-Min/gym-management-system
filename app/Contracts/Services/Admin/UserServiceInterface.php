@@ -36,4 +36,10 @@ interface UserServiceInterface
      * @return void 
     */
     public function destroy($id) : void;
+
+    /**
+    * search user
+    * @return object
+    */  
+    public function search($search): object;
 }

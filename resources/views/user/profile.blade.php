@@ -10,8 +10,14 @@
                         <div class="container pt-4 bg-primary">
                             <img class="card-img-top rounded-circle img-circle bg-light" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title">John Doe</h4>
-                                <p class="card-text">User</p>
+                                <h4 class="card-title">{{ $user->name }}</h4>
+                                <p>
+                                    @if ($user->role == 1)
+                                        User
+                                    @elseif ($user->role == 2)
+                                        Admin
+                                    @endif
+                                </p>
                                 <div class="custom-file">
                                     <input style="display:none" type="file" name="image" id="my-file">
                                     <button type="button" class="btn btn-outline-dark rounded-pill" onclick="document.getElementById('my-file').click()">Upload</button>
@@ -37,32 +43,37 @@
                     </ul>
                     <div class="tab-content p-3">
                         <div class="tab-pane active show" id="profile">
-                            <h5 class="mb-3">JOHN DOE</h5>
+                            <h5 class="mb-3">{{ $user->name }}</h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <h6>Email</h6>
                                     <p>
-                                        aaa@gmail.com
+                                    {{ $user->email }}
                                     </p>
                                     <h6>Role</h6>
                                     <p>
-                                        User
+                                        @if ($user->role == 1)
+                                            User
+                                        @elseif ($user->role == 2)
+                                            Admin
+                                        @endif
                                     </p>
                                     <h6>Gender</h6>
                                     <p>
-                                        Female
+                                    {{ $user->gender}}
                                     </p>
+
                                     <h6>Age</h6>
                                     <p>
-                                        45
+                                    {{ $user->age}}
                                     </p>
                                     <h6>Phone</h6>
                                     <p>
-                                        09247874784
+                                    {{ $user->phone}}
                                     </p>
                                     <h6>Address</h6>
                                     <p>
-                                        No.44545,Yangon
+                                    {{ $user->address}}
                                     </p>
                                 </div>
 
@@ -75,36 +86,43 @@
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">ID</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" placeholder="Enter ID">
+                                        <input class="form-control" type="text" placeholder="Enter ID" value="{{ $user->id }}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Name</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" placeholder="John">
+                                        <input class="form-control" type="text" placeholder="John" value="{{ $user->name }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="email" placeholder="aa@example.com">
+                                        <input class="form-control" type="email" placeholder="aa@example.com" value="{{ $user->email }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="password" placeholder="">
+                                        <input class="form-control" type="password" placeholder="Enter your passowrd">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Gender</label>
-                                    <div class="custom-control custom-radio col-lg-6">
-                                        <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="Male">
-                                        <label class="custom-control-label" for="customRadio">Male</label>
-
-                                        <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="Female">
-                                        <label class="custom-control-label" for="customRadio">Female</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">New Password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="password" placeholder="Enter your new passowrd">
                                     </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Gender</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" name="gender">
+                                            <option value="Male" {{ $user->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                            <option value="Female" {{ $user->gender == 'Female' ? 'selected' : '' }}>Female</option>
+                                        </select>
+                                    </div>
+
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Age</label>
