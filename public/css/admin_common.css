@@ -1,3 +1,21 @@
+.clearfix {
+    overflow: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 .pad {
     margin-top: 20px;
 }
@@ -15,9 +33,20 @@
     word-wrap: break-word;
 }
 
-.create-btn {
-    margin-left: -65px;
-    margin-top: 30px !important;
+.margin-reset {
+   margin: 0 !important;
+}
+
+.list-header {
+    padding: 10px 10px 0 0;
+}
+
+.search-header {
+    padding: 10px 0 0 0;
+}
+
+.exim {
+    padding: 0 0 0 20px;
 }
 
 .img-width {

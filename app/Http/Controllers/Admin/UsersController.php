@@ -33,15 +33,17 @@ class UsersController extends Controller
     public function user(Request $request)
     {
         $search = $request->input('search', '');
-        $users = $this->userService->search($search);
-        
+       
+        $users = $this->userService->get()->where('role', 1);
+        $users_search = $this->userService->search($search);
+    
         foreach ($users as $user) {
             $user->limitedAddress = Str::limit($user->address, 50);
         }
-        
-        return view('admin.user.user', compact('users', 'search'));
+    
+        return view('admin.user.user', compact('users', 'users_search', 'search'));
     }
-
+    
     public function store(UserCreateRequest $request) 
     {
         $this->userService->store($request->only([

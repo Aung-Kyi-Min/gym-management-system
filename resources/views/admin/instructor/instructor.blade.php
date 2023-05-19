@@ -8,20 +8,23 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Instructor List</h3>
-                            <a href="{{route('admin.create_instructor')}}"  class="btn bg-gradient-primary create-btn mt-3">Create</a>
-                            <form action="" method="GET" class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ $search }}">
-
+                        <div class="card-header clearfix">
+                            <div class="left clearfix">
+                                <h3 class="card-title list-header left">Instructor List</h3>
+                                <a href="{{route('admin.create_instructor')}}" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
+                            </div>
+                            <div class="card-tools search-header right clearfix">
+                                <form mdthod="get">
+                                <div class="input-group input-group-sm left" style="width: 150px;">
+                                    <input type="text" name="search" class="form-control  float-right" placeholder="Search" value="{{ $search }}">
                                     <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
-                            </form>
+                                <form>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
@@ -40,9 +43,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($instructors as $instructor)
+                                    @foreach ($instructors as $instructor)
                                     <tr>
-                                        
+
                                         <td>{{ $instructor->id }}</td>
                                         <td>{{ $instructor->name }}</td>
                                         <td>
@@ -51,26 +54,26 @@
                                         <td>{{ $instructor->speciality }}</td>
                                         <td>{{ $instructor->price }}</td>
                                         <td>{{ $instructor->access_time}}</td>
-                                        <td> 
-                                            <img src="{{ asset('storage/images/admin/instructor/' . $instructor->image) }}" alt="Instructor Image" class="img-width"> 
+                                        <td>
+                                            <img src="{{ asset('storage/images/admin/instructor/' . $instructor->image) }}" alt="Instructor Image" class="img-width">
                                         </td>
                                         <td>
                                             <form action="{{ url('/admin/instructor/destory/'.$instructor->id) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
-                                                <a href="{{ url('/admin/instructor/'.$instructor->id.'/edit') }}"class="btn bg-gradient-primary btn-sm">Edit</a>
+                                                <a href="{{ url('/admin/instructor/'.$instructor->id.'/edit') }}" class="btn bg-gradient-primary btn-sm">Edit</a>
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this instructor?')"> Delete </button>
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                     </div>
-                    <div class="container"> 
-                     {{ $instructors->links()}}
+                    <div class="container">
+                        {{ $instructors->links()}}
                         @if (session()->has('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}

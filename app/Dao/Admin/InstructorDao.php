@@ -14,7 +14,7 @@ class InstructorDao implements InstructorDaoInterface
     */
     public function get(): object
     {
-        return Instructor::orderBy('instructors.created_at', 'asc')->paginate(3);
+        return Instructor::orderBy('instructors.created_at', 'asc')->paginate(5);
     }
 
     /**
@@ -95,6 +95,6 @@ class InstructorDao implements InstructorDaoInterface
                 ->orWhere('price', 'LIKE', "%$search%")
                 ->orWhere('access_time', 'LIKE', "%$search%");
         }
-        return $query->paginate(3);
+        return $query->paginate(5);
     }
 }
