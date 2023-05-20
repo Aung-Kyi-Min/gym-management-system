@@ -17,11 +17,14 @@ class AdminService implements AdminServiceInterface
         $this->adminDao = $adminDao;
     }
 
+    /**
+    * export Instructor
+    * @return object
+    */ 
     public function exportuser(): object
     {
         $users = $this->adminDao->exportuser();
         return $users;
-
     }
 
 }

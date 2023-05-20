@@ -8,38 +8,44 @@ namespace App\Contracts\Services\Admin;
 interface InstructorServiceInterface
 {
   /**
-     * Show Instructor
-     * @return object
+    * Show Instructor
+    * @return object
     */
     public function get() : object;
 
     /**
-     * Store Instructor
-     * @return void
+    * Store Instructor
+    * @return void
     */
     public function store() : void;
 
-     /**
-     * Return Specific Instructor
-     * @return object
+    /**
+    * Return Specific Instructor
+    * @return object
     */
     public function edit($id) : object;
 
     /**
-     * Update Instructor
-     * @return void
+    * Update Instructor
+    * @return void
     */
     public function update($id) : void;
 
     /**
-     * Destroy Instructor
-     * @return void 
+    * Destroy Instructor
+    * @return void 
     */
     public function destroy($id) : void;
   
     /**
-     * return export instructors
-     */
+    * return export instructors
+    */
     public function export(): object;
+
+    /**
+    * search Instructor
+    * @return object
+    */  
+    public function search($search): object;
   
 }

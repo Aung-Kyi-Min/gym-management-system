@@ -4,6 +4,8 @@ namespace App\Services\Admin;
 
 use App\Contracts\Dao\Admin\UserDaoInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SignUp;
 
 class UserService implements UserServiceInterface
 {
@@ -38,6 +40,7 @@ class UserService implements UserServiceInterface
     public function store() : void
     {
         $this->userDao->store();
+        Mail::to(request('email'))->send(new SignUp());
         $name = request()->file('image')->getClientOriginalName();
         request()->file('image')->storeAs('public/images/admin/user' , $name);
     }
@@ -55,9 +58,9 @@ class UserService implements UserServiceInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void
+    public function update($id , array $data) : void
     {
-        $this->userDao->update($id);
+        $this->userDao->update($id , $data);
         $name = request()->file('image')->getClientOriginalName();
         request()->file('image')->storeAs('public/images/admin/user' , $name);
     }
@@ -71,4 +74,12 @@ class UserService implements UserServiceInterface
         $this->userDao->destroy($id);
     }
 
+    /**
+    * search user
+    * @return object
+    */  
+    public function search($search): object
+    {
+       return  $this->userDao->search($search);
+    }
 }

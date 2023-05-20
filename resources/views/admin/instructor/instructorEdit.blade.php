@@ -20,9 +20,7 @@
                                 <div class="mt-3 clearfix">
                                         <img class="user_img" src="{{ asset('storage/images/admin/instructor/'.$instructor->image) }}">
                                         <label for="image" class="form-label upload">Upload</label>
-                                        
                                         <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
-                                        <span class="error">@error('image'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-3">
@@ -51,11 +49,13 @@
                                 <div class="mt-3">
                                     <label for="time">Time</label>
                                     <select name="access_time" id="time" class="form-control">
-                                        <option value="morning">Morning Time</option>
-                                        <option value="noon">Noon Time</option>
-                                        <option value="evening">Evening Time</option>
+                                        <option value="morning" @if($instructor->access_time === 'morning') selected @endif>Morning Time</option>
+                                        <option value="noon" @if($instructor->access_time === 'noon') selected @endif>Noon Time</option>
+                                        <option value="evening" @if($instructor->access_time === 'evening') selected @endif>Evening Time</option>
                                     </select>
                                 </div>
+                                <span class="text-danger">{{$errors->first('access_time')}}</span>
+
                                 <div class="mt-4">
                                     <button type="submit" class=" btn btn-dark">
                                         Update

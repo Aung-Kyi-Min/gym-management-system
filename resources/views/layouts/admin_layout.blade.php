@@ -54,8 +54,8 @@
                     <div class="info">
                         <p id="call2">Alexander Pierce</p>
                         <form id="toggle"> 
-                            <a href="{{route('admin.edit')}}" type="button" class="btn bg-gradient-primary">Edit</a>  
-                            <button type="button" class="btn bg-gradient-danger">Logout</button>
+                            <a href="{{route('admin.edit')}}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>  
+                            <a href="{{ route('logout') }}" class="btn btn-sm bg-gradient-danger">Logout</a>
                         </form>
                     </div>
                     
@@ -82,11 +82,11 @@
                             <a href="{{route('admin.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Admin Index
+                                    Admin Dashboard
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">Output Section</li>
+                        
                         <li class="nav-item">
                             <a href="{{route('admin.user')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
@@ -175,6 +175,7 @@
     <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
     <script type="text/javascript" src="/js/anchor.js"></script>
+    <script src="/js/admin.js"></script>
 </body>
 
 </html>

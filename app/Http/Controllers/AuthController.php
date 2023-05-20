@@ -47,13 +47,11 @@ class AuthController extends Controller
             'age',
             'phone',
         ]));
-
-        $imageName = time() . '.' . $request->image->extension();
-
-        $request->image->move(public_path('profile'), $imageName);
-
+        $name = request()->file('image')->getClientOriginalName();
+        request()->file('image')->storeAs('public/images/admin/user', $name);
         return redirect()->route('auth.login')
-            ->with('message', 'Your have Registered Successfully...');
+        ->with('message', 'Your have Registered Successfully...');
+
     }
 
     public function LoginUser(LoginRequest $request)
@@ -71,7 +69,8 @@ class AuthController extends Controller
                 return redirect()->route('admin.index')
                     ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
-            } else {
+            } else
+            {
                 return redirect()->route('user.index')
                     ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
