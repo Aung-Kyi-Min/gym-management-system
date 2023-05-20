@@ -43,8 +43,7 @@ class UserController extends Controller
             return redirect()->route('auth.login');
         }
 
-        $user = Auth::user(); // Retrieve the currently logged-in user
-
+        $user = Auth::user();
         return view('user.profile')->with('user', $user);
         ;
     }
