@@ -25,13 +25,13 @@
                         <div>
                             <input type="password" placeholder="Password" value="{{ old('password') }}" name="password" />
                             @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                <span class="text-danger">{{ $errors->first('password') }} </span> 
                             @endif
                         </div>
                         <div>
                             <input type="password" placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" />
-                            @if ($errors->has('password_confirmation'))
-                                <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                            @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
                         <div>
