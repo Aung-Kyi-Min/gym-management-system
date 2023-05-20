@@ -90,6 +90,30 @@
     width: 20%;
 }
 
+.none {
+    display: none;
+}
+
+.button {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #454d55;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+}
+
+.active {
+    background-color: whitesmoke;
+    color: #454d55;
+    border: 1px solid #454d55;
+}
+
+.button:hover {
+    background-color: whitesmoke;
+    color: #454d55;
+    border: 1px solid #454d55;
+}
+
 .dark-mode input:-webkit-autofill,
 .dark-mode input:-webkit-autofill:focus,
 .dark-mode input:-webkit-autofill:hover,
