@@ -28,8 +28,8 @@ class InstructorController extends Controller
  
     public function create()
     {
-        
-       	return view('admin.instructor.instructorCreate');
+      $loginuser = auth()->user();
+      return view('admin.instructor.instructorCreate' , ['loginuser' => $loginuser]);
     }
  
     /**

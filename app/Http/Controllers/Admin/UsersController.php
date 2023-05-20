@@ -27,7 +27,8 @@ class UsersController extends Controller
 
     public function create()
     {
-        return view('admin.user.userCreate');
+        $loginuser = auth()->user();
+        return view('admin.user.userCreate' , ['loginuser' => $loginuser]);
     }
 
     public function user(Request $request)

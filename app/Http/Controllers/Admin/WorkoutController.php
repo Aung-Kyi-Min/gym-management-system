@@ -25,7 +25,8 @@ class WorkoutController extends Controller
 
     public function create()
     {
-      return view('admin.workout.workoutCreate');
+      $loginuser = auth()->user();
+      return view('admin.workout.workoutCreate' , ['loginuser' => $loginuser]);
     }
  
     public function workout(Request $request)
