@@ -23,8 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
-Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
-Route::get('/profile', [UserController::class, 'Userprofile'])->name('user.profile');
+Route::get('/profiles', [UserController::class, 'userProfile'])->name('user.profile');
 Route::get('/successPurchase', [UserController::class, 'successPurchase'])->name('user.successPurchase');
 
 // auth
@@ -42,8 +41,8 @@ Route::group(['middleware' => ['guest']], function () {
 
 // admin
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-});
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
 Route::get('/admin/member', [AdminController::class, 'member'])->name('admin.member');
 
@@ -84,7 +83,11 @@ Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])
 Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
 Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
 
+});
+
+
 //purchase
 Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
-Route::post('/purchasedMember', [PurchaseController::class, 'calculate'])->name('user.purchaseMember');
-Route::post('/get-price', [App\Http\Controllers\PurchaseController::class, 'getPrice'])->name('get.price');
+Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
+Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
+Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');

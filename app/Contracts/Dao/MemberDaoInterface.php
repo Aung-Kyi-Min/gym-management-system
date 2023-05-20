@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Contracts\Services;
+namespace App\Contracts\Dao;
 
+use SebastianBergmann\Type\VoidType;
 
 /**
  * Interface of Data Access Object for task
  */
-interface PaymentServiceInterface
+interface MemberDaoInterface
 {
     public function store(): void;
 

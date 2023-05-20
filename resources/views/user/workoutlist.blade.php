@@ -15,9 +15,8 @@
               <h4>{{$workout->price}}</h4>
           </div>
           <div class="card-footer">
-              <a href="{{route('user.purchased')}}" class="btn btn-primary">Start Membership</a>
+              <a href="{{route('member.purchase')}}" class="btn btn-primary">Start Membership</a>
           </div>
-
         </div>
         @endforeach
       </div>

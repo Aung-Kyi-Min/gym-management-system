@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class Discount extends Model
 {
     use HasFactory;
 
         protected $fillable = [
-        'member_id',
-        'amount',
-        'payment',
+        'min_months',
+        'max_months',
+        'dis_percent',
     ];
 
-    public function member()
-    {
-        return $this->belongsTo(Member::class);
-    }
 }

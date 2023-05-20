@@ -6,7 +6,7 @@ namespace App\Contracts\Services;
 /**
  * Interface of Data Access Object for task
  */
-interface PaymentServiceInterface
+interface MemberServiceInterface
 {
     public function store(): void;
 

@@ -1,12 +1,9 @@
 <?php
-namespace App\Services\Admin;
+namespace App\Services;
 
-use App\Contracts\Dao\Admin\InstructorDaoInterface;
 use App\Contracts\Dao\PaymentDaoInterface;
-use App\Contracts\Services\Admin\InstructorServiceInterface;
 use App\Contracts\Services\PaymentServiceInterface;
-use Maatwebsite\Excel\Excel;
-use App\Exports\InstructorsExport;
+
 
 class PaymentService implements PaymentServiceInterface
 {
@@ -17,9 +14,9 @@ class PaymentService implements PaymentServiceInterface
         $this->paymentDao = $paymentDao;
     }
 
-    public function store(array $data): void
+    public function store(): void
     {
-        $this->paymentDao->store($data);
+        $this->paymentDao->store();
     }
 
 }

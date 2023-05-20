@@ -33,7 +33,7 @@ class UserController extends Controller
     }
 
     //
-    public function Userprofile()
+    public function userProfile()
     {
         return view('user.profile');
     }

@@ -47,6 +47,7 @@ class AuthController extends Controller
             'age',
             'phone',
         ]));
+
         $imageName = time() . '.' . $request->image->extension();
 
         $request->image->move(public_path('profile'), $imageName);
@@ -142,10 +143,11 @@ class AuthController extends Controller
         return view('Auth.forgetpassword');
     }
 
-    public function reset()
+    public function reset($token)
     {
-        return view('Auth.reset');
+         return view('Auth.reset', ['token' => $token]);
     }
+
     public function logout()
     {
         Auth::logout();

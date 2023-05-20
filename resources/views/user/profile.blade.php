@@ -98,10 +98,11 @@
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Gender</label>
-                                    <div class="custom-control custom-radio col-lg-6">
+                                    <div class="custom-control custom-radio col-lg-2">
                                         <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="Male">
                                         <label class="custom-control-label" for="customRadio">Male</label>
-
+                                    </div>
+                                    <div class="custom-control custom-radio col-lg-6">
                                         <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="Female">
                                         <label class="custom-control-label" for="customRadio">Female</label>
                                     </div>
@@ -118,7 +119,6 @@
                                         <input class="form-control" type="text" value="" placeholder="+95">
                                     </div>
                                 </div>
-
 
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Address</label>

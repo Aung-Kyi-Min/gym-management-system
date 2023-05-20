@@ -9,6 +9,6 @@ use SebastianBergmann\Type\VoidType;
  */
 interface PaymentDaoInterface
 {
-    public function store(array $data): void;
+    public function store(): void;
 
 }

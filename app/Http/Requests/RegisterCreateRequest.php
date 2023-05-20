@@ -26,7 +26,7 @@ class RegisterCreateRequest extends FormRequest
         return [
             'name' => ['required', 'max:255'],
             'email' => ['required', 'max:255', 'email', 'unique:users,email', [ 'email.unique' => 'This email address is already in use.']],
-            'password' => ['required', 'max:225'],
+            'password' => ['required' , 'min:8','confirmed'],
             'role' => ['required'],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
             'address' => ['required','max:225'],
