@@ -20,9 +20,7 @@
                                 <div class="mt-3 clearfix">
                                         <img class="user_img" src="{{ asset('storage/images/admin/instructor/'.$instructor->image) }}">
                                         <label for="image" class="form-label upload">Upload</label>
-                                        
                                         <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
-                                        <span class="error">@error('image'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-3">
