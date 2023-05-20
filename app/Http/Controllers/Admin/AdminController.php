@@ -51,6 +51,7 @@ class AdminController extends Controller
 
    public function index()
    {
+      $loginuser = auth()->user();
       $workout = $this->workoutService->get();
       $workoutCount = $workout->total();
       $instructor = $this->instructorService->get();
@@ -72,6 +73,7 @@ class AdminController extends Controller
                                     'currentMonth' => $currentMonth,
                                     'startDate' => $startDate,
                                     'endDate' => $endDate,
+                                    'loginuser' => $loginuser,
                                    ]
       );
    }
@@ -148,21 +150,25 @@ class AdminController extends Controller
 
    public function edit()
    {
-      return view('admin.edit');
+      $loginuser = auth()->user();
+      return view('admin.edit' , ['loginuser' => $loginuser]);
    }
 
    public function member()
    {
-      return view('admin.member.member');
+      $loginuser = auth()->user();
+      return view('admin.member.member' , ['loginuser' => $loginuser]);
    }
 
    public function created() 
    {
-      return view('email.created');
+      $loginuser = auth()->user();
+      return view('email.created' , ['loginuser' => $loginuser]);
    }
 
    public function expire() 
    {
-      return view('email.expire');
+      $loginuser = auth()->user();
+      return view('email.expire' , ['loginuser' => $loginuser]);
    }
 }

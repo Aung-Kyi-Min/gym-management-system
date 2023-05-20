@@ -32,6 +32,7 @@ class UsersController extends Controller
 
     public function user(Request $request)
     {
+        $loginuser = auth()->user();
         $search = $request->input('search', '');
         $users_search = $this->userService->search($search);
     
@@ -39,7 +40,7 @@ class UsersController extends Controller
             $user->limitedAddress = Str::limit($user->address, 50);
         }
     
-        return view('admin.user.user', compact('users_search', 'search'));
+        return view('admin.user.user', compact('users_search', 'search' , 'loginuser'));
     }
     
     public function store(UserCreateRequest $request) 
@@ -60,8 +61,9 @@ class UsersController extends Controller
 
     public function edit($id) 
     {
+        $loginuser = auth()->user();
         $user = $this->userService->edit($id);
-        return view('admin.user.userEdit' ,['user' => $user]);
+        return view('admin.user.userEdit' ,['user' => $user , 'loginuser' => $loginuser]);
     }
 
     public function update(UserEditRequest $request ,$id)

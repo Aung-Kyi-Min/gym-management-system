@@ -25,20 +25,21 @@ class WorkoutController extends Controller
 
     public function create()
     {
-       return view('admin.workout.workoutCreate');
+      return view('admin.workout.workoutCreate');
     }
  
     public function workout(Request $request)
     {
-        $search = $request->input('search', '');
-        $workouts = $this->workoutService->search($search);
+      $loginuser = auth()->user();
+      $search = $request->input('search', '');
+      $workouts = $this->workoutService->search($search);
         
         foreach ($workouts as $workout) 
         {
             $workout->limitedDescription =Str::limit($workout->description, 40);
         }
         
-        return view('admin.workout.workout', compact('workouts', 'search'));
+        return view('admin.workout.workout', compact('workouts', 'search' , 'loginuser'));
     }
 
     /**
@@ -57,9 +58,10 @@ class WorkoutController extends Controller
     }
  
     public function edit($id)
-    {
-       $workout = $this->workoutService->edit($id);
-       return view('admin.workout.workoutEdit' , ['workout' => $workout]);
+    { 
+      $loginuser = auth()->user();
+      $workout = $this->workoutService->edit($id);
+      return view('admin.workout.workoutEdit' , ['workout' => $workout , 'loginuser' => $loginuser]);
     }
  
     public function update(WorkoutRequest $request ,$id)
