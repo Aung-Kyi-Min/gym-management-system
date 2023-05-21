@@ -10,6 +10,6 @@ interface AdminDaoInterface
   /**
    * return export users
    */
-  public function exportuser(): object;
+    public function exportuser(): object;
 }
 
