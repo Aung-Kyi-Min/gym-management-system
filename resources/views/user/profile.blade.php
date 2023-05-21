@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-lg-8 shadow-sm">
             <div class="card">
                 <div class="card-body">
@@ -45,7 +45,7 @@
                         </li>
                     </ul>
                     <div class="tab-content p-3">
-                        
+
                         <div class="tab-pane active show" id="profile">
                             <h5 class="mb-3">{{ $user->name }}</h5>
                             <div class="row">
@@ -58,7 +58,7 @@
                                     <p>
                                         @if ($user->role == 1)
                                             User
-                                        @elseif ($user->role == 2)
+                                        @elseif ($user->role == 0)
                                             Admin
                                         @endif
                                     </p>
@@ -99,7 +99,7 @@
                                         <input class="form-control" name="name"  type="text" placeholder="John" value="{{ $user->name }}">
                                         <span class="text-danger">{{$errors->first('name')}}</span>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Email</label>

@@ -30,6 +30,7 @@
                         </div>
                         <div>
                             <input type="password" placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" /> <br>
+                            <input type="password" placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" /><br>
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
