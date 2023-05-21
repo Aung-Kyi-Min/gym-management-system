@@ -18,28 +18,25 @@
                     <form action="{{ route('user.send_feedback') }}" method="POST">
                         @csrf
                         <div class="contact_form-container">
-                            
-                            <input type="hidden" name="user_id" value="{{ session('user_id') }}">
+                            <div>
+                                <input type="text" placeholder="Name" name="name" value="{{$user->name}}" readonly/>
+                            </div>
+                            <small class="text-danger">{{$errors->first('name')}}</small>
                             
                             <div>
-                                <input type="text" placeholder="Name" name="name"/>
+                                <input type="email" placeholder="Email"  name="email" value="{{$user->email}}" readonly/>
                             </div>
-                            <small class="text-warning">{{$errors->first('name')}}</small>
-                            
-                            <div>
-                                <input type="email" placeholder="Email"  name="email"/>
-                            </div>
-                            <small class="text-warning">{{$errors->first('email')}}</small>
+                            <small class="text-danger">{{$errors->first('email')}}</small>
 
                             <div>
-                                <input type="number" placeholder="Phone Number"  name="phone"/>
+                                <input type="number" placeholder="Phone Number"  name="phone" value="{{$user->phone}}" readonly/>
                             </div>
-                            <small class="text-warning">{{$errors->first('phone')}}</small>
+                            <small class="text-danger">{{$errors->first('phone')}}</small>
 
                             <div>
                                 <input type="text" placeholder="Can you give us some advice." name="message"/>
                             </div>
-                            <small class="text-warning">{{$errors->first('message')}}</small>
+                            <small class="text-danger">{{$errors->first('message')}}</small>
                             
                             <div class="mt-5">
                                 <button type="submit" class="btn btn-light btn-md">
