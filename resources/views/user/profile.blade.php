@@ -12,7 +12,7 @@
                             <p>
                                     @if ($user->role == 1)
                                         User
-                                    @elseif ($user->role == 2)
+                                    @elseif ($user->role == 0)
                                         Admin
                                     @endif
                             </p>
