@@ -49,10 +49,10 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="/dist/img/user2-160x160.jpg" id="call1" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('storage/images/admin/user/'.$loginuser->image) }}" id="call1" class="img-circle elevation-2 pointer admin-img-size" alt="User Image">
                     </div>
                     <div class="info">
-                        <p id="call2">Alexander Pierce</p>
+                        <p id="call2" class="pointer">{{$loginuser->name}}</p>
                         <form id="toggle"> 
                             <a href="{{route('admin.edit')}}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>  
                             <a href="{{ route('logout') }}" class="btn btn-sm bg-gradient-danger">Logout</a>
@@ -175,6 +175,7 @@
     <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
     <script type="text/javascript" src="/js/anchor.js"></script>
+    <script src="/js/admin.js"></script>
 </body>
 
 </html>

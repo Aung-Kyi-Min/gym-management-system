@@ -69,7 +69,7 @@ class AuthController extends Controller
                 return redirect()->route('admin.index')
                     ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
-            } else 
+            } else
             {
                 return redirect()->route('user.index')
                     ->with('message', 'You Have Successfully logined...')
@@ -142,10 +142,11 @@ class AuthController extends Controller
         return view('Auth.forgetpassword');
     }
 
-    public function reset()
+    public function reset($token)
     {
-        return view('Auth.reset');
+         return view('Auth.reset', ['token' => $token]);
     }
+
     public function logout()
     {
         Auth::logout();

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
 use App\Exports\InstructorsExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorUpdateRequest;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 
@@ -27,7 +28,8 @@ class InstructorController extends Controller
  
     public function create()
     {
-       	return view('admin.instructor.instructorCreate');
+      $loginuser = auth()->user();
+      return view('admin.instructor.instructorCreate' , ['loginuser' => $loginuser]);
     }
  
     /**
@@ -50,8 +52,9 @@ class InstructorController extends Controller
  
     public function edit($id)
     {
-       $instructor = $this->instructorService->edit($id);
-       return view('admin.instructor.instructorEdit' , ['instructor' => $instructor]);
+      $loginuser = auth()->user();
+      $instructor = $this->instructorService->edit($id);
+      return view('admin.instructor.instructorEdit' , ['instructor' => $instructor , 'loginuser' => $loginuser]);
     }
  
     public function update(InstructorUpdateRequest $request ,$id)
@@ -70,12 +73,13 @@ class InstructorController extends Controller
  
     public function destroy($id) 
     {
-       $this->instructorService->destroy($id);
-       return redirect('/admin/instructor');
+      $this->instructorService->destroy($id);
+      return redirect('/admin/instructor');
     }
 
     public function instructor(Request $request)
     {
+        $loginuser = auth()->user();
         $search = $request->input('search', '');
         $instructors = $this->instructorService->search($search);
         
@@ -84,7 +88,7 @@ class InstructorController extends Controller
             $instructor->limitedEmail = Str::limit($instructor->email,20);
         }
         
-        return view('admin.instructor.instructor', compact('instructors', 'search'));
+        return view('admin.instructor.instructor', compact('instructors', 'search' , 'loginuser'));
     }
 
 }

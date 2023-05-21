@@ -35,10 +35,10 @@ class UserController extends Controller
        $this->adminService = $adminServiceInterface;
     }
 
-    public function Userprofile()
-
+    //
+    public function userProfile()
     {
-        if (Auth::guest()) 
+        if (Auth::guest())
         {
             return redirect()->route('auth.login');
         }
@@ -67,7 +67,7 @@ class UserController extends Controller
     public function workout()
     {
 
-        if (Auth::guest()) 
+        if (Auth::guest())
         {
             return redirect()->route('auth.login');
         }

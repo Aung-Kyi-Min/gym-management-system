@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Workout extends Model
+class Payment extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'image',
-        'price',
-        'description',
+
+        protected $fillable = [
+        'member_id',
+        'amount',
+        'payment',
     ];
 
     public function member()

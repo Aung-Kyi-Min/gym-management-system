@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Contracts\Dao\AuthDaoInterface;
 use App\Contracts\Services\AuthServiceInterface;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SignUp;
 
 class AuthService implements AuthServiceInterface
 {
@@ -29,6 +31,8 @@ class AuthService implements AuthServiceInterface
      */
 
     public function register(array $data): object{
+        Mail::to($data['email'])->send(new SignUp());
+        
         return $this->authDao->register($data);
     }
 }
