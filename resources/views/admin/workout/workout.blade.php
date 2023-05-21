@@ -68,7 +68,7 @@
 
                     <!-- /.card -->
                 </div>
-                <div>{{ $workouts->links() }}</div>
+                <div class="center">{{ $workouts->links() }}</div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

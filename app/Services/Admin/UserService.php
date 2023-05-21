@@ -4,6 +4,8 @@ namespace App\Services\Admin;
 
 use App\Contracts\Dao\Admin\UserDaoInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SignUp;
 
 class UserService implements UserServiceInterface
 {
@@ -38,6 +40,7 @@ class UserService implements UserServiceInterface
     public function store() : void
     {
         $this->userDao->store();
+        Mail::to(request('email'))->send(new SignUp());
         $name = request()->file('image')->getClientOriginalName();
         request()->file('image')->storeAs('public/images/admin/user' , $name);
     }

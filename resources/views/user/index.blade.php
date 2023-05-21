@@ -574,5 +574,13 @@
           });
       </script>
   @endif
+  @if (Session::has('success'))
+  <script>
+      swal("Message", "{{ Session::get('success') }}", 'success', {
+          button: true,
+          button: "Ok",
+      });
+  </script>
+@endif
 @endsection
 

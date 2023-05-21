@@ -28,6 +28,15 @@
     width: 100px !important;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
+.admin-img-size {
+    width: 40px !important;
+    height: 40px !important;
+}
+
 .width-text {
     width: 350px;
     word-wrap: break-word;
@@ -88,6 +97,30 @@
 .center {
     margin: 0 auto;
     width: 20%;
+}
+
+.none {
+    display: none;
+}
+
+.button {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #454d55;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+}
+
+.active {
+    background-color: whitesmoke;
+    color: #454d55;
+    border: 1px solid #454d55;
+}
+
+.button:hover {
+    background-color: whitesmoke;
+    color: #454d55;
+    border: 1px solid #454d55;
 }
 
 .dark-mode input:-webkit-autofill,
