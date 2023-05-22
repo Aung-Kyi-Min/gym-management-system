@@ -7,6 +7,7 @@ use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
+use App\Contracts\Services\Admin\MemberServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Member;
@@ -20,6 +21,7 @@ class AdminController extends Controller
    private $workoutService;
    private $instructorService;
    private $userService;
+   private $memberService;
    private $yearUserCount;
    private $yearMemberCount;
    private $monthUserCount;
@@ -36,11 +38,12 @@ class AdminController extends Controller
      * @return void
      */
 
-   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface , InstructorServiceInterface $instructorServiceInterface , UserServiceInterface $userServiceInterface)
+   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface , InstructorServiceInterface $instructorServiceInterface , UserServiceInterface $userServiceInterface , MemberServiceInterface $memberServiceInterface)
    {
       $this->workoutService = $workoutServiceInterface;
       $this->instructorService = $instructorServiceInterface;
       $this->userService = $userServiceInterface;
+      $this->memberService = $memberServiceInterface;
       $this->yearUserCount = $this->getUserDataByYear();
       $this->yearMemberCount = $this->getMemberDataByYear();
       $this->monthUserCount = $this->getUserDataByMonth();
@@ -58,12 +61,15 @@ class AdminController extends Controller
       $instructorCount = $instructor->total();
       $user = $this->userService->get();
       $userCount = $user->total();
+      $member = $this->memberService->get();
+      $memberCount = $member->total();
       $currentMonth = Carbon::now()->format('Y-m');
       $startDate = Carbon::parse($currentMonth)->startOfMonth()->format('d');
       $endDate = Carbon::parse($currentMonth)->endOfMonth()->format('d');
       return view('admin.index' , [ 'workoutCount' => $workoutCount ,
                                     'instructorCount' => $instructorCount ,
                                     'userCount' => $userCount,
+                                    'memberCount' => $memberCount,
                                     'yearUserCount' => $this->yearUserCount,
                                     'yearMemberCount' => $this->yearMemberCount,
                                     'monthUserCount' => $this->monthUserCount,
@@ -152,12 +158,6 @@ class AdminController extends Controller
    {
       $loginuser = auth()->user();
       return view('admin.edit' , ['loginuser' => $loginuser]);
-   }
-
-   public function member()
-   {
-      $loginuser = auth()->user();
-      return view('admin.member.member' , ['loginuser' => $loginuser]);
    }
 
    public function created() 
