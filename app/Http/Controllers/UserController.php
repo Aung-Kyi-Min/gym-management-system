@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Feedback;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UserFeedbackRequest;
 use App\Http\Requests\UserProfileEditRequest;
 use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\WorkoutServiceInterface;
@@ -59,9 +61,13 @@ class UserController extends Controller
     {
         if (Auth::guest())
         {
-            return redirect()->route('auth.login');
+            return redirect()->route
+            
+            ('auth.login');
         }
-        return view('user.feedback');
+        $user = Auth::user(); // Retrieve the currently logged-in user
+
+        return view('user.feedback')->with('user', $user);
     }
 
     public function workout()
@@ -173,6 +179,17 @@ class UserController extends Controller
 
         // Redirect or return a response
         return redirect()->back()->with('success', 'User updated successfully');
+    }
+
+    public function sendFeedback(UserFeedbackRequest $request)
+    {
+        $user = Auth::user();
+        $feedback = new Feedback();
+        $feedback->message = $request->input('message');
+        $feedback->user_id = $user->id;
+        $feedback->save();
+    
+        return redirect()->back()->with('success', 'Thank you for your feedback!');
     }
 
 }

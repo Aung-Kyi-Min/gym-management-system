@@ -81,22 +81,24 @@ class UserDao implements UserDaoInterface
         $user->delete();
     }
 
-    public function search($search): object
+        public function search($search): object
     {
         $query = User::query()->where('role', 1);
+
         if ($search !== "") 
         {
             $query->where(function ($query) use ($search) {
                 $query->where('name', 'LIKE', "%$search%")
                     ->orWhere('email', 'LIKE', "%$search%")
-                    ->orWhere('password', 'LIKE', "%$search%")
                     ->orWhere('address', 'LIKE', "%$search%")
-                    ->orWhere('gender', 'LIKE', "%$search%")
                     ->orWhere('phone', 'LIKE', "%$search%")
-                    ->orWhere('age', 'LIKE', "%$search%");
+                    ->orWhere('age', 'LIKE', "%$search%")
+                    ->orWhere(function ($query) use ($search) {
+                        $query->where('gender', '=', $search);
+                    });
             });
         }
         return $query->paginate(5);
     }
-    
+
 }

@@ -12,7 +12,7 @@
                             <p>
                                     @if ($user->role == 1)
                                         User
-                                    @elseif ($user->role == 2)
+                                    @elseif ($user->role == 0)
                                         Admin
                                     @endif
                             </p>
@@ -22,10 +22,10 @@
                                     @csrf
                                     <input type="file" name="image" id="my-file" onchange="previewImage(event)"  style="display:none">
                                     <button type="button" class="btn btn-outline-dark rounded-pill" onclick="document.getElementById('my-file').click()">Upload</button>
-
-                                <img id="preview" src="#" alt="Preview Image" style="display: none;" class="card-img-top rounded-circle img-circle mt-5">
-
-                                <img id="default-image" class="card-img-top rounded-circle img-circle mt-5" src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
+                                
+                                <img id="preview" src="#" alt="Preview Image" style="display: none;" class="card-img-top rounded-circle img-circle mt-5 profile-width">
+                                
+                                <img id="default-image" class="card-img-top rounded-circle img-circle mt-5 profile-width" src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                     <p>
                                         @if ($user->role == 1)
                                             User
-                                        @elseif ($user->role == 2)
+                                        @elseif ($user->role == 0)
                                             Admin
                                         @endif
                                     </p>
