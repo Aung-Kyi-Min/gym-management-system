@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
-use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Contracts\Services\WorkoutServiceInterface;
 use App\Contracts\Services\MemberServiceInterface;
 use App\Contracts\Services\PaymentServiceInterface;
 use App\Http\Requests\MemberCreateRequest;

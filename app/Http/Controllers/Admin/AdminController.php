@@ -1,9 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Member;
+
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Excel;
 use App\Http\Controllers\Controller;
@@ -14,19 +12,25 @@ use App\Contracts\Services\Admin\UserServiceInterface;
 use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
+use App\Contracts\Services\Admin\MemberServiceInterface;
+use App\Models\User;
+use App\Models\Member;
+use Carbon\Carbon;
+
 
 
 class AdminController extends Controller
 {
-    private $workoutService;
-    private $instructorService;
-    private $userService;
-    private $yearUserCount;
-    private $yearMemberCount;
-    private $monthUserCount;
-    private $monthMemberCount;
-    private $weekUserCount;
-    private $weekMemberCount;
+   private $workoutService;
+   private $instructorService;
+   private $userService;
+   private $memberService;
+   private $yearUserCount;
+   private $yearMemberCount;
+   private $monthUserCount;
+   private $monthMemberCount;
+   private $weekUserCount;
+   private $weekMemberCount;
 
      /**
      * Create a new controller instance.
@@ -37,34 +41,38 @@ class AdminController extends Controller
      * @return void
      */
 
-    public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface , InstructorServiceInterface $instructorServiceInterface , UserServiceInterface $userServiceInterface)
-    {
-        $this->workoutService = $workoutServiceInterface;
-        $this->instructorService = $instructorServiceInterface;
-        $this->userService = $userServiceInterface;
-        $this->yearUserCount = $this->getUserDataByYear();
-        $this->yearMemberCount = $this->getMemberDataByYear();
-        $this->monthUserCount = $this->getUserDataByMonth();
-        $this->monthMemberCount = $this->getMemberDataByMonth();
-        $this->weekUserCount = $this->getUserDataByWeek();
-        $this->weekMemberCount = $this->getMemberDataByWeek();
-    }
+   public function __construct(AdminServiceInterface $adminServiceInterface , WorkoutServiceInterface $workoutServiceInterface , InstructorServiceInterface $instructorServiceInterface , UserServiceInterface $userServiceInterface , MemberServiceInterface $memberServiceInterface)
+   {
+      $this->workoutService = $workoutServiceInterface;
+      $this->instructorService = $instructorServiceInterface;
+      $this->userService = $userServiceInterface;
+      $this->memberService = $memberServiceInterface;
+      $this->yearUserCount = $this->getUserDataByYear();
+      $this->yearMemberCount = $this->getMemberDataByYear();
+      $this->monthUserCount = $this->getUserDataByMonth();
+      $this->monthMemberCount = $this->getMemberDataByMonth();
+      $this->weekUserCount = $this->getUserDataByWeek();
+      $this->weekMemberCount = $this->getMemberDataByWeek();
+   }
 
-     public function index()
-    {
-        $loginuser = auth()->user();
-        $workout = $this->workoutService->get();
-        $workoutCount = $workout->total();
-        $instructor = $this->instructorService->get();
-        $instructorCount = $instructor->total();
-        $user = $this->userService->get();
-        $userCount = $user->total();
-        $currentMonth = Carbon::now()->format('Y-m');
-        $startDate = Carbon::parse($currentMonth)->startOfMonth()->format('d');
-        $endDate = Carbon::parse($currentMonth)->endOfMonth()->format('d');
-        return view('admin.index' , [ 'workoutCount' => $workoutCount ,
+   public function index()
+   {
+      $loginuser = auth()->user();
+      $workout = $this->workoutService->get();
+      $workoutCount = $workout->total();
+      $instructor = $this->instructorService->get();
+      $instructorCount = $instructor->total();
+      $user = $this->userService->get();
+      $userCount = $user->total();
+      $member = $this->memberService->get();
+      $memberCount = $member->total();
+      $currentMonth = Carbon::now()->format('Y-m');
+      $startDate = Carbon::parse($currentMonth)->startOfMonth()->format('d');
+      $endDate = Carbon::parse($currentMonth)->endOfMonth()->format('d');
+      return view('admin.index' , [ 'workoutCount' => $workoutCount ,
                                     'instructorCount' => $instructorCount ,
                                     'userCount' => $userCount,
+                                    'memberCount' => $memberCount,
                                     'yearUserCount' => $this->yearUserCount,
                                     'yearMemberCount' => $this->yearMemberCount,
                                     'monthUserCount' => $this->monthUserCount,

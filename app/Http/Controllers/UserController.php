@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserFeedbackRequest;
 use App\Http\Requests\UserProfileEditRequest;
 use App\Contracts\Services\Admin\AdminServiceInterface;
-use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Contracts\Services\WorkoutServiceInterface;
 
 class UserController extends Controller
 {
@@ -72,7 +72,7 @@ class UserController extends Controller
 
     public function workout()
     {
-
+        
         if (Auth::guest())
         {
             return redirect()->route('auth.login');
@@ -80,6 +80,8 @@ class UserController extends Controller
 
         $workouts = $this->workoutService->get();
         $workoutCounts = $workouts->count();
+        
+        
         return view('user.workoutlist' , ['workouts' => $workouts , 'workoutCounts' => $workoutCounts]);
     }
 
