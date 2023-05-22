@@ -19,6 +19,6 @@ class Instructor extends Model
 
     public function member()
     {
-        return $this->hasMany(Member::class);
+        return $this->belongsTo(Member::class);
     }
 }

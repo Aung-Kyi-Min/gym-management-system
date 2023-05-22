@@ -65,7 +65,7 @@ class InstructorDao implements InstructorDaoInterface
     */
     public function destroy($id) : void
     {
-        $instructor = Instructor::findOrFail($id);
+        $instructor=Instructor::findOrFail($id);
         $instructor->delete();
     }
 

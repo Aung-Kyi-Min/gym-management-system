@@ -14,7 +14,7 @@
                                 <a href="{{route('admin.create_instructor')}}" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
                             </div>
                             <div class="card-tools search-header right clearfix" style="height: 50px;">
-                                <form mdthod="get">
+                                <form mdthod="get" class="left">
                                 <div class="input-group input-group-sm left" style="width: 150px;">
                                     <input type="text" name="search" class="form-control  float-right" placeholder="Search" value="{{ $search }}">
                                     <div class="input-group-append">

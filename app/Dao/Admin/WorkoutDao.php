@@ -68,7 +68,7 @@ class WorkoutDao implements WorkoutDaoInterface
     }
 
     /**
-     * search Instructor
+     * search Workout
      * @return object
     */  
     public function search($search): object

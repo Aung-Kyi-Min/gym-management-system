@@ -104,7 +104,7 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Our Mainn Services
+          Our Main Services
         </h2>
       </div>
       <div class="service_container">
@@ -169,74 +169,46 @@
   </section>
   <!-- end service section -->
 
-  <!-- trainer section -->
-  <section class="client_section layout_padding ">
+  <!-- instructor section -->
+  <section class="client_section layout_padding">
     <div class="container">
-      <div class="heading_container">
-        <h2>
-          Our Trainers
-        </h2>
-      </div>
-      <div id="carouselExample2Indicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExample2Indicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExample2Indicators" data-slide-to="1"></li>
-          <li data-target="#carouselExample2Indicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Trainer 1
-                </h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Trainer 2
-                </h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Trainer 3
-                </h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="heading_container">
+            <h2>
+                Our Instructors
+            </h2>
         </div>
-      </div>
-
+        <div id="carouselExample2Indicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @foreach ($instructors as $index => $instructor)
+                <li data-target="#carouselExample2Indicators" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
+            <div class="carousel-inner">
+                @foreach ($instructors as $index => $instructor)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    
+                    <div class="box">
+                        <div>
+                        <img class="index-profile" src="{{asset('storage/images/admin/instructor/'.$instructor->image)}}" alt="{{$instructor->image}}">
+                        </div>
+                        <div class="detail-box">
+                            <h5>{{ $instructor->name }}</h5> 
+                            <span>{{ $instructor->speciality }}</span>
+                            
+                            <p>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quae esse,
+                                 vitae culpa aliquam dignissimos perferendis! Beatae soluta voluptate recusandae, 
+                                aperiam maxime, possimus rerum sapiente at ullam expedita quos harum?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
     </div>
-  </section>
+</section>
+
   <!-- end trainer section -->
 
   <!-- Us section -->
@@ -503,7 +475,7 @@
           </h6>
           <ul>
             <li class=" active">
-              <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="">
               <a class="" href="#">Workout List </a>

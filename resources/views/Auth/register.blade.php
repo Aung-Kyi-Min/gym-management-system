@@ -30,7 +30,6 @@
                         </div>
                         <div>
                             <input type="password" placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" /> <br>
-                            <input type="password" placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" /><br>
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
@@ -54,7 +53,7 @@
                             @endif
                         </div>
                         <div class="mt-3">
-                            <select name="gender" id="gender" class="selectbox">
+                            <select name="gender" id="gender" class="selectbox form-control">
                                 <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
                                 <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
                             </select>

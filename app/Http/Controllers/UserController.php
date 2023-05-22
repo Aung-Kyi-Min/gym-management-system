@@ -17,22 +17,27 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserProfileEditRequest;
 use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Contracts\Services\Admin\InstructorServiceInterface;
 
 class UserController extends Controller
 {
     private $workoutService;
+    private $instructorService;
     private $adminService;
+    private $userService;
 
     /**
       * Create a new controller instance.
-      * @param WorkoutInterface $taskServiceInterface
+      * @param WorkoutInterface $AdminServiceInterface $InstructorServiceInterface 
       * @return void
       */
 
-    public function __construct(WorkoutServiceInterface $workoutServiceInterface,AdminServiceInterface $adminServiceInterface)
+    public function __construct(UserServiceInterface $userServiceInterface,WorkoutServiceInterface $workoutServiceInterface,AdminServiceInterface $adminServiceInterface,InstructorServiceInterface $instructorServiceInterface)
     {
        $this->workoutService = $workoutServiceInterface;
        $this->adminService = $adminServiceInterface;
+       $this->instructorService = $instructorServiceInterface;
+       $this->userService = $userServiceInterface;
     }
 
     //
@@ -52,8 +57,12 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user.index');
+       
+        $instructors = $this->instructorService->get();
+        $instructorCounts = $instructors->count();
+        return view('user.index' , ['instructors' => $instructors , 'instructorCounts' => $instructorCounts]);
     }
+    
 
     public function feedback()
     {
