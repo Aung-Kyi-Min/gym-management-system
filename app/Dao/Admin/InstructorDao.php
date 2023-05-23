@@ -30,6 +30,7 @@ class InstructorDao implements InstructorDaoInterface
         $instructor->speciality = request('speciality');
         $instructor->price = request('price');
         $instructor->access_time = request('access_time');
+        $instructor->description = request('description');
         $instructor->save();
         
     }
@@ -56,6 +57,7 @@ class InstructorDao implements InstructorDaoInterface
         $instructor->speciality= request('speciality');
         $instructor->price = request('price');
         $instructor->access_time = request('access_time');
+        $instructor->description = request('description');
         $instructor->save();
     }
 
@@ -84,17 +86,25 @@ class InstructorDao implements InstructorDaoInterface
      * search Instructor
      * @return object
     */  
-    public function search($search): object
+    
+        public function search($search): object
     {
-        $query = Instructor::query();
+        $query =Instructor::query();
         if ($search !== "") 
         {
             $query->where('name', 'LIKE', "%$search%")
-                ->orWhere('email', 'LIKE', "%$search%")
-                ->orWhere('speciality', 'LIKE', "%$search%")
-                ->orWhere('price', 'LIKE', "%$search%")
-                ->orWhere('access_time', 'LIKE', "%$search%");
+            ->orWhere('email', 'LIKE', "%$search%")
+            ->orWhere('speciality', 'LIKE', "%$search%")
+            ->orWhere('price', 'LIKE', "%$search%")
+            ->orWhere('description', 'LIKE', "%$search%")
+            ->orWhere(function ($query) use ($search) {
+                $query->where('access_time', '=', $search);
+            });
         }
-        return $query->paginate(5);
-    }
+    
+        return $query->orderBy('created_at', 'asc')
+            ->paginate(5)
+            ->appends(request()->all());
+}
+
 }

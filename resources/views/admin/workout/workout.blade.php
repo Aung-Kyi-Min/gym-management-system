@@ -12,7 +12,7 @@
                             <div class="left clearfix">
                                 <h3 class="card-title list-header left">Workout List</h3>
                                 <a href="{{route('admin.create_workout')}}" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
-                            </div>
+                          </div>
                             <div class="card-tools search-header right clearfix"  style="height: 50px;">
                                 <form mdthod="get" class="left">
                                 <div class="input-group input-group-sm " style="width: 150px;">

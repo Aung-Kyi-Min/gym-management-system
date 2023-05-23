@@ -5,11 +5,11 @@ namespace App\Contracts\Services;
 /**
  * Interface for user service
 */
- interface AuthServiceInterface
+interface WorkoutServiceInterface
 {
     /**
-     * register
+     * Show User
      * @return object
-     */
-    public function register(array $data): object;
+    */
+    public function get() : object;
 }

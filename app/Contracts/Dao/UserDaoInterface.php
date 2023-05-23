@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Contracts\Services\Admin;
+namespace App\Contracts\Dao;
 
 /**
  * Interface for user service
 */
-interface AdminServiceInterface
+interface UserDaoInterface
 {
     /**
-     * return export users
-    */
-    public function exportuser(): object;
+     * send
+     * @return void
+     */
+    public function send():void;
 
     /**
-    * Return Admin
+    * Return Users//user profile
     * @return object
     */
     public function edit($id) : object;
 
     /**
-    * Update admin
+    * Update Users/user profile
     * @return void
     */
     public function update($id) : void;

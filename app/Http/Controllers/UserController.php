@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Feedback;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
@@ -11,13 +12,16 @@ use App\Imports\MembersImport;
 use App\Exports\InstructorsExport;
 use App\Imports\InstructorsImport;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UserFeedbackRequest;
 use App\Http\Requests\UserProfileEditRequest;
 use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
+use App\Contracts\Services\UserServiceInterface;
+
+
 
 class UserController extends Controller
 {
@@ -57,25 +61,34 @@ class UserController extends Controller
 
     public function index()
     {
-       
         $instructors = $this->instructorService->get();
         $instructorCounts = $instructors->count();
-        return view('user.index' , ['instructors' => $instructors , 'instructorCounts' => $instructorCounts]);
+        $feedbacks = Feedback::all();
+    
+        return view('user.index', [
+            'instructors' => $instructors,
+            'instructorCounts' => $instructorCounts,
+            'feedbacks' => $feedbacks,
+        ]);
     }
     
-
+    
     public function feedback()
     {
         if (Auth::guest())
         {
-            return redirect()->route('auth.login');
+            return redirect()->route
+            
+            ('auth.login');
         }
-        return view('user.feedback');
+        $user = Auth::user(); // Retrieve the currently logged-in user
+
+        return view('user.feedback')->with('user', $user);
     }
 
     public function workout()
     {
-
+        
         if (Auth::guest())
         {
             return redirect()->route('auth.login');
@@ -147,39 +160,41 @@ class UserController extends Controller
         return redirect()->back()->with('message', 'File Imported Successfully...');
     }
 
-    public function update(UserProfileEditRequest $request)
+    public function edit($id)
     {
-        // Retrieve the currently logged-in user
         $user = auth()->user();
+        return view('user.profile', ['user' => $user]);
+    }
 
-        // Update the user data
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-
-        // Update the password only if it's provided
-        $password = $request->input('password');
-        if (!empty($password)) {
-            $user->password = Hash::make($password);
-        }
-
-        $user->gender = $request->input('gender');
-        $user->age = $request->input('age');
-        $user->phone = $request->input('phone');
-        $user->address = $request->input('address');
-
-        // Update the user's image if provided
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = $image->getClientOriginalName();
-            $image->storeAs('public/images/admin/user', $name);
-            $user->image = $name;
-        }
-
-        // Save the changes
-        $user->save();
+    public function update(UserProfileEditRequest $request,$id)
+    {
+        $this->userService->update($id , $request->only([
+            'name',
+            'email',
+            'image',
+            'age',
+            'phone',
+            'gender',
+            'password',
+            'address',
+            
+         ]));
 
         // Redirect or return a response
         return redirect()->back()->with('success', 'User updated successfully');
     }
 
+    public function sendFeedback(UserFeedbackRequest $request)
+    
+    {
+        $this->userService->send($request->only([
+            
+            'message',
+            'user_id',
+         ]));
+        
+        return redirect()->back()->with('success', 'Thank you for your feedback!');
+    }
+
+    
 }

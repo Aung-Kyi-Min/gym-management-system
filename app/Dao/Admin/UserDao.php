@@ -14,7 +14,7 @@ class UserDao implements UserDaoInterface
     */
     public function get(): object
     {    
-        return User::paginate(3);
+        return User::paginate(5);
     }
 
     /**
@@ -70,7 +70,7 @@ class UserDao implements UserDaoInterface
             $user->save();
         }
     }
-
+    
     /**
      * Destroy User
      * @return void 
@@ -98,7 +98,9 @@ class UserDao implements UserDaoInterface
                     });
             });
         }
-        return $query->paginate(5);
+        return $query->orderBy('created_at', 'asc')
+        ->paginate(5)
+        ->appends(request()->all());
     }
 
 }

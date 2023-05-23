@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
-use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Contracts\Services\WorkoutServiceInterface;
 use App\Contracts\Services\MemberServiceInterface;
 use App\Contracts\Services\PaymentServiceInterface;
 use App\Http\Requests\MemberCreateRequest;
@@ -70,7 +70,7 @@ class PurchaseController extends Controller
     {
 //        $member = Member::all();
 //        $workouts = $this->workoutService->get();
-//        $instructors = $this->instructorService->getInstructors();
+//        $instructors = $this->instructorService->get();
 //        $user = Auth::user();
 //        $user_id = session($user->id);
 

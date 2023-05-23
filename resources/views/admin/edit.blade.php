@@ -13,7 +13,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                        <form method="POST" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/'.$loginuser->id.'/update') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mt-2 clearfix">
                                     <img src="{{ asset('storage/images/admin/user/'.$loginuser->image) }}"  class="img-circle user_img elevation-2" alt="User Image">
@@ -52,6 +52,14 @@
                                         <option value="female" {{ $loginuser->gender == 'female' ? 'selected' : '' }}>Female</option>
                                     </select>
                                     <span class="error">@error('gender'){{$message}}@enderror</span>
+                                </div>
+                                <div class="mt-2">
+                                <label class="col-lg-3 col-form-label form-control-label">Role</label>
+                                    <select class="form-control" name="role">
+                                        <option value="0">Admin</option>
+                                        <option value="1">User</option>
+                                    </select>
+                                    <span class="error">@error('role'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">

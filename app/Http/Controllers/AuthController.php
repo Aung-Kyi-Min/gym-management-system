@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
+
 class AuthController extends Controller
 {
     private $authService;
@@ -64,6 +65,7 @@ class AuthController extends Controller
         $user = User::where('email', $request['email'])->first();
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
             $token = $user->createToken('token')->plainTextToken;
             if ($user->role == 0) {
                 return redirect()->route('admin.index')
@@ -75,12 +77,11 @@ class AuthController extends Controller
                     ->with('message', 'You Have Successfully logined...')
                     ->with('token', $token);
             }
-
         } else {
             return back()->withErrors(['email' => 'Invalid email or password']);
         }
     }
-
+    
     /**
      * Write code on Method
      *
@@ -152,4 +153,5 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/')->with('message', 'U have logged out Successfully...');
     }
+
 }

@@ -48,7 +48,7 @@
                         <option>--Please choose Instructor--</option>
                         @foreach ($instructors as $i)
                             <option value="{{ $i->id }}" {{ old('instructor') == $i->id ? 'selected' : '' }}>
-                                {{ $i->name }}
+                                {{ $i->name }} { {{$i->speciality}} , {{$i->access_time}} }
                             </option>
                         @endforeach
                     </select>

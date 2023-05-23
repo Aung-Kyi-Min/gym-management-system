@@ -54,7 +54,7 @@
                     <div class="info">
                         <p id="call2" class="pointer">{{$loginuser->name}}</p>
                         <form id="toggle"> 
-                            <a href="{{route('admin.edit')}}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>  
+                            <a href="{{ url('/admin/'.$loginuser->id.'/edit') }}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>  
                             <a href="{{ route('logout') }}" class="btn btn-sm bg-gradient-danger">Logout</a>
                         </form>
                     </div>

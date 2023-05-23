@@ -55,7 +55,12 @@
                                     </select>
                                 </div>
                                 <span class="text-danger">{{$errors->first('access_time')}}</span>
-
+                                <div class="mt-3">
+                                    <label for="textarea">Description</label>
+                                    <textarea id="textarea" placeholder="Instructor Description" name="description" rows="4" cols="40" class="form-control">{{ $instructor->description }}</textarea>
+                                    <small class="text-warning">{{$errors->first('description')}}</small>
+                                </div>
+                                
                                 <div class="mt-4">
                                     <button type="submit" class=" btn btn-dark">
                                         Update
