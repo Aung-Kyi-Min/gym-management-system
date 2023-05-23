@@ -17,12 +17,12 @@
                                 @csrf
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="Workout Name" id="name" name="name" class='form-control' />
+                                    <input type="text" placeholder="Workout Name" id="name" value="{{ old('name') }}" name="name" class='form-control' />
                                     <span class="error">@error('name'){{$message}}@enderror</span>
                                 </div>
                                 <div class="mt-2">
                                     <label for="price">Price</label>
-                                    <input type="text" placeholder="Price" id="price" name="price" class='form-control' />
+                                    <input type="text" placeholder="Price" id="price" value="{{ old('price') }}" name="price" class='form-control' />
                                     <span class="error">@error('price'){{$message}}@enderror</span>
                                 </div>
                                 
@@ -34,7 +34,7 @@
 
                                 <div class="mt-2">
                                     <label for="textarea">Description</label>
-                                    <textarea id="textarea" placeholder="Workout Description" name="description" rows="4" cols="40" class="form-control"></textarea>
+                                    <textarea id="textarea" placeholder="Workout Description" name="description" rows="4" cols="40" class="form-control">{{ old('description') }}</textarea>
                                     <span class="error">@error('description'){{$message}}@enderror</span>
                                 </div>
                             

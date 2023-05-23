@@ -13,7 +13,7 @@ class WorkoutDao implements WorkoutDaoInterface
     */
     public function get(): object
     {
-        return Workout::all();
+        return Workout::orderBy('workouts.created_at', 'desc')->paginate(3);
     }
 
     /**
@@ -44,19 +44,21 @@ class WorkoutDao implements WorkoutDaoInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void
+    public function update($id , array $data) : void
     {
         $workout = Workout::findOrFail($id);
-        $workout->name = request('name');
-        $workout->image = request()->file('image')->getClientOriginalName();
-        $workout->price = request('price');
-        $workout->description = request('description');
         
-        $workout->save();
+        if ($workout) {
+            $workout->name = $data['name'];
+            $workout->image = $data['image']->getClientOriginalName();
+            $workout->price = $data['price'];
+            $workout->description = $data['description'];
+            $workout->save();
+        }
     }
 
     /**
-     * Destroy Major
+     * Destroy Workout
      * @return void 
     */
     public function destroy($id) : void
@@ -64,4 +66,23 @@ class WorkoutDao implements WorkoutDaoInterface
         $workout = Workout::findOrFail($id);
         $workout->delete();
     }
+
+    /**
+     * search Workout
+     * @return object
+    */  
+    public function search($search): object
+    {
+        $query = Workout::query();
+        if ($search !== "") 
+        {
+            $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('price', 'LIKE', "%$search%")
+                ->orWhere('description', 'LIKE', "%$search%");
+        }
+         return $query->orderBy('created_at', 'asc')
+        ->paginate(5)
+        ->appends(request()->all());
+    }
+    
 }

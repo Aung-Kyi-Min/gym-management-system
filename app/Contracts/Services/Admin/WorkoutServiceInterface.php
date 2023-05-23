@@ -29,11 +29,17 @@ interface WorkoutServiceInterface
      * Update Workout
      * @return void
     */
-    public function update($id) : void;
+    public function update($id , array $data) : void;
 
-     /**
-     * Destroy Major
+    /**
+     * Destroy Workout
      * @return void 
     */
     public function destroy($id) : void;
+
+      /**
+    * search Workout
+    * @return object
+    */  
+    public function search($search): object;
 }
