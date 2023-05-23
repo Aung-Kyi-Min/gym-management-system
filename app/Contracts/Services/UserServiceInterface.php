@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Contracts\Dao;
+namespace App\Contracts\Services;
 
 /**
  * Interface for user service
 */
-interface UserDaoInterface
+interface UserServiceInterface
 {
-    /**
-     * send
+   /**
+     * send user feedback
      * @return void
      */
     public function send():void;
@@ -24,5 +24,4 @@ interface UserDaoInterface
     * @return void
     */
     public function update($id) : void;
-
 }

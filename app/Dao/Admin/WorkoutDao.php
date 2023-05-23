@@ -68,7 +68,7 @@ class WorkoutDao implements WorkoutDaoInterface
     }
 
     /**
-     * search Instructor
+     * search Workout
      * @return object
     */  
     public function search($search): object
@@ -80,7 +80,9 @@ class WorkoutDao implements WorkoutDaoInterface
                 ->orWhere('price', 'LIKE', "%$search%")
                 ->orWhere('description', 'LIKE', "%$search%");
         }
-        return $query->paginate(3);
+         return $query->orderBy('created_at', 'asc')
+        ->paginate(5)
+        ->appends(request()->all());
     }
     
 }

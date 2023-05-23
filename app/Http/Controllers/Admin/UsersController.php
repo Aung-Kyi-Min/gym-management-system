@@ -79,6 +79,7 @@ class UsersController extends Controller
             'image',
             'address'
         ]));
+        
         return redirect('/admin/user');
     }
 

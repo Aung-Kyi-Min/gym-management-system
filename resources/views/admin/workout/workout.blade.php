@@ -12,7 +12,7 @@
                             <div class="left clearfix">
                                 <h3 class="card-title list-header left">Workout List</h3>
                                 <a href="{{route('admin.create_workout')}}" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
-                            </div>
+                          </div>
                             <div class="card-tools search-header right clearfix"  style="height: 50px;">
                                 <form mdthod="get" class="left">
                                 <div class="input-group input-group-sm " style="width: 150px;">
@@ -54,6 +54,7 @@
                                         <td>
                                             <form action="{{route('admin.destroy_workout' , $workout->id)}}" method="post">
                                                 @csrf
+                                                {{ method_field('DELETE') }}
                                                 <a href="{{route('admin.edit_workout' , $workout->id)}}" type="button" class="btn-sm bg-gradient-primary">Edit</a>
                                                 <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Workout?')">Delete</button>
                                             </form>

@@ -53,6 +53,7 @@ class AdminController extends Controller
       $this->monthMemberCount = $this->getMemberDataByMonth();
       $this->weekUserCount = $this->getUserDataByWeek();
       $this->weekMemberCount = $this->getMemberDataByWeek();
+      $this->adminService = $adminServiceInterface;
    }
 
    public function index()
@@ -167,42 +168,27 @@ class AdminController extends Controller
         return $yearMemberCount;
     }
 
-    public function edit()
+    public function edit($id)
     {
-      $loginuser = auth()->user();
-      return view('admin.edit' , ['loginuser' => $loginuser]);
+        $loginuser = auth()->user();
+        return view('admin.edit', ['loginuser' => $loginuser]);
+        
     }
+
    
-    public function update(UserProfileEditRequest $request)
+    public function update(UserProfileEditRequest $request,$id)
     {
-        // Retrieve the currently logged-in user/admin
-        $admin= auth()->user();
-
-        // Update the admin data
-        $admin->name = $request->input('name');
-        $admin->email = $request->input('email');
-
-        // Update the password only if it's provided
-        $password = $request->input('password');
-        if (!empty($password)) {
-        $admin->password = Hash::make($password);
-        }
-
-        $admin->gender = $request->input('gender');
-        $admin->age = $request->input('age');
-        $admin->phone = $request->input('phone');
-        $admin->address = $request->input('address');
-
-        // Update the admin's image if provided
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = $image->getClientOriginalName();
-            $image->storeAs('public/images/admin/user', $name);
-            $admin->image = $name;
-        }
-
-        // Save the changes
-        $admin->save();
+        $this->adminService->update($id , $request->only([
+            'name',
+            'email',
+            'image',
+            'age',
+            'phone',
+            'gender',
+            'password',
+            'address',
+            'role',
+         ]));
 
         // Redirect or return a response
         return redirect()->back()->with('success', 'Admin profile updated successfully');

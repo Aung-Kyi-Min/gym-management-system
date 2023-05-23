@@ -44,11 +44,15 @@ class InstructorController extends Controller
         'email',
         'price',
         'access_time',
-        
+        'description',
        ]));
        return redirect('/admin/instructor');
     }
- 
+    /**
+      * Edit Instructor
+      * @return void
+     */
+
     public function edit($id)
     {
       $loginuser = auth()->user();
@@ -65,6 +69,7 @@ class InstructorController extends Controller
          'email',
          'price',
          'access_time',
+         'description',
        ]));
        
        return redirect('/admin/instructor');
@@ -84,7 +89,7 @@ class InstructorController extends Controller
         
         foreach ($instructors as $instructor) 
         {
-            $instructor->limitedEmail = Str::limit($instructor->email,20);
+            $instructor->limitedDsec = Str::limit($instructor->description,40);
         }
         
         return view('admin.instructor.instructor', compact('instructors', 'search' , 'loginuser'));

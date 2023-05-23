@@ -27,4 +27,22 @@ class AdminService implements AdminServiceInterface
         return $users;
     }
 
+     /**
+    * Return Admin
+    * @return object
+    */
+    public function edit($id) : object
+    {
+        return $this->adminDao->edit($id);
+    }
+
+    /**
+    * Update admin
+    * @return void
+    */
+    public function update($id) : void
+    {
+        $this->adminDao->update($id);
+    }
+
 }

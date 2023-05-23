@@ -70,7 +70,7 @@ class PurchaseController extends Controller
     {
 //        $member = Member::all();
 //        $workouts = $this->workoutService->get();
-//        $instructors = $this->instructorService->getInstructors();
+//        $instructors = $this->instructorService->get();
 //        $user = Auth::user();
 //        $user_id = session($user->id);
 

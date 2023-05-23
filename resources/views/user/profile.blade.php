@@ -18,14 +18,15 @@
                             </p>
 
                             <div class="custom-file">
-                                <form action="{{ url('/user/update/'.$user->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ url('/user/'.$user->id.'/update') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="file" name="image" id="my-file" onchange="previewImage(event)"  style="display:none">
                                     <button type="button" class="btn btn-outline-dark rounded-pill" onclick="document.getElementById('my-file').click()">Upload</button>
                                 
                                 <img id="preview" src="#" alt="Preview Image" style="display: none;" class="card-img-top rounded-circle img-circle mt-5 profile-width">
                                 
-                                <img id="default-image" class="card-img-top rounded-circle img-circle mt-5 profile-width" src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
+                                <img id="default-image" class="card-img-top rounded-circle img-circle mt-5 profile-width" src="{{ $user->image ? asset('storage/images/admin/user/' .$user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
+                                <span class="text-danger">{{$errors->first('name')}}</span>
                             </div>
                         </div>
                     </div>
@@ -47,38 +48,34 @@
                     <div class="tab-content p-3">
 
                         <div class="tab-pane active show" id="profile">
+                            
                             <h5 class="mb-3">{{ $user->name }}</h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <h6>Email</h6>
-                                    <p>
-                                    {{ $user->email }}
-                                    </p>
+                                    <label class="text-primary">{{ $user->email }}</label>
                                     <h6>Role</h6>
-                                    <p>
+                                    <label class="text-primary">
                                         @if ($user->role == 1)
                                             User
                                         @elseif ($user->role == 0)
                                             Admin
                                         @endif
-                                    </p>
+                                    </label>
                                     <h6>Gender</h6>
-                                    <p>
-                                    {{ $user->gender}}
-                                    </p>
-
+                                    <label class="text-primary">{{ $user->gender }}</label>
                                     <h6>Age</h6>
-                                    <p>
-                                    {{ $user->age}}
-                                    </p>
+                                    <label class="text-primary">
+                                        {{ $user->age}}
+                                    </label>
                                     <h6>Phone</h6>
-                                    <p>
-                                    {{ $user->phone}}
-                                    </p>
+                                    <label class="text-primary">
+                                        {{ $user->phone}}
+                                    </label>
                                     <h6>Address</h6>
-                                    <p>
-                                    {{ $user->address}}
-                                    </p>
+                                    <label class="text-primary">
+                                        {{ $user->address}}
+                                    </label>
                                 </div>
 
                             </div>
@@ -111,7 +108,7 @@
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="password" placeholder="123" name="password" >
+                                        <input class="form-control" type="password" placeholder="****" name="password" >
                                         <span class="text-danger">{{$errors->first('password')}}</span>
                                     </div>
                                 </div>
@@ -165,6 +162,17 @@
         </div>
     </div>
 </div>
+
+<script src="../js/sweetalert.min.js"></script>
+    @if (Session::has('success'))
+      <script>
+          swal("Message", "{{ Session::get('success') }}", 'success', {
+              button: true,
+              button: "Ok",
+          });
+      </script>
+    @endif
+
 @endsection
 
 <script>
