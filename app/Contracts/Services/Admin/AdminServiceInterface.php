@@ -24,4 +24,10 @@ interface AdminServiceInterface
     */
     public function update($id) : void;
 
+    /**
+     * change  admin password
+     * @return void
+     */
+    public function updatePassword() :void;
+
 }

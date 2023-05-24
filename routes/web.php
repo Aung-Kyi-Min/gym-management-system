@@ -106,6 +106,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
     Route::post('/admin/{id}/update', [AdminController::class, 'update'])->name('admin.profile.update');
+    Route::get('/admin/password/{id}/edit', [AdminController::class, 'editpassword'])->name('admin.edit_password');
+    Route::post('/admin/password/{id}/change', [AdminController::class, 'changepassword'])->name('admin.change_password');
 
     //Excel export and import
     Route::get('/export-users', [UserController::class, 'exportUsers'])->name('export.users');
@@ -143,7 +145,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
     Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
     Route::delete('/admin/instructor/destroy/{id}', [InstructorController::class, 'destroy'])->name('admin.destroy_instructor');
-    Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
+   
 
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');

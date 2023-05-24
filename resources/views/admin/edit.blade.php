@@ -15,12 +15,15 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('/admin/'.$loginuser->id.'/update') }}" enctype="multipart/form-data">
                                 @csrf
+
                                 <div class="mt-2 clearfix">
-                                    <img class="user_img none" id="output" name="image" alt="test">
-                                    <img src="{{ asset('storage/images/admin/user/'.$loginuser->image) }}" id="default-image" class="img-circle user_img elevation-2" alt="User Image">
+                                    @if ($loginuser->image)
+                                        <img class="user_img" id="output" name="image" src="{{ asset('storage/images/admin/user/'.$loginuser->image) }}" alt="User Image">
+                                    @else
+                                        <img class="user_img" id="output" name="image" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Default Image">
+                                    @endif
                                     <label for="image" class="form-label upload">Upload</label>
                                     <input type="file" name="image" id="image" onchange="loadFile(event)" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
-
                                 </div>
 
                                 <div class="mt-2">
@@ -33,13 +36,7 @@
                                     <input type="text" placeholder="Email" id="email" name="email" class='form-control' value="{{$loginuser->email}}" />
                                     <span class="error">@error('email'){{$message}}@enderror</span>
                                 </div>
-
-                                <div class="mt-2">
-                                    <label for="password">Password</label>
-                                    <input type="password" placeholder="****" id="password" name="password" class='form-control' />
-                                    <span class="error">@error('password'){{$message}}@enderror</span>
-                                </div>
-
+                                
                                 <div class="mt-2">
                                     <label for="textarea">Address</label>
                                     <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control">{{$loginuser->address}}</textarea>
@@ -50,11 +47,11 @@
                                     <label class="col-lg-3 col-form-label form-control-label">Gender</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
-                                            <input type="radio" name="gender" value="male" {{ $loginuser->gender == 'male' ? 'checked' : '' }}>
+                                            <input type="radio" name="gender" value="male" {{$loginuser->gender == 'male' ? 'checked' : '' }}>
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
-                                            <input type="radio" name="gender" value="female" {{ $loginuser->gender == 'female' ? 'checked' : '' }}>
+                                            <input type="radio" name="gender" value="female" {{$loginuser->gender == 'female' ? 'checked' : '' }}>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -81,8 +78,10 @@
                                     <span class="error">@error('phone'){{$message}}@enderror</span>
                                 </div>
 
-
-                                <div class="mt-5">
+                                <div class="mt-2">
+                                    <a href=" {{ url('/admin/password/'.$loginuser->id.'/edit') }}" class="text-primary">Are you need to change Passowrd?: Click me!</a>
+                                </div>
+                                <div class="mt-4">
                                     <button type="submit" class=" btn btn-dark">
                                         Update
                                     </button>
@@ -103,9 +102,12 @@
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        $("#output").removeClass("none");
-        $("#default-image").addClass("none");
+        
+        if (event.target.files[0]) {
+            output.src = URL.createObjectURL(event.target.files[0]);
+        } else {
+            output.src = "https://bootdey.com/img/Content/avatar/avatar7.png";
+        }
     }
 </script>
 @endsection

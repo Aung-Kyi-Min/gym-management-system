@@ -26,7 +26,7 @@ class UserProfileEditRequest extends FormRequest
         return [
             
             'name' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'max:20'],
+            'password' => ['nullable', 'string', 'max:20'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'address' => ['required', 'max:225'],
             'gender' => ['required', 'in:male,female'],

@@ -45,4 +45,13 @@ class AdminService implements AdminServiceInterface
         $this->adminDao->update($id);
     }
 
+    /**
+     * change  admin password
+     * @return void
+     */
+    public function updatePassword() :void
+    {
+        $this->adminDao->updatePassword();
+    }
+
 }

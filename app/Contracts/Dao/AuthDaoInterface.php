@@ -12,4 +12,5 @@ interface AuthDaoInterface
      * @return object
      */
     public function register(array $data): object;
+
 }

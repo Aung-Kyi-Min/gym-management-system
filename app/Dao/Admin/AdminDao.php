@@ -3,6 +3,7 @@
 namespace App\Dao\Admin;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Contracts\Dao\Admin\AdminDaoInterface;
 
@@ -46,12 +47,6 @@ class AdminDao implements AdminDaoInterface
         $admin->phone = request('phone');
         $admin->address =request('address');
         
-        $password = request('password');
-        if (!empty($password))
-        {
-            $admin->password = Hash::make($password);
-        }
-        
         $image = request('image');
         if ($image) {
             $name = $image->getClientOriginalName();
@@ -62,6 +57,18 @@ class AdminDao implements AdminDaoInterface
 
         // Save the changes
         $admin->save();
+    }
+
+    
+    /**
+    * Update admin password
+    * @return void
+    */
+    public function updatePassword() :void
+    {
+        $user = Auth::user();
+        $user->password = bcrypt(request('new_password'));
+        $user->save();
     }
 
 }
