@@ -60,6 +60,7 @@
                                         <td>{{$member->end_date}}</td>
                                         <td>
                                             <form action="{{route('admin.destroy_member' , $member->id)}}" method="post">
+                                                {{ method_field('DELETE') }}
                                                 @csrf
                                                 <input type="hidden" name="email" value="{{ $member->user->email }}">
                                                 <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Member?')">Delete</button>
@@ -75,6 +76,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
+                <div class="center">{{ $members->links() }}</div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

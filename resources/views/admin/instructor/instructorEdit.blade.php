@@ -18,9 +18,10 @@
                             {{method_field('put')}} 
 
                                 <div class="mt-3 clearfix">
-                                        <img class="user_img" src="{{ asset('storage/images/admin/instructor/'.$instructor->image) }}">
-                                        <label for="image" class="form-label upload">Upload</label>
-                                        <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
+                                    <img class="user_img none" id="output" name="image" alt="test">
+                                    <img class="user_img" id="default-image" src="{{ asset('storage/images/admin/instructor/'.$instructor->image) }}">
+                                    <label for="image" class="form-label upload">Upload</label>
+                                    <input type="file" name="image" id="image" onchange="loadFile(event)" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
                                 </div>
 
                                 <div class="mt-3">
@@ -79,4 +80,12 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        $("#output").removeClass("none");
+        $("#default-image").addClass("none");
+    }
+</script>
 @endsection

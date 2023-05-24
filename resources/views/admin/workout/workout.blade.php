@@ -53,6 +53,7 @@
                                         </td>
                                         <td>
                                             <form action="{{route('admin.destroy_workout' , $workout->id)}}" method="post">
+                                                {{ method_field('DELETE') }}
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <a href="{{route('admin.edit_workout' , $workout->id)}}" type="button" class="btn-sm bg-gradient-primary">Edit</a>
