@@ -15,10 +15,11 @@
                         <div class="card-body">
                             <form action="{{route('admin.update_workout' , $workout->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
-
+                                
                                 <div class="mb-2 clearfix">
                                     <label for="my-file" class="form-label upload">Upload</label>
-                                    <input type="file" name="image" id="my-file" onchange="previewImage(this)" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*" style="display: none;">
+                                    <input type="file" name="image" id="my-file" onchange="loadFile(event)" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*" style="display: none;">
+                                    <img class="user_img none" id="output" name="image" alt="test">
                                     <img class="user_img" id="default-image" name="image" src="{{ asset('storage/images/admin/workout/'.$workout->image) }}">
                                     <span class="error">@error('image'){{ $message }}@enderror</span>
                                 </div>
@@ -60,4 +61,12 @@
 </div>
 
 <!-- /.content-wrapper -->
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        $("#output").removeClass("none");
+        $("#default-image").addClass("none");
+    }
+</script>
 @endsection

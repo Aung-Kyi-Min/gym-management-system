@@ -58,7 +58,7 @@
                                             <img src="{{ asset('storage/images/admin/instructor/' . $instructor->image) }}" alt="Instructor Image" class="img-width">
                                         </td>
                                         <td>
-                                            <form action="{{ url('/admin/instructor/destory/'.$instructor->id) }}" method="POST">
+                                            <form action="{{ url('/admin/instructor/destroy/'.$instructor->id) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <a href="{{ url('/admin/instructor/'.$instructor->id.'/edit') }}" class="btn bg-gradient-primary btn-sm">Edit</a>

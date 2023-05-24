@@ -23,10 +23,10 @@ class MemberController extends Controller
 
     public function member()
     {      
-        
         $members = $this->memberService->get();
         $payments = $this->memberService->paymentsget();
         $loginuser = auth()->user();
+
         return view('admin.member.member' , ['loginuser' => $loginuser , 'members' => $members , 'payments' => $payments]);
     }
 

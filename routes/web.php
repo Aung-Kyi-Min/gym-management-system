@@ -68,7 +68,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/user/store', [UsersController::class, 'store'])->name('admin.store_user');
     Route::get('/admin/user/edit/{id}', [UsersController::class, 'edit'])->name('admin.edit_user');
     Route::post('/admin/user/update/{id}', [UsersController::class, 'update'])->name('admin.update_user');
-    Route::post('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
+    Route::delete('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
 
     // admin workout
     Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');
@@ -76,7 +76,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/workout/store', [WorkoutController::class, 'store'])->name('admin.store_workout');
     Route::get('/admin/workout/edit/{id}', [WorkoutController::class, 'edit'])->name('admin.edit_workout');
     Route::post('/admin/workout/update/{id}', [WorkoutController::class, 'update'])->name('admin.update_workout');
-    Route::post('/admin/workout/destroy/{id}', [WorkoutController::class, 'destroy'])->name('admin.destroy_workout');
+    Route::delete('/admin/workout/destroy/{id}', [WorkoutController::class, 'destroy'])->name('admin.destroy_workout');
     Route::get('/admin/workout/search', [WorkoutController::class, 'search'])->name('admin.search_workout');
 
     //admin instructor
@@ -86,12 +86,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/instructor/store', [InstructorController::class, 'store'])->name('admin.store_instructor');
     Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
     Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
-    Route::delete('/admin/instructor/destory/{id}', [InstructorController::class, 'destroy'])->name('admin.destroy_instructor');
+    Route::delete('/admin/instructor/destroy/{id}', [InstructorController::class, 'destroy'])->name('admin.destroy_instructor');
     Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
 
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');
-    Route::post('/admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.destroy_member');
+    Route::delete('/admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.destroy_member');
 
 });
 
