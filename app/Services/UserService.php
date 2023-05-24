@@ -14,11 +14,11 @@ class UserService implements UserServiceInterface
 
     /**
      * Class Constructor
-     * @param authDaoInterface
+     * @param userDaoInterface
      * @return void
      */
 
-    public function __construct(AuthDaointerface $authDao)
+    public function __construct(UserDaointerface $userDao)
     {
         $this->userDao = $userDao;;
     }
@@ -28,7 +28,26 @@ class UserService implements UserServiceInterface
      * @return object
      */
 
-    public function send(array $data): object{
-        return $this->userDao->send($data);
+    public function send():void
+    {
+        $this->userDao->send();
+    }
+
+    /**
+    * Return Users//user profile
+    * @return object
+    */
+    public function edit($id) : object
+    {
+       return $this->userDao->edit($id);
+    }
+
+    /**
+    * Update Users/user profile
+    * @return void
+    */
+    public function update($id) : void
+    {
+        $this->userDao->update($id);
     }
 }

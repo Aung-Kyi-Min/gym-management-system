@@ -10,5 +10,4 @@ use SebastianBergmann\Type\VoidType;
 interface MemberDaoInterface
 {
     public function store(): void;
-
 }

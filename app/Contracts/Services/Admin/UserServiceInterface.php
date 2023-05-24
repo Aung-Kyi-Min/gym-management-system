@@ -26,12 +26,12 @@ interface UserServiceInterface
     public function edit($id) : object;
 
     /**
-     * Update Workout
+     * Update User
      * @return void
     */
     public function update($id , array $data) : void;
 
-     /**
+    /**
      * Destroy User
      * @return void 
     */

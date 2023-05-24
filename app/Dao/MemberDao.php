@@ -17,4 +17,5 @@ class MemberDao implements MemberDaoInterface
         $member->end_date = request('end_date');
         $member->save();
     }
+
 }

@@ -36,4 +36,30 @@ class MemberDao implements MemberDaoInterface
         $member = Member::findOrFail($id);
         $member->delete();
     }
+
+    public function search($search): object
+    {
+        $query = Member::query();
+
+        if ($search !== "") {
+            $query->whereHas('user', function ($query) use ($search) {
+                $query->where('name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%");
+            })
+            ->orWhere('sub_month', 'LIKE', "%$search%")
+            ->orWhere('joining_date', 'LIKE', "%$search%")
+            ->orWhere('end_date', 'LIKE', "%$search%")
+            ->orWhereHas('workout', function ($query) use ($search) {
+                $query->where('name', 'LIKE', "%$search%");
+            })
+            ->orWhereHas('instructor', function ($query) use ($search) {
+                $query->where('name', 'LIKE', "%$search%");
+            });
+        }
+
+        return $query->orderBy('created_at', 'asc')
+            ->paginate(5)
+            ->appends(request()->all());
+    }
+
 }

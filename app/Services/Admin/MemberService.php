@@ -60,4 +60,13 @@ class MemberService implements MemberServiceInterface
         Mail::to(request('email'))->send(new Expire());
         $this->memberDao->destroy($id);
     }
+
+    /**
+     * Search Member
+     * @return object
+    */
+    public function search($search): object
+    {
+       return $this->memberDao->search($search);
+    }
 }

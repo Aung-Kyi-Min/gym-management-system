@@ -28,7 +28,8 @@ Route::post('/feedback/send', [UserController::class, 'sendFeedback'])->name('us
 //Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
 Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
 Route::get('/successPurchase', )->name('user.successPurchase');
-Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
 
 
 // auth
@@ -48,8 +49,8 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::post('/admin/profile/update', [AdminController::class, 'update'])->name('admin.profile.update');
+    Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::post('/admin/{id}/update', [AdminController::class, 'update'])->name('admin.profile.update');
 
     //Excel export and import
     Route::get('/export-users', [UserController::class, 'exportUsers'])->name('export.users');
