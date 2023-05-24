@@ -24,4 +24,11 @@ interface MemberServiceInterface
      * @return void 
     */
     public function destroy($id) : void;
+
+    /**
+     * Search Member
+     * @return void 
+    */
+    public function search($search): object;
+
 }
