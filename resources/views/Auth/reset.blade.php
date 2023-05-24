@@ -12,13 +12,13 @@
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
                         <div>
-                            <input type="email" placeholder="Email" name="email" class='form-control' />
+                            <input type="email" placeholder="Email" name="email" class='w-100 form-control' />
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
                         </div>
                         <div>
-                            <input type="password" placeholder="Password" name="password" class='form-control' />
+                            <input type="password" placeholder="Password" name="password" class='w-100 form-control' />
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
@@ -30,7 +30,6 @@
                                 <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                             @endif
                         </div>
-
                         <div class="mt-5">
                             <button type="submit" class=" btn btn-dark">
                                 Confirm

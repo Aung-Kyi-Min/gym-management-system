@@ -13,24 +13,24 @@ use App\Contracts\Services\Admin\InstructorServiceInterface;
 class InstructorController extends Controller
 {
     private $instructorService;
- 
+
     /**
       * Create a new controller instance.
       * @param InstructorInterface $taskServiceInterface
       * @return void
       */
- 
-    public function __construct(InstructorServiceInterface $instructorServiceInterface) 
+
+    public function __construct(InstructorServiceInterface $instructorServiceInterface)
     {
        $this->instructorService =  $instructorServiceInterface;
     }
- 
+
     public function create()
     {
       $loginuser = auth()->user();
       return view('admin.instructor.instructorCreate' , ['loginuser' => $loginuser]);
     }
- 
+
     /**
       * Store Instructor
       * @return void
@@ -59,7 +59,7 @@ class InstructorController extends Controller
       $instructor = $this->instructorService->edit($id);
       return view('admin.instructor.instructorEdit' , ['instructor' => $instructor , 'loginuser' => $loginuser]);
     }
- 
+
     public function update(InstructorUpdateRequest $request ,$id)
     {
        $this->instructorService->update($id , $request->only([
@@ -71,11 +71,11 @@ class InstructorController extends Controller
          'access_time',
          'description',
        ]));
-       
+
        return redirect('/admin/instructor');
     }
- 
-    public function destroy($id) 
+
+    public function destroy($id)
     {
       $this->instructorService->destroy($id);
       return redirect('/admin/instructor');
@@ -86,13 +86,18 @@ class InstructorController extends Controller
         $loginuser = auth()->user();
         $search = $request->input('search', '');
         $instructors = $this->instructorService->search($search);
-        
-        foreach ($instructors as $instructor) 
+
+        foreach ($instructors as $instructor)
         {
             $instructor->limitedDsec = Str::limit($instructor->description,40);
         }
-        
+
         return view('admin.instructor.instructor', compact('instructors', 'search' , 'loginuser'));
+    }
+
+    public function exportInstructors()
+    {
+        return $this->instructorService->export();
     }
 
 }

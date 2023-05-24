@@ -15,7 +15,7 @@
                         <div class="card-body">
                         <form method="POST" action="{{ url('/admin/password/{id}'.$loginuser->id.'/change') }}" >
                                 @csrf
-                               
+                                
                                 <div class="mt-2">
                                     <label for="old_password">Old Password</label>
                                     <input type="password" placeholder="*******" id="old_password" name="old_password" class='form-control'/>

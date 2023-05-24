@@ -25,10 +25,11 @@
                                     </div>
                                 </form>
                                 </div>
-                                <div class="right exim">
-                                    <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm margin-reset mt-3" id="export-excel">Export</a>
-                                    <a href="" class="btn btn-primary btn-sm margin-reset mt-3">Import</a>
-                                </div>
+                                <form>
+                                    <div class="right exim">
+                                        <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm margin-reset mt-3" id="export-excel">Export</a>
+                                        <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm margin-reset mt-3">Import</a>
+                                    </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -75,7 +76,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                    
+
                                 </tbody>
                             </table>
                         </div>

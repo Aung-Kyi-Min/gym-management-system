@@ -13,23 +13,27 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                        <form method="POST" action="{{ url('/admin/'.$loginuser->id.'/update') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ url('/admin/'.$loginuser->id.'/update') }}" enctype="multipart/form-data">
                                 @csrf
+
                                 <div class="mt-2 clearfix">
-                                    <img src="{{ asset('storage/images/admin/user/'.$loginuser->image) }}"  class="img-circle user_img elevation-2" alt="User Image">
+                                    @if ($loginuser->image)
+                                        <img class="user_img" id="output" name="image" src="{{ asset('storage/images/admin/user/'.$loginuser->image) }}" alt="User Image">
+                                    @else
+                                        <img class="user_img" id="output" name="image" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Default Image">
+                                    @endif
                                     <label for="image" class="form-label upload">Upload</label>
-                                    <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
-                                   
+                                    <input type="file" name="image" id="image" onchange="loadFile(event)" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
                                 </div>
-                                
+
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="Admin Name" id="name" name="name" class='form-control' value="{{$loginuser->name}}"/>
+                                    <input type="text" placeholder="Admin Name" id="name" name="name" class='form-control' value="{{$loginuser->name}}" />
                                     <span class="error">@error('name'){{$message}}@enderror</span>
                                 </div>
                                 <div class="mt-2">
                                     <label for="email">Email</label>
-                                    <input type="text" placeholder="Email" id="email" name="email" class='form-control'  value="{{$loginuser->email}}"/>
+                                    <input type="text" placeholder="Email" id="email" name="email" class='form-control' value="{{$loginuser->email}}" />
                                     <span class="error">@error('email'){{$message}}@enderror</span>
                                 </div>
                                 
@@ -40,11 +44,17 @@
                                 </div>
 
                                 <div class="mt-2">
-                                <label class="col-lg-3 col-form-label form-control-label">Gender</label>
-                                    <select class="form-control" name="gender">
-                                        <option value="male" {{ $loginuser->gender == 'male' ? 'selected' : '' }}>Male</option>
-                                        <option value="female" {{ $loginuser->gender == 'female' ? 'selected' : '' }}>Female</option>
-                                    </select>
+                                    <label class="col-lg-3 col-form-label form-control-label">Gender</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Male
+                                            <input type="radio" name="gender" value="male" {{$loginuser->gender == 'male' ? 'checked' : '' }}>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender" value="female" {{$loginuser->gender == 'female' ? 'checked' : '' }}>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
                                     <span class="error">@error('gender'){{$message}}@enderror</span>
                                 </div>
                                 <div class="mt-2">
@@ -64,7 +74,7 @@
 
                                 <div class="mt-2">
                                     <label for="phone">Phone</label>
-                                    <input type="text" placeholder="Phone" id="phone" name="phone" class='form-control' value="{{$loginuser->phone}}"/>
+                                    <input type="text" placeholder="Phone" id="phone" name="phone" class='form-control' value="{{$loginuser->phone}}" />
                                     <span class="error">@error('phone'){{$message}}@enderror</span>
                                 </div>
 
@@ -75,7 +85,7 @@
                                     <button type="submit" class=" btn btn-dark">
                                         Update
                                     </button>
-                                </div>  
+                                </div>
                             </form>
                         </div>
                         <!-- /.card-body -->
@@ -89,10 +99,21 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        
+        if (event.target.files[0]) {
+            output.src = URL.createObjectURL(event.target.files[0]);
+        } else {
+            output.src = "https://bootdey.com/img/Content/avatar/avatar7.png";
+        }
+    }
+</script>
 @endsection
 
 @if(session('success'))
-    <script>
-        alert("{{ session('success') }}");
-    </script>
+<script>
+    alert("{{ session('success') }}");
+</script>
 @endif

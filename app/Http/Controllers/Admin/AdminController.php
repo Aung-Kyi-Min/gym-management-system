@@ -32,6 +32,7 @@ class AdminController extends Controller
    private $monthMemberCount;
    private $weekUserCount;
    private $weekMemberCount;
+   private $adminService;
 
      /**
      * Create a new controller instance.
@@ -89,11 +90,11 @@ class AdminController extends Controller
         );
     }
 
-    private function getUserDataByWeek() 
+    private function getUserDataByWeek()
     {
         $weeks = range(1,7);
         $weekUserCount = [] ;
-        foreach($weeks as $week) 
+        foreach($weeks as $week)
         {
             $count = User::whereRaw('DAYOFWEEK(created_at) = ?', [$week])->count();
             $weekUserCount[$week] = $count;
@@ -101,11 +102,11 @@ class AdminController extends Controller
         return $weekUserCount;
    }
 
-    private function getMemberDataByWeek() 
+    private function getMemberDataByWeek()
     {
         $weeks = range(1,7);
         $weekMemberCount = [] ;
-        foreach($weeks as $week) 
+        foreach($weeks as $week)
         {
             $count = Member::whereRaw('DAYOFWEEK(created_at) = ?', [$week])->count();
             $weekMemberCount[$week] = $count;
@@ -113,7 +114,7 @@ class AdminController extends Controller
         return $weekMemberCount;
     }
 
-    private function getUserDataByMonth() 
+    private function getUserDataByMonth()
     {
         $currentMonth = Carbon::now()->format('Y-m');
         $startDate = Carbon::parse($currentMonth)->startOfMonth()->format('d');
@@ -122,7 +123,7 @@ class AdminController extends Controller
         $monthUserCount = [] ;
 
         foreach($dates as $date) {
-            $count = User::whereDate('created_at', '=', $currentMonth.'-'.$date)->count();   
+            $count = User::whereDate('created_at', '=', $currentMonth.'-'.$date)->count();
             $monthUserCount[$date] = $count;
         }
         return $monthUserCount;
@@ -136,7 +137,7 @@ class AdminController extends Controller
         $dates = range($startDate, $endDate);
         $monthMemberCount = [] ;
 
-        foreach($dates as $date) 
+        foreach($dates as $date)
         {
             $count = Member::whereDate('created_at', '=', $currentMonth.'-'.$date)->count();
             $monthMemberCount[$date] = $count;
@@ -144,7 +145,7 @@ class AdminController extends Controller
         return $monthMemberCount;
     }
 
-    private function getUserDataByYear() 
+    private function getUserDataByYear()
     {
         $months = range(1,12);
         $yearUserCount = [];
@@ -156,11 +157,11 @@ class AdminController extends Controller
         return $yearUserCount;
     }
 
-    private function getMemberDataByYear() 
+    private function getMemberDataByYear()
     {
         $months = range(1,12);
         $yearMemberCount = [];
-        foreach($months as $month) 
+        foreach($months as $month)
         {
             $count = Member::whereMonth('created_at', '=', str_pad($month, 2, '0', STR_PAD_LEFT))
             ->count();
@@ -173,10 +174,10 @@ class AdminController extends Controller
     {
         $loginuser = auth()->user();
         return view('admin.edit', ['loginuser' => $loginuser]);
-        
+
     }
 
-   
+
     public function update(UserProfileEditRequest $request,$id)
     {
         $this->adminService->update($id , $request->only([
@@ -203,25 +204,25 @@ class AdminController extends Controller
     public function changepassword(ChangePasswordRequest $request)
     {
         
-        $user = Auth::user();
-        $user->password = bcrypt($request->input('new_password'));
-        $user->save();
+        $this->adminService->updatePassword();
+        // Redirect or return a response
         return redirect()->back()->with('success', 'Admin password changed successfully');
     }
     
+
     public function member()
     {
         $loginuser = auth()->user();
         return view('admin.member.member' , ['loginuser' => $loginuser]);
     }
 
-    public function created() 
+    public function created()
     {
         $loginuser = auth()->user();
         return view('email.created' , ['loginuser' => $loginuser]);
     }
 
-    public function expire() 
+    public function expire()
     {
         $loginuser = auth()->user();
         return view('email.expire' , ['loginuser' => $loginuser]);

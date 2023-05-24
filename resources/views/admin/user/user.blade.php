@@ -66,6 +66,7 @@
                                         </td>
                                         <td>
                                             <form action="{{route('admin.destroy_user' , $user->id)}}" method="post">
+                                                {{ method_field('DELETE') }}
                                                 @csrf
                                                 <a href="{{route('admin.edit_user' , $user->id)}}" type="button" class="btn-sm bg-gradient-primary">Edit</a>
                                                 <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>

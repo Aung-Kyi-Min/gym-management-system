@@ -32,9 +32,11 @@ Route::post('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit
 Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
 
 
+
 // auth
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['guest']], function () {
+
     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
     Route::get('/forgetpassword', [AuthController::class, 'forgetpassword'])->name('auth.forgetpassword');
@@ -43,10 +45,63 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('/LoginUser', [AuthController::class, 'LoginUser'])->name('auth.loginUser');
     Route::post('/forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('auth.forget');
     Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('auth.resetpsw');
+
+    Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
+    Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
+    Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
+    Route::get('/successPurchase', )->name('user.successPurchase');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+
+        //purchase
+        Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
+        Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
+        Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
+        Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
+
 });
+
+Route::middleware(['user'])->group(function () {
+
+    Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::get('/forgetpassword', [AuthController::class, 'forgetpassword'])->name('auth.forgetpassword');
+    Route::get('/reset/{token}', [AuthController::class, 'reset'])->name('auth.reset');
+    Route::post('/registerUser', [AuthController::class, 'registerUser'])->name('auth.registerUser');
+    Route::post('/LoginUser', [AuthController::class, 'LoginUser'])->name('auth.loginUser');
+    Route::post('/forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('auth.forget');
+    Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('auth.resetpsw');
+
+    // User-only routes here
+    //Route::get('/', [UserController::class, 'index'])->name('user.index');
+    Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
+    Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
+    Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
+    Route::get('/successPurchase', )->name('user.successPurchase');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+
+    //purchase
+    Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
+    Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
+    Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
+    Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
+
+
+});
+
 
 // admin
 Route::group(['middleware' => ['admin']], function () {
+
+    //Route::get('/', [UserController::class, 'index'])->name('user.index');
+
+    //Route::get('/', [UserController::class, 'index'])->name('user.index');
+    //Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
+    //Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
+    //Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
+    //Route::get('/successPurchase', )->name('user.successPurchase');
+    //Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
@@ -71,7 +126,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/user/store', [UsersController::class, 'store'])->name('admin.store_user');
     Route::get('/admin/user/edit/{id}', [UsersController::class, 'edit'])->name('admin.edit_user');
     Route::post('/admin/user/update/{id}', [UsersController::class, 'update'])->name('admin.update_user');
-    Route::post('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
+    Route::delete('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
 
     // admin workout
     Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');
@@ -94,13 +149,13 @@ Route::group(['middleware' => ['admin']], function () {
 
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');
-    Route::post('/admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.destroy_member');
+    Route::delete('/admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.destroy_member');
 
 });
 
 
 //purchase
-Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
-Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
-Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
-Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
+//Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
+//Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
+//Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
+//Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');

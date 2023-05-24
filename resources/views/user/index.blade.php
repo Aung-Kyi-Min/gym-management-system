@@ -186,13 +186,13 @@
                 <div class="carousel-inner">
                     @foreach ($instructors as $index => $instructor)
                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                        
+
                         <div class="box">
                             <div>
                             <img class="index-profile" src="{{asset('storage/images/admin/instructor/'.$instructor->image)}}" alt="{{$instructor->image}}">
                             </div>
                             <div class="detail-box">
-                                <h5>{{ $instructor->name }}</h5> 
+                                <h5>{{ $instructor->name }}</h5>
                                 <span>{{ $instructor->speciality }}</span>
                                 <p>{{ $instructor->description }}</p>
                             </div>
@@ -246,7 +246,7 @@
                     <div class="detail-box">
                         <h5> SHOWER SERVICE </h5>
                         <p>
-                            Relax and rejuvenate with our invigorating shower service after an intense session. 
+                            Relax and rejuvenate with our invigorating shower service after an intense session.
                         </p>
                     </div>
                 </div>
@@ -257,7 +257,7 @@
                     <div class="detail-box">
                         <h5>  UNIQUE TO YOUR NEEDS  </h5>
                         <p>
-                            Embrace a fitness routine unique to your needs, tailored by our expert trainers who are dedicated to your success. 
+                            Embrace a fitness routine unique to your needs, tailored by our expert trainers who are dedicated to your success.
                             Join us and embark on a transformative fitness journey today!
                         </p>
                     </div>
@@ -284,13 +284,13 @@
                 <div class="carousel-inner">
                     @foreach ($feedbacks as $index => $feedback)
                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                        
+
                         <div class="box">
                             <div>
                             <img class="index-profile" src="{{asset('storage/images/admin/user/'.$feedback->user->image)}}" alt="{{$feedback->user->image}}">
                             </div>
                             <div class="detail-box">
-                                <h5>{{ $feedback->user->name }}</h5> 
+                                <h5>{{ $feedback->user->name }}</h5>
                                 <p>{{ $feedback->message }}</p>
                             </div>
                         </div>
@@ -318,11 +318,11 @@
                 BEST RESULTS
             </h2>
             <p>
-            Welcome to our state-of-the-art gym training center, 
+            Welcome to our state-of-the-art gym training center,
             where we are built to bring you the best results.
             Our expert instructors are dedicated to guiding you towards achieving your fitness goals,
-                providing personalized workouts and nutritional guidance. With top-of-the-line equipment 
-                and a motivating atmosphere, we create the perfect environment for your transformation. 
+                providing personalized workouts and nutritional guidance. With top-of-the-line equipment
+                and a motivating atmosphere, we create the perfect environment for your transformation.
                 Join us today and unlock your full potential, as we are committed to delivering unparalleled fitness success.
             </p>
             </div>
@@ -398,7 +398,7 @@
             </h6>
             <p>
                 GLP is equipped with a range of fitness facilities to cater to various workout preferences.
-                This may include a well-equipped gym area with cardiovascular machines, strength training equipment, 
+                This may include a well-equipped gym area with cardiovascular machines, strength training equipment,
                 free weights, and functional training areas.
             </p>
         </div>
@@ -486,4 +486,3 @@
     </script>
 @endif
 @endsection
-
