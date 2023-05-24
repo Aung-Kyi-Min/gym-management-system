@@ -65,8 +65,8 @@
                                 <div class="mt-2">
                                     <label for="role">Role</label>
                                     <select name="role" id="role" class="selectbox">
-                                        <option value="0" @if($user->role === '0') selected @endif>Admin</option>
-                                        <option value="1" @if($user->role === '1') selected @endif>User</option>
+                                        <option value="0" {{ $user->role == '0' ? 'selected' : '' }}>Admin</option>
+                                        <option value="1" {{ $user->role == '1' ? 'selected' : '' }}>User</option>
                                     </select>
                                     <span class="error">@error('role'){{$message}}@enderror</span>
                                 </div>

@@ -25,10 +25,10 @@
                                     </div>
                                 </form>
                                 </div>
-                                    <div class="right exim">
-                                        <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm margin-reset mt-3" id="export-excel">Export</a>
-                                        <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm margin-reset mt-3">Import</a>
-                                    </div>
+                                <div class="right exim">
+                                    <a href="{{ route('export.instructors') }}" class="btn btn-info btn-sm margin-reset mt-3" id="export-excel">Export</a>
+                                    <a href="{{ route('import-views') }}" class="btn btn-primary btn-sm margin-reset mt-3">Import</a>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -98,6 +98,5 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 
 @endsection
