@@ -23,6 +23,7 @@
                                         </button>
                                     </div>
                                 </form>
+                                    </div>
                                 <div class="right exim">
                                     <a href="{{ route('export.members') }}" class="btn btn-info btn-sm margin-reset mt-3" id="export-excel">Export</a>
                                     <a href="{{ route('import-member') }}" class="btn btn-primary btn-sm margin-reset mt-3">Import</a>
