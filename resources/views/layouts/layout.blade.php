@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/sourcesanspro-font.css.css">
 
     <!-- slider stylesheet -->
     <link rel="stylesheet" type="text/css"
@@ -28,6 +29,8 @@
     <!-- fonts style -->
     <link href="css/font.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/template2.css">
+
     <!-- Custom styles for this template -->
     <link href="css/common.css" rel="stylesheet" />
     <!-- responsive style -->
@@ -65,45 +68,27 @@
                                 <span>demo@gmail.com</span>
                             </a>
                         </li>
-                        {{--<li class="nav-item mt-2">
-                        </li>--}}
                         <li class="nav-item ml-5 mb-2">
                             <div class="">
                                 @if (Auth::check())
                                     <div class=" ">
-                                        <img src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" class="w-50 rounded-circle mb-3" onclick="showProfile()" />
+                                        <img src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
+                                            class="w-50 rounded-circle mb-3" onclick="showProfile()" />
                                         <div id="profile-buttons" class="hidden">
-                                            <a href="{{ route('user.profile') }}"
-                                            class="btn btn-info btn-sm">
-                                            Profile
+                                            <a href="{{ route('user.profile') }}" class="btn btn-info btn-sm">
+                                                Profile
                                             </a>
                                             <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">Logout</a>
                                         </div>
-
-                                        {{--<div class="user-panel">
-                                            <div class="image">
-                                            <img id="call1" class="w-25 card-img-top rounded-circle img-circle"
-                                             src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
-                                            </div>
-                                        <div class="info">
-                                           <form id="toggle" class="mt-2">
-                                                <a href="{{ route('user.profile') }}"
-                                                class="btn btn-info btn-sm">
-                                                Profile
-                                                </a>
-                                                <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">Logout</a>
-                                           </form>
+                                    @else
+                                        <div class="mt-4 row">
+                                            <a href="{{ route('auth.login') }}" class="col-md-6 text-dark">
+                                                Login
+                                            </a>
+                                            <a href="{{ route('auth.register') }}" class="col-md-6 text-dark">
+                                                Register
+                                            </a>
                                         </div>
-                                    </div>--}}
-                                @else
-                                <div class="mt-4 row">
-                                    <a href="{{ route('auth.login') }}" class="col-md-6 text-dark">
-                                        Login
-                                    </a>
-                                    <a href="{{ route('auth.register') }}" class="col-md-6 text-dark">
-                                        Register
-                                    </a>
-                                </div>
                                 @endif
                             </div>
                         </li>
@@ -137,20 +122,6 @@
                                     <a class="nav-link" href="{{ route('user.feedback') }}">Feedback</a>
                                 </li>
                             </ul>
-                            {{--<div class="d-flex justify-content-end">
-                                @if (Auth::check())
-                                    <a href="{{ route('user.profile') }}"
-                                        class="nav-link btn btn-primary btn-sm">Profile</a>&nbsp;
-                                    <a href="{{ route('logout') }}" class="nav-link btn btn-light btn-sm">Logout</a>
-                                @else
-                                    <a href="{{ route('auth.login') }}" class="nav-link text-dark">
-                                        Login
-                                    </a>
-                                    <a href="{{ route('auth.register') }}" class="nav-link text-dark">
-                                        Register
-                                    </a>
-                                @endif
-                            </div>--}}
                         </div>
                     </div>
                 </nav>
@@ -163,8 +134,7 @@
     <!-- footer section -->
     <section class="container-fluid footer_section ">
         <p>
-            &copy; 2019 All Rights Reserved. Design by
-            <a href="https://html.design/">Free Html Templates</a>
+            &copy; 2023 All Rights Reserved.
         </p>
     </section>
     <!-- footer section -->
@@ -180,23 +150,13 @@
                 .querySelector(".custom_menu-btn")
                 .classList.toggle("menu_btn-style");
         }
-
     </script>
-        <script>
-            $(document).ready(function(){
-                $("#call1").click(function(){
-
-                    $("#toggle").toggle(1000);
-                    //$("#toggle").addClass("invisible").toggle(1000);
-                    //$("#toggle").toggle(1000);
-                });
-            });
-            function showProfile() {
-                const profileButtons = document.getElementById("profile-buttons");
-                profileButtons.classList.remove("hidden");
-            }
-
-        </script>
+    <script>
+        function showProfile() {
+            const profileButtons = document.getElementById("profile-buttons");
+            profileButtons.classList.remove("hidden");
+        }
+    </script>
 
 </body>
 

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
@@ -28,7 +27,8 @@ class InstructorController extends Controller
 
     public function create()
     {
-       	return view('admin.instructor.instructorCreate');
+      $loginuser = auth()->user();
+      return view('admin.instructor.instructorCreate' , ['loginuser' => $loginuser]);
     }
 
     /**
@@ -44,15 +44,20 @@ class InstructorController extends Controller
         'email',
         'price',
         'access_time',
-
+        'description',
        ]));
        return redirect('/admin/instructor');
     }
+    /**
+      * Edit Instructor
+      * @return void
+     */
 
     public function edit($id)
     {
-       $instructor = $this->instructorService->edit($id);
-       return view('admin.instructor.instructorEdit' , ['instructor' => $instructor]);
+      $loginuser = auth()->user();
+      $instructor = $this->instructorService->edit($id);
+      return view('admin.instructor.instructorEdit' , ['instructor' => $instructor , 'loginuser' => $loginuser]);
     }
 
     public function update(InstructorUpdateRequest $request ,$id)
@@ -64,6 +69,7 @@ class InstructorController extends Controller
          'email',
          'price',
          'access_time',
+         'description',
        ]));
 
        return redirect('/admin/instructor');
@@ -71,21 +77,22 @@ class InstructorController extends Controller
 
     public function destroy($id)
     {
-       $this->instructorService->destroy($id);
-       return redirect('/admin/instructor');
+      $this->instructorService->destroy($id);
+      return redirect('/admin/instructor');
     }
 
     public function instructor(Request $request)
     {
+        $loginuser = auth()->user();
         $search = $request->input('search', '');
         $instructors = $this->instructorService->search($search);
 
         foreach ($instructors as $instructor)
         {
-            $instructor->limitedEmail = Str::limit($instructor->email,20);
+            $instructor->limitedDsec = Str::limit($instructor->description,40);
         }
 
-        return view('admin.instructor.instructor', compact('instructors', 'search'));
+        return view('admin.instructor.instructor', compact('instructors', 'search' , 'loginuser'));
     }
 
     public function exportInstructors()

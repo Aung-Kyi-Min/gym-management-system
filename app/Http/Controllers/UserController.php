@@ -17,24 +17,33 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Feedback;
+use App\Exports\InstructorsExport;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UserFeedbackRequest;
+use App\Contracts\Services\UserServiceInterface;
+
+
 
 class UserController extends Controller
 {
     private $workoutService;
-    private $adminService;
     private $instructorService;
+    private $adminService;
+    private $userService;
 
     /**
-     * Create a new controller instance.
-     * @param WorkoutInterface $taskServiceInterface
-     * @return void
-     */
+      * Create a new controller instance.
+      * @param WorkoutInterface $AdminServiceInterface $InstructorServiceInterface
+      * @return void
+      */
 
-    public function __construct(WorkoutServiceInterface $workoutServiceInterface, AdminServiceInterface $adminServiceInterface, InstructorServiceInterface $instructorServiceInterface)
+    public function __construct(UserServiceInterface $userServiceInterface,WorkoutServiceInterface $workoutServiceInterface,AdminServiceInterface $adminServiceInterface,InstructorServiceInterface $instructorServiceInterface)
     {
-        $this->workoutService = $workoutServiceInterface;
-        $this->adminService = $adminServiceInterface;
-        $this->instructorService = $instructorServiceInterface;
+       $this->workoutService = $workoutServiceInterface;
+       $this->adminService = $adminServiceInterface;
+       $this->instructorService = $instructorServiceInterface;
+       $this->userService = $userServiceInterface;
     }
 
     //
@@ -53,25 +62,37 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $instructor = $this->instructorService->get();
+        $instructors = $this->instructorService->get();
+        $instructorCounts = $instructors->count();
+        $feedbacks = Feedback::all();
 
-        //return view('user.index')->with('user', $user);
-        return view('user.index',['user'=> $user , 'instructor' => $instructor]);
+        return view('user.index', [
+            'instructors' => $instructors,
+            'instructorCounts' => $instructorCounts,
+            'feedbacks' => $feedbacks,
+            'user' => $user,
+        ]);
     }
+
 
     public function feedback()
     {
-        if (Auth::guest()) {
-            return redirect()->route('auth.login');
+        if (Auth::guest())
+        {
+            return redirect()->route
+
+            ('auth.login');
         }
-        $user = Auth::user();
-        return view('user.feedback',['user' => $user]);
+        $user = Auth::user(); // Retrieve the currently logged-in user
+
+        return view('user.feedback')->with('user', $user);
     }
 
     public function workout()
     {
 
-        if (Auth::guest()) {
+        if (Auth::guest())
+        {
             return redirect()->route('auth.login');
         }
         $user = Auth::user();
@@ -168,39 +189,41 @@ class UserController extends Controller
         }
     }
 
-    public function update(UserProfileEditRequest $request)
+    public function edit($id)
     {
-        // Retrieve the currently logged-in user
         $user = auth()->user();
+        return view('user.profile', ['user' => $user]);
+    }
 
-        // Update the user data
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+    public function update(UserProfileEditRequest $request,$id)
+    {
+        $this->userService->update($id , $request->only([
+            'name',
+            'email',
+            'image',
+            'age',
+            'phone',
+            'gender',
+            'password',
+            'address',
 
-        // Update the password only if it's provided
-        $password = $request->input('password');
-        if (!empty($password)) {
-            $user->password = Hash::make($password);
-        }
-
-        $user->gender = $request->input('gender');
-        $user->age = $request->input('age');
-        $user->phone = $request->input('phone');
-        $user->address = $request->input('address');
-
-        // Update the user's image if provided
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = $image->getClientOriginalName();
-            $image->storeAs('public/images/admin/user', $name);
-            $user->image = $name;
-        }
-
-        // Save the changes
-        $user->save();
+         ]));
 
         // Redirect or return a response
         return redirect()->back()->with('success', 'User updated successfully');
     }
+
+    public function sendFeedback(UserFeedbackRequest $request)
+
+    {
+        $this->userService->send($request->only([
+
+            'message',
+            'user_id',
+         ]));
+
+        return redirect()->back()->with('success', 'Thank you for your feedback!');
+    }
+
 
 }

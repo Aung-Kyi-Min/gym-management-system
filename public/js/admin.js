@@ -25,4 +25,5 @@ $(document).ready(function () {
         $("#datamethod1").addClass("none");
         $("#datamethod2").addClass("none");
     });
+
 });

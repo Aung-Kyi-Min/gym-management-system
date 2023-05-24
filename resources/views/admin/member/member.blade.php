@@ -11,19 +11,18 @@
                         <div class="card-header clearfix">
                             <div class="left clearfix">
                                 <h3 class="card-title list-header left">Member List</h3>
-                                <a href="#" class="btn bg-gradient-primary margin-reset create-btn mt-3 right">Create</a>
                             </div>
                             <div class="card-tools search-header right clearfix">
-                                <div class="input-group input-group-sm left" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control  float-right" placeholder="Search">
+                            <form method="GET" class="left">
+                                    <div class="input-group input-group-sm " style="width: 150px;">
+                                    <input type="text" name="search" class="form-control  float-right" placeholder="Search" value="{{ $search }}">
 
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
-
-                                </div>
+                                </form>
                                 <div class="right exim">
                                     <a href="{{ route('export.members') }}" class="btn btn-info btn-sm margin-reset mt-3" id="export-excel">Export</a>
                                     <a href="{{ route('import-member') }}" class="btn btn-primary btn-sm margin-reset mt-3">Import</a>
@@ -47,19 +46,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Hla Tun</td>
-                                        <td>Kyar Gyi</td>
-                                        <td>Boxing</td>
-                                        <td>3 months</td>
-                                        <td>450000</td>
-                                        <td>9.5.2023</td>
-                                        <td>9.7.2023</td>
+                                    @foreach ($members as $index => $member)
+                                    <tr>                                       
+                                        <td>{{$member->id}}</td>
+                                        <td>{{$member->user->name}}</td>
+                                        <td>{{$member->instructor ? $member->instructor->name : '-'}}</td>
+                                        <td>{{$member->workout->name}}</td>
+                                        <td>{{$member->sub_month}}</td>
                                         <td>
-                                            <button type="button" class="btn bg-gradient-danger">Delete</button>
+                                            {{$payments[$index]->amount}}
                                         </td>
+                                        <td>{{$member->joining_date}}</td>
+                                        <td>{{$member->end_date}}</td>
+                                        <td>
+                                            <form action="{{route('admin.destroy_member' , $member->id)}}" method="post">
+                                                {{ method_field('DELETE') }}
+                                                @csrf
+                                                <input type="hidden" name="email" value="{{ $member->user->email }}">
+                                                <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Member?')">Delete</button>
+                                            </form>
+                                        </td>   
                                     </tr>
+                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -67,6 +76,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
+                <div class="center">{{ $members->links() }}</div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

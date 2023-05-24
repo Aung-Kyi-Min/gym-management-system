@@ -16,9 +16,10 @@
                             <form action="{{route('admin.update_user' , $user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-2 clearfix">
-                                    <img class="user_img" src="{{ asset('storage/images/admin/user/'.$user->image) }}">
+                                    <img class="user_img none" id="output" name="image" alt="test">
+                                    <img class="user_img" id="default-image" src="{{ asset('storage/images/admin/user/'.$user->image) }}">
                                     <label for="image" class="form-label upload">Upload</label>
-                                    <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
+                                    <input type="file" name="image" id="image" onchange="loadFile(event)" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
                                     <span class="error">@error('image'){{$message}}@enderror</span>
                                 </div>
 
@@ -42,10 +43,16 @@
 
                                 <div class="mt-2">
                                     <label for="gender">Gender</label>
-                                    <select name="gender" id="gender" class="selectbox" >
-                                        <option value="male" @if($user->gender === 'male') selected @endif>Male</option>
-                                        <option value="female" @if($user->gender === 'female') selected @endif>Female</option>
-                                    </select>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Male
+                                            <input type="radio" name="gender" value="male" {{ $user->gender == 'male' ? 'checked' : '' }}>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender" value="female" {{ $user->gender == 'female' ? 'checked' : '' }}>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
                                     <span class="error">@error('gender'){{$message}}@enderror</span>
                                 </div>
 
@@ -88,4 +95,12 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        $("#output").removeClass("none");
+        $("#default-image").addClass("none");
+    }
+</script>
 @endsection

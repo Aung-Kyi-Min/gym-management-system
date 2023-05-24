@@ -19,26 +19,26 @@
                                     <label for="name">Name</label>
                                     <input type="text" placeholder="Instructor Name" name="name" class="form-control @error('name') is-invalid @enderror"  value="{{ old('name') }}" />
                                 </div>
-                                <small class="text-warning">{{$errors->first('name')}}</small>
+                                <small class="text-danger">{{$errors->first('name')}}</small>
                                 
                                 <div class="mt-3">
                                     <label for="email">Email</label>
                                     <input type="email" placeholder="Email" name="email" class="form-control @error('email') is-invalid @enderror"  value="{{ old('email') }}" />
                                 </div>
-                                <small class="text-warning">{{$errors->first('email')}}</small>
+                                <small class="text-danger">{{$errors->first('email')}}</small>
 
                                 <div class="mt-3">
                                     
                                     <label for="specialist">Specialist</label>
                                     <input type="text" placeholder="specialist" name="speciality" id="specialist" class="form-control @error('speciality') is-invalid @enderror"  value="{{ old('speciality') }}" />
                                 </div>
-                                <small class="text-warning">{{$errors->first('speciality')}}</small>
+                                <small class="text-danger">{{$errors->first('speciality')}}</small>
 
                                 <div class="mt-3">
                                 <label for="Price">Price</label>
                                     <input type="text"  name="price" class="form-control @error('price') is-invalid @enderror"  value="{{ old('price') }}" placeholder="Price" />
                                 </div>
-                                <small class="text-warning">{{$errors->first('price')}}</small>
+                                <small class="text-danger">{{$errors->first('price')}}</small>
 
                                 <div class="mt-3">
                                     <label for="time">Time</label>
@@ -48,14 +48,20 @@
                                         <option value="evening"  @if(old('access_time') == 'evening') selected @endif>Evening Time</option>
                                     </select>
                                 </div>
-                                <small class="text-warning">{{$errors->first('access_time')}}</small>
+                                <small class="text-danger">{{$errors->first('access_time')}}</small>
                                 
                                 <div class="mt-3">
                                     <label for="image">Image</label>
                                     <input type="file"  name="image" id="image" class="form-control @error('image') is-invalid @enderror"  value="{{ old('image') }}"  />
                                 </div>
-                                <small class="text-warning">{{$errors->first('image')}}</small>
+                                <small class="text-danger">{{$errors->first('image')}}</small>
 
+                                <div class="mt-3">
+                                    <label for="textarea">Description</label>
+                                    <textarea id="textarea" placeholder="Instructor Description" name="description" rows="4" cols="40" class="form-control">{{ old('description') }}</textarea>
+                                    <small class="text-danger">{{$errors->first('description')}}</small>
+                                </div>
+                                
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary btn-sm float-end">Create</button>
                                 </div>  

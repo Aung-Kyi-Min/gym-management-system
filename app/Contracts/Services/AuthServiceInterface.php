@@ -5,7 +5,7 @@ namespace App\Contracts\Services;
 /**
  * Interface for user service
 */
-interface AuthServiceInterface
+ interface AuthServiceInterface
 {
     /**
      * register

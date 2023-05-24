@@ -30,6 +30,7 @@ class InstructorUpdateRequest extends FormRequest
             'email' => ['required', 'email', 'max:255'],
             'price' => ['required', 'integer', 'min:0'],
             'access_time' => ['required', 'max:255'],
+            'description' => ['required'],
         ];
     }
 }

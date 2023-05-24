@@ -31,10 +31,11 @@ class Member extends Model
         return $this->belongsTo(Workout::class);
     }
 
-    public function instructor()
+        public function instructor()
     {
         return $this->belongsTo(Instructor::class);
     }
+
 
     public function payment()
     {

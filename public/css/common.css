@@ -13,6 +13,17 @@ body {
   background-color: #2e0c6f;
 }
 
+.gradient-background {
+  width: 100%;
+  background: linear-gradient(to right, #f9c961, #543e7b);
+}
+
+.design2 {
+  font-size: 50px;
+  color: black;
+  text-align: center;
+}
+
 .adj-size {
   padding: 100px 0;
 }

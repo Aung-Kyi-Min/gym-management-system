@@ -50,18 +50,18 @@
                             @endif
                         </div>
                         <div class="mt-3">
-                            <select name="gender" id="gender" class='form-control'>
-                                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-                                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
-                            </select>
+                            <div class="p-t-10">
+                                <label class="radio-container m-r-45">Male
+                                    <input type="radio" checked="checked" name="gender" value="male">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container">Female
+                                    <input type="radio" name="gender" value="female">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
                         </div>
                         <input type="hidden" name="role" id="role" value="1">
-                        {{--<div class="mt-3">
-                            <select name="role" id="role" class='form-control'>
-                                <option value="0" {{ old('role') == '0' ? 'selected' : '' }}>Admin</option>
-                                <option value="1" {{ old('role') == '1' ? 'selected' : '' }}>User</option>
-                            </select>
-                        </div>--}}
                         <div>
                             <input type="file" name="image" class='w-100 form-control'/>
                             @if ($errors->has('image'))
@@ -80,5 +80,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endsection
