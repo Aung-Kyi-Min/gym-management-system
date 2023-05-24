@@ -145,7 +145,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
     Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
     Route::delete('/admin/instructor/destroy/{id}', [InstructorController::class, 'destroy'])->name('admin.destroy_instructor');
-    Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
+   
 
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');

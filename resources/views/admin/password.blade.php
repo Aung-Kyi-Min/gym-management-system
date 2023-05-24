@@ -30,11 +30,9 @@
 
                                 <div class="mt-2">
                                     <label for="confirm_password">Confirm Password</label>
-                                    <input type="password" placeholder="********" id="confirm_password" name="confirm_password" class="form-control" value="{{ old('confirm_password') }}" required />
+                                    <input type="password" placeholder="********" id="confirm_password" name="confirm_password" class="form-control" value="{{ old('confirm_password') }}"/>
                                     @if ($errors->has('confirm_password'))
-                                        <div class="alert alert-danger">
-                                            {{ $errors->first('confirm_password') }}
-                                        </div>
+                                        <span class="error">@error('confirm_password'){{$message}}@enderror</span>
                                     @endif
                                 </div>
 
