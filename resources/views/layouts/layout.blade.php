@@ -39,31 +39,73 @@
     <header class="header_section">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand mr-5" href="index.html">
                     <img src="images/logo.png" alt="" />
                     <span>
                         GLP
                     </span>
                 </a>
-                <div class="contact_nav" id="">
+                <div class="contact_nav " id="">
                     <ul class="navbar-nav ">
-                        <li class="nav-item">
+                        <li class="nav-item mt-2 ml-5 mr-5">
                             <a class="nav-link" href="#">
                                 <img src="images/location.png" alt="" />
                                 <span>Location</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item mt-2 ml-5 mr-5">
+                            <a class="nav-link " href="#">
                                 <img src="images/call.png" alt="" />
-                                <span>Call : + 01 1234567890</span>
+                                <span>+01234567890</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mt-2 ml-5 mr-5">
                             <a class="nav-link" href="#">
                                 <img src="images/envelope.png" alt="" />
                                 <span>demo@gmail.com</span>
                             </a>
+                        </li>
+                        {{--<li class="nav-item mt-2">
+                        </li>--}}
+                        <li class="nav-item ml-5 mb-2">
+                            <div class="">
+                                @if (Auth::check())
+                                    <div class=" ">
+                                        <img src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" class="w-50 rounded-circle mb-3" onclick="showProfile()" />
+                                        <div id="profile-buttons" class="hidden">
+                                            <a href="{{ route('user.profile') }}"
+                                            class="btn btn-info btn-sm">
+                                            Profile
+                                            </a>
+                                            <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">Logout</a>
+                                        </div>
+
+                                        {{--<div class="user-panel">
+                                            <div class="image">
+                                            <img id="call1" class="w-25 card-img-top rounded-circle img-circle"
+                                             src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
+                                            </div>
+                                        <div class="info">
+                                           <form id="toggle" class="mt-2">
+                                                <a href="{{ route('user.profile') }}"
+                                                class="btn btn-info btn-sm">
+                                                Profile
+                                                </a>
+                                                <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">Logout</a>
+                                           </form>
+                                        </div>
+                                    </div>--}}
+                                @else
+                                <div class="mt-4 row">
+                                    <a href="{{ route('auth.login') }}" class="col-md-6 text-dark">
+                                        Login
+                                    </a>
+                                    <a href="{{ route('auth.register') }}" class="col-md-6 text-dark">
+                                        Register
+                                    </a>
+                                </div>
+                                @endif
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -95,7 +137,7 @@
                                     <a class="nav-link" href="{{ route('user.feedback') }}">Feedback</a>
                                 </li>
                             </ul>
-                            <div class="d-flex justify-content-end">
+                            {{--<div class="d-flex justify-content-end">
                                 @if (Auth::check())
                                     <a href="{{ route('user.profile') }}"
                                         class="nav-link btn btn-primary btn-sm">Profile</a>&nbsp;
@@ -108,7 +150,7 @@
                                         Register
                                     </a>
                                 @endif
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                 </nav>
@@ -138,7 +180,23 @@
                 .querySelector(".custom_menu-btn")
                 .classList.toggle("menu_btn-style");
         }
+
     </script>
+        <script>
+            $(document).ready(function(){
+                $("#call1").click(function(){
+
+                    $("#toggle").toggle(1000);
+                    //$("#toggle").addClass("invisible").toggle(1000);
+                    //$("#toggle").toggle(1000);
+                });
+            });
+            function showProfile() {
+                const profileButtons = document.getElementById("profile-buttons");
+                profileButtons.classList.remove("hidden");
+            }
+
+        </script>
 
 </body>
 

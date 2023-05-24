@@ -184,6 +184,9 @@
           <li data-target="#carouselExample2Indicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
+            @foreach ($instructor  as $trainer)
+
+            @endforeach
           <div class="carousel-item active">
             <div class="box">
               <div class="img-box">
@@ -191,16 +194,15 @@
               </div>
               <div class="detail-box">
                 <h5>
-                  Trainer 1
+                  {{ $trainer->name }}
                 </h5>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  {{ $trainer->speciality }}
                 </p>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
+          {{--<div class="carousel-item">
             <div class="box">
               <div class="img-box">
                 <img src="images/client.png" alt="">
@@ -231,7 +233,7 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div>--}}
         </div>
       </div>
 

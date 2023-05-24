@@ -2,85 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Exports\UsersExport;
-use App\Imports\UsersImport;
-use Illuminate\Http\Request;
-use App\Exports\MembersExport;
-use App\Imports\MembersImport;
-use App\Exports\InstructorsExport;
-use App\Imports\InstructorsImport;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UserProfileEditRequest;
 use App\Contracts\Services\Admin\AdminServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Exports\MembersExport;
+use App\Exports\UsersExport;
+use App\Http\Requests\UserProfileEditRequest;
+use App\Imports\InstructorsImport;
+use App\Imports\MembersImport;
+use App\Imports\UsersImport;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use App\Contracts\Services\Admin\InstructorServiceInterface;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
     private $workoutService;
     private $adminService;
+    private $instructorService;
 
     /**
-      * Create a new controller instance.
-      * @param WorkoutInterface $taskServiceInterface
-      * @return void
-      */
+     * Create a new controller instance.
+     * @param WorkoutInterface $taskServiceInterface
+     * @return void
+     */
 
-    public function __construct(WorkoutServiceInterface $workoutServiceInterface,AdminServiceInterface $adminServiceInterface)
+    public function __construct(WorkoutServiceInterface $workoutServiceInterface, AdminServiceInterface $adminServiceInterface, InstructorServiceInterface $instructorServiceInterface)
     {
-       $this->workoutService = $workoutServiceInterface;
-       $this->adminService = $adminServiceInterface;
+        $this->workoutService = $workoutServiceInterface;
+        $this->adminService = $adminServiceInterface;
+        $this->instructorService = $instructorServiceInterface;
     }
 
     //
     public function userProfile()
     {
-        if (Auth::guest())
-        {
+        if (Auth::guest()) {
             return redirect()->route('auth.login');
         }
 
         $user = Auth::user(); // Retrieve the currently logged-in user
 
         return view('user.profile')->with('user', $user);
-        ;
-    }
 
+    }
 
     public function index()
     {
-        return view('user.index');
+        $user = Auth::user();
+        $instructor = $this->instructorService->get();
+
+        //return view('user.index')->with('user', $user);
+        return view('user.index',['user'=> $user , 'instructor' => $instructor]);
     }
 
     public function feedback()
     {
-        if (Auth::guest())
-        {
+        if (Auth::guest()) {
             return redirect()->route('auth.login');
         }
-        return view('user.feedback');
+        $user = Auth::user();
+        return view('user.feedback',['user' => $user]);
     }
 
     public function workout()
     {
 
-        if (Auth::guest())
-        {
+        if (Auth::guest()) {
             return redirect()->route('auth.login');
         }
-
+        $user = Auth::user();
         $workouts = $this->workoutService->get();
         $workoutCounts = $workouts->count();
-        return view('user.workoutlist' , ['workouts' => $workouts , 'workoutCounts' => $workoutCounts]);
+        return view('user.workoutlist', ['workouts' => $workouts, 'workoutCounts' => $workoutCounts , 'user' => $user]);
     }
 
     public function purchase()
     {
-        if (Auth::guest())
-        {
+        if (Auth::guest()) {
             return redirect()->route('auth.login');
         }
         return view('user.purchase');
@@ -91,18 +93,16 @@ class UserController extends Controller
         return view('user.success-purchase');
     }
 
-
-   public function exportUsers()
-   {
+    public function exportUsers()
+    {
         $user = $this->adminService->exportuser();
         return Excel::download(new UsersExport($user), 'users.xlsx');
 
-   }
+    }
 
     public function exportMembers()
     {
         return Excel::download(new MembersExport(), 'members.xlsx');
-
     }
 
     public function importView()
@@ -110,10 +110,20 @@ class UserController extends Controller
         return view('admin.user.Userupload');
     }
 
-    public function import(Request $request)
+    public function import()
     {
-        Excel::import(new UsersImport(), $request->file);
-        return redirect()->back()->with('message', 'File Imported Successfully...');
+        try {
+            $import = new UsersImport();
+            Excel::import($import, request()->file('file'));
+            return redirect()->back()->with('message', 'File Imported Successfully...');
+        } catch (\Exception $e) {
+            if ($e->getCode() == 23000) {
+                $errors = [
+                    'Duplicate data found. Please check your file and try again.',
+                ];
+                throw ValidationException::withMessages($errors);
+            }
+        }
     }
 
     public function importViews()
@@ -121,10 +131,20 @@ class UserController extends Controller
         return view('admin.instructor.Instructorupload');
     }
 
-    public function imports(Request $request)
+    public function imports()
     {
-        Excel::import(new InstructorsImport(), $request->file);
-        return redirect()->back()->with('message', 'File Imported Successfully...');
+        try {
+            $import = new InstructorsImport();
+            Excel::import($import, request()->file('file'));
+            return redirect()->back()->with('message', 'File Imported Successfully...');
+        } catch (\Exception $e) {
+            if ($e->getCode() == 23000) {
+                $errors = [
+                    'Duplicate data found. Please check your file and try again.',
+                ];
+                throw ValidationException::withMessages($errors);
+            }
+        }
     }
 
     public function importV()
@@ -134,8 +154,18 @@ class UserController extends Controller
 
     public function import_Views(Request $request)
     {
-        Excel::import(new MembersImport(), $request->file);
-        return redirect()->back()->with('message', 'File Imported Successfully...');
+        try {
+            $import = new MembersImport();
+            Excel::import($import, request()->file('file'));
+            return redirect()->back()->with('message', 'File Imported Successfully...');
+        } catch (\Exception $e) {
+            if ($e->getCode() == 23000) {
+                $errors = [
+                    'Duplicate data found. Please check your file and try again.',
+                ];
+                throw ValidationException::withMessages($errors);
+            }
+        }
     }
 
     public function update(UserProfileEditRequest $request)

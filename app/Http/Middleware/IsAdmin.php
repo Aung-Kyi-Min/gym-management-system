@@ -22,7 +22,7 @@ class IsAdmin
         if (Auth::check() && Auth::user()->role == 0) {
             return $next($request);
         }
-        return redirect('/login');
+        return redirect('/');
     }
 
 }

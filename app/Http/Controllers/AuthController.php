@@ -31,6 +31,9 @@ class AuthController extends Controller
 
     public function login()
     {
+        if (!Auth::guest()) {
+            return redirect()->route('user.index');
+        }
         return view('auth.login');
     }
 
@@ -134,16 +137,28 @@ class AuthController extends Controller
 
     public function register()
     {
+        if (!Auth::guest()) {
+            return redirect()->route('user.index');
+        }
+
         return view('Auth.register');
     }
 
     public function forgetpassword()
     {
+        if (!Auth::guest()) {
+            return redirect()->route('user.index');
+        }
+
         return view('Auth.forgetpassword');
     }
 
     public function reset($token)
     {
+        if (!Auth::guest()) {
+            return redirect()->route('user.index');
+        }
+
          return view('Auth.reset', ['token' => $token]);
     }
 

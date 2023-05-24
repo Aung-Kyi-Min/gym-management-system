@@ -4,20 +4,20 @@
     <section class="contact_section layout_padding">
         <div class="container w-50">
             <div class="heading_container">
-                <h2>Login Page</h2>
+                <h2>Login</h2>
             </div>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('auth.loginUser') }}" method="POST">
                         @csrf
                         <div>
-                            <input type="email" placeholder="Email" name="email" class='form-control' />
+                            <input type="email" placeholder="Email" name="email" class='w-100 form-control' />
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
                         </div>
                         <div>
-                            <input type="password" placeholder="Password" name="password" /><br>
+                            <input type="password" class='w-100 form-control' placeholder="Password" name="password" /><br>
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
