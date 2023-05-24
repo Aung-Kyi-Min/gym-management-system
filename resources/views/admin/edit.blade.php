@@ -32,12 +32,6 @@
                                     <input type="text" placeholder="Email" id="email" name="email" class='form-control'  value="{{$loginuser->email}}"/>
                                     <span class="error">@error('email'){{$message}}@enderror</span>
                                 </div>
-
-                                <div class="mt-2">
-                                    <label for="password">Password</label>
-                                    <input type="password" placeholder="****" id="password" name="password" class='form-control' />
-                                    <span class="error">@error('password'){{$message}}@enderror</span>
-                                </div>
                                 
                                 <div class="mt-2">
                                     <label for="textarea">Address</label>
@@ -74,8 +68,10 @@
                                     <span class="error">@error('phone'){{$message}}@enderror</span>
                                 </div>
 
-                            
-                                <div class="mt-5">
+                                <div class="mt-2">
+                                    <a href=" {{ url('/admin/password/'.$loginuser->id.'/edit') }}" class="text-primary">Are you need to change Passowrd?: Click me!</a>
+                                </div>
+                                <div class="mt-4">
                                     <button type="submit" class=" btn btn-dark">
                                         Update
                                     </button>

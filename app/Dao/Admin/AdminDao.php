@@ -46,12 +46,6 @@ class AdminDao implements AdminDaoInterface
         $admin->phone = request('phone');
         $admin->address =request('address');
         
-        $password = request('password');
-        if (!empty($password))
-        {
-            $admin->password = Hash::make($password);
-        }
-        
         $image = request('image');
         if ($image) {
             $name = $image->getClientOriginalName();
