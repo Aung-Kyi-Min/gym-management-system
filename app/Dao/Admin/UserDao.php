@@ -83,7 +83,7 @@ class UserDao implements UserDaoInterface
 
         public function search($search): object
     {
-        $query = User::query()->where('role', 1);
+        $query = User::query()->where('role',1);
 
         if ($search !== "") 
         {

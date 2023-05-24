@@ -24,7 +24,6 @@
                                     <span class="error">@error('image'){{ $message }}@enderror</span>
                                 </div>
 
-
                                 <div class="mt-2">
                                     <label for="name">Name</label>
                                     <input type="text" placeholder="Workout Name" id="name" value="{{$workout->name}}" name="name" class='form-control' />
