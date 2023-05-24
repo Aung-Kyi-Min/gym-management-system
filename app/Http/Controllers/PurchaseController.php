@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\Admin\InstructorServiceInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
-use App\Contracts\Services\WorkoutServiceInterface;
-use App\Contracts\Services\MemberServiceInterface;
-use App\Contracts\Services\PaymentServiceInterface;
+use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Http\Requests\MemberCreateRequest;
 use App\Http\Requests\PurchaseRequest;
 use App\Models\Discount;
@@ -14,18 +12,15 @@ use App\Models\Instructor;
 use App\Models\Member;
 use App\Models\Payment;
 use App\Models\workout;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
-use PhpOffice\PhpSpreadsheet\Calculation\Financial\Securities\Price;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
 
-    private $paymentService;
     private $workoutService;
     private $instructorService;
     private $userService;
-    private $memberService;
 
     /**
      * @param AuthServiceInterface $authServiceInterface
@@ -34,15 +29,10 @@ class PurchaseController extends Controller
 
     public function __construct(WorkoutServiceInterface $workoutServiceInterface,
         InstructorServiceInterface $instructorServiceInterface,
-        UserServiceInterface $userServiceInterface,
-        MemberServiceInterface $memberServiceInterface,
-        PaymentServiceInterface $paymentServiceInterface)
-    {
+        UserServiceInterface $userServiceInterface) {
         $this->workoutService = $workoutServiceInterface;
         $this->instructorService = $instructorServiceInterface;
         $this->userService = $userServiceInterface;
-        $this->paymentService = $paymentServiceInterface;
-        $this->memberService = $memberServiceInterface;
     }
 
     /**
@@ -60,22 +50,12 @@ class PurchaseController extends Controller
         $instructors = $this->instructorService->get();
 
         $user = Auth::user();
-        //$user_id = session($user->id);
-
         return view('user.purchase', ['workouts' => $workouts, 'member' => $member, 'instructors' => $instructors,
             'user' => $user]);
     }
 
     public function recheck()
     {
-//        $member = Member::all();
-//        $workouts = $this->workoutService->get();
-//        $instructors = $this->instructorService->get();
-//        $user = Auth::user();
-//        $user_id = session($user->id);
-
-        //return view('user.purchase', ['workouts' => $workouts, 'member' => $member, 'instructors' => $instructors,
-        //    'user' => $user, 'user_id' => $user_id]);
         return redirect()->route('member.purchase');
     }
 
@@ -97,9 +77,9 @@ class PurchaseController extends Controller
         $discounts = Discount::all()->toArray();
         $discount = 0;
 
-        if($instructor == null){
+        if ($instructor == null) {
             $price = $workout->price * $join_duration;
-        }else{
+        } else {
             $price = $workout->price + $instructor->price;
             $price *= $join_duration;
         }
@@ -113,7 +93,6 @@ class PurchaseController extends Controller
 
         $basePrice = $price;
         $finalPrice = $basePrice - ($basePrice * $discount / 100);
-        //dd($finalPrice);
 
         return view('user.subscription', ['price' => $finalPrice, 'workout' => $workout,
             'instructor' => $instructor, 'user' => $user, 'joining_date' => $joining_date,
@@ -129,30 +108,6 @@ class PurchaseController extends Controller
      */
     public function store(PurchaseRequest $request)
     {
-        //$member = new Member();
-        //$member_id = $member->id;
-
-        //$this->memberService->store($request->only([
-        //    'name',
-        //    'instructor',
-        //    'workout',
-        //    'join_duration',
-        //    'joining_date',
-        //    'end_date',
-        // ]));
-
-        //$this->paymentService->store($request->only([
-        //    'price',
-        //    'payment',
-        //]));
-        //$payment = new Payment;
-        //$payment->member_id = $member->id;
-        //$payment->save();
-
-        //$this->paymentService->store([
-        //    $member->id
-        //]);
-
         $member = new Member;
         $member->user_id = $request->name;
         $member->instructor_id = $request->instructor;

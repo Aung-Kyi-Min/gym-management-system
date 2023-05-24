@@ -69,11 +69,6 @@
                     <input type="date" id="joining_date" name="joining_date" class="form-control" value="{{ old('joining_date') }}">
                 </div>
 
-                {{--<div class="mb-3">
-                    <label for="end_date">End Date</label>
-                    <input type="date" id="end_date" name="end_date" class="form-control">
-                </div>--}}
-
                 <div class="mb-3">
                     <label for="">Choose Payment</label>
                     <select name="payment" id="payment" class="form-control">
@@ -109,41 +104,5 @@
             });
         });
 
-
-        //    $(document).ready(function(){
-        //        $('#price-form').on('submit', function(e){
-        //            e.preventDefault();
-        //            $.ajax({
-        //                type: 'POST',
-        //                url: '{{ route('get.price') }}',
-        //                data: $('#price-form').serialize(),
-        //                success: function(response){
-        //                    console.log(response);
-        //                    $('#price').text(response.price);
-        //                }
-        //            });
-        //        });
-        //    });
-
-
-
-        //function calculatePrice() {
-        //    // Get the user's choices
-        //    var workout = parseInt($("#workout").val());;
-        //    var trainer = parseInt($("#instructor").val());;
-        //    var months = parseInt($("#sub_months").val());
-        //
-        //    // Calculate the price based on the choices
-        //    var price = (workout + trainer);
-        //    var price = price * months;
-        //    //var price = (workout + trainer) * months;
-        //
-        //    // Update the price box with the calculated price
-        //    $("#price").val(price);
-        //}
-        //
-        //$("#sub_months ,#workout, #instructor").change(function() {
-        //    calculatePrice();
-        //});
     </script>
 @endsection

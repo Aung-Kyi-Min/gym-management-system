@@ -11,7 +11,7 @@
                     <form action="{{ route('auth.forget') }}" method="POST">
                         @csrf
                         <div>
-                            <input type="email" placeholder="Email" name="email" class='form-control' />
+                            <input type="email" placeholder="Email" name="email" class='w-100 form-control' />
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif

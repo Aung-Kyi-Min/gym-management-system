@@ -14,7 +14,6 @@
                     </div>
                 </div>
                 <button class="btn btn-info">Import Members</button>
-                <a class="btn btn-success" href="{{ route('export.instructors') }}">Export Members</a>
             </form>
         </div>
     </div>
@@ -25,6 +24,14 @@
 @if (Session::has('message'))
     <script>
         swal("Message", "{{ Session::get('message') }}", 'success', {
+            button: true,
+            button: "Ok",
+        });
+    </script>
+@endif
+@if (Session::has('errors'))
+    <script>
+        swal("Message", "{{ Session::get('errors') }}", 'success', {
             button: true,
             button: "Ok",
         });
