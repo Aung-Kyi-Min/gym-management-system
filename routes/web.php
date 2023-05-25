@@ -26,10 +26,13 @@ Route::get('/workout', [UserController::class, 'workout'])->name('user.workout')
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::post('/feedback/send', [UserController::class, 'sendFeedback'])->name('user.send_feedback');
 //Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
-Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
+Route::get('/profiles', [UserController::class, 'userProfile'])->name('user.profile');
 Route::get('/successPurchase', )->name('user.successPurchase');
 Route::post('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/password/{id}/edit', [UserController::class, 'editpassword'])->name('user.edit_password');
+Route::post('/user/password/{id}/change', [UserController::class, 'changepassword'])->name('user.change_password');
+
 
 
 

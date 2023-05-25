@@ -25,4 +25,10 @@ interface UserDaoInterface
     */
     public function update($id) : void;
 
+     /**
+    * change user password
+    * @return void
+    */
+    public function updatePassword() :void;
+
 }

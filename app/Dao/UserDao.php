@@ -48,12 +48,7 @@ class UserDao implements UserDaoInterface
         $user->age = request('age');
         $user->phone = request('phone');
         $user->address = request('address');
-    
-        $password = request('password');
-        if (!empty($password)) {
-            $user->password = Hash::make($password);
-        }
-    
+        
         // Handle the image field
         $image = request('image');
         if ($image) {
@@ -66,5 +61,14 @@ class UserDao implements UserDaoInterface
         $user->save();
     }
     
-  
+    /**
+    * Update admin password
+    * @return void
+    */
+    public function updatePassword() :void
+    {
+        //$user = Auth::user();
+        //$user->password = bcrypt(request('new_password'));
+        //$user->save();
+    }
 }

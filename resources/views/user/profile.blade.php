@@ -19,7 +19,7 @@
                         <div class="tab-content p-3">
 
                             <div class="tab-pane active show" id="profile">
-                                <img class="card-img-top rounded-circle img-circle mt-5 profile-image" src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
+                                <img class="card-img-top rounded-circle img-circle mt-5 profile-image" src="{{$user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
 
                                 <h5 class="mb-3 profile-name">{{ $user->name }} </h5>
                                 <div class="row">
@@ -101,13 +101,7 @@
                                             <span class="text-danger">{{$errors->first('email')}}</span>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="password" placeholder="123" name="password">
-                                            <span class="text-danger">{{$errors->first('password')}}</span>
-                                        </div>
-                                    </div>
+                                  
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Gender</label>
                                         <div class="p-t-10">
@@ -141,7 +135,8 @@
                                         <label class="col-lg-3 col-form-label form-control-label">Address</label>
                                         <div class="col-lg-9">
                                             <textarea class="form-control" placeholder="Pyay" name="address">{{ $user->address}}</textarea>
-                                            <span class="text-danger">{{$errors->first('address')}}</span>
+                                            <span class="text-danger">{{$errors->first('address')}}</span> <br>
+                                            <small><a href="{{url('/user/password/'.$user->id.'/edit') }}" class="text-primary">Are you need to change Passowrd?: Click me!</a></small>
                                         </div>
                                     </div>
 

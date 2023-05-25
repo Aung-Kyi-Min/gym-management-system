@@ -189,12 +189,26 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Edit users
+     *
+     * @param int $id 
+     * @return \Illuminate\Http\Response
+     */
+
     public function edit($id)
     {
         $user = auth()->user();
         return view('user.profile', ['user' => $user]);
     }
 
+    /**
+     * Update User
+     *
+     * @param  \App\Http\Requests\UserProfileEditRequest
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+    */
     public function update(UserProfileEditRequest $request,$id)
     {
         $this->userService->update($id , $request->only([
@@ -204,13 +218,32 @@ class UserController extends Controller
             'age',
             'phone',
             'gender',
-            'password',
             'address',
 
          ]));
 
         // Redirect or return a response
         return redirect()->back()->with('success', 'User updated successfully');
+    }
+
+    public function editpassword()
+    {
+        
+        $user = auth()->user();
+        return view('user.password')->with('user', $user);
+    }
+
+     /**
+     * Update User password
+     *@param  \App\Http\Requests\ChangePasswordRequest
+     * @return \Illuminate\Http\Response
+    */
+    public function changepassword(ChangePasswordRequest $request)
+    {
+        
+        $this->userService->updatePassword();
+        // Redirect or return a response
+        return redirect()->back()->with('success', 'Admin password changed successfully');
     }
 
     public function sendFeedback(UserFeedbackRequest $request)

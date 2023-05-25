@@ -50,4 +50,14 @@ class UserService implements UserServiceInterface
     {
         $this->userDao->update($id);
     }
+
+    /**
+    * change  admin password
+    * @return void
+    */
+    public function updatePassword() :void
+    {
+        $this->userDao->updatePassword();
+    }
+
 }
