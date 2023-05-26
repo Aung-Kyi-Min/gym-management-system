@@ -95,6 +95,7 @@ class InstructorDao implements InstructorDaoInterface
 
     /**
      * search Instructor
+     * @param search
      * @return object
     */  
     
@@ -116,6 +117,6 @@ class InstructorDao implements InstructorDaoInterface
         return $query->orderBy('created_at', 'asc')
             ->paginate(5)
             ->appends(request()->all());
-}
+    }
 
 }
