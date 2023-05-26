@@ -49,16 +49,16 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('storage/images/admin/user/'.$loginuser->image) }}" id="call1" class="img-circle elevation-2 pointer admin-img-size" alt="User Image">
+                        <img src="{{ asset('storage/images/admin/user/'.auth()->user()->image) }}" id="call1" class="img-circle elevation-2 pointer admin-img-size" alt="User Image">
                     </div>
                     <div class="info">
-                        <p id="call2" class="pointer">{{$loginuser->name}}</p>
-                        <form id="toggle"> 
-                            <a href="{{ url('/admin/'.$loginuser->id.'/edit') }}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>  
+                        <p id="call2" class="pointer">{{auth()->user()->name}}</p>
+                        <form id="toggle">
+                            <a href="{{ url('/admin/'.auth()->user()->id.'/edit') }}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>
                             <a href="{{ route('logout') }}" class="btn btn-sm bg-gradient-danger">Logout</a>
                         </form>
                     </div>
-                    
+
                 </div>
 
                 <!-- SidebarSearch Form -->
@@ -86,7 +86,7 @@
                                 </p>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="{{route('admin.user')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
@@ -119,7 +119,7 @@
                                 </p>
                             </a>
                         </li>
-                            
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -170,7 +170,7 @@
             });
         });
     </script>
-    
+
 
     <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>

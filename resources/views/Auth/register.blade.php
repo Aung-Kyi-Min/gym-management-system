@@ -64,9 +64,9 @@
                         <input type="hidden" name="role" id="role" value="1">
                         <div>
                             <input type="file" name="image" class='w-100 form-control'/>
-                            @if ($errors->has('image'))
+                            {{--@if ($errors->has('image'))
                                 <span class="text-danger">{{ $errors->first('image') }}</span>
-                            @endif
+                            @endif--}}
                         </div>
                         <div class="mt-5">
                             <button type="submit" class="mb-5 btn btn-dark">

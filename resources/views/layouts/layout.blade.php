@@ -17,24 +17,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/sourcesanspro-font.css.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    {{--<link rel="stylesheet" href="/css/sourcesanspro-font.css.css">--}}
 
     <!-- slider stylesheet -->
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap4.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css">
 
     <!-- fonts style -->
-    <link href="css/font.css" rel="stylesheet" />
+    <link  rel="stylesheet" href="/css/font.css" />
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/template2.css">
+    {{--<link rel="stylesheet" href="/css/template2.css">--}}
 
     <!-- Custom styles for this template -->
-    <link href="css/common.css" rel="stylesheet" />
+    {{--<link rel="stylesheet"  href="/css/common.css"/>--}}
     <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+    {{--<link rel="stylesheet" href="/css/responsive.css" />--}}
+    <link href="{{ asset('css/common.css') }}" rel="stylesheet">
+    <!-- responsive style -->
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -43,7 +52,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container">
                 <a class="navbar-brand mr-5" href="index.html">
-                    <img src="images/logo.png" alt="" />
+                    <img src="/images/logo.png" alt="" />
                     <span>
                         GLP
                     </span>
@@ -52,19 +61,19 @@
                     <ul class="navbar-nav ">
                         <li class="nav-item mt-2 ml-5 mr-5">
                             <a class="nav-link" href="#">
-                                <img src="images/location.png" alt="" />
+                                <img src="/images/location.png" alt="" />
                                 <span>Location</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2 ml-5 mr-5">
                             <a class="nav-link " href="#">
-                                <img src="images/call.png" alt="" />
+                                <img src="/images/call.png" alt="" />
                                 <span>+01234567890</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2 ml-5 mr-5">
                             <a class="nav-link" href="#">
-                                <img src="images/envelope.png" alt="" />
+                                <img src="/images/envelope.png" alt="" />
                                 <span>demo@gmail.com</span>
                             </a>
                         </li>
@@ -74,7 +83,7 @@
                                     <div class=" ">
                                         <img src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
                                             class="w-50 rounded-circle mb-3" onclick="showProfile()" />
-                                        <div id="profile-buttons" class="hidden">
+                                        <div id="profile-buttons" class="hidden mt-1">
                                             <a href="{{ route('user.profile') }}" class="btn btn-info btn-sm">
                                                 Profile
                                             </a>
@@ -121,6 +130,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('user.feedback') }}">Feedback</a>
                                 </li>
+                                @if (Auth::check())
+                                <li class="nav-item">
+                                    <a href="{{ route('purchaseHistory') }}" class="nav-link text-dark" >History</a>
+                                </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -139,9 +153,9 @@
     </section>
     <!-- footer section -->
 
-    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.js"></script>
-    <script type="text/javascript" src="/js/anchor.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/anchor.js"></script>
 
     <script>
         function openNav() {

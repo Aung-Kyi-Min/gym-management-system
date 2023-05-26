@@ -36,7 +36,6 @@ class Member extends Model
         return $this->belongsTo(Instructor::class);
     }
 
-
     public function payment()
     {
         return $this->hasMany(Payment::class);

@@ -6,7 +6,7 @@ use App\Contracts\Services\Admin\InstructorServiceInterface;
 use App\Contracts\Services\Admin\UserServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Http\Requests\MemberCreateRequest;
-use App\Http\Requests\PurchaseRequest;
+//use App\Http\Requests\PurchaseRequest;
 use App\Models\Discount;
 use App\Models\Instructor;
 use App\Models\Member;
@@ -14,6 +14,7 @@ use App\Models\Payment;
 use App\Models\workout;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PurchaseCreateRequest;
 
 class PurchaseController extends Controller
 {
@@ -50,8 +51,12 @@ class PurchaseController extends Controller
         $instructors = $this->instructorService->get();
 
         $user = Auth::user();
+
+        $discount = Discount::all();
+        //dd($discount);
+
         return view('user.purchase', ['workouts' => $workouts, 'member' => $member, 'instructors' => $instructors,
-            'user' => $user]);
+            'user' => $user , 'discount'=> $discount]);
     }
 
     public function recheck()
@@ -106,7 +111,7 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PurchaseRequest $request)
+    public function store(PurchaseCreateRequest $request)
     {
         $member = new Member;
         $member->user_id = $request->name;
