@@ -2,20 +2,21 @@
 namespace App\Http\Controllers\Admin;
 
 
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Member;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UserProfileEditRequest;
 use App\Contracts\Services\Admin\UserServiceInterface;
 use App\Contracts\Services\Admin\AdminServiceInterface;
+use App\Contracts\Services\Admin\MemberServiceInterface;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Contracts\Services\Admin\InstructorServiceInterface;
-use App\Contracts\Services\Admin\MemberServiceInterface;
-use App\Models\User;
-use App\Models\Member;
-use Carbon\Carbon;
 
 
 
@@ -167,32 +168,6 @@ class AdminController extends Controller
             $yearMemberCount[$month] = $count;
         }
         return $yearMemberCount;
-    }
-
-    public function edit($id)
-    {
-        $loginuser = auth()->user();
-        return view('admin.edit', ['loginuser' => $loginuser]);
-
-    }
-
-
-    public function update(UserProfileEditRequest $request,$id)
-    {
-        $this->adminService->update($id , $request->only([
-            'name',
-            'email',
-            'image',
-            'age',
-            'phone',
-            'gender',
-            'password',
-            'address',
-            'role',
-         ]));
-
-        // Redirect or return a response
-        return redirect()->back()->with('success', 'Admin profile updated successfully');
     }
 
     public function member()

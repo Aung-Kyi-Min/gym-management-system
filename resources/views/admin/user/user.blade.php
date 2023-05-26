@@ -17,7 +17,6 @@
                                 <form method="GET" class="left">
                                     <div class="input-group input-group-sm " style="width: 150px;">
                                     <input type="text" name="search" class="form-control  float-right" placeholder="Search" value="{{ $search }}">
-
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
                                             <i class="fas fa-search"></i>
@@ -43,7 +42,6 @@
                                         <th>Address</th>
                                         <th>Gender</th>
                                         <th>Role</th>
-                                        <th>Age</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -59,7 +57,6 @@
                                             <p class="width-text text-wrap">{{$user->limitedAddress}}</p>
                                         </td>
                                         <td>{{$user->gender}}</td>
-                                        <td>{{$user->role}}</td>
                                         <td>{{$user->age}}</td>
                                         <td>
                                             <img class="img-width" src="{{ asset('storage/images/admin/user/'.$user->image)}}">

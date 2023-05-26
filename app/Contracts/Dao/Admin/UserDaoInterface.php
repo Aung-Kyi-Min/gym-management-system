@@ -43,4 +43,21 @@ interface UserDaoInterface
     * @return object
     */  
     public function search($search): object;
+    
+    /**
+     * Return Specific User
+     * @return object
+    */
+    public function editPassword($id): object;
+    
+    /**
+     * Update user password
+     *
+     * @param $request
+     * @param $user
+     * @return void
+     */
+
+     public function passUpdate($request, $user): void;
+
 }

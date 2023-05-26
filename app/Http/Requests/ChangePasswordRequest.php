@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserEditRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +25,10 @@ class UserEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:255'],
-            'role' => ['required'],
-            'image' => 'image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
-            'address' => ['required','max:225'],
-            'gender' => ['required','max:225'],
-            'age' => ['required','max:225'],
-            'phone' => ['required','max:225'],
+
+            'current_password' => 'required',
+            'password_confirmation' => 'required',
+            'password' => 'required|min:8|confirmed',
         ];
     }
 }

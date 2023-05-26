@@ -11,14 +11,18 @@
                     <form action="{{ route('auth.forget') }}" method="POST">
                         @csrf
                         <div>
-                            <input type="email" placeholder="Email" name="email" class='w-100 form-control' />
+                            <label for="email" class='auth-label'>Email</label>
+                            <input type="email" placeholder="Email" name="email" class="w-100 form-control auth-label @error('password') is-invalid @enderror "/>
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
                         </div>
                         <div class="mt-5">
-                            <button type="submit" class="btn btn-dark">
+                            <button type="submit" class="btn btn-primary">
                                 Send
+                            </button>
+                            <button type="submit" class="btn btn-dark">
+                                <a href="{{ route('auth.login') }} " class=" text-decoration-none text-white">Back</a>
                             </button>
                         </div>
                     </form>

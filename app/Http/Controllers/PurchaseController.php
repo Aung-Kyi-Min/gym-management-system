@@ -47,8 +47,8 @@ class PurchaseController extends Controller
             return redirect()->route('auth.login');
         }
         $member = Member::all();
-        $workouts = $this->workoutService->get();
-        $instructors = $this->instructorService->get();
+        $workouts = $this->workoutService->userget();
+        $instructors = $this->instructorService->userget();
 
         $user = Auth::user();
 

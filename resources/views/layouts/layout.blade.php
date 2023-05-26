@@ -37,13 +37,9 @@
     {{--<link rel="stylesheet" href="/css/template2.css">--}}
 
     <!-- Custom styles for this template -->
-    {{--<link rel="stylesheet"  href="/css/common.css"/>--}}
-    <!-- responsive style -->
-    {{--<link rel="stylesheet" href="/css/responsive.css" />--}}
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <!-- responsive style -->
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-
 </head>
 
 <body>
@@ -81,7 +77,7 @@
                             <div class="">
                                 @if (Auth::check())
                                     <div class=" ">
-                                        <img src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
+                                        <img src="{{auth()->user()->image ? asset('storage/images/admin/user/' .auth()->user()->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
                                             class="w-50 rounded-circle mb-3" onclick="showProfile()" />
                                         <div id="profile-buttons" class="hidden mt-1">
                                             <a href="{{ route('user.profile') }}" class="btn btn-info btn-sm">
@@ -117,9 +113,8 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="d-flex flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav  ">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="{{ route('user.index') }}">Home <span
-                                            class="sr-only">(current)</span></a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.index') }}">Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('user.workout') }}">Workout List</a>

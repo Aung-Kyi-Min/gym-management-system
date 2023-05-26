@@ -19,7 +19,7 @@
                         <div class="tab-content p-3">
 
                             <div class="tab-pane active show" id="profile">
-                                <img class="card-img-top rounded-circle img-circle mt-5 profile-image" src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
+                                <img class="card-img-top rounded-circle img-circle mt-5 profile-image" src="{{$user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
 
                                 <h5 class="mb-3 profile-name">{{ $user->name }} </h5>
                                 <div class="row">
@@ -78,6 +78,7 @@
                                         <img id="default-image" class="card-img-top rounded-circle img-circle mt-5 profile-image" src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
                                         <input type="file" name="image" id="my-file" onchange="previewImage(event)" style="display:none">
                                         <button type="button" class="btn btn-outline-dark profile-edit-rounded" onclick="document.getElementById('my-file').click()">Upload</button>
+                                        <span class="text-danger">{{$errors->first('image')}}</span>
                                     </div>
 
                                     <div class="form-group row pad">
@@ -86,28 +87,15 @@
                                             <input class="form-control" name="id" type="text" placeholder="Enter ID" value="{{ $user->id }}" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div for="name" class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Name</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" name="name" type="text" placeholder="John" value="{{ $user->name }}">
+                                            <input id="name" class="form-control  @error('name') is-invalid @enderror" name="name" type="text" placeholder="John" value="{{ $user->name }}">
                                             <span class="text-danger">{{$errors->first('name')}}</span>
                                         </div>
 
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="email" placeholder="aa@example.com" value="{{ $user->email }}" name="email">
-                                            <span class="text-danger">{{$errors->first('email')}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="password" placeholder="123" name="password">
-                                            <span class="text-danger">{{$errors->first('password')}}</span>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Gender</label>
                                         <div class="p-t-10">
@@ -123,25 +111,28 @@
 
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Age</label>
+                                        <label for="age" class="col-lg-3 col-form-label form-control-label">Age</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" placeholder="20" value="{{ $user->age}}" name="age">
+                                            <input id="age" class="form-control  @error('age') is-invalid @enderror" type="text" placeholder="20" value="{{ $user->age}}" name="age">
                                             <span class="text-danger">{{$errors->first('age')}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Phone</label>
+                                        <label for="phone" class="col-lg-3 col-form-label form-control-label">Phone</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{ $user->phone}}" name="phone" placeholder="+95">
+                                            <input id="phone" class="form-control  @error('phone') is-invalid @enderror" type="text" value="{{ $user->phone}}" name="phone" placeholder="+95">
                                             <span class="text-danger">{{$errors->first('phone')}}</span>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                        <label for="address" class="col-lg-3 col-form-label form-control-label">Address</label>
                                         <div class="col-lg-9">
-                                            <textarea class="form-control" placeholder="Pyay" name="address">{{ $user->address}}</textarea>
-                                            <span class="text-danger">{{$errors->first('address')}}</span>
+                                            
+                                            <textarea class="form-control  @error('address') is-invalid @enderror"  placeholder="Pyay" name="address">{{ $user->address}}</textarea>
+                                            <span class="text-danger">{{$errors->first('address')}}</span> <br>
+                                            <small><a href="{{url('/user/password/'.$user->id.'/edit') }}" class="text-primary">Are you need to change Passowrd?: Click me!</a></small>
+                                            
                                         </div>
                                     </div>
 
@@ -192,5 +183,6 @@
         }
     }
 </script>
+
 @endsection
 

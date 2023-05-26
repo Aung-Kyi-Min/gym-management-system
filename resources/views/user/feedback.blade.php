@@ -1,55 +1,59 @@
+
 @extends('layouts.layout')
 
 @section('content')
-
-    <!-- contact section -->
     <section class="contact_section layout_padding">
-        <div class="container">
+        <div class="container w-50">
             <div class="heading_container">
-                <h2>
-                    <span>
-                        FeedBack 
-                    </span>
-                </h2>
+                <h2>Send Feedback Page</h2>
             </div>
-            <div class="layout_padding2-top ">
-                <div class="row">
-                <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
                     <form action="{{ route('user.send_feedback') }}" method="POST">
                         @csrf
-                        <div class="contact_form-container">
-                            <div>
-                                <input type="text" placeholder="Name" name="name" value="{{$user->name}}" readonly/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('name')}}</small>
-                            
-                            <div>
-                                <input type="email" placeholder="Email"  name="email" value="{{$user->email}}" readonly/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('email')}}</small>
+                        <div class="mt-2">
+                            <label for="" class="auth-label">Name</label>
+                            <input type="text" placeholder="Name" name="name" value="{{$user->name}}" readonly class='form-control w-100'/>
+                            @error('name')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                            <div>
-                                <input type="number" placeholder="Phone Number"  name="phone" value="{{$user->phone}}" readonly/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('phone')}}</small>
+                        <div class="mt-2">
+                            <label for="email" class="auth-label">Email</label>
+                            <input type="email" placeholder="Email"  name="email" value="{{$user->email}}" readonly class='form-control w-100'/>
+                            @error('password')
+                                <span class="error  text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                            <div>
-                                <input type="text" placeholder="Can you give us some advice." name="message"/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('message')}}</small>
-                            
-                            <div class="mt-5">
-                                <button type="submit" class="btn btn-light btn-md">
-                                    Send
-                                </button>
-                            </div>
+                        <div class="mt-2">
+                            <label for="phone" class="auth-label">Phone</label>
+                            <input type="number" placeholder="Phone Number"  name="phone" value="{{$user->phone}}" readonly class='form-control w-100'/>
+                            @error('phone')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="mt-2">
+                            <label for="phone" class="auth-label">Message</label>
+                            <textarea id="textarea" placeholder="What do you want to say?Send your message." name="message" rows="4" cols="40" class="form-control @error('message') is-invalid @enderror"></textarea>
+                            @error('message')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-primary">
+                                Send
+                            </button>
                         </div>
                     </form>
                 </div>
-                </div>
             </div>
         </div>
-    </section>
+</section>
+
     <script src="../js/sweetalert.min.js"></script>
     @if (Session::has('success'))
       <script>

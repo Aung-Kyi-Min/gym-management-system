@@ -769,10 +769,7 @@ a:focus {
 
 .contact_section input {
   width: 90%;
-  margin: 10px 0;
-  border: none;
-  outline: none;
-  border-bottom: 0.8px solid #ac9784;
+  margin: 5px 0;
 }
 
 .contact_section input::-webkit-input-placeholder {
@@ -878,7 +875,6 @@ a:focus {
   display: inline-block;
   padding: 9px 30px;
   border: 1px solid #f8bc1a;
-  background-color: #f8bc1a;
   background-color: #f8bc1a;
   color: #000000;
   font-size: 15px;

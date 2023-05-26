@@ -8,6 +8,7 @@ use App\Contracts\Services\Admin\WorkoutServiceInterface;
 use App\Contracts\Services\UserServiceInterface;
 use App\Exports\MembersExport;
 use App\Exports\UsersExport;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\ImportExcelInstructorRequest;
 use App\Http\Requests\ImportExcelMemberRequest;
 use App\Http\Requests\ImportExcelUserRequest;
@@ -20,8 +21,8 @@ use App\Models\Feedback;
 use App\Models\Member;
 use App\Models\Payment;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -59,10 +60,14 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Show User
+     * @return object
+     */
     public function index()
     {
         $user = Auth::user();
-        $instructors = $this->instructorService->get();
+        $instructors = $this->instructorService->userget();
         $instructorCounts = $instructors->count();
         $feedbacks = Feedback::all();
 
@@ -74,6 +79,10 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Return feedback
+     * @return object
+     */
     public function feedback()
     {
         if (Auth::guest()) {
@@ -93,7 +102,7 @@ class UserController extends Controller
             return redirect()->route('auth.login');
         }
         $user = Auth::user();
-        $workouts = $this->workoutService->get();
+        $workouts = $this->workoutService->userget();
         $workoutCounts = $workouts->count();
         return view('user.workoutlist', ['workouts' => $workouts, 'workoutCounts' => $workoutCounts, 'user' => $user]);
     }
@@ -192,22 +201,34 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Edit users
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+
     public function edit($id)
     {
         $user = auth()->user();
         return view('user.profile', ['user' => $user]);
     }
 
+    /**
+     * Update User
+     *
+     * @param  \App\Http\Requests\UserProfileEditRequest
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(UserProfileEditRequest $request, $id)
     {
         $this->userService->update($id, $request->only([
             'name',
-            'email',
             'image',
             'age',
             'phone',
             'gender',
-            'password',
             'address',
 
         ]));
@@ -216,6 +237,41 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'User updated successfully');
     }
 
+    public function editpassword()
+    {
+
+        $user = auth()->user();
+        return view('user.password')->with('user', $user);
+    }
+
+    /**
+     * Update User password
+     *@param  \App\Http\Requests\ChangePasswordRequest
+     * @return \Illuminate\Http\Response
+     */
+    public function passwordUpdate(ChangePasswordRequest $request)
+    {
+        $userId = $request->id;
+
+        $user = User::findOrFail($userId);
+        $currentPasswordStatus = Hash::check($request->current_password, $user->password);
+
+        if ($currentPasswordStatus && $request->current_password !== $request->password) {
+            $this->userService->updatePassword($request, $user);
+
+            return redirect()->route('user.profile')->with('success', 'Password updated successfully');
+
+        } elseif ($currentPasswordStatus && $request->current_password === $request->password) {
+            return redirect()->back()->with('message', 'Old Password should not match with new Password');
+        } else {
+            return redirect()->back()->with('message', 'Current Password does not match with Old Password');
+        }
+    }
+
+    /**
+     * Return send feedback
+     * @return void
+     */
     public function sendFeedback(UserFeedbackRequest $request)
     {
         $this->userService->send($request->only([
@@ -247,14 +303,12 @@ class UserController extends Controller
         $pur_count = count($id);
         for ($s = 0; $s < $pur_count; $s++) {
             $purchases[] = Payment::where('member_id', $id[$s])->get();
-            if($members[$s]['instructor_id'] == null){
+            if ($members[$s]['instructor_id'] == null) {
                 $members[$s]['instructor_id'] == '';
             }
 
         }
 
-
-        //dd($members[1]['instructor_id']);
         return view('user.purchaseHistory', compact('user', 'members', 'a', 'purchases', 'b'));
     }
 }

@@ -10,24 +10,28 @@
                 <div class="card-body">
                     <form action="{{ route('auth.loginUser') }}" method="POST">
                         @csrf
-                        <div>
-                            <input type="email" placeholder="Email" name="email" class='w-100 form-control' />
+                        <div class="mb-3">
+                        <label for="email" class='auth-label'>Email</label>
+                            <input type="email" placeholder="Email" name="email" class="w-100 form-control @error('name') is-invalid @enderror" />
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
                         </div>
-                        <div>
-                            <input type="password" class='w-100 form-control' placeholder="Password" name="password" /><br>
+
+                        <div class="mb-3">
+                        <label for="password" class='auth-label'>Password</label>
+                            <input type="password" class="w-100 form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" /><br>
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
-                        <div>
-                            <a href="{{ route('auth.forgetpassword') }}" class="small ">Forget Password</a>
 
+                        <div class="mb-3">
+                            <a href="{{ route('auth.forgetpassword') }}" class="small ">Forget Password</a>
                         </div>
+                        
                         <div class="mt-5">
-                            <button type="submit" class=" btn btn-dark">
+                            <button type="submit" class=" btn btn-primary">
                                 Login
                             </button>
                         </div>

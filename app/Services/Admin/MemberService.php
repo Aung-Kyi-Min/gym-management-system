@@ -6,7 +6,6 @@ use App\Contracts\Dao\Admin\MemberDaoInterface;
 use App\Contracts\Services\Admin\MemberServiceInterface;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Expire;
-use Carbon\Carbon;
 
 
 class MemberService implements MemberServiceInterface
@@ -32,13 +31,7 @@ class MemberService implements MemberServiceInterface
      */
     public function get(): object
     {
-        $tdyDate = Carbon::now();
-        $members = $this->memberDao->get();
-        foreach ($members as $member) {
-            if ($member->end_date <= $tdyDate) {
-                $this->memberDao->destroy($member->id);
-            }
-        }
+        
         return $this->memberDao->get();
     }
 

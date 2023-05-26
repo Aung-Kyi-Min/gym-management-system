@@ -25,19 +25,13 @@
 
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="User Name" value="{{$user->name}}" id="name" name="name" class='form-control' />
+                                    <input type="text" placeholder="User Name" value="{{$user->name}}" id="name" name="name" class="form-control  @error('name') is-invalid @enderror" />
                                     <span class="error">@error('name'){{$message}}@enderror</span>
-                                </div>
-                                
-                                <div class="mt-2">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password"  name="password" class='form-control' />
-                                    <span class="error">@error('password'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
                                     <label for="phone">Phone</label>
-                                    <input type="number" id="phone" value="{{$user->phone}}"  name="phone" class='form-control' />
+                                    <input type="number" id="phone" value="{{$user->phone}}"  name="phone" class="form-control  @error('phone') is-invalid @enderror" />
                                     <span class="error">@error('phone'){{$message}}@enderror</span>
                                 </div>
 
@@ -46,37 +40,31 @@
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
                                             <input type="radio" name="gender" value="male" {{ $user->gender == 'male' ? 'checked' : '' }}>
-                                            <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
                                             <input type="radio" name="gender" value="female" {{ $user->gender == 'female' ? 'checked' : '' }}>
-                                            <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                    <span class="error">@error('gender'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
                                     <label for="age">Age</label>
-                                    <input type="number" id="age" value="{{$user->age}}"  name="age" class='form-control' />
+                                    <input type="number" id="age" value="{{$user->age}}"  name="age" class="form-control  @error('age') is-invalid @enderror" />
                                     <span class="error">@error('age'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
-                                    <label for="role">Role</label>
-                                    <select name="role" id="role" class="selectbox">
-                                        <option value="0" @if($user->role === '0') selected @endif>Admin</option>
-                                        <option value="1" @if($user->role === '1') selected @endif>User</option>
-                                    </select>
-                                    <span class="error">@error('role'){{$message}}@enderror</span>
+                                    <input type="hidden" id="role" value="1"  name="role"  class='form-control' />
                                 </div>
 
                                 <div class="mt-2">
                                     <label for="textarea">Address</label>
-                                    <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control">{{$user->name}}</textarea>
+                                    <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control  @error('address') is-invalid @enderror">{{$user->name}}</textarea>
                                     <span class="error">@error('address'){{$message}}@enderror</span>
                                 </div>
-                            
+                                <div class="mt-2">
+                                    <a href="{{ url('/admin/user/password/'. $user->id.'/edit') }}" class="text-primary">Are you need to change Passowrd?: Click me!</a>
+                                </div>
                                 <div class="mt-5">
                                     <button type="submit" class=" btn btn-dark">
                                         Update

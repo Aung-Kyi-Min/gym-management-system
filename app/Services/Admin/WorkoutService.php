@@ -32,6 +32,15 @@ class WorkoutService implements WorkoutServiceInterface
     }
 
     /**
+     * Show Workout for User
+     * @return object
+    */
+    public function userget(): object
+    {
+        return $this->workoutDao->userget();
+    }
+
+    /**
     * Store Workout
     * @return void
     */
@@ -58,8 +67,10 @@ class WorkoutService implements WorkoutServiceInterface
     */
     public function update($id , array $data) : void
     {
-        $name = request()->file('image')->getClientOriginalName();
-        request()->file('image')->storeAs('public/images/admin/workout' , $name);
+        if (request()->hasFile('image')) {
+            $name = request()->file('image')->getClientOriginalName();
+            request()->file('image')->storeAs('public/images/admin/workout', $name);
+        }
         $this->workoutDao->update($id , $data);
     }
 

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-
 class AuthController extends Controller
 {
     private $authService;
@@ -51,8 +50,10 @@ class AuthController extends Controller
             'age',
             'phone',
         ]));
-        $name = request()->file('image')->getClientOriginalName();
-        request()->file('image')->storeAs('public/images/admin/user', $name);
+        if (request()->hasFile('image')) {
+            $name = request()->file('image')->getClientOriginalName();
+            request()->file('image')->storeAs('public/images/admin/user', $name);
+        }
         return redirect()->route('auth.login')
         ->with('message', 'Your have Registered Successfully...');
 
@@ -84,7 +85,7 @@ class AuthController extends Controller
             return back()->withErrors(['email' => 'Invalid email or password']);
         }
     }
-    
+
     /**
      * Write code on Method
      *

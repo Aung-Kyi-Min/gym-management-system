@@ -26,10 +26,13 @@ Route::get('/workout', [UserController::class, 'workout'])->name('user.workout')
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::post('/feedback/send', [UserController::class, 'sendFeedback'])->name('user.send_feedback');
 //Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
-Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
+Route::get('/profiles', [UserController::class, 'userProfile'])->name('user.profile');
 Route::get('/successPurchase', )->name('user.successPurchase');
 Route::post('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/password/{id}/edit', [UserController::class, 'editpassword'])->name('user.edit_password');
+Route::post('/user/password/{id}/', [UserController::class, 'passwordUpdate'])->name('user.change_password');
+
 
 
 
@@ -50,6 +53,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
     Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
     Route::get('/successPurchase', )->name('user.successPurchase');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
 
         //purchase
@@ -106,9 +110,7 @@ Route::group(['middleware' => ['admin']], function () {
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::post('/admin/{id}/update', [AdminController::class, 'update'])->name('admin.profile.update');
-
+    
     //Excel export and import
     Route::get('/export-users', [UserController::class, 'exportUsers'])->name('export.users');
     Route::get('/export-instructors', [InstructorController::class, 'exportInstructors'])->name('export.instructors');
@@ -127,6 +129,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/user/edit/{id}', [UsersController::class, 'edit'])->name('admin.edit_user');
     Route::post('/admin/user/update/{id}', [UsersController::class, 'update'])->name('admin.update_user');
     Route::delete('/admin/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.destroy_user');
+    Route::get('/admin/user/password/{id}/edit', [UsersController::class, 'editpassword'])->name('admin.user.change_password');
+    Route::post('/admin/user/password/{id}/change', [UsersController::class, 'passwordUpdate'])->name('admin.user.change_password');
 
     // admin workout
     Route::get('/admin/workout', [WorkoutController::class, 'workout'])->name('admin.workout');
@@ -145,7 +149,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
     Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
     Route::delete('/admin/instructor/destroy/{id}', [InstructorController::class, 'destroy'])->name('admin.destroy_instructor');
-    Route::delete('/admin/instructorlist/{id}', [InstructorController::class, 'destory'])->name('admin.destroy_instructor');
+   
 
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');
