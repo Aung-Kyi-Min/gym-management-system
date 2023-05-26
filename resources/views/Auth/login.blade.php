@@ -11,13 +11,13 @@
                     <form action="{{ route('auth.loginUser') }}" method="POST">
                         @csrf
                         <div>
-                            <input type="email" placeholder="Email" name="email" class='w-100 form-control' />
+                            <input type="email" placeholder="Email" name="email" class="w-100 form-control @error('name') is-invalid @enderror" />
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
                         </div>
                         <div>
-                            <input type="password" class='w-100 form-control' placeholder="Password" name="password" /><br>
+                            <input type="password" class="w-100 form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" /><br>
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif

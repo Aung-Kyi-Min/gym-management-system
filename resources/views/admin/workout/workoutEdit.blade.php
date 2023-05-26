@@ -26,18 +26,18 @@
 
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="Workout Name" id="name" value="{{$workout->name}}" name="name" class='form-control' />
+                                    <input type="text" placeholder="Workout Name" id="name" value="{{$workout->name}}" name="name" class="form-control  @error('name') is-invalid @enderror" />
                                     <span class="error">@error('name'){{$message}}@enderror</span>
                                 </div>
                                 <div class="mt-2">
                                     <label for="price">Price</label>
-                                    <input type="text" placeholder="Price" id="price" value="{{$workout->price}}" name="price" class='form-control' />
+                                    <input type="text" placeholder="Price" id="price" value="{{$workout->price}}" name="price" class="form-control  @error('price') is-invalid @enderror" />
                                     <span class="error">@error('price'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
                                     <label for="textarea">Description</label>
-                                    <textarea id="textarea" placeholder="Workout Description" name="description" rows="4" cols="40" class="form-control">{{$workout->description}}</textarea>
+                                    <textarea id="textarea" placeholder="Workout Description" name="description" rows="4" cols="40" class="form-control  @error('description') is-invalid @enderror">{{$workout->description}}</textarea>
                                     <span class="error">@error('description'){{$message}}@enderror</span>
                                 </div>
 

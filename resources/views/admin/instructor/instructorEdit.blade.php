@@ -26,24 +26,24 @@
 
                                 <div class="mt-3">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="Instructor Name" name="name" id="name" class='form-control' value="{{$instructor->name}}" />
+                                    <input type="text" placeholder="Instructor Name" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{$instructor->name}}" />
                                 </div>
                                 <span class="text-danger">{{$errors->first('name')}}</span>
                                 <div class="mt-3">
                                     <label for="email">Email</label>
-                                    <input type="email" placeholder="Email" name="email" id="email" class='form-control' value="{{$instructor->email}}" />
+                                    <input type="email" placeholder="Email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{$instructor->email}}" />
                                 </div>
                                 <span class="text-danger">{{$errors->first('email')}}</span>
 
                                 <div class="mt-3">
                                     <label for="price">Price</label>
-                                    <input type="text" placeholder="Price" name="price" id="price" class='form-control'  value="{{$instructor->price}}" />
+                                    <input type="text" placeholder="Price" name="price" id="price" class="form-control @error('price') is-invalid @enderror"  value="{{$instructor->price}}" />
                                 </div>
                                 <span class="text-danger">{{$errors->first('price')}}</span>
 
                                 <div class="mt-3">
                                     <label for="specialist">Specialist</label>
-                                    <input type="text" placeholder="Specialist" name="speciality" id="speciality" class='form-control' value="{{$instructor->speciality}}" />
+                                    <input type="text" placeholder="Specialist" name="speciality" id="speciality" class="form-control @error('speciality') is-invalid @enderror" value="{{$instructor->speciality}}" />
                                 </div>
                                 <span class="text-danger">{{$errors->first('speciality')}}</span>
 
@@ -58,7 +58,7 @@
                                 <span class="text-danger">{{$errors->first('access_time')}}</span>
                                 <div class="mt-3">
                                     <label for="textarea">Description</label>
-                                    <textarea id="textarea" placeholder="Instructor Description" name="description" rows="4" cols="40" class="form-control">{{ $instructor->description }}</textarea>
+                                    <textarea id="textarea" placeholder="Instructor Description" name="description" rows="4" cols="40" class="form-control  @error('description') is-invalid @enderror">{{ $instructor->description }}</textarea>
                                     <span class="text-danger">{{$errors->first('description')}}</span>
                                 </div>
                                 
