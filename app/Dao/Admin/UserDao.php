@@ -59,7 +59,6 @@ class UserDao implements UserDaoInterface
 
         if ($user) {
             $user->name = $data['name'];
-            $user->password = Hash::make($data['password']);
             $user->role = $data['role'];
             $user->image = $data['image']->getClientOriginalName();
             $user->address = $data['address'];
@@ -81,7 +80,7 @@ class UserDao implements UserDaoInterface
         $user->delete();
     }
 
-        public function search($search): object
+    public function search($search): object
     {
         $query = User::query()->where('role', 1);
 
@@ -101,6 +100,30 @@ class UserDao implements UserDaoInterface
         return $query->orderBy('created_at', 'asc')
         ->paginate(5)
         ->appends(request()->all());
+    }
+
+      /**
+     * Return Specific User
+     * @return object
+    */
+    public function editPassword($id): object
+    {
+        return User::findOrFail($id);
+    }
+    
+    
+    /**
+     * Update user password
+     *
+     * @param $request
+     * @param $user
+     * @return void
+     */
+
+    public function passUpdate($request, $user): void
+    {
+        $user->password = Hash::make($request->password);
+        $user->save();
     }
 
 }

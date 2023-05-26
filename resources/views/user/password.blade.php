@@ -1,63 +1,64 @@
 @extends('layouts.layout')
 
 @section('content')
-
-    <!-- contact section -->
     <section class="contact_section layout_padding">
-        <div class="container">
+        <div class="container w-50">
             <div class="heading_container">
-                <h2>
-                    <span>
-                            User Profile
-                    </span>
-                </h2>
+                <h2>Change Password Page</h2>
             </div>
-            <div class="layout_padding2-top ">
-                <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <form action="#" method="POST">
+            <div class="card">
+                @if (session('message'))
+                    <h5 class="alert alert-danger mb-2">{{ session('message') }}</h5>
+                @endif
+                <div class="card-body">
+                    <form action="{{ url('user/password/' . $user->id) }}" method="POST">
                         @csrf
-                        <div class="contact_form-container">
-                            <div>
-                                <input type="text" placeholder="Name" name="name" value="{{$user->name}}" readonly/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('name')}}</small>
-                            
-                            <div>
-                                <input type="email" placeholder="Email"  name="email" value="{{$user->email}}" readonly/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('email')}}</small>
+                        <div class="mt-2">
+                            <label for="current_password" class="auth-label">Current Password</label>
+                            <input type="password" placeholder="*******" id="current_password" name="current_password" class='form-control w-100'/>
+                            @error('current_password')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                            <div>
-                                <input type="number" placeholder="Phone Number"  name="phone" value="{{$user->phone}}" readonly/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('phone')}}</small>
+                        <div class="mt-2">
+                            <label for="new_password" class="auth-label">New Password</label>
+                            <input type="password" placeholder="********" id="password" name="password" class="form-control w-100" value="{{ old('new_password') }}" />
+                            @error('password')
+                                <span class="error  text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                            <div>
-                                <input type="text" placeholder="Can you give us some advice." name="message"/>
-                            </div>
-                            <small class="text-danger">{{$errors->first('message')}}</small>
-                            
-                            <div class="mt-5">
-                                <button type="submit" class="btn btn-light btn-md">
-                                    Send
-                                </button>
-                            </div>
+                        <div class="mt-2">
+                            <label for="password_confirmation" class="auth-label">Confirm Password</label>
+                            <input type="password" placeholder="********" id="password_confirmation" name="password_confirmation" class="form-control w-100" value="{{ old('password_confirmation') }}"/>
+                            @error('password_confirmation')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-primary">
+                                Update
+                            </button>
+
+                            <button type="button" class="btn btn-dark pr-4">
+                                <a href="{{ route('user.profile', $user->id) }}" class="text-decoration-none text-white text-center">Back</a>
+                            </button>
                         </div>
                     </form>
-                </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="../js/sweetalert.min.js"></script>
-    @if (Session::has('success'))
-      <script>
-          swal("Message", "{{ Session::get('success') }}", 'success', {
-              button: true,
-              button: "Ok",
-          });
-      </script>
-    @endif
-@endsection
 
+<script src="/js/sweetalert.min.js"></script>
+@if (Session::has('success'))
+    <script>
+        swal("Message", "{{ Session::get('success') }}", 'success', {
+            button: "Ok"
+        });
+    </script>
+@endif
+
+
+@endsection

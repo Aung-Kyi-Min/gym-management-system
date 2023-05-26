@@ -49,7 +49,7 @@ class AdminService implements AdminServiceInterface
      * change  admin password
      * @return void
      */
-    public function updatePassword() :void
+    public function updatePassword($id) :void
     {
         $this->adminDao->updatePassword();
     }

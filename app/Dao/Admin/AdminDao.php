@@ -28,47 +28,4 @@ class AdminDao implements AdminDaoInterface
         return User::findOrFail($id);
     }
 
-
-    /**
-    * Update admin
-    * @return void
-    */
-    public function update($id) : void
-    {
-        // Retrieve the currently logged-in user/admin
-        $admin= auth()->user();
-        // Update the admin data
-       
-        $admin->name = request('name');
-        $admin->email = request('email');
-        $admin->gender = request('gender');
-        $admin->age = request('age');
-        $admin->role= request('role');
-        $admin->phone = request('phone');
-        $admin->address =request('address');
-        
-        $image = request('image');
-        if ($image) {
-            $name = $image->getClientOriginalName();
-            $image->storeAs('public/images/admin/user', $name);
-            $admin->image = $name;
-        } 
-    
-
-        // Save the changes
-        $admin->save();
-    }
-
-    
-    /**
-    * Update admin password
-    * @return void
-    */
-    public function updatePassword() :void
-    {
-        $user = Auth::user();
-        $user->password = bcrypt(request('new_password'));
-        $user->save();
-    }
-
 }

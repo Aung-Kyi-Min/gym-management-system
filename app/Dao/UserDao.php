@@ -60,15 +60,18 @@ class UserDao implements UserDaoInterface
         // Save the changes
         $user->save();
     }
-    
+
     /**
-    * Update admin password
-    * @return void
+     * Update user password
+     *
+     * @param $request
+     * @param $user
+     * @return void
     */
-    public function updatePassword() :void
+    public function updatePassword($request,$user):void
     {
-        //$user = Auth::user();
-        //$user->password = bcrypt(request('new_password'));
-        //$user->save();
+        $user->password = Hash::make($request->password);
+        $user->save();
     }
+
 }

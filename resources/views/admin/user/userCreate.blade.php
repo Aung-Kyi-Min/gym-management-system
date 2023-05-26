@@ -37,16 +37,21 @@
                                     <input type="number" id="phone"  name="phone" value="{{ old('phone') }}" class='form-control' />
                                     <span class="error">@error('phone'){{$message}}@enderror</span>
                                 </div>
-
+                                
                                 <div class="mt-2">
                                     <label for="gender">Gender</label>
-                                    <select name="gender" id="gender" value="{{ old('gender') }}" class="selectbox">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                    <span class="error">@error('gender'){{$message}}@enderror</span>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Male
+                                            <input type="radio" checked="checked" name="gender" value="male">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender" value="female">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
                                 </div>
-
+    
                                 <div class="mt-2">
                                     <label for="age">Age</label>
                                     <input type="number" id="age" value="{{ old('age') }}"  name="age" class='form-control' />
@@ -54,12 +59,7 @@
                                 </div>
 
                                 <div class="mt-2">
-                                    <label for="role">Role</label>
-                                    <select name="role" id="role" value="{{ old('role') }}" class="selectbox">
-                                        <option value="0">Admin</option>
-                                        <option value="1">User</option>
-                                    </select>
-                                    <span class="error">@error('role'){{$message}}@enderror</span>
+                                    <input type="hidden" id="role" value="1"  name="role"  class='form-control' />
                                 </div>
 
                                 <div class="mt-2">

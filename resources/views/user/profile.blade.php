@@ -187,5 +187,6 @@
         }
     }
 </script>
+
 @endsection
 

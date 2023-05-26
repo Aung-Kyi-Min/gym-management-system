@@ -195,21 +195,6 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Admin profile updated successfully');
     }
    
-    public function editpassword()
-    {
-        $loginuser = auth()->user();
-        return view ('admin.password', ['loginuser' => $loginuser]);
-    }
-
-    public function changepassword(ChangePasswordRequest $request)
-    {
-        
-        $this->adminService->updatePassword();
-        // Redirect or return a response
-        return redirect()->back()->with('success', 'Admin password changed successfully');
-    }
-    
-
     public function member()
     {
         $loginuser = auth()->user();

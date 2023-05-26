@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Services\Admin\AdminServiceInterface;
-use App\Contracts\Services\Admin\WorkoutServiceInterface;
-use App\Exports\MembersExport;
-use App\Exports\UsersExport;
-use App\Http\Requests\UserProfileEditRequest;
-use App\Imports\InstructorsImport;
-use App\Imports\MembersImport;
-use App\Imports\UsersImport;
 use App\Models\User;
+use App\Models\Feedback;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
+use App\Exports\MembersExport;
+use App\Imports\MembersImport;
+use App\Exports\InstructorsExport;
+use App\Imports\InstructorsImport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
-use App\Contracts\Services\Admin\InstructorServiceInterface;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\Feedback;
-use App\Exports\InstructorsExport;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserFeedbackRequest;
+use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\UserProfileEditRequest;
+use Illuminate\Validation\ValidationException;
 use App\Contracts\Services\UserServiceInterface;
+use App\Contracts\Services\Admin\AdminServiceInterface;
+use App\Contracts\Services\Admin\WorkoutServiceInterface;
+use App\Contracts\Services\Admin\InstructorServiceInterface;
 
 
 
@@ -233,18 +234,34 @@ class UserController extends Controller
         return view('user.password')->with('user', $user);
     }
 
-     /**
+    /**
      * Update User password
      *@param  \App\Http\Requests\ChangePasswordRequest
      * @return \Illuminate\Http\Response
     */
-    public function changepassword(ChangePasswordRequest $request)
+    public function passwordUpdate(ChangePasswordRequest $request)
     {
-        
-        $this->userService->updatePassword();
-        // Redirect or return a response
-        return redirect()->back()->with('success', 'Admin password changed successfully');
+        $userId = $request->id;
+
+        $user = User::findOrFail($userId);
+        $currentPasswordStatus = Hash::check($request->current_password, $user->password);
+
+        if ($currentPasswordStatus && $request->current_password !== $request->password) 
+        {
+            $this->userService->updatePassword($request, $user);
+
+            return redirect()->route('user.profile')->with('success', 'Password updated successfully');
+
+        } elseif ($currentPasswordStatus && $request->current_password === $request->password)
+        {
+            return redirect()->back()->with('message', 'Old Password should not match with new Password');
+        } 
+        else 
+        {
+            return redirect()->back()->with('message', 'Current Password does not match with Old Password');
+        }
     }
+    
 
     public function sendFeedback(UserFeedbackRequest $request)
 

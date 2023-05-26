@@ -82,4 +82,27 @@ class UserService implements UserServiceInterface
     {
        return  $this->userDao->search($search);
     }
+
+          /**
+     * Return Specific User
+     * @return object
+    */
+    public function editPassword($id): object
+    {
+        return $this->userDao->editPassword($id);
+    }
+    
+    /**
+     * Update user password
+     *
+     * @param $request
+     * @param $user
+     * @return void
+    */
+
+     public function passUpdate($request, $user): void
+    {
+
+        $this->userDao->passUpdate($request, $user);
+    }
 }

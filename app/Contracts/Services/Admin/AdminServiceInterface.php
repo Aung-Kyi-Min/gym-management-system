@@ -18,16 +18,4 @@ interface AdminServiceInterface
     */
     public function edit($id) : object;
 
-    /**
-    * Update admin
-    * @return void
-    */
-    public function update($id) : void;
-
-    /**
-     * change  admin password
-     * @return void
-     */
-    public function updatePassword() :void;
-
 }

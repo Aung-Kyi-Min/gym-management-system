@@ -26,10 +26,11 @@ interface UserServiceInterface
     public function update($id) : void;
     
     /**
-    * change  admin password
-    * @return void
+     * Update user password
+     *
+     * @param $request
+     * @param $user
+     * @return void
     */
-    public function updatePassword() :void;
-
-
+    public function updatePassword($request,$user): void;
 }

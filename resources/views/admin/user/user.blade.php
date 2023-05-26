@@ -42,7 +42,6 @@
                                         <th>Address</th>
                                         <th>Gender</th>
                                         <th>Role</th>
-                                        <th>Age</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -58,7 +57,6 @@
                                             <p class="width-text text-wrap">{{$user->limitedAddress}}</p>
                                         </td>
                                         <td>{{$user->gender}}</td>
-                                        <td>{{$user->role}}</td>
                                         <td>{{$user->age}}</td>
                                         <td>
                                             <img class="img-width" src="{{ asset('storage/images/admin/user/'.$user->image)}}">

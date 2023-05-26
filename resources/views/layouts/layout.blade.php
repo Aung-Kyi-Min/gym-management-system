@@ -32,9 +32,9 @@
     <link rel="stylesheet" href="/css/template2.css">
 
     <!-- Custom styles for this template -->
-    <link href="css/common.css" rel="stylesheet" />
+    <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
                             <div class="">
                                 @if (Auth::check())
                                     <div class=" ">
-                                        <img src="{{$user->image ? asset('storage/images/admin/user/' .$user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
+                                        <img src="{{auth()->user()->image ? asset('storage/images/admin/user/' .auth()->user()->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
                                             class="w-50 rounded-circle mb-3" onclick="showProfile()" />
                                         <div id="profile-buttons" class="hidden">
                                             <a href="{{ route('user.profile') }}" class="btn btn-info btn-sm">
