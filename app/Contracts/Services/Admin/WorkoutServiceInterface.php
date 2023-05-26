@@ -14,6 +14,12 @@ interface WorkoutServiceInterface
     public function get() : object;
 
     /**
+     * Show Workout for User
+     * @return object
+    */
+    public function userget(): object;
+
+    /**
      * Store Workout
      * @return void
     */

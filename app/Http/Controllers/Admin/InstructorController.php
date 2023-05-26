@@ -48,11 +48,11 @@ class InstructorController extends Controller
        ]));
        return redirect('/admin/instructor');
     }
-    /**
-      * Edit Instructor
-      * @return void
-     */
 
+    /**
+     * Return Specific Instructor
+     * @return object
+    */
     public function edit($id)
     {
       $loginuser = auth()->user();
@@ -60,6 +60,10 @@ class InstructorController extends Controller
       return view('admin.instructor.instructorEdit' , ['instructor' => $instructor , 'loginuser' => $loginuser]);
     }
 
+    /**
+      * Update Instructor
+      * @return void
+     */
     public function update(InstructorUpdateRequest $request ,$id)
     {
        $this->instructorService->update($id , $request->only([
@@ -75,6 +79,10 @@ class InstructorController extends Controller
        return redirect('/admin/instructor');
     }
 
+     /**
+     * Destroy Instructor
+     * @return void 
+    */
     public function destroy($id)
     {
       $this->instructorService->destroy($id);

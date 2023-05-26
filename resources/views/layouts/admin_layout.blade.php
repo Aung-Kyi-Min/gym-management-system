@@ -48,13 +48,12 @@
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div>
-                        <img src="{{ $loginuser->image ? asset('storage/images/admin/user/'.$loginuser->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" id="default-image"  class="img-circle admin-profile-img  elevation-2" alt="User Image">
+                    <div class="image">
+                    <img src="{{ asset('storage/images/admin/user/'.auth()->user()->image) }}" id="default-image1"  class="img-circle admin-profile-img  elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <p id="call2" class="pointer">{{$loginuser->name}}</p>
+                        <p id="call2" class="pointer">{{auth()->user()->name}}</p>
                         <form id="toggle"> 
-                            <a href="{{ url('/admin/'.$loginuser->id.'/edit') }}" type="button" class="btn btn-sm bg-gradient-primary">Edit</a>  
                             <a href="{{ route('logout') }}" class="btn btn-sm bg-gradient-danger">Logout</a>
                         </form>
                     </div>

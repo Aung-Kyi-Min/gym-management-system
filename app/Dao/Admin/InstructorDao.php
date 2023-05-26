@@ -18,6 +18,15 @@ class InstructorDao implements InstructorDaoInterface
     }
 
     /**
+     * Show Instructor for User
+     * @return object
+    */
+    public function userget(): object
+    {
+        return Instructor::all();
+    }
+
+    /**
      * Store Instructor
      * @return void
     */
@@ -53,7 +62,9 @@ class InstructorDao implements InstructorDaoInterface
         $instructor = Instructor::findOrFail($id);
         $instructor->name = request('name');
         $instructor->email= request('email');
-        $instructor->image = request()->file('image')->getClientOriginalName();
+        if (request()->hasFile('image')) {
+            $instructor->image = request()->file('image')->getClientOriginalName();
+        }
         $instructor->speciality= request('speciality');
         $instructor->price = request('price');
         $instructor->access_time = request('access_time');

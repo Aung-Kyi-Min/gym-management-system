@@ -34,6 +34,15 @@ class InstructorService implements InstructorServiceInterface
     }
 
     /**
+     * Show Workout for User
+     * @return object
+    */
+    public function userget(): object
+    {
+        return $this->instructorDao->userget();
+    }
+
+    /**
      * Store Instructor
      * @return void
     */
@@ -59,8 +68,10 @@ class InstructorService implements InstructorServiceInterface
     */
     public function update($id) : void
     {
-        $name = request()->file('image')->getClientOriginalName();
-        request()->file('image')->storeAs('public/images/admin/instructor' , $name);
+        if (request()->hasFile('image')) {
+            $name = request()->file('image')->getClientOriginalName();
+            request()->file('image')->storeAs('public/images/admin/instructor', $name);
+        }
         $this->instructorDao->update($id);
     }
 

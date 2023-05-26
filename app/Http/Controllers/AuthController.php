@@ -51,8 +51,10 @@ class AuthController extends Controller
             'age',
             'phone',
         ]));
-        $name = request()->file('image')->getClientOriginalName();
-        request()->file('image')->storeAs('public/images/admin/user', $name);
+        if (request()->hasFile('image')) {
+            $name = request()->file('image')->getClientOriginalName();
+            request()->file('image')->storeAs('public/images/admin/user', $name);
+        }
         return redirect()->route('auth.login')
         ->with('message', 'Your have Registered Successfully...');
 

@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkoutRequest;
+use App\Http\Requests\WorkoutEditRequest;
 use App\Contracts\Services\Admin\WorkoutServiceInterface;
 
 class WorkoutController extends Controller
@@ -23,12 +24,20 @@ class WorkoutController extends Controller
        $this->workoutService = $workoutServiceInterface;
     }
 
+    /**
+     * Create Workout
+     * @return void
+    */
     public function create()
     {
       $loginuser = auth()->user();
       return view('admin.workout.workoutCreate' , ['loginuser' => $loginuser]);
     }
- 
+    
+    /**
+     * Show Workout
+     * @return object
+    */
     public function workout(Request $request)
     {
       $loginuser = auth()->user();
@@ -57,15 +66,23 @@ class WorkoutController extends Controller
        ]));
        return redirect('/admin/workout');
     }
- 
+    
+     /**
+     * Return Specific Workout
+     * @return object
+    */
     public function edit($id)
     { 
       $loginuser = auth()->user();
       $workout = $this->workoutService->edit($id);
       return view('admin.workout.workoutEdit' , ['workout' => $workout , 'loginuser' => $loginuser]);
     }
- 
-    public function update(WorkoutRequest $request ,$id)
+    
+    /**
+     * Update Workout
+     * @return void
+    */
+    public function update(WorkoutEditRequest $request ,$id)
     {
        $this->workoutService->update($id , $request->only([
           'name',
@@ -75,7 +92,11 @@ class WorkoutController extends Controller
        ]));
        return redirect('/admin/workout');
     }
- 
+    
+    /**
+     * Destroy Workout
+     * @return void 
+    */
     public function destroy($id) 
     {
        $this->workoutService->destroy($id);

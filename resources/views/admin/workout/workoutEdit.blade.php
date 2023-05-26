@@ -15,7 +15,6 @@
                         <div class="card-body">
                             <form action="{{route('admin.update_workout' , $workout->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                
                                 <div class="mb-2 clearfix">
                                     <label for="my-file" class="form-label upload">Upload</label>
                                     <input type="file" name="image" id="my-file" onchange="loadFile(event)" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*" style="display: none;">

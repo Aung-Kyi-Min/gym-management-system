@@ -46,11 +46,9 @@
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
                                             <input type="radio" name="gender" value="male" {{ $user->gender == 'male' ? 'checked' : '' }}>
-                                            <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
                                             <input type="radio" name="gender" value="female" {{ $user->gender == 'female' ? 'checked' : '' }}>
-                                            <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <span class="error">@error('gender'){{$message}}@enderror</span>

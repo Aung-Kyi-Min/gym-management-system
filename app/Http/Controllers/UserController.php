@@ -59,10 +59,14 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Show User
+     * @return object
+    */
     public function index()
     {
         $user = Auth::user();
-        $instructors = $this->instructorService->get();
+        $instructors = $this->instructorService->userget();
         $instructorCounts = $instructors->count();
         $feedbacks = Feedback::all();
 
@@ -74,7 +78,10 @@ class UserController extends Controller
         ]);
     }
 
-
+     /**
+     * Return feedback
+     * @return object
+    */
     public function feedback()
     {
         if (Auth::guest())
@@ -96,7 +103,7 @@ class UserController extends Controller
             return redirect()->route('auth.login');
         }
         $user = Auth::user();
-        $workouts = $this->workoutService->get();
+        $workouts = $this->workoutService->userget();
         $workoutCounts = $workouts->count();
         return view('user.workoutlist', ['workouts' => $workouts, 'workoutCounts' => $workoutCounts , 'user' => $user]);
     }
@@ -189,12 +196,20 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Return Specific User
+     * @return object
+    */
     public function edit($id)
     {
         $user = auth()->user();
         return view('user.profile', ['user' => $user]);
     }
 
+    /**
+     * Update User
+     * @return void
+    */
     public function update(UserProfileEditRequest $request,$id)
     {
         $this->userService->update($id , $request->only([
@@ -213,6 +228,10 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'User updated successfully');
     }
 
+    /**
+     * Return send feedback
+     * @return void
+    */
     public function sendFeedback(UserFeedbackRequest $request)
 
     {

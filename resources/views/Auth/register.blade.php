@@ -10,44 +10,67 @@
                 <div class="card-body">
                     <form action="{{ route('auth.registerUser') }}" enctype="multipart/form-data" method="POST">
                         @csrf
-                        <div>
-                            <input type="text" placeholder="Name" value="{{ old('name') }}" name="name" class='w-100 form-control' />
-                            @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                            @endif
+                        <div class="form-group row">
+                            <label for="name" class="col-lg-2 col-form-label form-control-label">Name :</label>
+                            <div class="col-lg-10">
+                                <input id="name" type="text" placeholder="Name" value="{{ old('name') }}" name="name" class='w-100 form-control' />
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
                         </div>
-                        <div>
-                            <input type="email" placeholder="Email" value="{{ old('email') }}" name="email" class='w-100 form-control' autocomplete="none"/>
-                            @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
+                        <div class="form-group row">
+                            <label for="email" class="col-lg-2 col-form-label form-control-label">Email :</label>
+                            <div class="col-lg-10">
+                                <input id="email" type="email" placeholder="Email" value="{{ old('email') }}" name="email" class='w-100 form-control' autocomplete="none"/>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>   
                         </div>
-                        <div>
-                            <input type="password" placeholder="Password" value="{{ old('password') }}" name="password" class='w-100 form-control'/>
-                            @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }} </span>
-                            @endif
+                        <div class="form-group row">
+                            <label for="password" class="col-lg-2 col-form-label form-control-label">Password :</label>
+                            <div class="col-lg-10">
+                                <input id="password" type="password" placeholder="Password" value="{{ old('password') }}" name="password" class='w-100 form-control'/>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }} </span>
+                                @endif
+                            </div>
                         </div>
-                        <div>
-                            <input type="password" class='w-100 form-control' placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" />
+                        <div class="form-group row">
+                            <label for="confirm-password" class="col-lg-2 col-form-label form-control-label">Confirm Password :</label>
+                            <div class="col-lg-10">
+                                <input id="confirm-password" type="password" class='w-100 form-control' placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" />
+                            </div>
                         </div>
-                        <div>
-                            <input type="number" placeholder="Phone Number" value="{{ old('phone') }}" name="phone" class='w-100 form-control' /><br>
-                            @if ($errors->has('phone'))
-                                <span class="text-danger">{{ $errors->first('phone') }}</span>
-                            @endif
+                        <div class="form-group row">
+                            <label for="phone" class="col-lg-2 col-form-label form-control-label">Phone :</label>
+                            <div class="col-lg-10">
+                                <input id="phone" type="number" placeholder="Phone Number" value="{{ old('phone') }}" name="phone" class='w-100 form-control' /><br>
+                                @if ($errors->has('phone'))
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                @endif
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" placeholder="Address" value="{{ old('address') }}" name="address" class='w-100 form-control' /><br>
-                            @if ($errors->has('address'))
-                                <span class="text-danger">{{ $errors->first('address') }}</span>
-                            @endif
+                        <div class="form-group row">
+                            <label for="address" class="col-lg-2 col-form-label form-control-label">Address :</label>
+                            <div class="col-lg-10">
+                                <input id="address" type="text" placeholder="Address" value="{{ old('address') }}" name="address" class='w-100 form-control' /><br>
+                                @if ($errors->has('address'))
+                                    <span class="text-danger">{{ $errors->first('address') }}</span>
+                                @endif
+                            </div>
+                            
                         </div>
-                        <div>
-                            <input type="text" placeholder="Age" value="{{ old('age') }}" name="age" class='w-100 form-control' /><br>
-                            @if ($errors->has('age'))
-                                <span class="text-danger">{{ $errors->first('age') }}</span>
-                            @endif
+                        <div class="form-group row">
+                            <label for="age" class="col-lg-2 col-form-label form-control-label">Age :</label>
+                            <div class="col-lg-10">
+                                <input id="age" type="text" placeholder="Age" value="{{ old('age') }}" name="age" class='w-100 form-control' /><br>
+                                @if ($errors->has('age'))
+                                    <span class="text-danger">{{ $errors->first('age') }}</span>
+                                @endif
+                            </div>
+                            
                         </div>
                         <div class="mt-3">
                             <div class="p-t-10">

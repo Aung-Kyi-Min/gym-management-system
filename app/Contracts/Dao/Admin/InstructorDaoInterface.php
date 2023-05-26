@@ -14,6 +14,12 @@ interface InstructorDaoInterface
     public function get() : object;
 
     /**
+     * Show Instructor for User
+     * @return object
+    */
+    public function userget(): object;
+
+    /**
     * Store Instructor
     * @return void
     */

@@ -11,12 +11,18 @@ class AuthDao implements AuthDaoInterface
 {
     public function register(array $data): object
     {
+        if (isset($data['image']) && $data['image']->isValid()) {
+            $image = $data['image']->getClientOriginalName();
+        } else {
+            $image = 'default.png';
+        }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
-            'image' => $data['image']->getClientOriginalname(),
+            'image' => $image,
             'address' => $data['address'],
             'gender' => $data['gender'],
             'age' => $data['age'],

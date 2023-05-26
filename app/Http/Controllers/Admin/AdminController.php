@@ -170,46 +170,6 @@ class AdminController extends Controller
         return $yearMemberCount;
     }
 
-    public function edit($id)
-    {
-        $loginuser = auth()->user();
-        return view('admin.edit', ['loginuser' => $loginuser]);
-
-    }
-
-
-    public function update(UserProfileEditRequest $request,$id)
-    {
-        $this->adminService->update($id , $request->only([
-            'name',
-            'email',
-            'image',
-            'age',
-            'phone',
-            'gender',
-            'address',
-            'role',
-         ]));
-
-        // Redirect or return a response
-        return redirect()->back()->with('success', 'Admin profile updated successfully');
-    }
-   
-    public function editpassword()
-    {
-        $loginuser = auth()->user();
-        return view ('admin.password', ['loginuser' => $loginuser]);
-    }
-
-    public function changepassword(ChangePasswordRequest $request)
-    {
-        
-        $this->adminService->updatePassword();
-        // Redirect or return a response
-        return redirect()->back()->with('success', 'Admin password changed successfully');
-    }
-    
-
     public function member()
     {
         $loginuser = auth()->user();
