@@ -104,8 +104,6 @@ Route::group(['middleware' => ['admin']], function () {
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::post('/admin/{id}/update', [AdminController::class, 'update'])->name('admin.profile.update');
 
     //Excel export and import
     Route::get('/export-users', [UserController::class, 'exportUsers'])->name('export.users');

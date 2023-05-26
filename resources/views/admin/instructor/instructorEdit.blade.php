@@ -59,7 +59,7 @@
                                 <div class="mt-3">
                                     <label for="textarea">Description</label>
                                     <textarea id="textarea" placeholder="Instructor Description" name="description" rows="4" cols="40" class="form-control">{{ $instructor->description }}</textarea>
-                                    <small class="text-warning">{{$errors->first('description')}}</small>
+                                    <span class="text-danger">{{$errors->first('description')}}</span>
                                 </div>
                                 
                                 <div class="mt-4">

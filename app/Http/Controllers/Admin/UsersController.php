@@ -31,6 +31,10 @@ class UsersController extends Controller
         return view('admin.user.userCreate' , ['loginuser' => $loginuser]);
     }
 
+    /**
+     * Show User
+     * @return object
+    */
     public function user(Request $request)
     {
         $loginuser = auth()->user();
@@ -44,6 +48,10 @@ class UsersController extends Controller
         return view('admin.user.user', compact('users_search', 'search' , 'loginuser'));
     }
     
+    /**
+     * Store User
+     * @return void
+    */
     public function store(UserCreateRequest $request) 
     {
         $this->userService->store($request->only([
@@ -60,6 +68,10 @@ class UsersController extends Controller
         return redirect('/admin/user');
     }
 
+     /**
+     * Return Specific User
+     * @return object
+    */
     public function edit($id) 
     {
         $loginuser = auth()->user();
@@ -67,6 +79,10 @@ class UsersController extends Controller
         return view('admin.user.userEdit' ,['user' => $user , 'loginuser' => $loginuser]);
     }
 
+    /**
+     * Update User
+     * @return void
+    */
     public function update(UserEditRequest $request ,$id)
     {
         $this->userService->update($id , $request->only([
@@ -83,6 +99,10 @@ class UsersController extends Controller
         return redirect('/admin/user');
     }
 
+    /**
+     * Destroy User
+     * @return void 
+    */
     public function destroy($id) 
     {
         $this->userService->destroy($id);

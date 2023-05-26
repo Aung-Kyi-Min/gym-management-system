@@ -27,7 +27,7 @@ class UserEditRequest extends FormRequest
             'name' => ['required', 'max:255'],
             'password' => ['required', 'max:225'],
             'role' => ['required'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
             'address' => ['required','max:225'],
             'gender' => ['required','max:225'],
             'age' => ['required','max:225'],
