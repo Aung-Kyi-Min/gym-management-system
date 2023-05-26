@@ -36,9 +36,9 @@
                         </div>
 
                         <div class="mt-2">
-                            <label for="phone" class="auth-label">Phone</label>
-                            <textarea id="textarea" placeholder="What do you want to say?Send your message." name="message" rows="4" cols="40" class="form-control"></textarea>
-                            @error('phone')
+                            <label for="phone" class="auth-label">Message</label>
+                            <textarea id="textarea" placeholder="What do you want to say?Send your message." name="message" rows="4" cols="40" class="form-control @error('message') is-invalid @enderror"></textarea>
+                            @error('message')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
                         </div>

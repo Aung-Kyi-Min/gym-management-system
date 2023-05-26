@@ -11,11 +11,4 @@ interface AdminServiceInterface
      * return export users
     */
     public function exportuser(): object;
-
-    /**
-    * Return Admin
-    * @return object
-    */
-    public function edit($id) : object;
-
 }

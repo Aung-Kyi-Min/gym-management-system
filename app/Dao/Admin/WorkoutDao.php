@@ -17,6 +17,15 @@ class WorkoutDao implements WorkoutDaoInterface
     }
 
     /**
+     * Show Workout for User
+     * @return object
+    */
+    public function userget(): object
+    {
+        return Workout::all();
+    }
+
+    /**
      * Store Workout
      * @return void
     */
@@ -50,7 +59,9 @@ class WorkoutDao implements WorkoutDaoInterface
         
         if ($workout) {
             $workout->name = $data['name'];
-            $workout->image = $data['image']->getClientOriginalName();
+            if (isset($data['image']) && $data['image']->isValid()) {
+                $workout->image = $data['image']->getClientOriginalName();
+            }
             $workout->price = $data['price'];
             $workout->description = $data['description'];
             $workout->save();

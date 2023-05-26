@@ -17,24 +17,24 @@
                                 @csrf
                                 <div class="mt-2">
                                     <label for="name">Name</label>
-                                    <input type="text" placeholder="User Name" id="name" name="name" value="{{ old('name') }}" class='form-control' />
+                                    <input type="text" placeholder="User Name" id="name" name="name" value="{{ old('name') }}" class="form-control  @error('name') is-invalid @enderror" />
                                     <span class="error">@error('name'){{$message}}@enderror</span>
                                 </div>
                                 <div class="mt-2">
                                     <label for="email">Email</label>
-                                    <input type="text" placeholder="Email" id="email" name="email" value="{{ old('email') }}" class='form-control' />  
+                                    <input type="text" placeholder="Email" id="email" name="email" value="{{ old('email') }}" class="form-control  @error('email') is-invalid @enderror" />  
                                     <span class="error">@error('email'){{$message}}@enderror</span>                                 
                                 </div>
                                 
                                 <div class="mt-2">
                                     <label for="password">Password</label>
-                                    <input type="password" id="password"  name="password" class='form-control' />
+                                    <input type="password" id="password"  name="password" class="form-control  @error('password') is-invalid @enderror" />
                                     <span class="error">@error('password'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
                                     <label for="phone">Phone</label>
-                                    <input type="number" id="phone"  name="phone" value="{{ old('phone') }}" class='form-control' />
+                                    <input type="number" id="phone"  name="phone" value="{{ old('phone') }}" class="form-control  @error('phone') is-invalid @enderror" />
                                     <span class="error">@error('phone'){{$message}}@enderror</span>
                                 </div>
                                 
@@ -54,7 +54,7 @@
     
                                 <div class="mt-2">
                                     <label for="age">Age</label>
-                                    <input type="number" id="age" value="{{ old('age') }}"  name="age" class='form-control' />
+                                    <input type="number" id="age" value="{{ old('age') }}"  name="age" class="form-control  @error('age') is-invalid @enderror" />
                                     <span class="error">@error('age'){{$message}}@enderror</span>
                                 </div>
 
@@ -64,13 +64,13 @@
 
                                 <div class="mt-2">
                                     <label for="image">Image</label>
-                                    <input type="file" id="image" name="image" class='form-control' />
+                                    <input type="file" id="image" name="image" class="form-control" />
                                     <span class="error">@error('image'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="mt-2">
                                     <label for="textarea">Address</label>
-                                    <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control">{{ old('address') }}</textarea>
+                                    <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control  @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
                                     <span class="error">@error('address'){{$message}}@enderror</span>
                                 </div>
                             

@@ -14,7 +14,7 @@ class UserDao implements UserDaoInterface
     */
     public function get(): object
     {    
-        return User::paginate(5);
+        return User::where('role' , 1)->paginate(5);
     }
 
     /**
@@ -32,8 +32,11 @@ class UserDao implements UserDaoInterface
         $user->age = request('age');
         $user->role = request('role');
         $image = request()->file('image');
-        $imageName = $image->getClientOriginalName();
-        $user->image = $imageName;
+        if (request()->hasFile('image')) {
+            $user->image = request()->file('image')->getClientOriginalName();
+        }else {
+            $user->image = 'default.png';
+        }
         
         $user->address = request('address');
         
@@ -60,7 +63,9 @@ class UserDao implements UserDaoInterface
         if ($user) {
             $user->name = $data['name'];
             $user->role = $data['role'];
-            $user->image = $data['image']->getClientOriginalName();
+            if (isset($data['image']) && $data['image']->isValid()) {
+                $user->image = $data['image']->getClientOriginalName();
+            }
             $user->address = $data['address'];
             $user->gender = $data['gender'];
             $user->age = $data['age'];

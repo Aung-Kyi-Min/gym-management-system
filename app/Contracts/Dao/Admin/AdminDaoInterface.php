@@ -12,12 +12,6 @@ interface AdminDaoInterface
      */
     public function exportuser(): object;
 
-    /**
-    * Return Admin
-    * @return object
-    */
-    public function edit($id) : object;
-
 }
 
 

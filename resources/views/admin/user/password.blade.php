@@ -18,7 +18,7 @@
                                 
                                 <div class="mt-2">
                                     <label for="current_password">Current Password</label>
-                                    <input type="password" placeholder="*******" id="old_password" name="current_password" class='form-control'/>
+                                    <input type="password" placeholder="*******" id="old_password" name="current_password" class="form-control  @error('current_password') is-invalid @enderror'"/>
                                     @error('current_password')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
@@ -26,7 +26,7 @@
 
                                 <div class="mt-2">
                                     <label for="new_password">New Password</label>
-                                    <input type="password" placeholder="********" id="password" name="password" class="form-control" value="{{ old('new_password') }}" />
+                                    <input type="password" placeholder="********" id="password" name="password" class="form-control  @error('password') is-invalid @enderror'" value="{{ old('password') }}" />
                                     @error('password')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
@@ -34,7 +34,7 @@
 
                                 <div class="mt-2">
                                     <label for="password_confirmation">Confirm Password</label>
-                                    <input type="password" placeholder="********" id="password_confirmation" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}"/>
+                                    <input type="password" placeholder="********" id="password_confirmation" name="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror'" value="{{ old('new_password') }}"  value="{{ old('password_confirmation') }}"/>
                                     @error('password_confirmation')
                                         <span class="error">{{ $message }}</span>
                                     @enderror

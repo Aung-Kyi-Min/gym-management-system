@@ -49,8 +49,8 @@
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div>
-                        <img src="{{ auth()->user()->image ? asset('storage/images/admin/user/'.auth()->user()->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" id="default-image1"  class="img-circle admin-profile-img  elevation-2" alt="User Image">
+                    <div class="image">
+                    <img src="{{ asset('storage/images/admin/user/'.auth()->user()->image) }}" id="default-image1"  class="img-circle admin-profile-img  elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <p id="call2" class="pointer">{{auth()->user()->name}}</p>

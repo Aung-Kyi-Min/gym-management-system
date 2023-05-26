@@ -86,22 +86,15 @@
                                             <input class="form-control" name="id" type="text" placeholder="Enter ID" value="{{ $user->id }}" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div for="name" class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Name</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" name="name" type="text" placeholder="John" value="{{ $user->name }}">
+                                            <input id="name" class="form-control  @error('name') is-invalid @enderror" name="name" type="text" placeholder="John" value="{{ $user->name }}">
                                             <span class="text-danger">{{$errors->first('name')}}</span>
                                         </div>
 
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="email" placeholder="aa@example.com" value="{{ $user->email }}" name="email">
-                                            <span class="text-danger">{{$errors->first('email')}}</span>
-                                        </div>
-                                    </div>
-                                  
+                                    
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Gender</label>
                                         <div class="p-t-10">
@@ -117,26 +110,28 @@
 
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Age</label>
+                                        <label for="age" class="col-lg-3 col-form-label form-control-label">Age</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" placeholder="20" value="{{ $user->age}}" name="age">
+                                            <input id="age" class="form-control  @error('age') is-invalid @enderror" type="text" placeholder="20" value="{{ $user->age}}" name="age">
                                             <span class="text-danger">{{$errors->first('age')}}</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Phone</label>
+                                        <label for="phone" class="col-lg-3 col-form-label form-control-label">Phone</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{ $user->phone}}" name="phone" placeholder="+95">
+                                            <input id="phone" class="form-control  @error('phone') is-invalid @enderror" type="text" value="{{ $user->phone}}" name="phone" placeholder="+95">
                                             <span class="text-danger">{{$errors->first('phone')}}</span>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                        <label for="address" class="col-lg-3 col-form-label form-control-label">Address</label>
                                         <div class="col-lg-9">
-                                            <textarea class="form-control" placeholder="Pyay" name="address">{{ $user->address}}</textarea>
+                                            
+                                            <textarea class="form-control  @error('address') is-invalid @enderror"  placeholder="Pyay" name="address">{{ $user->address}}</textarea>
                                             <span class="text-danger">{{$errors->first('address')}}</span> <br>
                                             <small><a href="{{url('/user/password/'.$user->id.'/edit') }}" class="text-primary">Are you need to change Passowrd?: Click me!</a></small>
+                                            
                                         </div>
                                     </div>
 

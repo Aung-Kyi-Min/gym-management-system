@@ -58,7 +58,7 @@
 
                                 <div class="mt-3">
                                     <label for="textarea">Description</label>
-                                    <textarea id="textarea" placeholder="Instructor Description" name="description" rows="4" cols="40" class="form-control">{{ old('description') }}</textarea>
+                                    <textarea id="textarea" placeholder="Instructor Description" name="description" rows="4" cols="40" class="form-control  @error('description') is-invalid @enderror" >{{ old('description') }}</textarea>
                                     <small class="text-danger">{{$errors->first('description')}}</small>
                                 </div>
                                 

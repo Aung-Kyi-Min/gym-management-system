@@ -43,18 +43,17 @@ class UserDao implements UserDaoInterface
     
         // Update the user profile data
         $user->name = request('name');
-        $user->email = request('email');
         $user->gender = request('gender');
         $user->age = request('age');
         $user->phone = request('phone');
         $user->address = request('address');
         
         // Handle the image field
-        $image = request('image');
-        if ($image) {
-            $name = $image->getClientOriginalName();
-            $image->storeAs('public/images/admin/user', $name);
-            $user->image = $name;
+
+        if (request()->hasFile('image')) {
+            $name = request('image')->getClientOriginalName();
+            request('image')->storeAs('public/images/admin/user', $name);
+            $user->image = request('image');
         } 
     
         // Save the changes
