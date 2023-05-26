@@ -32,7 +32,7 @@
 
 @if (Session::has('errors'))
     <script>
-        swal("Message", "{{ Session::get('errors') }}", 'success', {
+        swal("Message", "Your Import Data is not defined...", 'success', {
             button: true,
             button: "Ok",
         });

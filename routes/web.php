@@ -88,6 +88,8 @@ Route::middleware(['user'])->group(function () {
     Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
     Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
     Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
+    Route::get('/purchasedHistory', [UserController::class, 'purchaseHistory'])->name('purchaseHistory');
+    Route::get('/purchasedHistory/search',[UserController::class,'historySearch'])->name('purchasedHistory.search');
 
 
 });

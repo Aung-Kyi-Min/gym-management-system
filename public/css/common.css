@@ -102,8 +102,10 @@ body {
 
   #profile-buttons {
     position: absolute;
-    top: 65px; /* adjust top position to match your UI */
+    top: 70px; /* adjust top position to match your UI */
     right: 0;
+    margin-bottom: 0;
+    bottom: 0;
     animation: slide-in 1.8s forwards;
   }
 

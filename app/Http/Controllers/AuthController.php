@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-
 class AuthController extends Controller
 {
     private $authService;
@@ -86,7 +85,7 @@ class AuthController extends Controller
             return back()->withErrors(['email' => 'Invalid email or password']);
         }
     }
-    
+
     /**
      * Write code on Method
      *

@@ -15,7 +15,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="/css/admin_common.css">
-    
+
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -54,11 +54,11 @@
                     </div>
                     <div class="info">
                         <p id="call2" class="pointer">{{auth()->user()->name}}</p>
-                        <form id="toggle"> 
+                        <form id="toggle">
                             <a href="{{ route('logout') }}" class="btn btn-sm bg-gradient-danger">Logout</a>
                         </form>
                     </div>
-                    
+
                 </div>
 
                 <!-- SidebarSearch Form -->
@@ -86,7 +86,7 @@
                                 </p>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="{{route('admin.user')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
@@ -119,7 +119,7 @@
                                 </p>
                             </a>
                         </li>
-                            
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -170,7 +170,7 @@
             });
         });
     </script>
-    
+
 
     <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>

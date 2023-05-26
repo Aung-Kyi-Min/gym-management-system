@@ -17,7 +17,7 @@
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
-                        
+
                         <div >
                         <label for="email" class="auth-label">Email</label>
                             <input type="email" placeholder="Email" value="{{ old('email') }}" name="email" class="w-100 form-control @error('email') is-invalid @enderror" autocomplete="none"/>
@@ -79,7 +79,7 @@
                         <div >
                             <input type="hidden" name="role" id="role" value="1">
                         </div>
-                        
+
                         <div>
                         <label for="file" class="auth-label">Choose File</label>
                             <input type="file" name="image" class='w-100 form-control'/>

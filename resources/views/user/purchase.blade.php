@@ -1,30 +1,31 @@
 @extends('layouts.layout')
 @section('content')
-    <!-- Modal -->
-    <div class="modal fade" id="subscription" tabindex="-1" role="dialog" aria-labelledby="subscription" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container p-3 mt-2">
 
-        <div class="mt-3 mx-auto w-50">
-            <h2 class="text-center mb-3">Purchase Membership</h2>
+        <div class="row mt-3">
+            <h3 class="text-center mb-3">Purchase Membership</h3>
+            <div class="col-md-4">
+                <h3>Discounts Promotion</h3>
+            <table class="table table-striped mt-2 text-center">
+                <thead class="bg-dark text-light">
+                    <th>Min_month</th>
+                    <th>Max_months</th>
+                    <th>Discount Percentage</th>
+                </thead>
+                <tbody>
+
+                        @foreach ($discount as $d)
+                        <tr>
+                            <td>{{$d->min_months}} month</td>
+                            <td>{{$d->max_months}} months</td>
+                            <td>{{$d->dis_percent}} %</td>
+                        </tr>
+                        @endforeach
+
+                </tbody>
+            </table>
+        </div>
+            <div class="col-md-8">
             <form action="{{ route('get.price') }}" id="price-form" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -48,10 +49,14 @@
                         <option>--Please choose Instructor--</option>
                         @foreach ($instructors as $i)
                             <option value="{{ $i->id }}" {{ old('instructor') == $i->id ? 'selected' : '' }}>
-                                {{ $i->name }} { {{$i->speciality}} , {{$i->access_time}} }
+                                {{ $i->name }} { {{ $i->speciality }} , {{ $i->access_time }} }
                             </option>
                         @endforeach
+                        @if ($errors->has('instructor'))
+                            <span class="text-danger">{{ $errors->first('instructor') }}</span>
+                        @endif
                     </select>
+
                 </div>
 
                 <div class="mb-3">
@@ -62,11 +67,15 @@
                             name="join_duration">
                         <span class="plus">+</span>
                     </div>
+                    @if ($errors->has('join_duration'))
+                        <span class="text-danger">{{ $errors->first('join_duration') }}</span>
+                    @endif
                 </div>
 
                 <div class="mb-3">
                     <label for="joining_date">Joining Date</label>
-                    <input type="date" id="joining_date" name="joining_date" class="form-control" value="{{ old('joining_date') }}">
+                    <input type="date" id="joining_date" name="joining_date" class="form-control"
+                        value="{{ old('joining_date') }}">
                 </div>
 
                 <div class="mb-3">
@@ -75,6 +84,9 @@
                         <option value="Online">Online </option>
                         <option value="Cash">Cash</option>
                     </select>
+                    @if ($errors->has('payment'))
+                        <span class="text-danger">{{ $errors->first('payment') }}</span>
+                    @endif
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">See Details</button>
@@ -82,10 +94,24 @@
                 </div>
             </form>
         </div>
+        {{--<div class="col-md-4">--}}
+
+        {{--</div>--}}
+        </div>
     </div>
     </div>
 
     <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
+
+    @if (Session::has('errors'))
+        <script>
+            swal("Message", "Hey , You Need to check Again...", 'success', {
+                button: true,
+                button: "Ok",
+            });
+        </script>
+    @endif
 
     <script>
         $(document).ready(function() {
@@ -103,6 +129,5 @@
                 $(this).prev('input').val(value + 1);
             });
         });
-
     </script>
 @endsection

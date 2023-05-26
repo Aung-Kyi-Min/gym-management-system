@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MemberCreateRequest extends FormRequest
+class ImportExcelUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,16 @@ class MemberCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'workout_id' => 'required',
-            'instructor_id'=>'nullable',
-            'join_duration'=>'',
-            'joining_date'=>'required',
-            'end_date'=>'',
-            'payment' => '',
+            'file' => 'required|file|mimes:xlsx,xls',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+            'image' => 'required',
+            'address' => 'required',
+            'gender' => 'required',
+            'age' => 'required',
+            'phone' => 'required',
         ];
     }
 }

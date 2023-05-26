@@ -14,9 +14,13 @@ class Payment extends Model
         'amount',
         'payment',
     ];
-
+//
     public function member()
     {
         return $this->belongsTo(Member::class);
     }
+    //public function member()
+    //{
+    //    return $this->hasOne(Member::class);
+    //}
 }

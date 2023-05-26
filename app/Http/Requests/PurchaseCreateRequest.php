@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MemberCreateRequest extends FormRequest
+class PurchaseCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,17 @@ class MemberCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'workout_id' => 'required',
-            'instructor_id'=>'nullable',
+            'name' => '',
+            'workout' => '',
+            'instructor'=>'nullable',
             'join_duration'=>'',
-            'joining_date'=>'required',
+            'joining_date'=>'',
             'end_date'=>'',
+            'price' => '',
             'payment' => '',
+            'member_id' => '',
+
+
         ];
     }
 }
