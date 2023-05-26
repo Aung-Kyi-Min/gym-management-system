@@ -108,10 +108,7 @@ class UsersController extends Controller
         {
             return redirect()->back()->with('message', 'Old Password should not match with new Password');
         } 
-        else 
-        {
-            return redirect()->back()->with('message', 'Current Password does not match with Old Password');
-        }
+        
     }
   
     public function destroy($id) 
