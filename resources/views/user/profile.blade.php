@@ -78,6 +78,7 @@
                                         <img id="default-image" class="card-img-top rounded-circle img-circle mt-5 profile-image" src="{{ $user->image ? asset('storage/images/admin/user/' . $user->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Default Image">
                                         <input type="file" name="image" id="my-file" onchange="previewImage(event)" style="display:none">
                                         <button type="button" class="btn btn-outline-dark profile-edit-rounded" onclick="document.getElementById('my-file').click()">Upload</button>
+                                        <span class="text-danger">{{$errors->first('image')}}</span>
                                     </div>
 
                                     <div class="form-group row pad">

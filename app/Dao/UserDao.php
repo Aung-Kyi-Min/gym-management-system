@@ -53,7 +53,7 @@ class UserDao implements UserDaoInterface
         if (request()->hasFile('image')) {
             $name = request('image')->getClientOriginalName();
             request('image')->storeAs('public/images/admin/user', $name);
-            $user->image = request('image');
+            $user->image = $name;
         } 
     
         // Save the changes

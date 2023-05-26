@@ -27,7 +27,7 @@
                         </div>
 
                         <div>
-                        <label for="password " class="auth-label">password</label>
+                        <label for="password " class="auth-label">Password</label>
                             <input type="password" placeholder="Password" value="{{ old('password') }}" name="password" class="w-100 form-control @error('password') is-invalid @enderror"/>
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }} </span>
