@@ -70,6 +70,7 @@ class AdminController extends Controller
       $member = $this->memberService->get();
       $memberCount = $member->total();
       $currentMonth = Carbon::now()->format('Y-m');
+      $currentYear = Carbon::now()->format('Y');
       $startDate = Carbon::parse($currentMonth)->startOfMonth()->format('d');
       $endDate = Carbon::parse($currentMonth)->endOfMonth()->format('d');
       return view('admin.index' , [ 'workoutCount' => $workoutCount ,
@@ -83,6 +84,7 @@ class AdminController extends Controller
                                     'weekUserCount' => $this->weekUserCount,
                                     'weekMemberCount' => $this->weekMemberCount,
                                     'currentMonth' => $currentMonth,
+                                    'currentYear' => $currentYear,
                                     'startDate' => $startDate,
                                     'endDate' => $endDate,
                                     'loginuser' => $loginuser,
@@ -92,11 +94,14 @@ class AdminController extends Controller
 
     private function getUserDataByWeek()
     {
+        $currentYear = Carbon::now()->format('Y');
         $weeks = range(1,7);
         $weekUserCount = [] ;
         foreach($weeks as $week)
         {
-            $count = User::whereRaw('DAYOFWEEK(created_at) = ?', [$week])->count();
+            $count = User::whereRaw('DAYOFWEEK(created_at) = ?', [$week])
+                    ->whereYear('created_at', '=', $currentYear)
+                    ->count();
             $weekUserCount[$week] = $count;
         }
         return $weekUserCount;
@@ -104,11 +109,14 @@ class AdminController extends Controller
 
     private function getMemberDataByWeek()
     {
+        $currentYear = Carbon::now()->format('Y');
         $weeks = range(1,7);
         $weekMemberCount = [] ;
         foreach($weeks as $week)
         {
-            $count = Member::whereRaw('DAYOFWEEK(created_at) = ?', [$week])->count();
+            $count = Member::whereRaw('DAYOFWEEK(created_at) = ?', [$week])
+                    ->whereYear('created_at', '=', $currentYear)
+                    ->count();
             $weekMemberCount[$week] = $count;
         }
         return $weekMemberCount;
@@ -147,11 +155,13 @@ class AdminController extends Controller
 
     private function getUserDataByYear()
     {
+        $currentYear = Carbon::now()->format('Y');
         $months = range(1,12);
         $yearUserCount = [];
         foreach($months as $month) {
             $count = User::whereMonth('created_at', '=', str_pad($month, 2, '0', STR_PAD_LEFT))
-            ->count();
+                     ->whereYear('created_at', '=', $currentYear)
+                     ->count();
             $yearUserCount[$month] = $count;
         }
         return $yearUserCount;
@@ -159,12 +169,14 @@ class AdminController extends Controller
 
     private function getMemberDataByYear()
     {
+        $currentYear = Carbon::now()->format('Y');
         $months = range(1,12);
         $yearMemberCount = [];
         foreach($months as $month)
         {
             $count = Member::whereMonth('created_at', '=', str_pad($month, 2, '0', STR_PAD_LEFT))
-            ->count();
+                    ->whereYear('created_at', '=', $currentYear)
+                    ->count();
             $yearMemberCount[$month] = $count;
         }
         return $yearMemberCount;

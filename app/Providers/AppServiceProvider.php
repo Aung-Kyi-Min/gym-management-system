@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Dao\Admin\InstructorDaoInterface', 'App\Dao\Admin\InstructorDao');
         $this->app->bind('App\Contracts\Dao\Admin\UserDaoInterface', 'App\Dao\Admin\UserDao');
         $this->app->bind('App\Contracts\Dao\Admin\MemberDaoInterface', 'App\Dao\Admin\MemberDao');
+        $this->app->bind('App\Contracts\Dao\Admin\DiscountDaoInterface', 'App\Dao\Admin\DiscountDao');
         $this->app->bind('App\Contracts\Dao\AuthDaoInterface', 'App\Dao\AuthDao');
         $this->app->bind('App\Contracts\Dao\PaymentDaoInterface', 'App\Dao\PaymentDao');
         $this->app->bind('App\Contracts\Dao\MemberDaoInterface', 'App\Dao\MemberDao');
@@ -36,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Services\Admin\InstructorServiceInterface', 'App\Services\Admin\InstructorService');
         $this->app->bind('App\Contracts\Services\Admin\UserServiceInterface', 'App\Services\Admin\UserService');
         $this->app->bind('App\Contracts\Services\Admin\MemberServiceInterface', 'App\Services\Admin\MemberService');
+        $this->app->bind('App\Contracts\Services\Admin\DiscountServiceInterface', 'App\Services\Admin\DiscountService');
         $this->app->bind('App\Contracts\Services\AuthServiceInterface', 'App\Services\AuthService');
         $this->app->bind('App\Contracts\Services\PaymentServiceInterface', 'App\Services\PaymentService');
         $this->app->bind('App\Contracts\Services\MemberServiceInterface', 'App\Services\MemberService');
