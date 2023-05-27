@@ -3,6 +3,7 @@
 namespace App\Dao\Admin;
 
 use App\Models\User;
+use App\Models\Feedback;
 use App\Contracts\Dao\Admin\AdminDaoInterface;
 
 class AdminDao implements AdminDaoInterface
@@ -15,6 +16,15 @@ class AdminDao implements AdminDaoInterface
     {
         $users = User::where('role', 1)->get();
         return $users;
+    }
+
+    /**
+     * Show Workout
+     * @return object
+    */
+    public function feedback(): object
+    {
+        return Feedback::paginate(5);
     }
 
 }

@@ -62,7 +62,7 @@
                             </a>
                         </li>
                         <li class="nav-item mt-2 ml-5 mr-5">
-                            <a class="nav-link " href="#">
+                            <a class="nav-link " href="tel:+95754323345">
                                 <img src="/images/call.png" alt="" />
                                 <span>+95754323345</span>
                             </a>
@@ -75,7 +75,11 @@
                         </li>
 
                         <li class="nav-item ml-5 mb-2">
-                            <div class="">
+                            
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
                                 @if (Auth::check())
                                     <div class=" ">
                                         <img src="{{auth()->user()->image ? asset('storage/images/admin/user/' .auth()->user()->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
@@ -88,18 +92,15 @@
                                         </div>
                                     @else
                                         <div class="mt-4 row">
-                                            <a href="{{ route('auth.login') }}" class="col-md-6 text-dark">
+                                            <a href="{{ route('auth.login') }}" class="col-md-6 text-dark auth-btn">
                                                 Login
                                             </a>
-                                            <a href="{{ route('auth.register') }}" class="col-md-6 text-dark">
+                                            <a href="{{ route('auth.register') }}" class="col-md-6 text-dark auth-btn">
                                                 Register
                                             </a>
                                         </div>
                                 @endif
                             </div>
-                        </li>
-                    </ul>
-                </div>
             </nav>
         </div>
         <div class="container-fluid purple-bg">

@@ -69,7 +69,7 @@ class UserController extends Controller
         $user = Auth::user();
         $instructors = $this->instructorService->userget();
         $instructorCounts = $instructors->count();
-        $feedbacks = Feedback::all();
+        $feedbacks =  Feedback::orderBy('created_at', 'desc')->take(5)->get();
 
         return view('user.index', [
             'instructors' => $instructors,
