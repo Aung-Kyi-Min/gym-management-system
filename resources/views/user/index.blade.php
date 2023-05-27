@@ -443,7 +443,7 @@
                     <img src="images/location-white.png" alt="">
                     <span> R6CP+MG Pyay</span>
                 </a>
-                <a class="d-none d-sm-inline-block" href="tel:+95754323345">
+                <a class="d-none d-sm-inline-block" href="#">
                     <img src="images/call-white.png" alt="">
                     <span>+95754323345</span>
                 </a>
