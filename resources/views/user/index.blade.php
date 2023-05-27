@@ -313,31 +313,31 @@
 
     <!-- result section -->
     <section class="result_section">
-    <div class="container-fluid">
-        <div class="row">
-        <div class="col-md-6 px-0">
-            <div class="img-box">
-            <img src="images/result-img.jpg" alt="">
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-6 px-0">
+                <div class="img-box">
+                <img src="images/result-img.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5">
+                <div class="detail-box">
+                <h2>
+                    BUILT TO BRING <br>
+                    BEST RESULTS
+                </h2>
+                <p>
+                Welcome to our state-of-the-art gym training center,
+                where we are built to bring you the best results.
+                Our expert instructors are dedicated to guiding you towards achieving your fitness goals,
+                    providing personalized workouts and nutritional guidance. With top-of-the-line equipment
+                    and a motivating atmosphere, we create the perfect environment for your transformation.
+                    Join us today and unlock your full potential, as we are committed to delivering unparalleled fitness success.
+                </p>
+                </div>
+            </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-5">
-            <div class="detail-box">
-            <h2>
-                BUILT TO BRING <br>
-                BEST RESULTS
-            </h2>
-            <p>
-            Welcome to our state-of-the-art gym training center,
-            where we are built to bring you the best results.
-            Our expert instructors are dedicated to guiding you towards achieving your fitness goals,
-                providing personalized workouts and nutritional guidance. With top-of-the-line equipment
-                and a motivating atmosphere, we create the perfect environment for your transformation.
-                Join us today and unlock your full potential, as we are committed to delivering unparalleled fitness success.
-            </p>
-            </div>
-        </div>
-        </div>
-    </div>
     </section>
     <!-- end result section -->
 
@@ -400,7 +400,7 @@
     <!-- end contact section -->
 
     <!-- info section -->
-     <section class="info_section layout_padding2-top">
+    <section class="info_section layout_padding2-top">
         <div class="container">
             <div class="row">
             <div class="col-md-4">
@@ -443,7 +443,7 @@
                     <img src="images/location-white.png" alt="">
                     <span> R6CP+MG Pyay</span>
                 </a>
-                <a class="d-none d-sm-inline-block" href="#">
+                <a class="d-none d-sm-inline-block" href="tel:+95754323345">
                     <img src="images/call-white.png" alt="">
                     <span>+95754323345</span>
                 </a>

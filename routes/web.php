@@ -163,6 +163,9 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');
     Route::delete('/admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.destroy_member');
 
+    //admin feedback
+    Route::get('admin/feedback' , [AdminController::class , 'feedback'])->name('admin.feedback');
+
 });
 
 

@@ -12,6 +12,12 @@ interface AdminDaoInterface
      */
     public function exportuser(): object;
 
+     /**
+     * Show Workout
+     * @return object
+    */
+    public function feedback(): object;
+
 }
 
 
