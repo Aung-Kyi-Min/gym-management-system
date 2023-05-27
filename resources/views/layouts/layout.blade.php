@@ -56,23 +56,24 @@
                 <div class="contact_nav " id="">
                     <ul class="navbar-nav ">
                         <li class="nav-item mt-2 ml-5 mr-5">
-                            <a class="nav-link" href="#">
-                                <img src="/images/location.png" alt="" />
+                            <a class="nav-link" href="#location">
+                                <img src="/images/location.png" alt="" /><br>
                                 <span>Location</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2 ml-5 mr-5">
                             <a class="nav-link " href="#">
                                 <img src="/images/call.png" alt="" />
-                                <span>+01234567890</span>
+                                <span>+95754323345</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2 ml-5 mr-5">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="mailto:GLP@gmail.com">
                                 <img src="/images/envelope.png" alt="" />
-                                <span>demo@gmail.com</span>
+                                <span>GLP@gmail.com</span>
                             </a>
                         </li>
+
                         <li class="nav-item ml-5 mb-2">
                             <div class="">
                                 @if (Auth::check())
