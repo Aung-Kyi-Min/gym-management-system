@@ -106,7 +106,7 @@
                     <!-- BAR CHART -->
                     <div id="datamethod1" class="card card-success none">
                         <div class="card-header">
-                            <h3 class="card-title">Data For 2023 in Week Form</h3>
+                            <h3 class="card-title">Data For {{$currentYear}} in Week Form</h3>
                         </div>
                         <div class="card-body">
                             <div class="chart">
@@ -128,7 +128,7 @@
                     </div>
                     <div id="datamethod3" class="card card-success none">
                         <div class="card-header">
-                            <h3 class="card-title">Data For 2023 in Yearly Form</h3>
+                            <h3 class="card-title">Data For {{$currentYear}} in Yearly Form</h3>
                         </div>
                         <div class="card-body">
                             <div class="chart">

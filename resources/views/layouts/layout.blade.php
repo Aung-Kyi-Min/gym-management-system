@@ -78,7 +78,7 @@
                                 @if (Auth::check())
                                     <div class=" ">
                                         <img src="{{auth()->user()->image ? asset('storage/images/admin/user/' .auth()->user()->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
-                                            class="w-50 rounded-circle mb-3" onclick="showProfile()" />
+                                            class="w-50 rounded-circle mb-3 user-profile" onclick="showProfile()" />
                                         <div id="profile-buttons" class="hidden mt-1">
                                             <a href="{{ route('user.profile') }}" class="btn btn-info btn-sm">
                                                 Profile

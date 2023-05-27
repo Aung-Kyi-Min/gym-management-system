@@ -113,3 +113,8 @@
  .auth-label{
     margin: 0;
 }
+
+.user-profile {
+    width: 70px;
+    height: 70px;
+}

@@ -13,15 +13,19 @@
                     <th>Discount Percentage</th>
                 </thead>
                 <tbody>
-
-                        @foreach ($discount as $d)
+                    @if ($discount->isEmpty())
                         <tr>
-                            <td>{{$d->min_months}} month</td>
-                            <td>{{$d->max_months}} months</td>
-                            <td>{{$d->dis_percent}} %</td>
+                            <td colspan="3">There is no discount for now</td>
                         </tr>
+                    @else
+                        @foreach ($discount as $d)
+                            <tr>
+                                <td>{{ $d->min_months }} month</td>
+                                <td>{{ $d->max_months }} months</td>
+                                <td>{{ $d->dis_percent }} %</td>
+                            </tr>
                         @endforeach
-
+                    @endif
                 </tbody>
             </table>
         </div>
@@ -75,7 +79,7 @@
                 <div class="mb-3">
                     <label for="joining_date">Joining Date</label>
                     <input type="date" id="joining_date" name="joining_date" class="form-control"
-                        value="{{ old('joining_date') }}">
+                        value="{{ old('joining_date') }}" min="{{ date('Y-m-d') }}">
                 </div>
 
                 <div class="mb-3">

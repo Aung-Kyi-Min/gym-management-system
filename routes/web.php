@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\WorkoutController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
@@ -149,7 +150,14 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
     Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
     Route::delete('/admin/instructor/destroy/{id}', [InstructorController::class, 'destroy'])->name('admin.destroy_instructor');
-   
+
+    //admin discount
+    Route::get('/admin/discount', [DiscountController::class, 'get'])->name('admin.discount');
+    Route::get('/admin/discount/create', [DiscountController::class, 'create'])->name('admin.create_discount');
+    Route::post('/admin/discount/store', [DiscountController::class, 'store'])->name('admin.store_discount');
+    Route::get('/admin/discount/edit/{id}', [DiscountController::class, 'edit'])->name('admin.edit_discount');
+    Route::post('/admin/discount/update/{id}', [DiscountController::class, 'update'])->name('admin.update_discount');
+    Route::delete('/admin/discount/destroy/{id}', [DiscountController::class, 'destroy'])->name('admin.destroy_discount');
 
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');
