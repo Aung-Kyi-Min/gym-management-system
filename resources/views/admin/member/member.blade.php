@@ -40,7 +40,6 @@
                                         <th>Instructor Name</th>
                                         <th>Workout Name</th>
                                         <th>Join Duration</th>
-                                        <th>Amount</th>
                                         <th>Join Date</th>
                                         <th>End Date</th>
                                         <th>Action</th>
@@ -48,15 +47,12 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($members as $index => $member)
-                                    <tr>                                       
+                                    <tr>
                                         <td>{{$member->id}}</td>
                                         <td>{{$member->user->name}}</td>
                                         <td>{{$member->instructor ? $member->instructor->name : '-'}}</td>
                                         <td>{{$member->workout->name}}</td>
                                         <td>{{$member->sub_month}}</td>
-                                        <td>
-                                            {{$payments[$index]->amount}}
-                                        </td>
                                         <td>{{$member->joining_date}}</td>
                                         <td>{{$member->end_date}}</td>
                                         <td>
@@ -66,10 +62,10 @@
                                                 <input type="hidden" name="email" value="{{ $member->user->email }}">
                                                 <button type="submit" name="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Member?')">Delete</button>
                                             </form>
-                                        </td>   
+                                        </td>
                                     </tr>
                                     @endforeach
-                                    
+
                                 </tbody>
                             </table>
                         </div>

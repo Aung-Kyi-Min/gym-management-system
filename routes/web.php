@@ -25,7 +25,6 @@ Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
 Route::post('/feedback/send', [UserController::class, 'sendFeedback'])->name('user.send_feedback');
-//Route::get('/purchased', [UserController::class, 'purchase'])->name('user.purchased');
 Route::get('/profiles', [UserController::class, 'userProfile'])->name('user.profile');
 Route::get('/successPurchase', )->name('user.successPurchase');
 Route::post('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
@@ -89,8 +88,6 @@ Route::middleware(['user'])->group(function () {
     Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
     Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
     Route::get('/purchasedHistory', [UserController::class, 'purchaseHistory'])->name('purchaseHistory');
-    Route::get('/purchasedHistory/search',[UserController::class,'historySearch'])->name('purchasedHistory.search');
-
 
 });
 
@@ -110,7 +107,7 @@ Route::group(['middleware' => ['admin']], function () {
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    
+
     //Excel export and import
     Route::get('/export-users', [UserController::class, 'exportUsers'])->name('export.users');
     Route::get('/export-instructors', [InstructorController::class, 'exportInstructors'])->name('export.instructors');
@@ -149,7 +146,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
     Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
     Route::delete('/admin/instructor/destroy/{id}', [InstructorController::class, 'destroy'])->name('admin.destroy_instructor');
-   
+
 
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');

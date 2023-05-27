@@ -53,7 +53,6 @@ class PurchaseController extends Controller
         $user = Auth::user();
 
         $discount = Discount::all();
-        //dd($discount);
 
         return view('user.purchase', ['workouts' => $workouts, 'member' => $member, 'instructors' => $instructors,
             'user' => $user , 'discount'=> $discount]);
@@ -66,7 +65,6 @@ class PurchaseController extends Controller
 
     public function getPrice(MemberCreateRequest $request)
     {
-
         $workout = Workout::find($request->workout);
         $instructor = Instructor::find($request->instructor);
         $join_duration = $request->join_duration;
@@ -99,10 +97,10 @@ class PurchaseController extends Controller
         $basePrice = $price;
         $finalPrice = $basePrice - ($basePrice * $discount / 100);
 
+
         return view('user.subscription', ['price' => $finalPrice, 'workout' => $workout,
             'instructor' => $instructor, 'user' => $user, 'joining_date' => $joining_date,
             'end_date' => $end_date, 'payment' => $payment, 'join_duration' => $join_duration]);
-
     }
 
     /**

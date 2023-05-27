@@ -24,7 +24,7 @@ class MemberCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'workout_id' => 'required',
+            'workout' => 'required',
             'instructor_id'=>'nullable',
             'join_duration'=>'',
             'joining_date'=>'required',

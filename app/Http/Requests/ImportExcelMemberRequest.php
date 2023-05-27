@@ -25,12 +25,6 @@ class ImportExcelMemberRequest extends FormRequest
     {
         return [
             'file' => 'required|file|mimes:xlsx,xls',
-            'user_id' => 'required',
-            'workout_id' => 'required',
-            'instructor_id' => 'required',
-            'sub_month' => 'required',
-            'joining_date' => 'required',
-            'end_date' => 'required',
         ];
     }
 }

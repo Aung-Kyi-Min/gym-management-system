@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <section class="contact_section layout_padding">
+    <section class="contact_section layout_padding gradient-background">
         <div class="container w-50">
             <div class="heading_container">
                 <h2>Login</h2>
@@ -29,7 +29,7 @@
                         <div class="mb-3">
                             <a href="{{ route('auth.forgetpassword') }}" class="small ">Forget Password</a>
                         </div>
-                        
+
                         <div class="mt-5">
                             <button type="submit" class=" btn btn-primary">
                                 Login

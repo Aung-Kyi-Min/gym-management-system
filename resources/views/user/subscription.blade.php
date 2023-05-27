@@ -1,9 +1,10 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="container mt-5">
+<div class="gradient-background">
+    <div class="container">
         <div class="card w-75 mx-auto">
-            <div class="card-header text-light bg-success">
+            <div class="card-header text-light bg-info">
                 <h3 class="">Dear {{ $user->name }} ,</h3>
                 <h4> Here is your purchase detail...</h4>
             </div>
@@ -48,10 +49,11 @@
                         <p class="form-control" name="" value="{{ $end_date }}">{{ $end_date }}</p>
                         <input type="hidden" name="end_date" value="{{ $end_date }}">
                     </div>
-                    <button type="submit" class="btn btn-info">Purchase</button>
+                    <button type="submit" class="btn btn-success">Purchase</button>
                     <a href="{{ route('member.purchase') }}" class="btn btn-secondary float-end">Reset</a>
                 </form>
             </div>
         </div>
     </div>
+</div>
 @endsection

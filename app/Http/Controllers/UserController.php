@@ -188,7 +188,7 @@ class UserController extends Controller
         if ($request->file('file')) {
             try {
                 $import = new MembersImport();
-                Excel::import($import, request()->file('file'));
+                Excel::import($import, $request->file('file'));
                 return redirect()->back()->with('message', 'File Imported Successfully...');
             } catch (\Exception $e) {
                 if ($e->getCode() == 23000) {
@@ -292,23 +292,25 @@ class UserController extends Controller
         $a = 1;
         $i = 0;
         $b = 0;
-
-        foreach ($members as $d) {
-            if ($user_id == $d['user_id']) {
-                $id[$i] = $d['id'];
-                $i++;
+        $m = count($members);
+        if ($m <= 0) {
+            return view('user.purchaseHistory', compact('m'));
+        } else {
+            foreach ($members as $d) {
+                if ($user_id == $d['user_id']) {
+                    $id[$i] = $d['id'];
+                    $i++;
+                }
             }
+            $pur_count = count($id);
+            for ($s = 0; $s < $pur_count; $s++) {
+                $purchases[] = Payment::where('member_id', $id[$s])->get();
+                if ($members[$s]['instructor_id'] == null) {
+                    $members[$s]['instructor_id'] == '';
+                }
+            }
+            return view('user.purchaseHistory', compact('user', 'members', 'a', 'purchases', 'b', 'm'));
         }
 
-        $pur_count = count($id);
-        for ($s = 0; $s < $pur_count; $s++) {
-            $purchases[] = Payment::where('member_id', $id[$s])->get();
-            if ($members[$s]['instructor_id'] == null) {
-                $members[$s]['instructor_id'] == '';
-            }
-
-        }
-
-        return view('user.purchaseHistory', compact('user', 'members', 'a', 'purchases', 'b'));
     }
 }

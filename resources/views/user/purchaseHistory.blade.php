@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 @section('content')
-    <div class="container mt-4 ">
-        <div class="card">
-            <div class="card-header d-flex bg-dark ">
+<div class="">
+    <div class="gradient-background ">
+    <div class="container gradient-background ">
+        <div class="card mb-5">
+            <div class="card-header d-flex bg-dark mb-3">
                 <div class="">
                     <h2 class="text-light ">Purchase History
                     </h2>
@@ -10,7 +12,7 @@
             </div>
             <div class="card-body">
                 <table class="table table-striped ">
-                    <thead class=" bg-info text-center text-light">
+                    <thead class=" bg-info text-center text-dark">
                         <tr>
                             <th>Id</th>
                             <th>Workout</th>
@@ -23,6 +25,9 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
+                        @if ($m > 0)
+
+                        {{--@endif--}}
                         @foreach ($members as $m)
                             <tr>
                                 <td>{{ $a++ }}</td>
@@ -37,8 +42,14 @@
                             </tr>
                         @endforeach
                     </tbody>
+                @else
+                    <p>No History Here...</p>
+
+                @endif
                 </table>
             </div>
         </div>
     </div>
+</div>
+</div>
 @endsection

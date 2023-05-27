@@ -2,7 +2,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <section class="contact_section layout_padding">
+    <section class="contact_section layout_padding gradient-background">
         <div class="container w-50">
             <div class="heading_container">
                 <h2>Send Feedback Page</h2>

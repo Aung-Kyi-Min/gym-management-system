@@ -31,7 +31,7 @@
 @endif
 @if (Session::has('errors'))
     <script>
-        swal("Message", "Your Import Data is not defined...", 'success', {
+        swal("Message",  "File is not defined...", 'success', {
             button: true,
             button: "Ok",
         });
