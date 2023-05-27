@@ -205,66 +205,75 @@
     </section>
     <!-- end instrtuctor section -->
 
-    <!-- Us section -->
+    <!-- Us Example section -->
     <section class="us_section layout_padding">
         <div class="container">
             <div class="heading_container">
-                <h2>
-                    Why Choose Us
-                </h2>
+                <h2>Why Choose Us</h2>
             </div>
-            <div class="us_container">
-                <div class="box index-us">
-                    <div class="img-box">
-                        <img src="images/u-1.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <h5> UALITY EQUIPMENT </h5>
-                        <p>
-                            Welcome to our premier gym training center,
-                            where we prioritize quality equipment to enhance your workout experience.
-                            Our state-of-the-art facilities provide you with top-notch gear to optimize your fitness journey
-                        </p>
-                    </div>
-                </div>
-                <div class="box index-us">
-                    <div class="img-box">
-                        <img src="images/u-2.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <h5>HEALTHY NUTRITION PLAN</h5>
-                        <p>
-                            Fuel your progress with a healthy nutrition plan tailored to your goals,
-                            ensuring your body gets the nourishment it needs.
-                        </p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="text-center index-us">
+                            <img src="images/u-1.png" alt="">
+                        </div>
+                        <div>
+                            <h5 class="text-center py-2">QUALITY EQUIPMENT</h5>
+                            <p>
+                                Welcome to our state-of-the-art gym training center where we prioritize quality equipment
+                                to enhance your workout experience. Our top-notch gear is designed to optimize your fitness journey.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="box index-us">
-                    <div class="img-box">
-                        <img src="images/u-3.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <h5> SHOWER SERVICE </h5>
-                        <p>
-                            Relax and rejuvenate with our invigorating shower service after an intense session.
-                        </p>
+                <div class="col-md-3">
+                    <div class="box ">
+                        <div class="text-center index-us">
+                            <img src="images/u-2.png" alt="">
+                        </div>
+
+                        <div>
+                            <h5 class="text-center py-2">HEALTHY NUTRITION PLAN</h5>
+                            <p>
+                                Fuel your progress with a personalized healthy nutrition plan tailored to your goals.
+                                We ensure that your body gets the nourishment it needs for optimal results.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="box index-us">
-                    <div class="img-box">
-                        <img src="images/u-4.png" alt="">
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="text-center index-us">
+                            <img src="images/u-3.png" alt="">
+                        </div>
+                        <div>
+                            <h5 class="text-center py-2">SHOWER SERVICE</h5>
+                            <p>
+                                Relax and rejuvenate with our invigorating shower service after an intense workout session.
+                            </p>
+                        </div>
                     </div>
-                    <div class="detail-box">
-                        <h5>  UNIQUE TO YOUR NEEDS  </h5>
-                        <p>
-                            Embrace a fitness routine unique to your needs, tailored by our expert trainers who are dedicated to your success.
-                            Join us and embark on a transformative fitness journey today!
-                        </p>
+                </div>
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="text-center index-us">
+                            <img src="images/u-4.png" alt="">
+                        </div>
+                        <div>
+                            <h5 class="text-center py-2">UNIQUE TO YOUR NEEDS</h5>
+                            <p>
+                                Embrace a fitness routine that is tailored to your specific needs, designed by our expert trainers
+                                who are dedicated to your success. Join us and embark on a transformative fitness journey today!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+>
     <!-- end us section -->
 
     <!-- client section -->
@@ -362,23 +371,23 @@
     <!-- end about section -->
 
     <!-- contact section -->
-    <section class="contact_section layout_padding">
+    <section class="contact_section layout_padding" id="location">
         <div class="container">
             <div class="heading_container">
-            <h2>
-                <span> Get In Touch </span>
-            </h2>
+                <h2>
+                    <span>Get In Touch</span>
+                </h2>
             </div>
             <div class="layout_padding2-top">
                 <div class="row">
-                    <div class="col-md-6 ">
-                    <img src="/images/glplogo.jpg" class="test" alt="">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <img src="/images/glplogo.jpg" class="test img-fluid" alt="">
                     </div>
 
                     <div class="col-md-6">
                         <div class="map_container">
                             <div class="map-responsive">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7552.950586694637!2d95.23579144285277!3d18.821523038301947!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c79db8d6df77ab%3A0x2f35063c943369e5!2z4YCQ4YCx4YCs4YC64YGA4YCE4YC64YCA4YC84YCs4YCW4YC84YCwIEd5bQ!5e0!3m2!1sen!2smm!4v1684845068908!5m2!1sen!2smm" width="580" height="390" style="border-0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7552.950586694637!2d95.23579144285277!3d18.821523038301947!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c79db8d6df77ab%3A0x2f35063c943369e5!2z4YCQ4YCx4YCs4YC64YGA4YCE4YC64YCA4YC84YCs4YCW4YC84YCwIEd5bQ!5e0!3m2!1sen!2smm!4v1684845068908!5m2!1sen!2smm" width="100%" height="390" style="border-0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
@@ -386,86 +395,95 @@
             </div>
         </div>
     </section>
+
+
     <!-- end contact section -->
 
     <!-- info section -->
-    <section class="info_section layout_padding2-top">
-    <div class="container">
-        <div class="row">
-        <div class="col-md-4">
-            <h6>
-            About GLP
-            </h6>
-            <p>
-                GLP is equipped with a range of fitness facilities to cater to various workout preferences.
-                This may include a well-equipped gym area with cardiovascular machines, strength training equipment,
-                free weights, and functional training areas.
-            </p>
-        </div>
-        <div class="col-md-3 offset-md-1">
-            <h6>
-            Menus
-            </h6>
-            <ul>
-            <li class=" active">
-                <a class="" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="">
-                <a class="" href="{{route('user.workout')}}">Workout List </a>
-            </li>
+     <section class="info_section layout_padding2-top">
+        <div class="container">
+            <div class="row">
+            <div class="col-md-4">
+                <h6>
+                About GLP
+                </h6>
+                <p>
+                    GLP is equipped with a range of fitness facilities to cater to various workout preferences.
+                    This may include a well-equipped gym area with cardiovascular machines, strength training equipment,
+                    free weights, and functional training areas.
+                </p>
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <h6>
+                Menus
+                </h6>
+                <ul>
+                <li class=" active">
+                    <a class="" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="">
+                    <a class="" href="{{route('user.workout')}}">Workout List </a>
+                </li>
 
-            <li class="">
-                <a class="" href="{{route('user.successPurchase')}}">Purchase</a>
-            </li>
-            <li class="">
-                <a class="" href="{{route('user.feedback')}}">Feedback</a>
-            </li>
-            </ul>
-        </div>
+                <li class="">
+                    <a class="" href="{{route('user.successPurchase')}}">Purchase</a>
+                </li>
+                <li class="">
+                    <a class="" href="{{route('user.feedback')}}">Feedback</a>
+                </li>
+                </ul>
+            </div>
 
-        <div class="col-md-3">
-            <h6>
-            Contact Us
-            </h6>
-            <div class="info_link-box">
-            <a href="">
-                <img src="images/location-white.png" alt="">
-                <span> R6CP+MG Pyay</span>
-            </a>
-            <a href="">
-                <img src="images/call-white.png" alt="">
-                <span>+95754323345</span>
-            </a>
-            <a href="">
-                <img src="images/mail-white.png" alt="">
-                <span> GLP@gmail.com</span>
-            </a>
-            </div>
-            <div class="info_social">
-            <div>
-                <a href="">
-                <img src="images/facebook-logo-button.png" alt="">
+            <div class="col-md-3">
+                <h6>
+                Contact Us
+                </h6>
+                <div class="info_link-box">
+                <a href="#location">
+                    <img src="images/location-white.png" alt="">
+                    <span> R6CP+MG Pyay</span>
                 </a>
-            </div>
-            <div>
-                <a href="">
-                <img src="images/twitter-logo-button.png" alt="">
+                <a class="d-none d-sm-inline-block" href="#">
+                    <img src="images/call-white.png" alt="">
+                    <span>+95754323345</span>
                 </a>
-            </div>
-            <div>
-                <a href="">
-                <img src="images/linkedin.png" alt="">
+
+                <a class="d-inline-block d-sm-none"  href="tel:+95754323345">
+                    <img src="images/call-white.png" alt="">
+                    <span>+95754323345</span>
                 </a>
-            </div>
-            <div>
-                <a href="">
-                <img src="images/instagram.png" alt="">
+
+                <a href="mailto:GLP@gmail.com">
+                    <img src="images/mail-white.png" alt="">
+                    <span>GLP@gmail.com</span>
                 </a>
+
+                </div>
+                <div class="info_social">
+                <div>
+                    <a href="">
+                    <img src="images/facebook-logo-button.png" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a href="">
+                    <img src="images/twitter-logo-button.png" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a href="">
+                    <img src="images/linkedin.png" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a href="">
+                    <img src="images/instagram.png" alt="">
+                    </a>
+                </div>
+                </div>
             </div>
             </div>
         </div>
-        </div>
-    </div>
     </section>
     <!-- end info section -->
     <script src="../js/sweetalert.min.js"></script>
