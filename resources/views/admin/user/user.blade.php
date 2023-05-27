@@ -41,7 +41,7 @@
                                         <th>Phone</th>
                                         <th>Address</th>
                                         <th>Gender</th>
-                                        <th>Role</th>
+                                        <th>Age</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
