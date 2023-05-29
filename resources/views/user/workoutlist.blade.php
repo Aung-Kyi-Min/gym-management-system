@@ -12,6 +12,7 @@
           <div class="middle">
           <div class="text"><a href="">Service {{$i+1}}</a></div>
           </div>
+          <h3>{{$workout->name}}</h3>
           <div class="card-body">
               <p class="card-text">{{$workout->description}}</p>
               <h4>{{$workout->price}}</h4>
