@@ -111,7 +111,7 @@ body {
 
   @keyframes slide-in {
     from { transform: translateX(100%); }
-    to { transform: translateX(-40%); }
+    to { transform: translateX(0%); }
   }
 
   /* Add corresponding slide-out animation for hiding the div */

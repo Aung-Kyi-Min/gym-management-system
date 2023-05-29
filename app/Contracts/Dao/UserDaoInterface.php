@@ -8,7 +8,7 @@ namespace App\Contracts\Dao;
 interface UserDaoInterface
 {
     /**
-     * send
+     * send user feedback
      * @return void
      */
     public function send():void;

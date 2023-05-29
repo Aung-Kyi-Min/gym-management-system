@@ -31,8 +31,13 @@
                     </div>
                     <div class="mb-1">
                         <label for="">Total Price</label>
-                        <p class="form-control" name="" value="{{ $price }}">{{ $price }} kyts</p>
-                        <input type="hidden" name="price" value="{{ $price }}">
+                        <p class="form-control" name="" value="{{ $finalprice }}">
+                            @if ($discount > 0)
+                                <span style="text-decoration: line-through;">{{ $basePrice }}</span>
+                            @endif
+                            <span>{{ $finalprice }} kyats</span>
+                        </p>
+                        <input type="hidden" name="price" value="{{ $finalprice }}">
                     </div>
                     <div class="mb-1">
                         <label for="">Payment</label>

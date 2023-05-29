@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 
 class User extends Authenticatable
@@ -51,17 +51,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function feedbacks(): HasMany
+    public function feedbacks(): HasOne
     {
-        return $this->hasMany(Feedback::class);
+        return $this->hasOne(Feedback::class);
     }
 
     public function member() {
         return $this->hasOne(Member::class);
     }
-
-    //public function payments()
-    //{
-    //    return $this->hasMany(Payment::class, 'member_id');
-    //}
 }

@@ -91,7 +91,6 @@ class UserController extends Controller
                 ('auth.login');
         }
         $user = Auth::user(); // Retrieve the currently logged-in user
-
         return view('user.feedback')->with('user', $user);
     }
 
@@ -276,10 +275,8 @@ class UserController extends Controller
     {
         $this->userService->send($request->only([
             'message',
-            'user_id',
         ]));
-
-        return redirect()->back()->with('success', 'Thank you for your feedback!');
+        return redirect('/')->with('success', 'Thank you for your feedback!');
     }
 
     public function purchaseHistory()

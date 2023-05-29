@@ -14,6 +14,7 @@
                         <div class="mt-2">
                             <label for="" class="auth-label">Name</label>
                             <input type="text" placeholder="Name" name="name" value="{{$user->name}}" readonly class='form-control w-100'/>
+                            <input type="hidden" placeholder="Name" name="id" value="{{$user->id}}" readonly class='form-control w-100'/>
                             @error('name')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
