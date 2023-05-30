@@ -39,7 +39,7 @@
                             <input type="password" class='w-100 form-control' placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" />
                         </div>
 
-                        <div >
+                        <div>
                         <label for="phone" class="auth-label">Phone Number</label>
                             <input type="number" placeholder="Phone Number" value="{{ old('phone') }}" name="phone" class="w-100 form-control @error('phone') is-invalid @enderror" />
                             @if ($errors->has('phone'))

@@ -24,13 +24,13 @@ class UserEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:255'],
+            'name' => ['required', 'max:255' , 'min:4'],
             'role' => ['required'],
             'image' => 'image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
             'address' => ['required','max:225'],
             'gender' => ['required','max:225'],
-            'age' => ['required','max:225'],
-            'phone' => ['required','max:225'],
+            'age' => ['required','max:225' , 'integer'],
+            'phone' => ['required','max:225' , 'integer'],
         ];
     }
 }

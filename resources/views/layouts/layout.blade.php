@@ -62,7 +62,7 @@
                             </a>
                         </li>
                         <li class="nav-item mt-2 ml-5 mr-5">
-                            <a class="nav-link " href="#">
+                            <a class="nav-link " href="tel:+95754323345">
                                 <img src="/images/call.png" alt="" />
                                 <span>+95754323345</span>
                             </a>

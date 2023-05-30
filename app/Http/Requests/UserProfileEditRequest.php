@@ -25,13 +25,13 @@ class UserProfileEditRequest extends FormRequest
     {
         return [
             
-            'name' => ['required', 'string', 'max:255'],
-            'password' => ['nullable', 'string', 'max:20'],
+            'name' => ['required', 'string', 'min:4' , 'max:255'],
+            'password' => ['nullable', 'string', 'min:8' , 'max:20'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'address' => ['required', 'max:225'],
             'gender' => ['required', 'in:male,female'],
-            'age' => ['required', 'string', 'max:11'],
-            'phone' => ['required', 'max:225'],
+            'age' => ['required', 'string', 'max:11' , 'integer'],
+            'phone' => ['required', 'max:225' , 'integer'],
         ];
     }
 
