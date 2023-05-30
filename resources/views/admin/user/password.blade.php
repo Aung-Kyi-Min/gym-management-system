@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('admin/user/password/' . $user->id . '/change') }}">
                                 @csrf
-                                
+
                                 <div class="mt-2">
                                     <label for="current_password">Current Password</label>
                                     <input type="password" placeholder="*******" id="old_password" name="current_password" class="form-control  @error('current_password') is-invalid @enderror'"/>
@@ -33,9 +33,9 @@
                                 </div>
 
                                 <div class="mt-2">
-                                    <label for="password_confirmation">Confirm Password</label>
-                                    <input type="password" placeholder="********" id="password_confirmation" name="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror'" value="{{ old('new_password') }}"  value="{{ old('password_confirmation') }}"/>
-                                    @error('password_confirmation')
+                                    <label for="password">Confirm Password</label>
+                                    <input type="password" placeholder="********" id="password" name="password" class="form-control  @error('password') is-invalid @enderror'" value="{{ old('new_password') }}"  value="{{ old('password') }}"/>
+                                    @error('password')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -45,15 +45,15 @@
                                     <button type="button" class="btn btn-dark pr-4">
                                         <a href="{{ route('admin.edit_user', $user->id) }}" class="text-decoration-none text-white text-center">Back</a>
                                     </button>
-                                </div> 
+                                </div>
                             </form>
                         </div>
                         <!-- /.card-body -->
-                        
+
                         @if (session('message'))
                     <h5 class="alert alert-danger mb-2">{{ session('message') }}</h5>
-                        @endif 
-                          
+                        @endif
+
                     </div>
                     <!-- /.card -->
                 </div>

@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @section('content')
 <div class="">
-    <div class="gradient-background ">
-    <div class="container gradient-background ">
+    <div class="mt-5 ">
+    <div class="container mt-5 ">
         <div class="card mb-5">
             <div class="card-header d-flex bg-dark mb-3">
                 <div class="">
@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <table class="table table-striped ">
-                    <thead class=" bg-info text-center text-dark">
+                    <thead class=" bg-info text-center text-dark mt-2">
                         <tr>
                             <th>Id</th>
                             <th>Workout</th>
@@ -26,8 +26,6 @@
                     </thead>
                     <tbody class="text-center">
                         @if ($m > 0)
-
-                        {{--@endif--}}
                         @foreach ($members as $m)
                             <tr>
                                 <td>{{ $a++ }}</td>
@@ -43,8 +41,9 @@
                         @endforeach
                     </tbody>
                 @else
-                    <p>No History Here...</p>
-
+                <p class="mx-auto text-center text-light p-2 bg-danger w-25 mb-3">
+                    No History Here...
+                </p>
                 @endif
                 </table>
             </div>

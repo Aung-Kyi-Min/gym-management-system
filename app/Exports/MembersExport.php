@@ -26,7 +26,6 @@ class MembersExport implements FromCollection
             'workout_id',
             'instructor_id',
             'sub_month',
-            //'amount',
             'joining_Date',
             'end_Date',
         ];
@@ -40,7 +39,6 @@ class MembersExport implements FromCollection
             $member->workout->name,
             $member->instructor->name ?? null,
             $member->sub_month,
-            //$member->payment->amount,  vcf
             $member->joining_date,
             $member->end_date,
         ];

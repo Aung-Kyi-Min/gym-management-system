@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ResetPswRequest extends FormRequest
+class BmiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class ResetPswRequest extends FormRequest
     public function rules()
     {
         return [
-
-            'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
-            //'password_confirmation' => 'required',
-
+            'height' => 'required|numeric|min:1',
+            'weight' => 'required|numeric|min:1',
         ];
     }
 }
