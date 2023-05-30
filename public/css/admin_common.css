@@ -43,11 +43,13 @@
 }
 
 .margin-reset {
-   margin: 0 !important;
+   margin: 3px 0 0 0 !important;
 }
 
 .list-header {
     padding: 10px;
+    color: aliceblue;
+    font-size: 20px;
 }
 
 .search-header {
@@ -121,13 +123,13 @@
 .active {
     background-color: whitesmoke;
     color: #454d55;
-    border: 1px solid #454d55;
+    border: 1px solid whitesmoke;
 }
 
 .button:hover {
     background-color: whitesmoke;
     color: #454d55;
-    border: 1px solid #454d55;
+    border: 1px solid whitesmoke;
 }
 
 .dark-mode input:-webkit-autofill,
