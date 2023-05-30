@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Dao\PaymentDaoInterface', 'App\Dao\PaymentDao');
         $this->app->bind('App\Contracts\Dao\MemberDaoInterface', 'App\Dao\MemberDao');
         $this->app->bind('App\Contracts\Dao\WorkoutDaoInterface', 'App\Dao\WorkoutDao');
+        $this->app->bind('App\Contracts\Dao\BmiDaoInterface', 'App\Dao\BmiDao');
 
 
 
@@ -42,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Services\PaymentServiceInterface', 'App\Services\PaymentService');
         $this->app->bind('App\Contracts\Services\MemberServiceInterface', 'App\Services\MemberService');
         $this->app->bind('App\Contracts\Services\WorkoutServiceInterface', 'App\Services\WorkoutService');
+        $this->app->bind('App\Contracts\Services\BmiServiceInterface', 'App\Services\BmiService');
 
     }
 

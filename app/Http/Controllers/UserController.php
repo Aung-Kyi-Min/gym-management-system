@@ -90,13 +90,13 @@ class UserController extends Controller
 
                 ('auth.login');
         }
-        $user = Auth::user(); // Retrieve the currently logged-in user
+        $user = Auth::user();
+
         return view('user.feedback')->with('user', $user);
     }
 
     public function workout()
     {
-
         if (Auth::guest()) {
             return redirect()->route('auth.login');
         }
@@ -281,14 +281,14 @@ class UserController extends Controller
 
     public function purchaseHistory()
     {
+        $a = 1;
+        $i = 0;
+        $b = 0;
         $user = Auth::user();
         $user_id = $user->id;
         $members = Member::where('user_id', $user_id)->get();
         $members = Member::where('user_id', $user_id)->with('workout')->get();
         $members = Member::where('user_id', $user_id)->get();
-        $a = 1;
-        $i = 0;
-        $b = 0;
         $m = count($members);
         if ($m <= 0) {
             return view('user.purchaseHistory', compact('m'));
@@ -308,6 +308,5 @@ class UserController extends Controller
             }
             return view('user.purchaseHistory', compact('user', 'members', 'a', 'purchases', 'b', 'm'));
         }
-
     }
 }

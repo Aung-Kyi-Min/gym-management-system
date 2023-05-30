@@ -24,10 +24,10 @@
                             @endif
                         </div>
                         <div>
-                            <input type="password" placeholder="Comfirm Password" name="password_confirmation"
+                            <input type="password" placeholder="Comfirm Password" name="password"
                                 class='form-control' />
-                            @if ($errors->has('password_confirmation'))
-                                <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                            @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
                         <div class="mt-5">

@@ -29,6 +29,30 @@
                             @endif
                         </tbody>
                     </table>
+                    <div class="card">
+                        <div class="card-header bg-info">
+                            <h3 class="text-center ">Check Bmi Here</h3>
+                        </div>
+                        <div class="card-body gradient-background">
+                            <form action="{{ route('purchase.bmicalculate') }}" method="POST" >
+                                @csrf
+                                <label for="height">Height (meters):</label>
+                                <input type="number" step="0.01" name="height" id="height" value="{{ old('height') }}" class="form-control w-50">
+                                @error('height')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+
+                                <label for="weight">Weight (kilograms):</label>
+                                <input type="number" step="0.01" name="weight" id="weight" value="{{ old('weight') }}" class="form-control w-50">
+                                @error('weight')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+
+                                <button type="submit" class="btn btn-dark mt-3">Calculate</button>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-md-8">
                     <form action="{{ route('get.price') }}" id="price-form" method="POST">
@@ -105,6 +129,14 @@
                 button: "Ok",
             });
         </script>
+    @endif
+    @if (Session::has('bmi_calculate'))
+    <script>
+        swal("Message", "{{ Session::get('bmi_calculate') }} kg/m2" , 'success', {
+            button: true,
+            button: "Ok",
+        });
+    </script>
     @endif
 
     <script>

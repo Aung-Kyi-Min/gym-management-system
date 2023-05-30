@@ -62,12 +62,12 @@ class AdminController extends Controller
    {
       $loginuser = auth()->user();
       $workout = $this->workoutService->get();
-      $workoutCount = $workout->total();
       $instructor = $this->instructorService->get();
-      $instructorCount = $instructor->total();
       $user = $this->userService->get();
-      $userCount = $user->total();
       $member = $this->memberService->get();
+      $workoutCount = $workout->total();
+      $instructorCount = $instructor->total();
+      $userCount = $user->total();
       $memberCount = $member->total();
       $currentMonth = Carbon::now()->format('Y-m');
       $currentYear = Carbon::now()->format('Y');

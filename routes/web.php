@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\WorkoutController;
-use App\Http\Controllers\Admin\MemberController;
-use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UserController;
@@ -33,9 +33,6 @@ Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.
 Route::get('/user/password/{id}/edit', [UserController::class, 'editpassword'])->name('user.edit_password');
 Route::post('/user/password/{id}/', [UserController::class, 'passwordUpdate'])->name('user.change_password');
 
-
-
-
 // auth
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['guest']], function () {
@@ -56,11 +53,12 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
 
-        //purchase
-        Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
-        Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
-        Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
-        Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
+    //purchase
+    Route::get('/purchased', [PurchaseController::class, 'index'])->name('member.purchase');
+    Route::get('/purchased/recheck', [PurchaseController::class, 'recheck'])->name('purchase.recheck');
+    Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
+    Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
+    Route::post('/Bmicalculate',[PurchaseController::class, 'calculateBMI'])->name('purchase.bmicalculate');
 
 });
 
@@ -75,7 +73,7 @@ Route::middleware(['user'])->group(function () {
     Route::post('/forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('auth.forget');
     Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('auth.resetpsw');
 
-    
+
     Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
     Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
     Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
@@ -88,9 +86,9 @@ Route::middleware(['user'])->group(function () {
     Route::post('/purchasedMember', [PurchaseController::class, 'store'])->name('user.purchaseMember');
     Route::post('/get-price', [PurchaseController::class, 'getPrice'])->name('get.price');
     Route::get('/purchasedHistory', [UserController::class, 'purchaseHistory'])->name('purchaseHistory');
+    Route::post('/Bmicalculate',[PurchaseController::class, 'calculateBMI'])->name('purchase.bmicalculate');
 
 });
-
 
 // admin
 Route::group(['middleware' => ['admin']], function () {
@@ -132,7 +130,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     //admin instructor
 
     Route::get('/admin/instructor', [InstructorController::class, 'instructor'])->name('admin.instructor');
-    Route::get('/admin/instructor/create',[InstructorController::class, 'create'])->name('admin.create_instructor');
+    Route::get('/admin/instructor/create', [InstructorController::class, 'create'])->name('admin.create_instructor');
     Route::post('/admin/instructor/store', [InstructorController::class, 'store'])->name('admin.store_instructor');
     Route::get('/admin/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('admin.edit_instructor');
     Route::put('/admin/instructor/{id}', [InstructorController::class, 'update'])->name('admin.update_instructor');
