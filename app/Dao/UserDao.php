@@ -15,13 +15,23 @@ class UserDao implements UserDaoInterface
      * send userfeedback
      * @return object
      */
-    public function send( ):void
+    public function send():void
     {
         $user = Auth::user();
-        $feedback = new Feedback();
-        $feedback->message=request('message');
-        $feedback->user_id = $user->id;
-        $feedback->save();
+        $filter = Feedback::where('user_id', request('id'))->first();
+        
+        if(!$filter) {
+            $feedback = new Feedback();
+            $feedback->message=request('message');
+            $feedback->user_id = request('id');
+            $feedback->save();
+        }else {
+            $feedback = Feedback::where('user_id', request('id'))->first();
+            $feedback->message=request('message');
+            $feedback->user_id = request('id');
+            $feedback->save();
+        }
+        
     }
     /**
     * Return Users//user profile

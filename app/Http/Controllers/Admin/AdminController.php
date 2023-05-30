@@ -199,4 +199,10 @@ class AdminController extends Controller
         $loginuser = auth()->user();
         return view('email.expire' , ['loginuser' => $loginuser]);
     }
+
+    public function feedback()
+    {
+        $feedbacks = $this->adminService->feedback();
+        return view('admin.feedback.feedback' , ['feedbacks' => $feedbacks]);
+    }
 }

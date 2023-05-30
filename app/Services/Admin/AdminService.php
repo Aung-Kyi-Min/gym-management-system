@@ -27,4 +27,13 @@ class AdminService implements AdminServiceInterface
         return $users;
     }
 
+     /**
+     * Show Workout
+     * @return object
+    */
+    public function feedback(): object
+    {
+        return $this->adminDao->feedback();
+    }
+
 }

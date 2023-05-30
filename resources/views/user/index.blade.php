@@ -313,31 +313,31 @@
 
     <!-- result section -->
     <section class="result_section">
-    <div class="container-fluid">
-        <div class="row">
-        <div class="col-md-6 px-0">
-            <div class="img-box">
-            <img src="images/result-img.jpg" alt="">
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-6 px-0">
+                <div class="img-box">
+                <img src="images/result-img.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5">
+                <div class="detail-box">
+                <h2>
+                    BUILT TO BRING <br>
+                    BEST RESULTS
+                </h2>
+                <p>
+                Welcome to our state-of-the-art gym training center,
+                where we are built to bring you the best results.
+                Our expert instructors are dedicated to guiding you towards achieving your fitness goals,
+                    providing personalized workouts and nutritional guidance. With top-of-the-line equipment
+                    and a motivating atmosphere, we create the perfect environment for your transformation.
+                    Join us today and unlock your full potential, as we are committed to delivering unparalleled fitness success.
+                </p>
+                </div>
+            </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-5">
-            <div class="detail-box">
-            <h2>
-                BUILT TO BRING <br>
-                BEST RESULTS
-            </h2>
-            <p>
-            Welcome to our state-of-the-art gym training center,
-            where we are built to bring you the best results.
-            Our expert instructors are dedicated to guiding you towards achieving your fitness goals,
-                providing personalized workouts and nutritional guidance. With top-of-the-line equipment
-                and a motivating atmosphere, we create the perfect environment for your transformation.
-                Join us today and unlock your full potential, as we are committed to delivering unparalleled fitness success.
-            </p>
-            </div>
-        </div>
-        </div>
-    </div>
     </section>
     <!-- end result section -->
 
@@ -387,7 +387,7 @@
                     <div class="col-md-6">
                         <div class="map_container">
                             <div class="map-responsive">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7552.950586694637!2d95.23579144285277!3d18.821523038301947!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c79db8d6df77ab%3A0x2f35063c943369e5!2z4YCQ4YCx4YCs4YC64YGA4YCE4YC64YCA4YC84YCs4YCW4YC84YCwIEd5bQ!5e0!3m2!1sen!2smm!4v1684845068908!5m2!1sen!2smm" width="100%" height="390" style="border-0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4490.992998259165!2d95.23757776064735!3d18.822207627994924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c79d2de79ac6fd%3A0xf8603af78e2251e!2sGLP!5e0!3m2!1sen!2smm!4v1685368519212!5m2!1sen!2smm" width="100%" height="390" style="border-0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
@@ -400,7 +400,7 @@
     <!-- end contact section -->
 
     <!-- info section -->
-     <section class="info_section layout_padding2-top">
+    <section class="info_section layout_padding2-top">
         <div class="container">
             <div class="row">
             <div class="col-md-4">

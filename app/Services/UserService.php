@@ -24,8 +24,8 @@ class UserService implements UserServiceInterface
     }
 
     /**
-     * register User
-     * @return object
+     * Send User Feedback
+     * @return void
      */
 
     public function send():void

@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
 Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
-Route::post('/feedback/send', [UserController::class, 'sendFeedback'])->name('user.send_feedback');
+Route::post('/feedback/send/', [UserController::class, 'sendFeedback'])->name('user.send_feedback');
 Route::get('/profiles', [UserController::class, 'userProfile'])->name('user.profile');
 Route::get('/successPurchase', )->name('user.successPurchase');
 Route::post('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
@@ -73,8 +73,7 @@ Route::middleware(['user'])->group(function () {
     Route::post('/forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('auth.forget');
     Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('auth.resetpsw');
 
-    // User-only routes here
-    //Route::get('/', [UserController::class, 'index'])->name('user.index');
+
     Route::get('/workout', [UserController::class, 'workout'])->name('user.workout');
     Route::get('/feedback', [UserController::class, 'feedback'])->name('user.feedback');
     Route::get('/profiles', [UserController::class, 'Userprofile'])->name('user.profile');
@@ -94,7 +93,7 @@ Route::middleware(['user'])->group(function () {
 // admin
 Route::group(['middleware' => ['admin']], function () {
 
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
@@ -148,5 +147,8 @@ Route::group(['middleware' => ['admin']], function () {
     //admin member
     Route::get('/admin/member', [MemberController::class, 'member'])->name('admin.member');
     Route::delete('/admin/member/destroy/{id}', [MemberController::class, 'destroy'])->name('admin.destroy_member');
+
+    //admin feedback
+    Route::get('admin/feedback' , [AdminController::class , 'feedback'])->name('admin.feedback');
 
 });

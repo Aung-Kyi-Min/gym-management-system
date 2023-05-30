@@ -99,7 +99,8 @@ class PurchaseController extends Controller
         $finalPrice = $basePrice - ($basePrice * $discount / 100);
         return view('user.subscription', ['price' => $finalPrice, 'workout' => $workout,
             'instructor' => $instructor, 'user' => $user, 'joining_date' => $joining_date,
-            'end_date' => $end_date, 'payment' => $payment, 'join_duration' => $join_duration]);
+            'end_date' => $end_date, 'payment' => $payment, 'join_duration' => $join_duration ,'discount' => $discount,
+            'basePrice' => $basePrice,]);
     }
 
     /**

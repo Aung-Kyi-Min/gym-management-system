@@ -108,7 +108,6 @@
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
-
                                     </div>
                                     <div class="form-group row">
                                         <label for="age" class="col-lg-3 col-form-label form-control-label">Age</label>
@@ -124,7 +123,6 @@
                                             <span class="text-danger">{{$errors->first('phone')}}</span>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label for="address" class="col-lg-3 col-form-label form-control-label">Address</label>
                                         <div class="col-lg-9">
@@ -135,7 +133,6 @@
                                             
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
@@ -147,7 +144,6 @@
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>

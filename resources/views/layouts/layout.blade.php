@@ -47,7 +47,7 @@
     <header class="header_section">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand mr-5" href="index.html">
+                <a class="navbar-brand mr-5" href="/">
                     <img src="/images/logo.png" alt="" />
                     <span>
                         GLP
@@ -75,7 +75,11 @@
                         </li>
 
                         <li class="nav-item ml-5 mb-2">
-                            <div class="">
+                            
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
                                 @if (Auth::check())
                                     <div class=" ">
                                         <img src="{{auth()->user()->image ? asset('storage/images/admin/user/' .auth()->user()->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
@@ -88,18 +92,15 @@
                                         </div>
                                     @else
                                         <div class="mt-4 row">
-                                            <a href="{{ route('auth.login') }}" class="col-md-6 text-dark">
+                                            <a href="{{ route('auth.login') }}" class="col-md-6 text-dark auth-btn">
                                                 Login
                                             </a>
-                                            <a href="{{ route('auth.register') }}" class="col-md-6 text-dark">
+                                            <a href="{{ route('auth.register') }}" class="col-md-6 text-dark auth-btn">
                                                 Register
                                             </a>
                                         </div>
                                 @endif
                             </div>
-                        </li>
-                    </ul>
-                </div>
             </nav>
         </div>
         <div class="container-fluid purple-bg">
