@@ -12,7 +12,7 @@
                         @csrf
                         <div class="mb-3">
                         <label for="email" class='auth-label'>Email</label>
-                            <input type="email" placeholder="Email" name="email" class="w-100 form-control @error('name') is-invalid @enderror" />
+                            <input type="email" placeholder="Email" name="email" class="w-100 form-control @error('email') is-invalid @enderror" />
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif

@@ -32,7 +32,7 @@ class UserCreateRequest extends FormRequest
             'address' => ['required','max:225'],
             'gender' => ['required','max:225'],
             'age' => ['required','max:225' , 'integer'],
-            'phone' => ['required','max:225' , 'integer'],
+            'phone' => ['required','max:11'],
         ];
     }
 }

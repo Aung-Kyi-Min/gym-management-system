@@ -36,7 +36,10 @@
 
                         <div >
                         <label for="confirmpassword" class="auth-label">Comfirm Password</label>
-                            <input type="password" class='w-100 form-control' placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" />
+                            <input type="password" class="w-100 form-control @error('password') is-invalid @enderror" placeholder="Comfirm Password" value="{{ old('password_confirmation') }}" name="password_confirmation" />
+                            @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }} </span>
+                            @endif
                         </div>
 
                         <div>

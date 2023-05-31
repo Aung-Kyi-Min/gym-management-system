@@ -118,7 +118,7 @@ class UsersController extends Controller
         {
             $this->userService->passUpdate($request, $user);
 
-            return redirect()->route('user.profile')->with('success', 'Password updated successfully');
+            return redirect()->back()->with('success', 'Password updated successfully');
 
         } elseif ($currentPasswordStatus && $request->current_password === $request->password)
         {

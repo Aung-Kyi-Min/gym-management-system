@@ -59,7 +59,7 @@
 
                                 <div class="mt-2">
                                     <label for="textarea">Address</label>
-                                    <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control  @error('address') is-invalid @enderror">{{$user->name}}</textarea>
+                                    <textarea id="textarea" placeholder="Address" name="address" rows="4" cols="40" class="form-control  @error('address') is-invalid @enderror">{{$user->address}}</textarea>
                                     <span class="error">@error('address'){{$message}}@enderror</span>
                                 </div>
                                 <div class="mt-2">

@@ -9,9 +9,8 @@
         <div class="col-sm-5 card img-fluid border m-2 p-2 text-center gradient-background" style="width:500px">
           <img class="card-img-top image workout-img" src="{{ asset('storage/images/admin/workout/'.$workout->image) }}" alt="{{$workout->image}}">
           <div class="middle">
-          <div class="text"><a href="">Service {{$i+1}}</a></div>
           </div>
-          <h3>{{$workout->name}}</h3>
+          <h3 class="mt-5">{{$workout->name}}</h3>
           <div class="card-body">
               <p class="card-text">{{$workout->description}}</p>
               <h4>{{$workout->price}}</h4>

@@ -26,7 +26,7 @@
 
                                 <div class="mt-2">
                                     <label for="new_password">New Password</label>
-                                    <input type="password" placeholder="********" id="password" name="password" class="form-control  @error('password') is-invalid @enderror'" value="{{ old('password') }}" />
+                                    <input type="password" placeholder="********" id="password" name="password" class="form-control  @error('password') is-invalid @enderror'" />
                                     @error('password')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
@@ -34,7 +34,7 @@
 
                                 <div class="mt-2">
                                     <label for="password">Confirm Password</label>
-                                    <input type="password" placeholder="********" id="password" name="password" class="form-control  @error('password') is-invalid @enderror'" value="{{ old('new_password') }}"  value="{{ old('password') }}"/>
+                                    <input type="password" placeholder="********" id="password" name="password_confirmation" class="form-control  @error('password') is-invalid @enderror'" >
                                     @error('password')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
