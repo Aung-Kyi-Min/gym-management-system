@@ -15,7 +15,7 @@
                         @csrf
                         <div class="mt-2">
                             <label for="current_password" class="auth-label">Current Password</label>
-                            <input type="password" placeholder="*******" id="current_password" name="current_password" class='form-control w-100'/>
+                            <input type="password" placeholder="*******" id="current_password" name="current_password" class="form-control w-100  @error('current_password') is-invalid @enderror"/>
                             @error('current_password')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
@@ -23,7 +23,7 @@
 
                         <div class="mt-2">
                             <label for="new_password" class="auth-label">New Password</label>
-                            <input type="password" placeholder="********" id="password" name="password" class="form-control w-100" value="{{ old('new_password') }}" />
+                            <input type="password" placeholder="********" id="password" name="password" class="form-control w-100 @error('password') is-invalid @enderror" value="{{ old('new_password') }}" />
                             @error('password')
                                 <span class="error  text-danger">{{ $message }}</span>
                             @enderror
@@ -31,7 +31,7 @@
 
                         <div class="mt-2">
                             <label for="password_confirmation" class="auth-label">Confirm Password</label>
-                            <input type="password" placeholder="********" id="password_confirmation" name="password_confirmation" class="form-control w-100" value="{{ old('password_confirmation') }}"/>
+                            <input type="password" placeholder="********" id="password_confirmation" name="password_confirmation" class="form-control w-100 @error('password_confirmation') is-invalid @enderror" value="{{ old('password_confirmation') }}"/>
                             @error('password_confirmation')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
